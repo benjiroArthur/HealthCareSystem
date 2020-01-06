@@ -25,6 +25,7 @@ class CreateAdminsTable extends Migration
             $table->string('gender');
             $table->string('phone_number');
             $table->string('image');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

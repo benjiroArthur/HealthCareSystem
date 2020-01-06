@@ -15,7 +15,7 @@ class CreateDoctorProfilesTable extends Migration
     {
         Schema::create('doctor_profiles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
+            $table->integer('doctor_id');
             $table->integer('specialization');
             $table->string('qualification');
             $table->timestamps();

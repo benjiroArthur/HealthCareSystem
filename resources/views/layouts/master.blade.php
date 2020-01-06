@@ -168,7 +168,7 @@
                      with font-awesome or any other icon font library -->
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -176,7 +176,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item has-treeview menu-open">
+                <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fab fa-facebook-messenger"></i>
                         <p>
@@ -186,7 +186,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                            <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Doctor Name</p>
                             </a>
@@ -221,7 +221,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item has-treeview menu-open">
+                <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-notes-medical"></i>
                         <p>
@@ -295,13 +295,14 @@
 <!-- /.control-sidebar -->
 
 <!-- Main Footer -->
-<footer class="main-footer">
+<footer class="main-footer row">
     <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-        Your Health Our Concern
-    </div>
+
     <!-- Default to the left -->
     <strong>Copyright &copy; {{date('Y')}} <a href="#">  Health Care System  </a>.</strong> All rights reserved.
+    <div class="float-right d-none d-sm-inline pl-2">
+        Your Health Our Concern
+    </div>
 </footer>
 </div>
 
