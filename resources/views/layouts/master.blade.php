@@ -20,7 +20,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper" id="app">
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -139,11 +140,7 @@
 
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <ul class="navbar-nav menu-icon-custom">
-        <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars text-blue"></i></a>
-        </li>
-    </ul>
+
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
         <img src="dist/img/AdminLTELogo.png" alt="HealthCareSystem" class="brand-image img-circle elevation-3"
@@ -256,8 +253,8 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    {{--<!-- Content Header (Page header) -->
-    <div class="content-header">
+    <!-- Content Header (Page header) -->
+    {{--<div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
@@ -271,19 +268,19 @@
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
-    </div>
+    </div>--}}
     <!-- /.content-header -->
 
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
+            <router-view></router-view>
+        </div>
 
-            <!-- /.row -->
-        </div><!-- /.container-fluid -->
     </div>
-    <!-- /.content -->--}}
+    <!-- /.content -->
 
-    <router-view></router-view>
+
 </div>
 <!-- /.content-wrapper -->
 
@@ -307,6 +304,7 @@
     <strong>Copyright &copy; {{date('Y')}} <a href="#">  Health Care System  </a>.</strong> All rights reserved.
 </footer>
 </div>
+
 <!-- ./wrapper -->
 </body>
 </html>
