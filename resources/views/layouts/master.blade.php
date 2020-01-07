@@ -142,7 +142,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="{{url('/')}}" class="brand-link">
         <img src="dist/img/AdminLTELogo.png" alt="HealthCareSystem" class="brand-image img-circle elevation-3"
              style="opacity: .8">
         <span class="fas fa-clinic-medical"></span>
@@ -154,7 +154,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{asset('asserts/user.png')}}" class="img-circle elevation-2" alt="User Image">
+                <img src="{{asset('assets/user.png')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <a href="#" class="d-block">Alexander Pierce</a>
@@ -168,17 +168,17 @@
                      with font-awesome or any other icon font library -->
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <router-link to="/dashboard" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt blue"></i>
                         <p>
                             Dashboard
 
                         </p>
-                    </a>
+                    </router-link>
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fab fa-facebook-messenger"></i>
+                        <i class="nav-icon fab fa-facebook-messenger cyan"></i>
                         <p>
                             Chat
                             <i class="right fas fa-angle-left"></i>
@@ -186,44 +186,44 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                            <router-link to="/chat" class="nav-link">
+                                <i class="far fa-circle nav-icon green"></i>
                                 <p>Doctor Name</p>
-                            </a>
+                            </router-link>
                         </li>
 
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-user-circle"></i>
+                    <router-link to="/profile" class="nav-link">
+                        <i class="nav-icon fas fa-user-circle orange"></i>
                         <p>
                             Profile
 
                         </p>
-                    </a>
+                    </router-link>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-user-nurse"></i>
+                    <router-link to="/doctors" class="nav-link">
+                        <i class="nav-icon fas fa-user-nurse teal"></i>
                         <p>
                             Doctors
 
                         </p>
-                    </a>
+                    </router-link>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-file-medical"></i>
+                    <router-link to="/medical-records" class="nav-link">
+                        <i class="nav-icon fas fa-file-medical pink"></i>
                         <p>
                             Medical Records
 
                         </p>
-                    </a>
+                    </router-link>
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-notes-medical"></i>
+                        <i class="nav-icon fas fa-notes-medical purple"></i>
                         <p>
                             Appointments
                             <i class="right fas fa-angle-left"></i>
@@ -231,18 +231,32 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                            <router-link to="/upcoming-appointment" class="nav-link">
+                                <i class="far fa-circle nav-icon indigo"></i>
                                 <p>Upcoming Appointments</p>
-                            </a>
+                            </router-link>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                            <router-link to="/past-appointment" class="nav-link">
+                                <i class="far fa-circle nav-icon indigo"></i>
                                 <p>Past Appointments</p>
-                            </a>
+                            </router-link>
                         </li>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                       document.getElementById('logout-form').submit();">
+                        <i class="fas fa-power-off nav-icon red"></i>
+                        <p>
+                        {{ __('Logout') }}
+                        </p>
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
             </ul>
         </nav>
@@ -253,28 +267,14 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    {{--<div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Starter Page</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Starter Page</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>--}}
-    <!-- /.content-header -->
 
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <router-view></router-view>
+
+            <router-view>
+                {{--Vue elements goes here--}}
+            </router-view>
         </div>
 
     </div>

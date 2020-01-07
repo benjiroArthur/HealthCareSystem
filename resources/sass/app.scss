@@ -28,3 +28,8 @@ $material-design-icons-font-file-path: 'material-design-icons-iconfont/dist/font
 
 //custom css
 @import 'mystyle';
+
+.router-link-exact-active{
+  background-color: #2288ff !important;
+  color: white !important;
+}
