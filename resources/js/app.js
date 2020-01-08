@@ -15,13 +15,13 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 let routes = [
-    {path:'/dashboard', component: require('./components/Dashboard.vue').default},
-    {path:'/chat', component: require('./components/Chat.vue').default},
-    {path:'/doctors', component: require('./components/Doctors.vue').default},
-    {path:'/medical-records', component: require('./components/MedicalRecords.vue').default},
-    {path:'/profile', component: require('./components/Profile.vue').default},
-    {path:'/upcoming-appointment', component: require('./components/UpAppointment.vue').default},
-    {path:'/past-appointment', component: require('./components/PastAppointment.vue').default}
+    {path:'/dashboard', component: require('./components/User/Dashboard.vue').default},
+    {path:'/chat', component: require('./components/User/Chat.vue').default},
+    {path:'/doctors', component: require('./components/User/Doctors.vue').default},
+    {path:'/medical-records', component: require('./components/User/MedicalRecords.vue').default},
+    {path:'/profile', component: require('./components/User/Profile.vue').default},
+    {path:'/upcoming-appointment', component: require('./components/User/UpAppointment.vue').default},
+    {path:'/past-appointment', component: require('./components/User/PastAppointment.vue').default}
 
     ];
 

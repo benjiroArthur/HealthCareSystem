@@ -22,9 +22,6 @@
 @endsection
 @section('script')
     <script>
-        function showContent()
-        {
-         $("#home-content").show();
-        }
+
     </script>
 @endsection
