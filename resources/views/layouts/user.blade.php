@@ -184,7 +184,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item" onclick="hideContent();">
-                            <router-link to="/chat" class="nav-link">
+                            <router-link to="/user/chat" class="nav-link">
                                 <i class="far fa-circle nav-icon green"></i>
                                 <p>Doctor Name</p>
                             </router-link>
@@ -193,7 +193,7 @@
                     </ul>
                 </li>
                 <li class="nav-item" onclick="hideContent();">
-                    <router-link to="/profile" class="nav-link">
+                    <router-link to="/user/profile" class="nav-link">
                         <i class="nav-icon fas fa-user-circle orange"></i>
                         <p>
                             Profile
@@ -202,7 +202,7 @@
                     </router-link>
                 </li>
                 <li class="nav-item" onclick="hideContent();">
-                    <router-link to="/doctors" class="nav-link">
+                    <router-link to="/user/doctors" class="nav-link">
                         <i class="nav-icon fas fa-user-nurse teal"></i>
                         <p>
                             Doctors
@@ -211,7 +211,7 @@
                     </router-link>
                 </li>
                 <li class="nav-item" onclick="hideContent();">
-                    <router-link to="/medical-records" class="nav-link">
+                    <router-link to="/user/medical-records" class="nav-link">
                         <i class="nav-icon fas fa-file-medical pink"></i>
                         <p>
                             Medical Records
@@ -229,13 +229,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item" onclick="hideContent();">
-                            <router-link to="/upcoming-appointment" class="nav-link">
+                            <router-link to="/user/upcoming-appointment" class="nav-link">
                                 <i class="far fa-circle nav-icon indigo"></i>
                                 <p>Upcoming Appointments</p>
                             </router-link>
                         </li>
                         <li class="nav-item" onclick="hideContent();">
-                            <router-link to="/past-appointment" class="nav-link">
+                            <router-link to="/user/past-appointment" class="nav-link">
                                 <i class="far fa-circle nav-icon indigo"></i>
                                 <p>Past Appointments</p>
                             </router-link>
