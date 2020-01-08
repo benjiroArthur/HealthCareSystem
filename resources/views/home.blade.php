@@ -1,6 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.user')
 @section('content')
-<div class="container">
+<div class="container" id="home-content">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -19,4 +19,12 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+    <script>
+        function showContent()
+        {
+         $("#home-content").show();
+        }
+    </script>
 @endsection

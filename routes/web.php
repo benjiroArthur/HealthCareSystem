@@ -15,9 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//all authentication routs must be on top of other routes
 Auth::routes();
+Route::post('/admin-login', 'Auth\AdminLoginController@login')->name('admin.login');
+Route::post('/doctor-login', 'Auth\DoctorLoginController@login')->name('doctor.login');
+
+//Auth routes ends
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 
 
 

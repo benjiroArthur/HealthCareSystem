@@ -157,7 +157,7 @@
                 <img src="{{asset('assets/user.png')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">{{auth()->user()->full_name}}</a>
             </div>
         </div>
 
@@ -166,15 +166,13 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-
                 <li class="nav-item">
-                    <router-link to="/dashboard" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt blue"></i>
+                    <a href="{{url('/home')}}" class="nav-link" onclick="showContent();">
+                        <i class="nav-icon fas fa-home"></i>
                         <p>
                             Dashboard
-
                         </p>
-                    </router-link>
+                    </a>
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
@@ -185,7 +183,7 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
+                        <li class="nav-item" onclick="hideContent();">
                             <router-link to="/chat" class="nav-link">
                                 <i class="far fa-circle nav-icon green"></i>
                                 <p>Doctor Name</p>
@@ -194,7 +192,7 @@
 
                     </ul>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" onclick="hideContent();">
                     <router-link to="/profile" class="nav-link">
                         <i class="nav-icon fas fa-user-circle orange"></i>
                         <p>
@@ -203,7 +201,7 @@
                         </p>
                     </router-link>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" onclick="hideContent();">
                     <router-link to="/doctors" class="nav-link">
                         <i class="nav-icon fas fa-user-nurse teal"></i>
                         <p>
@@ -212,7 +210,7 @@
                         </p>
                     </router-link>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" onclick="hideContent();">
                     <router-link to="/medical-records" class="nav-link">
                         <i class="nav-icon fas fa-file-medical pink"></i>
                         <p>
@@ -230,13 +228,13 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
+                        <li class="nav-item" onclick="hideContent();">
                             <router-link to="/upcoming-appointment" class="nav-link">
                                 <i class="far fa-circle nav-icon indigo"></i>
                                 <p>Upcoming Appointments</p>
                             </router-link>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" onclick="hideContent();">
                             <router-link to="/past-appointment" class="nav-link">
                                 <i class="far fa-circle nav-icon indigo"></i>
                                 <p>Past Appointments</p>
@@ -270,9 +268,10 @@
 
     <!-- Main content -->
     <div class="content">
-        <div class="container-fluid">
+        <div class="container-fluid mt-3">
 
             <router-view>
+                @yield('content')
                 {{--Vue elements goes here--}}
             </router-view>
         </div>
@@ -307,5 +306,14 @@
 </div>
 
 <!-- ./wrapper -->
+
+{{--scripts--}}
+<script>
+    function hideContent(){
+        $('#home-content').hide();
+    }
+</script>
+@yield('script')
+
 </body>
 </html>

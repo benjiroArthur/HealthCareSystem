@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UsersController extends Controller
 {
