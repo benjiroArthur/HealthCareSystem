@@ -25,6 +25,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "@mdi/font": "^4.7.95",
         "admin-lte": "^3.0.1",
         "laravel-echo": "^1.6.1",
         "material-design-icons-iconfont": "^5.0.1",

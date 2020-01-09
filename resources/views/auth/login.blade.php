@@ -80,7 +80,6 @@
 
                     <div class="input-group mb-3">
                         <select type="text" name="user_type" required class="form-control" id="user_type">
-                            <option value="">Select User Type</option>
                             <option value="user">User</option>
                             <option value="doctor">Doctor</option>
                             <option value="admin">Admin</option>
@@ -165,5 +164,11 @@
 
 @endsection
 @section('script')
+<script>
+       $('#user_type').onchange(function(){
+           let v = $('#user_type').val();
+           alert(yes);
+           });
 
+</script>
 @endsection

@@ -24,7 +24,8 @@ $material-design-icons-font-file-path: 'material-design-icons-iconfont/dist/font
 @import '~material-design-icons-iconfont/dist/material-design-icons.css';
 
 //mdi
-@import 'mdi/css/materialdesignicons.css';
+
+@import '~@mdi/font/scss/materialdesignicons';
 
 //custom css
 @import 'mystyle';
