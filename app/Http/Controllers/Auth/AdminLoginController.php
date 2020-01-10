@@ -28,6 +28,6 @@ class AdminLoginController extends Controller
         }
 
         //if unsuccessful, the redirect back to login
-        return redirect()->back()->withInput($request->only('email', 'remember'));
+        return redirect()->back()->with('error','Invalid Username or Password');
     }
 }

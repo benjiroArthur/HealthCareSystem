@@ -79,14 +79,14 @@
                     <p class="login-box-msg">Sign in to start your session</p>
 
                     <div class="input-group mb-3">
-                        <select type="text" name="user_type" required class="form-control" id="user_type">
+                        <select type="text" name="user_type" required class="form-control" id="user_type" onchange="setRoute();">
                             <option value="user">User</option>
                             <option value="doctor">Doctor</option>
                             <option value="admin">Admin</option>
                         </select>
 
                     </div>
-                    <form action="{{route('login')}}" method="post">
+                    <form action="{{route('login')}}" method="post" class="main-login-form">
                         @csrf
 
                         <div class="input-group mb-3">
@@ -165,10 +165,18 @@
 @endsection
 @section('script')
 <script>
-       $('#user_type').onchange(function(){
+
+       function setRoute(){
            let v = $('#user_type').val();
-           alert(yes);
-           });
+           if(v == "user") {
+               $(".main-login-form").attr("action","{{route('login')}}");
+           }else if(v == "admin") {
+               $(".main-login-form").attr("action","{{route('admin.login')}}");
+           }else if(v == "doctor") {
+               $(".main-login-form").attr("action","{{route('doctor.login')}}");
+           }
+       }
+
 
 </script>
 @endsection
