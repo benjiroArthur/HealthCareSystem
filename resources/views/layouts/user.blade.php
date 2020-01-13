@@ -269,11 +269,13 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid mt-3">
-{{--            @yield('content')--}}
-            <router-view>
+            @yield('content')
+            <div id="div-route-content">
+                <router-view>
 
-                {{--Vue elements goes here--}}
-            </router-view>
+                    {{--Vue elements goes here--}}
+                </router-view>
+            </div>
         </div>
 
     </div>
@@ -309,14 +311,22 @@
 
 {{--scripts--}}
 <script>
-    // function showContent()
-    // {
-    //     $("#home-content").show();
-    // }
-    //
-    // function hideContent(){
-    //     $('#home-content').hide();
-    // }
+
+    $(document).ready(function(){
+        $('#div-route-content').html('<router-view>\n' +
+            '\n' +
+            '                    {{--Vue elements goes here--}}\n' +
+            '                </router-view>');
+    });
+
+    function showContent()
+    {
+        $("#home-content").show();
+    }
+
+    function hideContent(){
+        $('#home-content').hide();
+    }
 </script>
 @yield('script')
 
