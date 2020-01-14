@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Doctor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +16,8 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        //
+        $doctors = Doctor::all();
+        return response()->json($doctors);
     }
 
     /**

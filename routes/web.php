@@ -23,6 +23,8 @@ Route::post('/doctor-login', 'Auth\DoctorLoginController@login')->name('doctor.l
 //Auth routes ends
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/doctor-home', 'DoctorHomeController@index')->name('doctor-home');
+Route::get('/admin-home', 'AdminHomeController@index')->name('admin-home');
 
 
 
