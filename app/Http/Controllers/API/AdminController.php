@@ -8,13 +8,23 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $admins = Admin::all();
+        return response()->json($admins);
     }
 
     /**
@@ -35,7 +45,14 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'last_name'=>'required',
+            'first_name'=>'required',
+            'email'=>'required|email|unique:admins',
+            'phone_number' => 'max:10|numbers'
+        ]);
+
+
     }
 
     /**
@@ -69,7 +86,12 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'last_name'=>'required',
+            'first_name'=>'required',
+            'email'=>'required|email|unique:admins',
+            'phone_number' => 'max:10|numbers'
+        ]);
     }
 
     /**

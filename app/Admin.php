@@ -37,4 +37,10 @@ class Admin extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getFullNameAttribute(){
+        if($this->other_name == null){
+            return $this->first_name + " " + $this->last_name;
+        }
+    }
 }

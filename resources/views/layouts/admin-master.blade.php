@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'HealthCare System') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -157,7 +157,7 @@
                 <img src="{{asset('assets/user.png')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{auth()->user()->full_name}}</a>
+                <a href="#" class="d-block">{{auth()->admin()->full_name}}</a>
             </div>
         </div>
 
@@ -225,7 +225,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-notes-medical purple"></i>
                         <p>
-                            Appointments
+                            Manage Users
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -233,13 +233,13 @@
                         <li class="nav-item">
                             <router-link to="/admin/upcoming-appointment" class="nav-link">
                                 <i class="far fa-circle nav-icon indigo"></i>
-                                <p>Upcoming Appointments</p>
+                                <p>Administrators</p>
                             </router-link>
                         </li>
                         <li class="nav-item">
                             <router-link to="/admin/past-appointment" class="nav-link">
                                 <i class="far fa-circle nav-icon indigo"></i>
-                                <p>Past Appointments</p>
+                                <p>Doctors</p>
                             </router-link>
                         </li>
                     </ul>
