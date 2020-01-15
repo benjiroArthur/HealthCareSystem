@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.user-master')
 @section('content')
 <div class="container" id="home-content">
     <div class="row justify-content-center">

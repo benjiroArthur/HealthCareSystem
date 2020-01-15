@@ -31,7 +31,7 @@ class DoctorLoginController extends Controller
 
     public function logout()
     {
-        Auth::guard('admin')->logout();
+        Auth::guard('doctor')->logout();
         return redirect('/');
     }
 
