@@ -13,7 +13,7 @@ class DoctorHomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth::doctor');
+        $this->middleware('auth:doctor');
     }
 
     /**

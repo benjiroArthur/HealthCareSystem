@@ -10,7 +10,7 @@ class DoctorLoginController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest:doctor');
+        $this->middleware('guest:doctor', ['except'=>['logout']]);
     }
     public function login(Request $request){
         //Validate the form data
@@ -28,4 +28,11 @@ class DoctorLoginController extends Controller
         //if unsuccessful, the redirect back to login
         return redirect()->back()->withInput($request->only('email', 'remember'));
     }
+
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+        return redirect('/');
+    }
+
 }

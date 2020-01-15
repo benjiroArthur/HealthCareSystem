@@ -17,8 +17,11 @@ Route::get('/', function () {
 
 //all authentication routs must be on top of other routes
 Auth::routes();
+Route::get('/user-logout', 'Auth\LoginController@userlogout')->name('user.logout');
 Route::post('/admin-login', 'Auth\AdminLoginController@login')->name('admin.login');
 Route::post('/doctor-login', 'Auth\DoctorLoginController@login')->name('doctor.login');
+Route::get('/admin-logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+Route::get('/doctor-logout', 'Auth\DoctorLoginController@logout')->name('doctor.logout');
 
 //Auth routes ends
 
