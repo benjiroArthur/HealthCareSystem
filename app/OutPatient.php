@@ -4,14 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Doctor extends Model
+class OutPatient extends Model
 {
-    //
     //fillables
     protected $fillable = [
-        'first_name', 'last_name', 'other_name', 'dob', 'gender', 'phone_number', 'image', 'user_id', 'specialization', 'qualification'
+        'first_name', 'last_name', 'other_name', 'dob', 'gender', 'phone_number', 'image', 'user_id'
     ];
-
 
     public function getFullNameAttribute(){
         if($this->other_name === null){
@@ -21,6 +19,6 @@ class Doctor extends Model
     }
 
     public function user(){
-        $this->belongsTo('App\User');
+        $this->hasOne('App\User');
     }
 }

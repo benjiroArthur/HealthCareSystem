@@ -41,14 +41,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'admin' => [
-            'driver' => 'session',
-            'provider' => 'admins',
-        ],
-        'doctor' => [
-            'driver' => 'session',
-            'provider' => 'doctors',
-        ],
+//        'admin' => [
+//            'driver' => 'session',
+//            'provider' => 'admins',
+//        ],
+//        'doctor' => [
+//            'driver' => 'session',
+//            'provider' => 'doctors',
+//        ],
 
         'api' => [
             'driver' => 'token',
@@ -56,17 +56,17 @@ return [
             'hash' => false,
         ],
 
-        'admin-api' => [
-            'driver' => 'token',
-            'provider' => 'admins',
-            'hash' => false,
-        ],
-
-        'doctor-api' => [
-            'driver' => 'token',
-            'provider' => 'doctors',
-            'hash' => false,
-        ],
+//        'admin-api' => [
+//            'driver' => 'token',
+//            'provider' => 'admins',
+//            'hash' => false,
+//        ],
+//
+//        'doctor-api' => [
+//            'driver' => 'token',
+//            'provider' => 'doctors',
+//            'hash' => false,
+//        ],
     ],
 
     /*
@@ -88,25 +88,25 @@ return [
 
     'providers' =>
       [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\User::class,
-        ],
+//        'users' => [
+//            'driver' => 'eloquent',
+//            'model' => App\User::class,
+//        ],
+//
+//         'admins' => [
+//             'driver' => 'eloquent',
+//             'model' => App\Admin::class,
+//         ],
+//
+//        'doctors' => [
+//            'driver' => 'eloquent',
+//            'model' => App\Doctor::class,
+//        ],
 
-         'admins' => [
-             'driver' => 'eloquent',
-             'model' => App\Admin::class,
+         'users' => [
+             'driver' => 'database',
+             'table' => 'users',
          ],
-
-        'doctors' => [
-            'driver' => 'eloquent',
-            'model' => App\Doctor::class,
-        ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*
@@ -132,19 +132,19 @@ return [
             'throttle' => 60,
         ],
 
-        'admins' => [
-            'provider' => 'admins',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-
-        'doctors' => [
-            'provider' => 'doctors',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
+//        'admins' => [
+//            'provider' => 'admins',
+//            'table' => 'password_resets',
+//            'expire' => 60,
+//            'throttle' => 60,
+//        ],
+//
+//        'doctors' => [
+//            'provider' => 'doctors',
+//            'table' => 'password_resets',
+//            'expire' => 60,
+//            'throttle' => 60,
+//        ],
     ],
 
     /*

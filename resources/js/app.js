@@ -52,18 +52,18 @@ const router = new VueRouter({
     mode:'history',
     routes:[
         {
-            'path' : '/home',
-            'name' : 'home',
+            'path' : '/dashboard',
+            'name' : 'dashboard',
             'component' : UserDashboard
         },
         {
-            'path' : '/doctor-home',
-            'name' : 'doctor-home',
+            'path' : '/doctor-dashboard',
+            'name' : 'doctor-dashboard',
             'component' : DoctorDashboard
         },
         {
-            'path' : '/admin-home',
-            'name' : 'admin-home',
+            'path' : '/admin-dashboard',
+            'name' : 'admin-dashboard',
             'component' : AdminDashboard
         }
     ]

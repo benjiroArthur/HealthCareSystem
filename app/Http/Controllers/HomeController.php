@@ -14,10 +14,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:web');
-//        if(Auth::check()){
-//
-//        }
+        $this->middleware('auth');
+
     }
 
     /**
@@ -27,9 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(auth::guard('web')){return view('home');}
-        else if(auth::guard('doctor')){return view('doctor-home');}
-        else if(auth::guard('admin')){return view('admin-home');}
+       return view('home');
 
     }
 }

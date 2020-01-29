@@ -16,8 +16,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'other_name', 'email', 'password',
-        'email_verified_at', 'dob', 'gender', 'phone_number', 'image'
+        'email', 'password', 'role_id',
+        'email_verified_at'
     ];
 
     /**
@@ -38,10 +38,27 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getFullNameAttribute(){
-        if($this->other_name === null){
-            return ucfirst($this->first_name).' '.ucfirst($this->last_name);
-        }
-        return ucfirst($this->first_name).' '.ucfirst($this->other_name).' '.ucfirst($this->last_name);
+    public function role(){
+        return $this->belongsTo('App\Role');
+    }
+    public function out_patient(){
+        //dd($this->role());
+        return $this->belongs('App\OutPatient');
+//        if($this->role()->name == 'doctor'){
+//            return $this->hasOne('App\Doctor', 'user_id');
+//        }
+//        else if($this->role()->name == 'admin'){
+//            return $this->hasOne('App\Admin', 'user_id');
+//        }
+//        else if($this->role()->name == 'out_patient'){
+//            return $this->hasOne('App\OutPatient', 'user_id');
+//        }
+
+
     }
 }
+
+
+
+
+

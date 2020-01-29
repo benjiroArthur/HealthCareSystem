@@ -15,17 +15,14 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('user_id');
             $table->string('last_name');
             $table->string('first_name');
             $table->string('other_name')->nullable();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
             $table->date('dob')->nullable();
             $table->string('gender')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('image')->default('noimage.jpg');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
