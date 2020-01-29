@@ -63768,6 +63768,9 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var _components_User_Dashboard_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/User/Dashboard.vue */ "./resources/js/components/User/Dashboard.vue");
+/* harmony import */ var _components_Doctor_Dashboard_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Doctor/Dashboard.vue */ "./resources/js/components/Doctor/Dashboard.vue");
+/* harmony import */ var _components_Admin_Dashboard_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Admin/Dashboard.vue */ "./resources/js/components/Admin/Dashboard.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -63776,6 +63779,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
+
+
 
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]); //vue routers
 
@@ -63848,7 +63854,19 @@ var routes = [//Users routes
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: 'history',
-  routes: routes
+  routes: [{
+    'path': '/home',
+    'name': 'home',
+    'component': _components_User_Dashboard_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  }, {
+    'path': '/doctor-home',
+    'name': 'doctor-home',
+    'component': _components_Doctor_Dashboard_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }, {
+    'path': '/admin-home',
+    'name': 'admin-home',
+    'component': _components_Admin_Dashboard_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }]
 });
 /**
  * The following block of code may be used to automatically register your

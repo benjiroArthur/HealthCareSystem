@@ -11,6 +11,9 @@ window.Vue = require('vue');
 
 
 import VueRouter from 'vue-router'
+import UserDashboard from './components/User/Dashboard.vue';
+import DoctorDashboard from './components/Doctor/Dashboard.vue';
+import AdminDashboard from './components/Admin/Dashboard.vue';
 
 Vue.use(VueRouter);
 
@@ -47,7 +50,23 @@ let routes = [
 
 const router = new VueRouter({
     mode:'history',
-    routes
+    routes:[
+        {
+            'path' : '/home',
+            'name' : 'home',
+            'component' : UserDashboard
+        },
+        {
+            'path' : '/doctor-home',
+            'name' : 'doctor-home',
+            'component' : DoctorDashboard
+        },
+        {
+            'path' : '/admin-home',
+            'name' : 'admin-home',
+            'component' : AdminDashboard
+        }
+    ]
     });
 
 

@@ -22,7 +22,7 @@ class DoctorLoginController extends Controller
         if(Auth::guard('doctor')->attempt(['email' => $request->email, 'password'=> $request->password], $request->remember))
         {
             //if successful, then redirect to dashboard
-            return redirect()->intended(route('doctor-home'));
+            return redirect()->intended(url('/doctor-home'));
         }
 
         //if unsuccessful, the redirect back to login
