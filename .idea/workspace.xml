@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5f0e7934-3c7a-42fe-a9b0-991e1714afd3" name="Default" comment="january 29 still working on vue home page">
+    <list default="true" id="5f0e7934-3c7a-42fe-a9b0-991e1714afd3" name="Default" comment="january 29 still working on vue home page admin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -227,7 +227,7 @@
       <workItem from="1578646076352" duration="7860000" />
       <workItem from="1578967292922" duration="1844000" />
       <workItem from="1579463811044" duration="6745000" />
-      <workItem from="1580271062383" duration="6382000" />
+      <workItem from="1580271062383" duration="7492000" />
     </task>
     <task id="LOCAL-00001" summary="6th january">
       <created>1578287355563</created>
@@ -278,7 +278,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580275369003</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="january 29 still working on vue home page admin">
+      <created>1580279027754</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1580279027754</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,6 +312,7 @@
     <MESSAGE value="january 15 Admin-Doctor home" />
     <MESSAGE value="january 15 multi-auth works" />
     <MESSAGE value="january 29 still working on vue home page" />
-    <option name="LAST_COMMIT_MESSAGE" value="january 29 still working on vue home page" />
+    <MESSAGE value="january 29 still working on vue home page admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="january 29 still working on vue home page admin" />
   </component>
 </project>
