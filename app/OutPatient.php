@@ -8,7 +8,7 @@ class OutPatient extends Model
 {
     //fillables
     protected $fillable = [
-        'first_name', 'last_name', 'other_name', 'dob', 'gender', 'phone_number', 'image', 'user_id'
+        'first_name', 'last_name', 'other_name', 'dob', 'gender', 'phone_number', 'image', 'email'
     ];
 
     public function getFullNameAttribute(){

@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Admin;
+use App\Doctor;
+use App\OutPatient;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -40,6 +43,9 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    private $userable_data;
+    private $userable_type;
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -49,7 +55,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'other_name' => ['string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -63,9 +71,40 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        if($data['role_id'] == 1){
+            $out_patient = new OutPatient();
+            $request = $data->except(['role_id', 'Password', 'password_confirmation']);
+            $out_patient->create($request);
+
+            $this->userable_data = OutPatient::where('email', $data['email']);
+            $this->userable_type = "OutPatient";
+        }
+        elseif($data['role_id'] == 2){
+            $doctor = new Doctor();
+            $request = $data->except(['role_id', 'Password', 'password_confirmation']);
+            $doctor->create($request);
+
+            $this->userable_data = Doctor::where('email', $data['email']);
+            $this->userable_type = "Doctor";
+        }
+        elseif($data['role_id'] == 3){
+            $admin = new Admin();
+            $request = $data->except(['role_id', 'Password', 'password_confirmation']);
+            $admin->create($request);
+
+            $this->userable_data = Admin::where('email', $data['email']);
+            $this->userable_type = "Admin";
+        }
+
         return User::create([
-            'name' => $data['name'],
+            'last_name' => $data['last_name'],
+            'first_name' => $data['first_name'],
+            'other_name' => $data['other_name'],
+            'role_id' => $data['role_id'],
             'email' => $data['email'],
+            'userable_id' => $this->userable_data->id,
+            'userable_type' => $this->userable_type,
             'password' => Hash::make($data['password']),
         ]);
     }

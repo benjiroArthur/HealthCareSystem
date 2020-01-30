@@ -15,10 +15,10 @@ class CreateDoctorsTable extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
             $table->string('last_name');
             $table->string('first_name');
             $table->string('other_name')->nullable();
+
             $table->date('dob')->nullable();
             $table->string('gender')->nullable();
             $table->string('phone_number')->nullable();
