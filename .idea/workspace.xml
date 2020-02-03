@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5f0e7934-3c7a-42fe-a9b0-991e1714afd3" name="Default" comment="january 29 still working on vue home page admin">
-      <change afterPath="$PROJECT_DIR$/resources/views/inclides/messages.blade.php" afterDir="false" />
+    <list default="true" id="5f0e7934-3c7a-42fe-a9b0-991e1714afd3" name="Default" comment="include message">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin-master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin-master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/inclides/messages.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/includes/messages.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/doctor-master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/doctor-master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/user-master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/user-master.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -233,7 +230,7 @@
       <workItem from="1579463811044" duration="6745000" />
       <workItem from="1580271062383" duration="7492000" />
       <workItem from="1580567803898" duration="1306000" />
-      <workItem from="1580703370107" duration="234000" />
+      <workItem from="1580703370107" duration="738000" />
     </task>
     <task id="LOCAL-00001" summary="6th january">
       <created>1578287355563</created>
@@ -305,7 +302,21 @@
       <option name="project" value="LOCAL" />
       <updated>1580405424263</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="include message">
+      <created>1580703705964</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1580703705964</updated>
+    </task>
+    <task id="LOCAL-00012" summary="include message">
+      <created>1580703759770</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1580703759770</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -335,6 +346,7 @@
     <MESSAGE value="january 29 still working on vue home page admin" />
     <MESSAGE value="january 15 using one user table but with some bugs" />
     <MESSAGE value="using polymorphic relationship" />
-    <option name="LAST_COMMIT_MESSAGE" value="using polymorphic relationship" />
+    <MESSAGE value="include message" />
+    <option name="LAST_COMMIT_MESSAGE" value="include message" />
   </component>
 </project>
