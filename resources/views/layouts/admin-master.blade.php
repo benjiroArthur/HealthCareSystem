@@ -271,7 +271,7 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-
+            @include('includes.messages')
             <router-view>
                 {{--Vue elements goes here--}}
             </router-view>

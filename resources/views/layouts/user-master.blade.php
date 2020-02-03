@@ -269,6 +269,7 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid mt-3">
+            @include('includes.messages')
             @yield('content')
             <div id="div-route-content">
                 <router-view>

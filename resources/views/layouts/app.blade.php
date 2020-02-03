@@ -74,6 +74,7 @@
         </nav>
 
         <main class="py-4">
+            @include('includes.messages')
             @yield('content')
         </main>
     </div>
