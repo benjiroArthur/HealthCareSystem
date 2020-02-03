@@ -16,9 +16,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'email', 'password', 'role_id', 'userable_id', 'userable_typr', 'first_name', 'last_name', 'other_name', 'profile_updated',
+        'email', 'password', 'role_id', 'userable_id', 'userable_type', 'profile_updated',
         'email_verified_at'
     ];
+
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -41,20 +43,10 @@ class User extends Authenticatable
     public function role(){
         return $this->belongsTo('App\Role');
     }
-    public function out_patient(){
-        //dd($this->role());
-        return $this->belongs('App\OutPatient');
-//        if($this->role()->name == 'doctor'){
-//            return $this->hasOne('App\Doctor', 'user_id');
-//        }
-//        else if($this->role()->name == 'admin'){
-//            return $this->hasOne('App\Admin', 'user_id');
-//        }
-//        else if($this->role()->name == 'out_patient'){
-//            return $this->hasOne('App\OutPatient', 'user_id');
-//        }
 
 
+    public function userable(){
+        return $this->morphTo();
     }
 }
 

@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 //all authentication routs must be on top of other routes
 Auth::routes();
+Route::post('/new-register', 'Auth\MyRegisterController@userRegister')->name('userRegister');
 Route::get('/user-logout', 'Auth\LoginController@userlogout')->name('user.logout');
 Route::post('/admin-login', 'Auth\AdminLoginController@login')->name('admin.login');
 Route::post('/doctor-login', 'Auth\DoctorLoginController@login')->name('doctor.login');
@@ -25,7 +26,7 @@ Route::get('/doctor-logout', 'Auth\DoctorLoginController@logout')->name('doctor.
 
 //Auth routes ends
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/doctor-home', 'DoctorHomeController@index')->name('doctor-home');
 //Route::get('/admin-home', 'AdminHomeController@index')->name('admin-home');
 

@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class OutPatient extends Model
 {
+    protected $guarded = [];
     //fillables
     protected $fillable = [
-        'first_name', 'last_name', 'other_name', 'dob', 'gender', 'phone_number', 'image', 'email'
+        'first_name', 'last_name', 'other_name', 'dob', 'gender', 'phone_number', 'image', 'email', 'location'
     ];
 
     public function getFullNameAttribute(){
@@ -19,6 +20,6 @@ class OutPatient extends Model
     }
 
     public function user(){
-        $this->hasOne('App\User');
+        return $this->morphOne('App\User', 'userable');
     }
 }

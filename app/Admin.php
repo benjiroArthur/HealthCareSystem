@@ -9,10 +9,10 @@ class Admin extends Model
     //
     //fillables
     protected $fillable = [
-        'first_name', 'last_name', 'other_name', 'dob', 'gender', 'phone_number', 'image', 'email'
+        'first_name', 'last_name', 'other_name', 'dob', 'gender', 'phone_number', 'image', 'email',
     ];
 
-
+    protected $guarded = [];
     public function getFullNameAttribute(){
         if($this->other_name === null){
             return ucfirst($this->first_name).' '.ucfirst($this->last_name);
@@ -21,6 +21,6 @@ class Admin extends Model
     }
 
     public function user(){
-        $this->belongsTo('App\User');
+        return $this->morphOne('App\User', 'userable');
     }
 }

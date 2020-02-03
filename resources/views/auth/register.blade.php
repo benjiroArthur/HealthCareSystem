@@ -11,7 +11,7 @@
 
                 <div class="card-body register-card-body">
                     <p class="login-box-msg">{{ __('Register') }}</p>
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('userRegister') }}">
                         @csrf
                     <div class="row justify-content-center">
                         <div class="col-md-6">
@@ -40,7 +40,7 @@
                                 @enderror
                             </div>
                         </div>
-                            <input type="text" name="role_id">
+
 
                         <div class="form-group row">
 
