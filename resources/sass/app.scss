@@ -3,6 +3,7 @@
 
 // Variables
 @import 'variables';
+$fa-font-path: "./webfonts";
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
@@ -13,6 +14,7 @@ $fontawesome-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import "~@fortawesome/fontawesome-free/scss/solid.scss";
 @import "~@fortawesome/fontawesome-free/scss/brands.scss";
 @import "~@fortawesome/fontawesome-free/scss/regular.scss";
+//@import "~font-awesome/scss/font-awesome.scss";
 
 //material icon
 $material-icons-font-path: '~material-icons/iconfont/';

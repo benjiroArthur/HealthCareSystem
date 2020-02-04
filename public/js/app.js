@@ -63786,10 +63786,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]); //vue routers
 
 var routes = [//Users routes
+//{path:'/user/dashboard', component: require('./components/User/Dashboard.vue').default},
 {
-  path: '/user/dashboard',
-  component: __webpack_require__(/*! ./components/User/Dashboard.vue */ "./resources/js/components/User/Dashboard.vue")["default"]
-}, {
   path: '/user/chat',
   component: __webpack_require__(/*! ./components/User/Chat.vue */ "./resources/js/components/User/Chat.vue")["default"]
 }, {
@@ -63808,10 +63806,8 @@ var routes = [//Users routes
   path: '/user/past-appointment',
   component: __webpack_require__(/*! ./components/User/PastAppointment.vue */ "./resources/js/components/User/PastAppointment.vue")["default"]
 }, //Admins routes
+//{path:'/admin/dashboard', component: require('./components/Admin/Dashboard.vue').default},
 {
-  path: '/admin/dashboard',
-  component: __webpack_require__(/*! ./components/Admin/Dashboard.vue */ "./resources/js/components/Admin/Dashboard.vue")["default"]
-}, {
   path: '/admin/chat',
   component: __webpack_require__(/*! ./components/Admin/Chat.vue */ "./resources/js/components/Admin/Chat.vue")["default"]
 }, {
@@ -63830,10 +63826,8 @@ var routes = [//Users routes
   path: '/admin/past-appointment',
   component: __webpack_require__(/*! ./components/Admin/PastAppointment.vue */ "./resources/js/components/Admin/PastAppointment.vue")["default"]
 }, //Doctors routes
+// {path:'/doctor/dashboard', component: require('./components/Doctor/Dashboard.vue').default},
 {
-  path: '/doctor/dashboard',
-  component: __webpack_require__(/*! ./components/Doctor/Dashboard.vue */ "./resources/js/components/Doctor/Dashboard.vue")["default"]
-}, {
   path: '/doctor/chat',
   component: __webpack_require__(/*! ./components/Doctor/Chat.vue */ "./resources/js/components/Doctor/Chat.vue")["default"]
 }, {
@@ -63855,16 +63849,16 @@ var routes = [//Users routes
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: 'history',
   routes: [{
-    'path': '/home',
-    'name': 'home',
+    'path': '/dashboard',
+    'name': 'dashboard',
     'component': _components_User_Dashboard_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   }, {
-    'path': '/doctor-home',
-    'name': 'doctor-home',
+    'path': '/doctor-dashboard',
+    'name': 'doctor-dashboard',
     'component': _components_Doctor_Dashboard_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, {
-    'path': '/admin-home',
-    'name': 'admin-home',
+    'path': '/admin-dashboard',
+    'name': 'admin-dashboard',
     'component': _components_Admin_Dashboard_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   }]
 });

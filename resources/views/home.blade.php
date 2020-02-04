@@ -14,6 +14,8 @@
                     @endif
 
                     You are logged in!
+
+                    <p>{{$user->userable->full_name}}</p><p>{{\Auth::user()->roles->name}}</p>
                 </div>
             </div>
         </div>
