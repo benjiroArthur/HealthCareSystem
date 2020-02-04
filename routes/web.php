@@ -39,3 +39,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //should be the last route
 Route::get('{path}', 'HomeController@index')->where('path', '([A-z\-/_.]+)?');
 //Route::get('{path}', 'HomeController@index')->where('path', '([A-z]+)?');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
