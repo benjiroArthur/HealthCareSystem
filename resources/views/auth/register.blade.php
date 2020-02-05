@@ -46,7 +46,7 @@
 
                                         <div class="col-12">
 
-                                            <input placeholder="Other Names" id="other_name" type="text" class="form-control @error('name') is-invalid @enderror" name="other_name" value="{{ old('name') }}"
+                                            <input placeholder="Other Names" id="other_name" type="text" class="form-control @error('other_name') is-invalid @enderror" name="other_name" value="{{ old('name') }}"
                                                    autocomplete="other_name" data-slider-tooltip="Leave theis field blank if you do not have Other Name">
 
                                             @error('other_name')

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Imports\UserImport;
+use App\Imports\UsersImport;
 use App\User;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -31,10 +33,8 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         //
-
-        $user = new User;
-        $user->create($request->all());
-
+        Excel::import(new UsersImport, $request->file('file'));
+        return response('User Records Created Successfully', 200);
     }
 
     /**

@@ -3,8 +3,6 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-
-
             <div class="login-box">
                 <div class="login-logo">
                     <img src="{{asset('assets/user.png')}}" width="100" height="auto">
