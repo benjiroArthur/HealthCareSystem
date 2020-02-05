@@ -8,16 +8,16 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~admin-lte/dist/css/adminlte.css';
 //font awesome
-$fontawesome-font-path: "~@fortawesome/fontawesome-free/webfonts";
-@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
-@import "~@fortawesome/fontawesome-free/scss/solid.scss";
-@import "~@fortawesome/fontawesome-free/scss/brands.scss";
-@import "~@fortawesome/fontawesome-free/scss/regular.scss";
+//$fontawesome-font-path: "~@fortawesome/fontawesome-free/webfonts";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
 
 //material icon
 $material-icons-font-path: '~material-icons/iconfont/';
 
-@import '~material-icons/iconfont/material-icons.scss';
+@import '~material-icons/iconfont/material-icons';
 
 //material design icon
 //$material-design-icons-font-file-path: 'material-design-icons-iconfont/dist/fonts';
