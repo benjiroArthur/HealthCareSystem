@@ -16,9 +16,9 @@
             <div class="image">
                 <img src="{{asset('assets/user.png')}}" class="img-circle elevation-2" alt="User Image">
             </div>
-            {{--<div class="info">--}}
-            {{--<a href="#" class="d-block">{{auth()->user()->role->name}}</a>--}}
-            {{--</div>--}}
+            <div class="info">
+            <a href="#" class="d-block">{{auth()->user()->role->name}}</a>
+            </div>
         </div>
 
         <!-- Sidebar Menu -->
@@ -35,12 +35,13 @@
                     </a>
                 </li>
                 {{--//for admins only--}}
+                {{--@if(auth()->user()->role->name == 'admin')--}}
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-notes-medical purple"></i>
+                        <i class="nav-icon mdi mdi-account-multiple purple"></i>
                         <p>
                             Manage Users
-                            <i class="right fas fa-angle-left"></i>
+                            <i class="right mdi mdi-chevron-right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -70,6 +71,7 @@
                         </li>
                     </ul>
                 </li>
+                {{--@endif--}}
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fab fa-facebook-messenger cyan"></i>

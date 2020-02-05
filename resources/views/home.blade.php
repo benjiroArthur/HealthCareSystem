@@ -15,7 +15,7 @@
 
                     You are logged in!
 
-                    <p>{{Auth::user()->role->name}}</p>
+                    <p>{{auth::user()->role->name}}</p>
                 </div>
             </div>
         </div>
