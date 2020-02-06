@@ -26,6 +26,6 @@ Route::post('/new-register', 'Auth\MyRegisterController@userRegister')->name('us
 
 
 //should be the last route
-//Route::get('{path}', 'HomeController@index')->where('path', '([A-z\-/_.]+)?' );
-Route::get('{path}', 'HomeController@index')->where('path', '([A-z]+)?');
+Route::get('{path}', 'HomeController@index')->where('path', '([A-z\-/_.]+)?' );
+//Route::get('{path}', 'HomeController@index')->where('path', '([A-z]+)?');
 

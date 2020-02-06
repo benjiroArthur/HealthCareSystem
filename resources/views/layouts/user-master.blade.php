@@ -32,10 +32,10 @@
     <div class="content">
         <div class="container-fluid mt-3">
             @include('includes.messages')
-            @yield('content')
+
             <div id="div-route-content">
                 <router-view>
-
+                    @yield('content')
                     {{--Vue elements goes here--}}
                 </router-view>
             </div>
@@ -77,12 +77,12 @@
 {{--scripts--}}
 <!-- Scripts -->
 
-<script>
+{{--<script>
 
     $(document).ready(function(){
         $('#div-route-content').html('<router-view>\n' +
             '\n' +
-            '                    {{--Vue elements goes here--}}\n' +
+            '                    --}}{{--Vue elements goes here--}}{{--\n' +
             '                </router-view>');
     });
 
@@ -94,7 +94,7 @@
     function hideContent(){
         $('#home-content').hide();
     }
-</script>
+</script>--}}
 @yield('script')
 
 </body>

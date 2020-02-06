@@ -2399,6 +2399,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -48484,7 +48485,9 @@ var staticRenderFns = [
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
-              _vm._v("\n                    Dashboard\n                ")
+              _vm._v(
+                "\n                    this is the Dashboard\n\n                "
+              )
             ])
           ])
         ])
@@ -63786,8 +63789,10 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]); //vue routers
 
 var routes = [//Users routes
-//{path:'/user/dashboard', component: require('./components/User/Dashboard.vue').default},
 {
+  path: '/home',
+  component: __webpack_require__(/*! ./components/User/Dashboard.vue */ "./resources/js/components/User/Dashboard.vue")["default"]
+}, {
   path: '/user/chat',
   component: __webpack_require__(/*! ./components/User/Chat.vue */ "./resources/js/components/User/Chat.vue")["default"]
 }, {

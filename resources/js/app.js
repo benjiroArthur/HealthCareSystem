@@ -20,7 +20,7 @@ Vue.use(VueRouter);
 //vue routers
 let routes = [
     //Users routes
-    //{path:'/user/dashboard', component: require('./components/User/Dashboard.vue').default},
+    {path:'/home', component: require('./components/User/Dashboard.vue').default},
     {path:'/user/chat', component: require('./components/User/Chat.vue').default},
     {path:'/user/doctors', component: require('./components/User/Doctors.vue').default},
     {path:'/user/medical-records', component: require('./components/User/MedicalRecords.vue').default},
@@ -51,6 +51,7 @@ let routes = [
 const router = new VueRouter({
     mode:'history',
     routes
+
 });
 /*const router = new VueRouter({
     mode:'history',

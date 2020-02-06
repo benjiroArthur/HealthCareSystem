@@ -27,12 +27,12 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="{{url('/home')}}" class="nav-link" onclick="showContent();">
+                    <router-link to="/home" class="nav-link" onclick="showContent();">
                         <i class="nav-icon fa fa-home"></i>
                         <p>
                             Dashboard
                         </p>
-                    </a>
+                    </router-link>
                 </li>
                 {{--//for admins only--}}
                 {{--@if(auth()->user()->role->name == 'admin')--}}
