@@ -63848,20 +63848,29 @@ var routes = [//Users routes
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: 'history',
-  routes: [{
-    'path': '/dashboard',
-    'name': 'dashboard',
-    'component': _components_User_Dashboard_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
-  }, {
-    'path': '/doctor-dashboard',
-    'name': 'doctor-dashboard',
-    'component': _components_Doctor_Dashboard_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }, {
-    'path': '/admin-dashboard',
-    'name': 'admin-dashboard',
-    'component': _components_Admin_Dashboard_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }]
+  routes: routes
 });
+/*const router = new VueRouter({
+    mode:'history',
+    routes:[
+        {
+            'path' : '/home',
+            'name' : 'home',
+            'component' : UserDashboard
+        },
+        {
+            'path' : '/doctor-dashboard',
+            'name' : 'doctor-dashboard',
+            'component' : DoctorDashboard
+        },
+        {
+            'path' : '/admin-dashboard',
+            'name' : 'admin-dashboard',
+            'component' : AdminDashboard
+        }
+    ]
+});*/
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

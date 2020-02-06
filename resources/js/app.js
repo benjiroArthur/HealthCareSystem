@@ -50,10 +50,14 @@ let routes = [
 
 const router = new VueRouter({
     mode:'history',
+    routes
+});
+/*const router = new VueRouter({
+    mode:'history',
     routes:[
         {
-            'path' : '/dashboard',
-            'name' : 'dashboard',
+            'path' : '/home',
+            'name' : 'home',
             'component' : UserDashboard
         },
         {
@@ -67,7 +71,7 @@ const router = new VueRouter({
             'component' : AdminDashboard
         }
     ]
-});
+});*/
 
 
 /**
