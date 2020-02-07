@@ -16,8 +16,17 @@
 
 <script>
     export default {
+        data(){
+            return{
+                profile : {}
+            }
+        },
         mounted() {
             console.log('Component mounted.')
+        },
+        created(){
+            axios.get('api/profile')
+                .then(({data}) => (this.profile.fill(data)));
         }
     }
 </script>

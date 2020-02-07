@@ -47,6 +47,16 @@ class UsersController extends Controller
     {
         //
     }
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function profile()
+    {
+        //return the authenticated user
+        return auth('api')->user();
+    }
 
     /**
      * Update the specified resource in storage.
