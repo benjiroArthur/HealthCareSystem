@@ -45,7 +45,9 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        //show details of a single user
+        $user = User::findOrFail($id);
+        return response()->json($user);
     }
     /**
      * Display the specified resource.
@@ -67,7 +69,55 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $updateUser = User::findOrFail($id)->first();
+
+        //validation
+        if($updateUser->role == 'admin'){
+
+            $this->validate($request,[
+                'last_name'=>'required|string|max:225',
+                'first_name'=>'required|string|max:225',
+                'email'=>'required|email|max:225',
+                'gender'=>'required|string|max:225',
+                'dob'=>'required|date|max:225',
+                'phone_number'=>'required|string|max:225',
+                'gender'=>'required|string|max:225',
+            ]);
+        }
+        else if($updateUser->role == 'out_patient'){
+            $this->validate($request,[
+                'last_name'=>'required|string|max:225',
+                'first_name'=>'required|string|max:225',
+                'email'=>'required|email|max:225',
+                'gender'=>'required|string|max:225',
+                'dob'=>'required|date|max:225',
+                'phone_number'=>'required|string|max:225',
+                'gender'=>'required|string|max:225',
+                'location'=>'required|string|max:225',
+            ]);
+        }
+        else if($updateUser->role == 'doctor'){
+            $this->validate($request,[
+                'last_name'=>'required|string|max:225',
+                'first_name'=>'required|string|max:225',
+                'email'=>'required|email|max:225',
+                'gender'=>'required|string|max:225',
+                'dob'=>'required|date|max:225',
+                'phone_number'=>'required|string|max:225',
+                'gender'=>'required|string|max:225',
+                'location'=>'required|string|max:225',
+                'specialization'=>'required',
+                'qualification'=>'required|string|max:225',
+            ]);
+        }
+        else if($updateUser->role == 'pharmacy'){
+            $this->validate($request,[
+                'pharmacy_name'=>'required|string|max:225',
+                'email'=>'required|email|max:225',
+                'phone_number'=>'required|string|max:225',
+                'location'=>'required|string|max:225',
+            ]);
+        }
     }
 
     /**
