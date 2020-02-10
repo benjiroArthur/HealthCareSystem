@@ -22,7 +22,15 @@
         </div>
 
         <!-- Sidebar Menu -->
-        @include('includes.out_patient_nav')
+        @if(auth()->user()->role->name == 'out_patient')
+            @include('includes.out_patient_nav')
+        @elseif(auth()->user()->role->name == 'doctor')
+            @include('includes.doctor_nav')
+        @elseif(auth()->user()->role->name == 'pharmacy')
+            @include('includes.pharmacy_nav')
+        @elseif(auth()->user()->role->name == 'doctor')
+            @include('includes.doctor_nav')
+        @endif
         <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->

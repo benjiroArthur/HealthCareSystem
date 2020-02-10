@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Imports\UserImport;
 use App\Imports\UsersImport;
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -46,8 +47,12 @@ class UsersController extends Controller
     public function show($id)
     {
         //show details of a single user
+        $diag = Role::all();
         $user = User::findOrFail($id);
-        return response()->json($user);
+        //$result = $diag->merge($user);
+        //$result = (object)array_merge((array)$diag , (array)$user);
+        $result = array_merge($diag->toArray(), $user->toArray());
+       return response()->json($result);
     }
     /**
      * Display the specified resource.
