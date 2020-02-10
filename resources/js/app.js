@@ -10,17 +10,14 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 
-import VueRouter from 'vue-router'
-import UserDashboard from './components/User/Dashboard.vue';
-import DoctorDashboard from './components/Doctor/Dashboard.vue';
-import AdminDashboard from './components/Admin/Dashboard.vue';
+import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
 //vue routers
 let routes = [
     //Users routes
-    {path:'/home', component: require('./components/User/Dashboard.vue').default},
+    {path:'/home', component: require('./components/home.vue').default},
     {path:'/user/chat', component: require('./components/User/Chat.vue').default},
     {path:'/user/doctors', component: require('./components/User/Doctors.vue').default},
     {path:'/user/medical-records', component: require('./components/User/MedicalRecords.vue').default},
@@ -53,26 +50,7 @@ const router = new VueRouter({
     routes
 
 });
-/*const router = new VueRouter({
-    mode:'history',
-    routes:[
-        {
-            'path' : '/home',
-            'name' : 'home',
-            'component' : UserDashboard
-        },
-        {
-            'path' : '/doctor-dashboard',
-            'name' : 'doctor-dashboard',
-            'component' : DoctorDashboard
-        },
-        {
-            'path' : '/admin-dashboard',
-            'name' : 'admin-dashboard',
-            'component' : AdminDashboard
-        }
-    ]
-});*/
+
 
 
 /**
