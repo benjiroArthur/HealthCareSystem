@@ -133,7 +133,7 @@
                         <p>Upcoming Appointments</p>
                     </router-link>
                 </li>
-                <li class="nav-item"">
+                <li class="nav-item">
                     <router-link to="/user/past-appointment" class="nav-link">
                         <i class="far fa-circle nav-icon indigo"></i>
                         <p>Past Appointments</p>
