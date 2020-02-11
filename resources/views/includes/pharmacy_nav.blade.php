@@ -14,7 +14,7 @@
             <a href="#" class="nav-link">
                 <i class="nav-icon fab fa-facebook-messenger cyan"></i>
                 <p>
-                    Chat
+                    Orders
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
@@ -22,7 +22,7 @@
                 <li class="nav-item">
                     <router-link to="/user/chat" class="nav-link">
                         <i class="far fa-circle nav-icon green"></i>
-                        <p>Doctor Name</p>
+                        <p>All Orders</p>
                     </router-link>
                 </li>
 

@@ -15,7 +15,7 @@
                 <i class="nav-icon mdi mdi-account-multiple purple"></i>
                 <p>
                     Manage Users
-                    <i class="right mdi mdi-chevron-right"></i>
+                    <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
             <ul class="nav nav-treeview">

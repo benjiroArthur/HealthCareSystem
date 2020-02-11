@@ -9,7 +9,7 @@ class OutPatient extends Model
     protected $guarded = [];
     //fillables
     protected $fillable = [
-        'first_name', 'last_name', 'other_name', 'dob', 'gender', 'phone_number', 'image', 'email', 'location'
+        'first_name', 'last_name', 'other_name', 'dob', 'gender', 'phone_number', 'image', 'email', 'location', 'patient_id'
     ];
 
     public function getFullNameAttribute(){

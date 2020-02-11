@@ -10,44 +10,7 @@
                 </p>
             </router-link>
         </li>
-        {{--//for admins only--}}
-        {{--@if(auth()->user()->role->name == 'admin')--}}
-        <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-                <i class="nav-icon mdi mdi-account-multiple purple"></i>
-                <p>
-                    Manage Users
-                    <i class="right mdi mdi-chevron-right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <router-link to="/admin/upcoming-appointment" class="nav-link">
-                        <i class="far fa-circle nav-icon indigo"></i>
-                        <p>Administrators</p>
-                    </router-link>
-                </li>
-                <li class="nav-item">
-                    <router-link to="/admin/past-appointment" class="nav-link">
-                        <i class="far fa-circle nav-icon indigo"></i>
-                        <p>Doctors</p>
-                    </router-link>
-                </li>
-                <li class="nav-item">
-                    <router-link to="/admin/past-appointment" class="nav-link">
-                        <i class="far fa-circle nav-icon indigo"></i>
-                        <p>Pharmacy</p>
-                    </router-link>
-                </li>
-                <li class="nav-item">
-                    <router-link to="/admin/past-appointment" class="nav-link">
-                        <i class="far fa-circle nav-icon indigo"></i>
-                        <p>Out Patient</p>
-                    </router-link>
-                </li>
-            </ul>
-        </li>
-        {{--@endif--}}
+
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
                 <i class="nav-icon fab fa-facebook-messenger cyan"></i>
@@ -109,37 +72,15 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-item">
-            <router-link to="/user/medical-records" class="nav-link">
-                <i class="nav-icon fas fa-file-medical pink"></i>
-                <p>
-                    Medical Records
 
-                </p>
-            </router-link>
-        </li>
-        <li class="nav-item has-treeview">
+        <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-notes-medical purple"></i>
                 <p>
                     Appointments
-                    <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <router-link to="/user/upcoming-appointment" class="nav-link">
-                        <i class="far fa-circle nav-icon indigo"></i>
-                        <p>Upcoming Appointments</p>
-                    </router-link>
-                </li>
-                <li class="nav-item">
-                    <router-link to="/user/past-appointment" class="nav-link">
-                        <i class="far fa-circle nav-icon indigo"></i>
-                        <p>Past Appointments</p>
-                    </router-link>
-                </li>
-            </ul>
+
         </li>
 
         <li class="nav-item">

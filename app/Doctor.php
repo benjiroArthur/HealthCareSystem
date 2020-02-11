@@ -9,7 +9,8 @@ class Doctor extends Model
     //
     //fillables
     protected $fillable = [
-        'first_name', 'last_name', 'other_name', 'dob', 'gender', 'phone_number', 'image', 'specialization', 'qualification', 'email', 'location'
+        'first_name', 'last_name', 'other_name', 'dob', 'gender', 'phone_number', 'image',
+        'specialization', 'qualification', 'email', 'location', 'doctor_id'
     ];
 
     protected $guarded = [];

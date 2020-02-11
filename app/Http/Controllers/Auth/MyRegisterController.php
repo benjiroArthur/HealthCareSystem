@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\OpId;
 use App\OutPatient;
 use App\User;
 use Illuminate\Http\Request;
@@ -38,8 +39,35 @@ class MyRegisterController extends Controller
             'password' => 'required|string|min:8|confirmed'
         ]);
 
+        $patient_id = "";
+        $outid = OpId::latest()->first();
+        if($outid == null){
+            $val = 1;
+            $op = new OpId;
+            $op->out_patient_id = $val;
+            $op->save();
+        }
+        else{
+            $val = $outid->out_patient_id + 1;
+            $op = new OpId;
+            $op->out_patient_id = $val;
+            $op->save();
+        }
+        if($val < 10){
+            $patient_id = "hcpt000".$val;
+        }
+        elseif($val > 9 && $val < 100){
+            $patient_id = "hcpt00".$val;
+        }
+        elseif($val > 99 && $val < 1000){
+            $patient_id = "hcpt0".$val;
+        }
+        elseif($val > 900){
+            $patient_id = "hcpt".$val;
+        }
         $out_patient = new OutPatient;
         $data = $request->except('password', 'password_confirmation');
+        $data['patient_id'] = $patient_id;
         $out_patient->create($data);
 
 
