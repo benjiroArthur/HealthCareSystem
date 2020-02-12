@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 
+use App\Doctor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class FriendsController extends Controller
+class DoctorController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +16,9 @@ class FriendsController extends Controller
      */
     public function index()
     {
-        //
+        //return all doctors
+        $doctors = Doctor::all();
+        return response()->json($doctors);
     }
 
     /**
@@ -57,7 +61,8 @@ class FriendsController extends Controller
      */
     public function edit($id)
     {
-        //
+
+
     }
 
     /**
@@ -69,7 +74,11 @@ class FriendsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //update Doctor records
+//        if($request->hasFile('image'))
+//        {
+//
+//        }
     }
 
     /**
