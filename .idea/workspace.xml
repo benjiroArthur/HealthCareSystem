@@ -3,19 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5f0e7934-3c7a-42fe-a9b0-991e1714afd3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DocId.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DocId.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/AppointmentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AppointmentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/DiagnosisController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DiagnosisController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/DoctorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DoctorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/DoctorProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DoctorProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/FriendsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FriendsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/MedicalRecordsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MedicalRecordsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/SpecializationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SpecializationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminHomeController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DoctorHomeController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Imports/UsersImport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Imports/UsersImport.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/OpId.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/OpId.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/PharmId.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/PharmId.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -525,7 +512,7 @@
       <workItem from="1580567803898" duration="1306000" />
       <workItem from="1580703370107" duration="1622000" />
       <workItem from="1580804827719" duration="43251000" />
-      <workItem from="1581321882101" duration="34088000" />
+      <workItem from="1581321882101" duration="34768000" />
     </task>
     <task id="LOCAL-00001" summary="6th january">
       <created>1578287355563</created>
@@ -695,11 +682,18 @@
       <option name="project" value="LOCAL" />
       <updated>1581450341123</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="patient, doctor and pharmacy id done, yet to test">
+      <created>1581531933005</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1581531933022</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64784000" />
+    <option name="totallyTimeSpent" value="65464000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
