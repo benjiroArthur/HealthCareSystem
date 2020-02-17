@@ -75,9 +75,9 @@ class MyRegisterController extends Controller
         $out_patient1 = OutPatient::where('email', $request->email)->first();
         //return $out_patient1;
 
-        $out_patient1->user()->create(['email' => $request->email, 'password' => Hash::make($request->password)]);
+        $out_patient1->user()->create(['email' => $request->email, 'password' => $request->password]);
 
-        if(Auth::guard()->attempt(['email' => $request->email, 'password'=> $request->password], $request->remember))
+        if(Auth::attempt(['email' => $request->email, 'password'=> $request->password]))
         {
             //if successful, then redirect to dashboard
             return redirect()->intended(url('/home'));

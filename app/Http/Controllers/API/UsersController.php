@@ -49,8 +49,6 @@ class UsersController extends Controller
         //show details of a single user
         $diag = Role::all();
         $user = User::findOrFail($id);
-        //$result = $diag->merge($user);
-        //$result = (object)array_merge((array)$diag , (array)$user);
         $result = array_merge($diag->toArray(), $user->toArray());
        return response()->json($result);
     }

@@ -77,6 +77,4 @@
             <!-- /.login-box -->
         </div>
     </div>
-
-
 @endsection
