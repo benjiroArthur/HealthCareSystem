@@ -28,8 +28,8 @@
             @include('includes.doctor_nav')
         @elseif(auth()->user()->role->name == 'pharmacy')
             @include('includes.pharmacy_nav')
-        @elseif(auth()->user()->role->name == 'doctor')
-            @include('includes.doctor_nav')
+        @elseif(auth()->user()->role->name == 'admin')
+            @include('includes.admin_nav')
         @endif
         <!-- /.sidebar-menu -->
     </div>

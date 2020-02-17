@@ -6,10 +6,18 @@
             <router-link to="/home" class="nav-link">
                 <i class="nav-icon fa fa-home"></i>
                 <p>
-                    Dashboard
+                    Home
                 </p>
             </router-link>
         </li>
+         <li class="nav-item">
+                    <router-link to="/doctor/dashboard" class="nav-link">
+                        <i class="nav-icon fa fa-tachometer-alt"></i>
+                        <p>
+                            Dashboard
+                        </p>
+                    </router-link>
+                </li>
 
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -30,7 +38,7 @@
             </ul>
         </li>
         <li class="nav-item">
-            <router-link to="/user/profile" class="nav-link">
+            <router-link to="/doctor/profile" class="nav-link">
                 <i class="nav-icon fas fa-user-circle orange"></i>
                 <p>
                     Profile
@@ -39,8 +47,8 @@
             </router-link>
         </li>
         <li class="nav-item">
-            <router-link to="/user/profile" class="nav-link">
-                <i class="nav-icon fas fa-user-circle orange"></i>
+            <router-link to="/doctor/prescription" class="nav-link">
+                <i class="nav-icon fas fa-capsules orange"></i>
                 <p>
                     Prescription
 
@@ -76,7 +84,7 @@
 
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-notes-medical purple"></i>
+                <i class="nav-icon fas fa-calendar-checkl purple"></i>
                 <p>
                     Appointments
                     <i class="right fas fa-angle-left"></i>
@@ -84,14 +92,14 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <router-link to="/user/upcoming-appointment" class="nav-link">
-                        <i class="far fa-circle nav-icon indigo"></i>
+                    <router-link to="/doctor/upcoming-appointment" class="nav-link">
+                        <i class="far fa-calendar-check nav-icon indigo"></i>
                         <p>Upcoming Appointments</p>
                     </router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link to="/user/past-appointment" class="nav-link">
-                        <i class="far fa-circle nav-icon indigo"></i>
+                    <router-link to="/doctor/past-appointment" class="nav-link">
+                        <i class="far fa-calendar-check nav-icon indigo"></i>
                         <p>Past Appointments</p>
                     </router-link>
                 </li>

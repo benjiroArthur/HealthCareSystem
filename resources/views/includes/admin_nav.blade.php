@@ -6,6 +6,14 @@
             <router-link to="/home" class="nav-link">
                 <i class="nav-icon fa fa-home"></i>
                 <p>
+                    Home
+                </p>
+            </router-link>
+        </li>
+        <li class="nav-item">
+            <router-link to="/admin/dashboard" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
                     Dashboard
                 </p>
             </router-link>
@@ -20,26 +28,26 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <router-link to="/admin/upcoming-appointment" class="nav-link">
-                        <i class="far fa-circle nav-icon indigo"></i>
+                    <router-link to="/admin/administrators" class="nav-link">
+                        <i class="fas fa-user-cog nav-icon indigo"></i>
                         <p>Administrators</p>
                     </router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link to="/admin/past-appointment" class="nav-link">
-                        <i class="far fa-circle nav-icon indigo"></i>
+                    <router-link to="/admin/doctors" class="nav-link">
+                        <i class="fas fa-user-md nav-icon indigo"></i>
                         <p>Doctors</p>
                     </router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link to="/admin/past-appointment" class="nav-link">
-                        <i class="far fa-circle nav-icon indigo"></i>
+                    <router-link to="/admin/pharmacy" class="nav-link">
+                        <i class="fas fa-first-aid nav-icon indigo"></i>
                         <p>Pharmacy</p>
                     </router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link to="/admin/past-appointment" class="nav-link">
-                        <i class="far fa-circle nav-icon indigo"></i>
+                    <router-link to="/admin/out_patient" class="nav-link">
+                        <i class="fas fa-user-injured nav-icon indigo"></i>
                         <p>Out Patient</p>
                     </router-link>
                 </li>
@@ -65,7 +73,7 @@
             </ul>
         </li>
         <li class="nav-item">
-            <router-link to="/user/profile" class="nav-link">
+            <router-link to="/admin/profile" class="nav-link">
                 <i class="nav-icon fas fa-user-circle orange"></i>
                 <p>
                     Profile
@@ -74,33 +82,8 @@
             </router-link>
         </li>
 
-        <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-notes-medical purple"></i>
-                <p>
-                    Medical Records
-                    <i class="right fas fa-angle-left"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                {{--//for patients only--}}
-                <li class="nav-item">
-                    <router-link to="/user/medical-records" class="nav-link">
-                        <i class="fas fa-file-medical pink nav-icon"></i>
-                        <p>My Medical Records</p>
-                    </router-link>
-                </li>
-                {{--//for doctors only--}}
-                <li class="nav-item">
-                    <router-link to="/user/medical-records" class="nav-link">
-                        <i class="fas fa-file-medical pink nav-icon"></i>
-                        <p>Create New Records</p>
-                    </router-link>
-                </li>
-            </ul>
-        </li>
         <li class="nav-item">
-            <router-link to="/user/medical-records" class="nav-link">
+            <router-link to="/admin/medical-records" class="nav-link">
                 <i class="nav-icon fas fa-file-medical pink"></i>
                 <p>
                     Medical Records
@@ -110,7 +93,7 @@
         </li>
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-notes-medical purple"></i>
+                <i class="nav-icon fas fa-calendar-check purple"></i>
                 <p>
                     Appointments
                     <i class="right fas fa-angle-left"></i>
@@ -119,13 +102,13 @@
             <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <router-link to="/user/upcoming-appointment" class="nav-link">
-                        <i class="far fa-circle nav-icon indigo"></i>
+                        <i class="far fa-calendar-check nav-icon indigo"></i>
                         <p>Upcoming Appointments</p>
                     </router-link>
                 </li>
                 <li class="nav-item">
                     <router-link to="/user/past-appointment" class="nav-link">
-                        <i class="far fa-circle nav-icon indigo"></i>
+                        <i class="far fa-calendar-check nav-icon indigo"></i>
                         <p>Past Appointments</p>
                     </router-link>
                 </li>

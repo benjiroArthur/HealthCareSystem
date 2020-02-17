@@ -6,13 +6,22 @@
             <router-link to="/home" class="nav-link">
                 <i class="nav-icon fa fa-home"></i>
                 <p>
+                    Home
+                </p>
+            </router-link>
+        </li>
+        <li class="nav-item">
+            <router-link to="/pharmacy/dashboard" class="nav-link">
+                <i class="nav-icon fa fa-tachometer-alt"></i>
+                <p>
                     Dashboard
                 </p>
             </router-link>
         </li>
+
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-                <i class="nav-icon fab fa-facebook-messenger cyan"></i>
+                <i class="nav-icon fas fa-file-invoice-dollar cyan"></i>
                 <p>
                     Orders
                     <i class="right fas fa-angle-left"></i>
@@ -25,6 +34,12 @@
                         <p>All Orders</p>
                     </router-link>
                 </li>
+            <li class="nav-item">
+                    <router-link to="/user/chat" class="nav-link">
+                        <i class="far fa-circle nav-icon green"></i>
+                        <p>All Orders</p>
+                    </router-link>
+            </li>
 
             </ul>
         </li>
