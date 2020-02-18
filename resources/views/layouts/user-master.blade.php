@@ -33,12 +33,12 @@
         <div class="container-fluid mt-3">
             @include('includes.messages')
 
-            <div id="div-route-content">
+            {{--<div id="div-route-content">--}}
                 <router-view>
                     @yield('content')
                     {{--Vue elements goes here--}}
                 </router-view>
-            </div>
+            {{--</div>--}}
         </div>
 
     </div>
