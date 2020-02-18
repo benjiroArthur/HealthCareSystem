@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\OpId;
+use App\Role;
 use App\User;
 use App\Admin;
 use App\Doctor;
@@ -44,8 +46,6 @@ class RegisterController extends Controller
 
     }
 
-    private $userable_data;
-    private $userable_type;
 
     /**
      * Get a validator for an incoming registration request.
@@ -57,10 +57,10 @@ class RegisterController extends Controller
     {
 
         return Validator::make($data, [
-            'last_name' => ['required', 'string', 'max:255'],
-            'first_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'last_name' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users|unique:out_patient',
+            'password' => 'required|string|min:8|confirmed'
         ]);
     }
 
@@ -72,41 +72,54 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
-        if($data['role_id'] == 1){
-            $out_patient = new OutPatient();
-            $request = $data->except(['role_id', 'Password', 'password_confirmation']);
-            $out_patient->create($request);
-
-            $this->userable_data = OutPatient::where('email', $data['email']);
-            $this->userable_type = "OutPatient";
+        $patient_id = "";
+        $outid = OpId::latest()->first();
+        if($outid == null){
+            $val = 1;
+            $op = new OpId;
+            $op->out_patient_id = $val;
+            $op->save();
         }
-        elseif($data['role_id'] == 2){
-            $doctor = new Doctor();
-            $request = $data->except(['role_id', 'Password', 'password_confirmation']);
-            $doctor->create($request);
-
-            $this->userable_data = Doctor::where('email', $data['email']);
-            $this->userable_type = "Doctor";
+        else{
+            $val = $outid->out_patient_id + 1;
+            $op = new OpId;
+            $op->out_patient_id = $val;
+            $op->save();
         }
-        elseif($data['role_id'] == 3){
-            $admin = new Admin();
-            $request = $data->except(['role_id', 'Password', 'password_confirmation']);
-            $admin->create($request);
-
-            $this->userable_data = Admin::where('email', $data['email']);
-            $this->userable_type = "Admin";
+        if($val < 10){
+            $patient_id = "hcpt000".$val;
         }
-
-        return User::create([
-            'last_name' => $data['last_name'],
+        elseif($val > 9 && $val < 100){
+            $patient_id = "hcpt00".$val;
+        }
+        elseif($val > 99 && $val < 1000){
+            $patient_id = "hcpt0".$val;
+        }
+        elseif($val > 900){
+            $patient_id = "hcpt".$val;
+        }
+        $out_patient = new OutPatient;
+        $role = Role::where('name', 'out_patient')->first();
+        $$out_patient->create([
             'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'other_name' => $data['other_name'],
-            'role_id' => $data['role_id'],
             'email' => $data['email'],
-            'userable_id' => $this->userable_data->id,
-            'userable_type' => $this->userable_type,
-            'password' => Hash::make($data['password']),
+            'patient_id' => $patient_id
         ]);
+
+
+
+        $role = Role::where('name', 'out_patient')->first();
+
+        $out_patient1 = OutPatient::where('email', $data['email'])->first();
+        //return $out_patient1;
+       return $out_patient1->user()->create([
+           'email' => $data['email'],
+           'password'=> Hash::make($data['password']),
+           'role_id'=> $role->id
+        ]);
+
+
     }
 }

@@ -11,7 +11,7 @@
 
                     <div class="card-body register-card-body">
                         <p class="login-box-msg">{{ __('Register') }}</p>
-                        <form method="POST" action="{{ route('userRegister') }}">
+                        <form method="POST" action="{{ route('register') }}">
                             @csrf
                             <div class="row justify-content-center">
                                 <div class="col-md-6">
