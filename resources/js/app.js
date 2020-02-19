@@ -26,22 +26,33 @@ let routes = [
     {path:'/user/past-appointment', component: require('./components/User/PastAppointment.vue').default},
 
     //Admins routes
-    //{path:'/admin/dashboard', component: require('./components/Admin/Dashboard.vue').default},
-    {path:'/admin/chat', component: require('./components/Admin/Chat.vue').default},
-    {path:'/admin/doctors', component: require('./components/Admin/Doctors.vue').default},
+    {path:'/admin/dashboard', component: require('./components/Admin/Dashboard.vue').default},
+    {path:'/admin/manage/admin', component: require('./components/Admin/ManageAdmins.vue').default},
+    {path:'/admin/manage/doctors', component: require('./components/Admin/ManageDoctors.vue').default},
+    {path:'/admin/manage/out_patients', component: require('./components/Admin/ManagePatient.vue').default},
+    {path:'/admin/manage/pharmacy', component: require('./components/Admin/ManagePharmacy.vue').default},
     {path:'/admin/medical-records', component: require('./components/Admin/MedicalRecords.vue').default},
     {path:'/admin/profile', component: require('./components/Admin/Profile.vue').default},
     {path:'/admin/upcoming-appointment', component: require('./components/Admin/UpAppointment.vue').default},
     {path:'/admin/past-appointment', component: require('./components/Admin/PastAppointment.vue').default},
 
     //Doctors routes
-    // {path:'/doctor/dashboard', component: require('./components/Doctor/Dashboard.vue').default},
+    {path:'/doctor/dashboard', component: require('./components/Doctor/Dashboard.vue').default},
     {path:'/doctor/chat', component: require('./components/Doctor/Chat.vue').default},
     {path:'/doctor/users', component: require('./components/Doctor/Doctors.vue').default},
     {path:'/doctor/medical-records', component: require('./components/Doctor/MedicalRecords.vue').default},
     {path:'/doctor/profile', component: require('./components/Doctor/Profile.vue').default},
     {path:'/doctor/upcoming-appointment', component: require('./components/Doctor/UpAppointment.vue').default},
     {path:'/doctor/past-appointment', component: require('./components/Doctor/PastAppointment.vue').default},
+
+    //Pharmacy routes
+    {path:'/pharmacy/dashboard', component: require('./components/Pharmacy/Dashboard.vue').default},
+    {path:'/pharmacy/orders', component: require('./components/Pharmacy/Chat.vue').default},
+    {path:'/pharmacy/users', component: require('./components/Pharmacy/Doctors.vue').default},
+    {path:'/pharmacy/medical-records', component: require('./components/Pharmacy/MedicalRecords.vue').default},
+    {path:'/pharmacy/profile', component: require('./components/Pharmacy/Profile.vue').default},
+    {path:'/pharmacy/upcoming-appointment', component: require('./components/Pharmacy/UpAppointment.vue').default},
+    {path:'/pharmacy/past-appointment', component: require('./components/Pharmacy/PastAppointment.vue').default},
 
 ];
 

@@ -28,25 +28,25 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <router-link to="/admin/administrators" class="nav-link">
+                    <router-link to="/admin/manage/admin" class="nav-link">
                         <i class="fas fa-user-cog nav-icon indigo"></i>
                         <p>Administrators</p>
                     </router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link to="/admin/doctors" class="nav-link">
+                    <router-link to="/admin/manage/doctors" class="nav-link">
                         <i class="fas fa-user-md nav-icon indigo"></i>
                         <p>Doctors</p>
                     </router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link to="/admin/pharmacy" class="nav-link">
+                    <router-link to="/admin/manage/pharmacy" class="nav-link">
                         <i class="fas fa-first-aid nav-icon indigo"></i>
                         <p>Pharmacy</p>
                     </router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link to="/admin/out_patient" class="nav-link">
+                    <router-link to="/admin/manage/out_patients" class="nav-link">
                         <i class="fas fa-user-injured nav-icon indigo"></i>
                         <p>Out Patient</p>
                     </router-link>

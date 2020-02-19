@@ -6,7 +6,7 @@
                     <div class="card-header">Example Component</div>
 
                     <div class="card-body">
-                        Upcoming Appointments
+                        OutPatient
                     </div>
                 </div>
             </div>
@@ -16,8 +16,10 @@
 
 <script>
     export default {
-        mounted() {
-            console.log('Component mounted.')
-        }
+        name: "OutPatient"
     }
 </script>
+
+<style scoped>
+
+</style>
