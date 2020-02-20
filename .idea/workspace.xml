@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="5f0e7934-3c7a-42fe-a9b0-991e1714afd3" name="Default" comment="include messages">
       <change beforePath="$PROJECT_DIR$/.idea/HealthCareSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/HealthCareSystem.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -21,6 +22,11 @@
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/user-master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/user-master.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
+=======
+    <list default="true" id="5f0e7934-3c7a-42fe-a9b0-991e1714afd3" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/HealthCareSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/HealthCareSystem.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +39,21 @@
       <executable />
     </execution>
   </component>
+<<<<<<< Updated upstream
   <component name="FindInProjectRecents">
     <findStrings>
       <find>user2</find>
       <find>assert</find>
       <find>$userable_type</find>
     </findStrings>
+=======
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+>>>>>>> Stashed changes
   </component>
   <component name="Git.Settings">
     <option name="UPDATE_TYPE" value="MERGE" />
@@ -254,6 +269,7 @@
       <workItem from="1580271062383" duration="7492000" />
       <workItem from="1580567803898" duration="1306000" />
       <workItem from="1580703370107" duration="1622000" />
+<<<<<<< Updated upstream
       <workItem from="1580815010251" duration="269000" />
       <workItem from="1580815449146" duration="752000" />
       <workItem from="1580816312517" duration="306000" />
@@ -261,6 +277,13 @@
       <workItem from="1580821147556" duration="1028000" />
       <workItem from="1580824220258" duration="8429000" />
       <workItem from="1580833338328" duration="11047000" />
+=======
+      <workItem from="1580804827719" duration="43251000" />
+      <workItem from="1581043414024" duration="1785000" />
+      <workItem from="1581240429621" duration="7692000" />
+      <workItem from="1581456091184" duration="18973000" />
+      <workItem from="1582213563827" duration="535000" />
+>>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="6th january">
       <created>1578287355563</created>
@@ -387,6 +410,7 @@
     <MESSAGE value="include messages" />
     <option name="LAST_COMMIT_MESSAGE" value="include messages" />
   </component>
+<<<<<<< Updated upstream
   <component name="WindowStateProjectService">
     <state x="1823" y="187" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1580815148940">
       <screen x="1366" y="0" width="1366" height="768" />
@@ -425,4 +449,6 @@
     </state>
     <state x="1712" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768/1366.0.1366.768@1366.0.1366.768" timestamp="1580837508757" />
   </component>
+=======
+>>>>>>> Stashed changes
 </project>
