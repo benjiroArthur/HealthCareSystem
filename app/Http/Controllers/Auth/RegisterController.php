@@ -73,6 +73,8 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
+
+
         if($data['role_id'] == 1){
             $out_patient = new OutPatient();
             $request = $data->except(['role_id', 'Password', 'password_confirmation']);

@@ -20,9 +20,13 @@ class User extends Authenticatable
         'email_verified_at'
     ];
 
-    protected $guarded = [];
+//    protected $guarded = [];
 
-    protected $with = ['role'];
+    protected $with =
+        [
+            'role',
+            'userable'
+        ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -43,11 +47,12 @@ class User extends Authenticatable
     ];
 
     public function role(){
-        return $this->belongsTo('App\Role');
+        return $this->belongsTo(Role::class,'role_id');
     }
 
 
-    public function userable(){
+    public function userable()
+    {
         return $this->morphTo();
     }
 }

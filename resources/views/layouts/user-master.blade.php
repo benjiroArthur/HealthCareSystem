@@ -157,7 +157,7 @@
                 <img src="{{asset('assets/user.png')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{auth()->user()->role->name}}</a>
+                <a href="#" class="d-block">{{$user->role->name}}</a>
             </div>
         </div>
 
@@ -268,10 +268,26 @@
 
     <!-- Main content -->
     <div class="content">
+
+        {{App\User::find(auth()->id())->role->name}}
+        {{App\User::find(auth()->id())->userable->first_name}}
+
+
+{{--        {{Auth::user()->role->name}}--}}
+{{--        {{$user->userable->first_name}}--}}
+{{--        {{auth()->user()->role()->name}}--}}
+
+{{--        {{auth()->user()->role()->id}}--}}
+
         <div class="container-fluid mt-3">
+
+
             @include('includes.messages')
             @yield('content')
+
+
             <div id="div-route-content">
+
                 <router-view>
 
                     {{--Vue elements goes here--}}
