@@ -6,6 +6,7 @@
         <div class="col-md-10">
             <div class="login-logo">
                 <img src="{{asset('assets/user.png')}}" width="100" height="auto">
+
             </div>
             <div class="card">
 
