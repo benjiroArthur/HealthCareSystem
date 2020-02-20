@@ -17,9 +17,15 @@ Route::get('/', function () {
 
 //all authentication routs must be on top of other routes
 Auth::routes();
-Route::post('/new-register', 'Auth\MyRegisterController@userRegister')->name('userRegister');
-
 //Auth routes ends
+
+
+//Route::post('/new-register', 'Auth\MyRegisterController@userRegister')->name('userRegister');
+Route::group(['prefix' => 'data', 'as' => 'data.'], function(){
+    Route::resource('/out_patient', 'OutPatientController');
+});
+
+
 
 
 
