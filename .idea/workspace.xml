@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5f0e7934-3c7a-42fe-a9b0-991e1714afd3" name="Default" comment="relationships">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Admin/ManagePatient.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Admin/ManagePatient.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
-    </list>
+    <list default="true" id="5f0e7934-3c7a-42fe-a9b0-991e1714afd3" name="Default" comment="working on how to pull data to the page" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -421,7 +414,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582052255736</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="working on how to pull data to the page">
+      <created>1582170033909</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1582170033909</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -460,6 +460,7 @@
     <MESSAGE value="vue router working to perfection" />
     <MESSAGE value="adding axios" />
     <MESSAGE value="relationships" />
-    <option name="LAST_COMMIT_MESSAGE" value="relationships" />
+    <MESSAGE value="working on how to pull data to the page" />
+    <option name="LAST_COMMIT_MESSAGE" value="working on how to pull data to the page" />
   </component>
 </project>
