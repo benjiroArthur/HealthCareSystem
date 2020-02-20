@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\OutPatient;
+use App\Http\Controllers\Controller;
+use App\Pharmacy;
 use Illuminate\Http\Request;
 
-class OutPatientController extends Controller
+class PharmacyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +15,9 @@ class OutPatientController extends Controller
      */
     public function index()
     {
-        //get all patients
-        //$patients = OutPatient::latest()->paginate(10);
-        $patients = OutPatient::paginate(10);
-        //$patients = $patients->toArray();
-        return response($patients);
-        //return response()->json($patients);
+        //get list of pharmacies
+        $pharmacies = Pharmacy::all();
+        return response($pharmacies);
     }
 
     /**

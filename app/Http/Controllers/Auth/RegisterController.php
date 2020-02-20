@@ -5,9 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\OpId;
 use App\Role;
-use App\User;
-use App\Admin;
-use App\Doctor;
 use App\OutPatient;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -59,7 +56,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'last_name' => 'required|string|max:255',
             'first_name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users|unique:out_patient',
+            'email' => 'required|string|email|max:255|unique:users|unique:out_patients',
             'password' => 'required|string|min:8|confirmed'
         ]);
     }
@@ -98,10 +95,10 @@ class RegisterController extends Controller
         elseif($val > 900){
             $patient_id = "hcpt".$val;
         }
-        $out_patient = new OutPatient;
+
         $role = Role::where('name', 'out_patient')->first();
 
-        $out_patient1 = $out_patient->create([
+        $out_patient = OutPatient::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'other_name' => $data['other_name'],
@@ -115,12 +112,12 @@ class RegisterController extends Controller
 
         //$out_patient1 = OutPatient::where('email', $data['email'])->first();
         //return $out_patient1;
-       return $out_patient1->user()->create([
+       $user = $out_patient->user()->create([
            'email' => $data['email'],
            'password'=> Hash::make($data['password']),
            'role_id'=> $role->id
         ]);
-
+        return $user;
 
     }
 }

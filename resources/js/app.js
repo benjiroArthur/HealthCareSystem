@@ -12,9 +12,10 @@ window.Vue = require('vue');
 
 import VueRouter from 'vue-router';
 import axios from "axios";
-// import VueAxios from "vue-axios";
+import { VuejsDatatableFactory } from 'vuejs-datatable';
 
-Vue.use(VueRouter, axios);
+
+Vue.use(VueRouter, axios, VuejsDatatableFactory);
 
 //vue routers
 let routes = [
@@ -78,6 +79,7 @@ const router = new VueRouter({
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('page-number', require('laravel-vue-pagination'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

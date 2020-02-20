@@ -23,6 +23,9 @@ Auth::routes();
 //Route::post('/new-register', 'Auth\MyRegisterController@userRegister')->name('userRegister');
 Route::group(['prefix' => 'data', 'as' => 'data.'], function(){
     Route::resource('/out_patient', 'OutPatientController');
+    Route::resource('/doctor', 'DoctorController');
+    Route::resource('/admin', 'AdminController');
+    Route::resource('/pharmacy', 'PharmacyController');
 });
 
 

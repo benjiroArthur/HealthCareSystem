@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Admin;
 use Illuminate\Http\Request;
 
-class DoctorProfileController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class DoctorProfileController extends Controller
      */
     public function index()
     {
-        //
+        $admins = Admin::all();
+        return response($admins);
     }
 
     /**

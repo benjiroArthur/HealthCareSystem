@@ -12,6 +12,7 @@ class OutPatient extends Model
     protected $fillable = [
         'first_name', 'last_name', 'other_name', 'dob', 'gender', 'phone_number', 'image', 'email', 'location', 'patient_id'
     ];
+    //protected $with = ['getFullNameAttribute'];
 
     public function getFullNameAttribute(){
         if($this->other_name === null){
