@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Out Patients</h3>
-
+<p>{{idname}}</p>
                         <div class="card-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
                                 <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -32,11 +32,11 @@
                             </tr>
                             </thead>
                             <tbody>
-<!--                            @php($id = 1)-->
+<!--
 <!--                            <tr>-->
                             <tr v-for="out_patient in out_patients" v-bind:key="out_patient.id">
                                 <td>{{out_patient.id}}</td>
-                                <td></td>
+                                <td>{{out_patient.first_name}}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -69,19 +69,24 @@
         name: "OutPatient",
         data(){
             return{
-                out_patients: []
+                out_patients: {},
+                idname : ''
             }
         },
         methods: {
                index(){
-                     axios.get('/data/out_patient').then(({data}) => (this.out_patients = data.data));
+                     axios.get('/data/out_patient')
+                         .then(({data}) =>
+                             (this.out_patients = data.data,
+                                     this.idname = data.data['first_name']
+                             ));
 
                },
                 update(){
 
                 }
             },
-        created()
+        mounted()
             {
                 this.index();
             }

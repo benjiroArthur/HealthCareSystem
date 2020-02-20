@@ -2024,7 +2024,8 @@ __webpack_require__.r(__webpack_exports__);
   name: "OutPatient",
   data: function data() {
     return {
-      out_patients: []
+      out_patients: {},
+      idname: ''
     };
   },
   methods: {
@@ -2033,12 +2034,12 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/data/out_patient').then(function (_ref) {
         var data = _ref.data;
-        return _this.out_patients = data.data;
+        return _this.out_patients = data.data, _this.idname = data.data['first_name'];
       });
     },
     update: function update() {}
   },
-  created: function created() {
+  mounted: function mounted() {
     this.index();
   }
 });
@@ -48250,7 +48251,13 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-12" }, [
         _c("div", { staticClass: "card" }, [
-          _vm._m(0),
+          _c("div", { staticClass: "card-header" }, [
+            _c("h3", { staticClass: "card-title" }, [_vm._v("Out Patients")]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(_vm.idname))]),
+            _vm._v(" "),
+            _vm._m(0)
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body table-responsive p-0" }, [
             _c("table", { staticClass: "table table-hover" }, [
@@ -48262,7 +48269,7 @@ var render = function() {
                   return _c("tr", { key: out_patient.id }, [
                     _c("td", [_vm._v(_vm._s(out_patient.id))]),
                     _vm._v(" "),
-                    _c("td"),
+                    _c("td", [_vm._v(_vm._s(out_patient.first_name))]),
                     _vm._v(" "),
                     _c("td"),
                     _vm._v(" "),
@@ -48291,36 +48298,28 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "card-title" }, [_vm._v("Out Patients")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-tools" }, [
-        _c(
-          "div",
-          {
-            staticClass: "input-group input-group-sm",
-            staticStyle: { width: "150px" }
-          },
-          [
-            _c("input", {
-              staticClass: "form-control float-right",
-              attrs: {
-                type: "text",
-                name: "table_search",
-                placeholder: "Search"
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "input-group-append" }, [
-              _c(
-                "button",
-                { staticClass: "btn btn-default", attrs: { type: "submit" } },
-                [_c("i", { staticClass: "fas fa-search" })]
-              )
-            ])
-          ]
-        )
-      ])
+    return _c("div", { staticClass: "card-tools" }, [
+      _c(
+        "div",
+        {
+          staticClass: "input-group input-group-sm",
+          staticStyle: { width: "150px" }
+        },
+        [
+          _c("input", {
+            staticClass: "form-control float-right",
+            attrs: { type: "text", name: "table_search", placeholder: "Search" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-group-append" }, [
+            _c(
+              "button",
+              { staticClass: "btn btn-default", attrs: { type: "submit" } },
+              [_c("i", { staticClass: "fas fa-search" })]
+            )
+          ])
+        ]
+      )
     ])
   },
   function() {

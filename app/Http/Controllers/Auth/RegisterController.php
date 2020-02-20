@@ -100,7 +100,8 @@ class RegisterController extends Controller
         }
         $out_patient = new OutPatient;
         $role = Role::where('name', 'out_patient')->first();
-        $$out_patient->create([
+
+        $out_patient1 = $out_patient->create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'other_name' => $data['other_name'],
@@ -110,9 +111,9 @@ class RegisterController extends Controller
 
 
 
-        $role = Role::where('name', 'out_patient')->first();
+        //$role = Role::where('name', 'out_patient')->first();
 
-        $out_patient1 = OutPatient::where('email', $data['email'])->first();
+        //$out_patient1 = OutPatient::where('email', $data['email'])->first();
         //return $out_patient1;
        return $out_patient1->user()->create([
            'email' => $data['email'],

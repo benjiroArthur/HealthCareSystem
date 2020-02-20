@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class OutPatient extends Model
 {
     protected $guarded = [];
+    //protected $table = 'out_patients';
     //fillables
     protected $fillable = [
         'first_name', 'last_name', 'other_name', 'dob', 'gender', 'phone_number', 'image', 'email', 'location', 'patient_id'
