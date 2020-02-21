@@ -68,6 +68,12 @@ class MyRegisterController extends Controller
         $out_patient = new OutPatient;
         $data = $request->except('password', 'password_confirmation');
         $data['patient_id'] = $patient_id;
+        if($request->other_name == null){
+            $data['full_name'] = $request->first_name.' '.$request->last_name;
+        }
+        else{
+            $data['full_name'] = $request->first_name.' '.$request->other_name.' '.$request->last_name;
+        }
         $out_patient->create($data);
 
 

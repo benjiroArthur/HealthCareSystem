@@ -15,11 +15,24 @@ class OutPatientController extends Controller
     public function index()
     {
         //get all patients
-        //$patients = OutPatient::latest()->paginate(10);
-        $patients = OutPatient::paginate(10);
-        //$patients = $patients->toArray();
-        return response($patients);
-        //return response()->json($patients);
+        $patients = OutPatient::all();
+
+        foreach ($patients as $patient)
+        {
+            $data = [
+                'id' => $patient->id,
+                'email' => $patient->email,
+                'dob' => $patient->dob,
+                'gender' => $patient->gender,
+                'phone_number' => $patient->phone_number,
+                'location' => $patient->location,
+                'image' => $patient->image,
+                'name' => $patient->full_name
+            ];
+        }
+
+        //return response($data);
+        return response()->json($data);
     }
 
     /**

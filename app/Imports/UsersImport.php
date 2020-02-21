@@ -44,8 +44,9 @@ class UsersImport implements WithHeadingRow, ToCollection, ToModel
                         'first_name' => $row['first_name'],
                         'other_name' => $row['other_name'],
                         'email' => $row['email'],
+                        'full_name' => $row['full_name'],
                     ]);
-                    $admin = Admin::where('email', $row['email'])->first();
+//                    $admin = Admin::where('email', $row['email'])->first();
                     $role = Role::where('name', 'admin')->first();
                     $roleId = $role->id;
                     $admin->user->create([
@@ -87,9 +88,10 @@ class UsersImport implements WithHeadingRow, ToCollection, ToModel
                         'first_name' => $row['first_name'],
                         'other_name' => $row['other_name'],
                         'email' => $row['email'],
+                        'full_name' => $row['full_name'],
                         'doctor_id' => $doctor_id
                     ]);
-                    $doctor = Doctor::where('email', $row['email'])->first();
+//                    $doctor = Doctor::where('email', $row['email'])->first();
                     $role = Role::where('name', 'doctor')->first();
                     $roleId = $role->id;
                     $doctor->user->create([
@@ -115,23 +117,23 @@ class UsersImport implements WithHeadingRow, ToCollection, ToModel
                         $ph->save();
                     }
                     if($val < 10){
-                        $pharmacy_id = "hcpt000".$val;
+                        $pharmacy_id = "hcph000".$val;
                     }
                     elseif($val > 9 && $val < 100){
-                        $pharmacy_id = "hcpt00".$val;
+                        $pharmacy_id = "hcph00".$val;
                     }
                     elseif($val > 99 && $val < 1000){
-                        $pharmacy_id = "hcpt0".$val;
+                        $pharmacy_id = "hcph0".$val;
                     }
                     elseif($val > 900){
-                        $pharmacy_id = "hcpt".$val;
+                        $pharmacy_id = "hcph".$val;
                     }
                     $pharmacy = Pharmacy::create([
                         'pharmacy_name' => $row['pharmacy_name'],
                         'email' => $row['email'],
                         'pharmacy_id' => $pharmacy_id
                     ]);
-                    $pharmacy = Pharmacy::where('email', $row['email'])->first();
+//                    $pharmacy = Pharmacy::where('email', $row['email'])->first();
                     $role = Role::where('name', 'pharmacy')->first();
                     $roleId = $role->id;
                     $pharmacy->user->create([
@@ -175,7 +177,7 @@ class UsersImport implements WithHeadingRow, ToCollection, ToModel
                         'email' => $row['email'],
                         'patient_id' => $patient_id
                     ]);
-                    $out_patient = OutPatient::where('email', $row['email'])->first();
+//                    $out_patient = OutPatient::where('email', $row['email'])->first();
                     $role = Role::where('name', 'out_patient')->first();
                     $roleId = $role->id;
                     $out_patient->user->create([

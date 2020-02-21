@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
+use App\Role;
+use App\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -14,8 +16,23 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $admins = Admin::all();
-        return response($admins);
+        $role = Role::where('name', 'admin')->first();
+        $admin = Admin::all();
+        $user = User::where('role_id', $role->id)->get();
+//        foreach ($admins as $admin)
+//        {
+//            $data = [{
+//        'id' == $admin->id,
+//                'email' == $admin->email,
+//                'dob' == $admin->dob,
+//                'gender' == $admin->gender,
+//                'phone_number' == $admin->phone_number,
+//                'location' == $admin->location,
+//                'image' == $admin->image,
+//                'name' == $admin->full_name
+//            }];
+////        }
+        return response()->json($user);
     }
 
     /**
