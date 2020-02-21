@@ -10,7 +10,7 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "@fortawesome/fontawesome-free": "^5.12.0",
+        "@fortawesome/fontawesome-free": "^5.12.1",
         "axios": "^0.19.0",
         "bootstrap": "^4.0.0",
         "cross-env": "^5.1",
@@ -27,6 +27,7 @@
     "dependencies": {
         "@mdi/font": "^4.7.95",
         "admin-lte": "^3.0.1",
+        "bootstrap-table": "^1.16.0",
         "font-awesome": "^4.7.0",
         "laravel-echo": "^1.6.1",
         "laravel-vue-pagination": "^2.3.1",
@@ -35,6 +36,7 @@
         "moment": "^2.24.0",
         "pusher-js": "^5.0.3",
         "sweetalert2": "^9.5.4",
+        "tableexport.jquery.plugin": "^1.10.16",
         "vform": "^1.0.1",
         "vue-progressbar": "^0.7.5",
         "vue-router": "^3.1.3",

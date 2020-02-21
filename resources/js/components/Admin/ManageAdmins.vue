@@ -64,12 +64,62 @@
 </template>
 
 <script>
+    import BootstrapTable from 'bootstrap-table/dist/bootstrap-table-vue.min.js'
     export default {
         name: "Admin",
+        components: {
+            'bootstrap-table': BootstrapTable
+        },
         data(){
             return{
                 admins: {},
                 admin: '',
+                myOptions: {
+                    search: true,
+                    pagination: true,
+                    showColumns: true,
+                    showPrint: true,
+                    showExport: true,
+                    filterControl: true,
+                    toolbar: '#toolbar',
+                    clickToSelect: true,
+                    idField: 'id',
+                    selectItemName: 'id',
+
+                },
+                myColumns: [
+                    { field: 'id', title: 'ID', sortable: true},
+                    { field: 'name', title: 'Name', sortable: true, filterControl: 'input' },
+                    { field: 'email', title: 'Email', sortable: true, filterControl: 'input'},
+                    { field: 'dob', title: 'Date Of Birth', sortable: true, filterControl: 'input'},
+                    { field: 'gender', title: 'Gender', sortable: true, filterControl: 'input'},
+                    { field: 'phone_number', title: 'Phone Number', sortable: true, filterControl: 'select'},
+                    {
+                        field: 'action',
+                        title: 'Actions',
+                        align: 'center',
+                        width: '140px',
+                        clickToSelect: false,
+                        formatter: function (e, value, row){
+                            return '<button class="btn btn-sm btn-info mr-1 show"><i class="fas fa-eye"></i></button><button class="btn btn-sm btn-warning mr-1 edit"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-danger mr-1 destroy"><i class="fas fa-trash"></i></button>'
+                        },
+                        events: {
+                            'click .show': function (e, value, row){
+                                return window.location.assign('/posts/'+row.id)
+                            },
+                            'click .edit': function (e, value, row){
+                                return window.location.assign('/posts/'+row.id+'/edit')
+                            },
+                            'click .destroy': function (e, value, row){
+                                axios.delete('/posts/'+row.id, {
+                                    id: row.id
+                                });
+
+                                return window.location.replace('/assign-posts/posts.index')
+                            },
+                        }
+                    }
+                ]
 
             }
         },
