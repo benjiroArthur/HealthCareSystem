@@ -9,6 +9,9 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import moment from 'moment';
+
+
 require('@fortawesome/fontawesome-free/js/all.js');
 require('bootstrap-table/dist/bootstrap-table.min.css');
 require('bootstrap-table/dist/bootstrap-table.js');
@@ -25,14 +28,37 @@ import VueRouter from 'vue-router';
 import axios from "axios";
 import { VuejsDatatableFactory } from 'vuejs-datatable';
 
-// import vmodal from 'vue-js-modal';
 
 
-import Form from 'vform';
+
+import {Form, HasError, AlertError} from 'vform';
 window.Form = Form;
+Vue.component(HasError.name, HasError);
+Vue.component(AlertError.name, AlertError);
+
+import VueProgressBar from 'vue-progressbar'
+
+Vue.use(VueProgressBar, {
+  color: 'rgb(143, 255, 199)',
+  failedColor: 'red',
+  height: '2px'
+});
 
 
 Vue.use(VueRouter, axios, VuejsDatatableFactory);
+
+
+import Swal from 'sweetalert2';
+window.swal = Swal;
+
+const toast = swal.mixin({
+    toast: true,
+    Position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+});
+window.toast = toast;
+
 
 //vue routers
 let routes = [
@@ -82,7 +108,12 @@ const router = new VueRouter({
 
 });
 
-
+Vue.filter('uptext', function(text){
+   return text.toUpperCase();
+});
+Vue.filter('myDate', function(text){
+   return created.moment().format('Do MMMM YYYY, h:mm:ss a');
+});
 
 /**
  * The following block of code may be used to automatically register your

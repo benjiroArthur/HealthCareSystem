@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Imports\UserImport;
@@ -61,10 +61,7 @@ class UsersController extends Controller
 
         if(file_exists($file_path))
         {
-            $headers = [
-                'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-            ];
-            return response::download($file_path, $filename, $headers);
+            return response::download($file_path, $filename, ['Content-Length: '.filesize($file_path)]);
         }
     }
 

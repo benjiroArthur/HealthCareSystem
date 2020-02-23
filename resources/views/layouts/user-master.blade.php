@@ -38,6 +38,7 @@
                     @yield('content')
                     {{--Vue elements goes here--}}
                 </router-view>
+                <vue-progress-bar></vue-progress-bar>
             {{--</div>--}}
         </div>
 

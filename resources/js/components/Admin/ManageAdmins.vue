@@ -7,9 +7,9 @@
                         <h3 class="card-title text-center">Administrators</h3>
                         <div class="card-tools">
                             <div class="input-group input-group-sm">
-                                <a href="#" @click="downloadExcel()" class="btn btn-success"><i class="fas fa-download"></i></a>
-                                <button class="btn btn-primary btn-sm mr-2" title="Download template" @click="downloadExcel()"><i class="fas fa-download"></i></button>
-                                <button class="btn btn-success btn-sm" title="Add new User" data-toggle="modal" data-target="#adminUserModal"><i class="fas fa-plus"></i></button>
+                                <button class="btn btn-danger btn-sm mr-2" title="Download template" @click="downloadExcel()"><i class="fas fa-download"></i></button>
+                                <button class="btn btn-success btn-sm mr-2" title="Add Bulk Users" data-toggle="modal" data-target="#adminUserModalBulk"><i class="fas fa-file-excel"></i></button>
+                                <button class="btn btn-primary btn-sm mr-2" title="Add New User" data-toggle="modal" data-target="#adminUserModal"><i class="fas fa-plus"></i></button>
                             </div>
                         </div>
                     </div>
@@ -22,11 +22,11 @@
                 <!-- /.card -->
             </div>
         </div>
-        <div class="modal" id="adminUserModal" tabindex="-1" role="dialog" aria-labelledby="adminUserModalLabel" aria-hidden="true">
+        <div class="modal" id="adminUserModalBulk" tabindex="-1" role="dialog" aria-labelledby="adminUserModalBulkLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title">Upload Administrators</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -38,12 +38,68 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-success" v-on:click="submitUser()">Upload Users</button>
+                        <button type="button" class="btn btn-success" v-on:click="submitUser()">Upload <i class="fas fa-user-plus"></i></button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- form modal -->
+        <div class="modal" id="adminUserModal" tabindex="-1" role="dialog" aria-labelledby="adminUserModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title">Add Administrators</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form @submit.prevent="createUser()">
+                    <div class="modal-body">
+                        <div class="form-group">
+                        <label>Last Name</label>
+                        <input v-model="form.last_name" type="text" name="last_name"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('last_name') }">
+                        <has-error :form="form" field="last_name"></has-error>
+                        </div>
+                        <div class="form-group">
+                        <label>Firat Name</label>
+                        <input v-model="form.first_name" type="text" name="first_name"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('first_name') }">
+                        <has-error :form="form" field="first_name"></has-error>
+                        </div>
+                        <div class="form-group">
+                        <label>Other Name</label>
+                        <input v-model="form.other_name" type="text" name="other_name"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('other_name') }">
+                        <has-error :form="form" field="other_name"></has-error>
+                        </div>
+                        <div class="form-group">
+                        <label>Email</label>
+                        <input v-model="form.email" type="email" name="email"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
+                        <has-error :form="form" field="email"></has-error>
+                        </div>
+
+
+                        <div class="form-group">
+                        <label>Password</label>
+                        <input v-model="form.password" type="password" name="password"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('password') }">
+                        <has-error :form="form" field="password"></has-error>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Add <i class="fas fa-upload"></i></button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+
+
 </template>
 
 <script>
@@ -57,9 +113,19 @@
             'bootstrap-table': BootstrapTable,
              'b-modal': BModal,
             'vb-modal': VBModal,
+
         },
         data(){
             return{
+                form: new Form({
+                    last_name: '',
+                    first_name: '',
+                    other_name: '',
+                    email: '',
+                    role: 'admin',
+                    password: '',
+                }),
+
                 admins: {},
                 admin: '',
                 file: '',
@@ -77,9 +143,9 @@
 
                 },
                 myColumns: [
+                    { field: 'index', title: 'ID'},
                     { field: 'id', title: 'ID', sortable: true,  class: 'd-none'},
-                    { field: 'ids', title: 'ID', sortable: true},
-                    { field: 'userable.full_name', title: 'Name', sortable: true, filterControl: 'input' },
+                    { field: 'userable.full_name', title: 'Name', sortable: true, filterControl: 'input'},
                     { field: 'email', title: 'Email', sortable: true, filterControl: 'input'},
                     { field: 'dob', title: 'Date Of Birth', sortable: true, filterControl: 'input'},
                     { field: 'gender', title: 'Gender', sortable: true, filterControl: 'input'},
@@ -115,6 +181,17 @@
             }
         },
         methods: {
+            createUser(){
+               this.$Progress.start();
+               this.form.post('/data/admin');
+               $('#adminUserModal').modal('hide');
+                toast({
+                    type: 'success',
+                    title: 'User Created Successfully'
+                });
+                this.$Progress.finish();
+
+            },
 
             index() {
                 this.error = this.admins = null;
@@ -133,13 +210,9 @@
             update(){
 
             },
-            showModal() {
-                this.$refs['addAdmin-modal'].show()
-            },
-            hideModal() {
-                this.$refs['addAdmin-modal'].hide()
-            },
+            handleFileUpload(){this.file = this.$refs.file.files[0];},
             submitUser(){
+                this.$Progress.start();
                 //Initialize the form data
                 let formData = new FormData();
 
@@ -147,7 +220,7 @@
                 formData.append('file', this.file);
 
                   //Make the request to the POST /single-file URL
-                axios.post( '/api/user',
+                axios.post( '/data/user',
                     formData,
                     {
                         headers: {
@@ -155,15 +228,21 @@
                         }
                     }
                 ).then(function(){
+                    toast({
+                        type: 'success',
+                        title: 'Records Uploaded Successfully'
+                    });
                     console.log('SUCCESS!!');
+                    this.$Progress.finish();
                 })
                     .catch(function(){
                         console.log('FAILURE!!');
+                        this.$Progress.fail();
                     });
             },
             downloadExcel(){
                 let filename = 'adminTemplate.xlsx';
-                axios.get('api/data/download-excel/admin', {responseType: 'arraybuffer'})
+                axios.get('/data/excelDownload/admin', {responseType: 'arraybuffer'})
                     .then(response => {
                         this.downloadFile(response, filename);
                         console.log(response);
@@ -195,7 +274,7 @@
                     link.click();
                 },
 
-            handleFileUpload(){this.file = this.$refs.file.files[0];},
+
 
         },
         created()

@@ -26,6 +26,8 @@ Route::group(['prefix' => 'data', 'as' => 'data.'], function(){
     Route::resource('/doctor', 'DoctorController');
     Route::resource('/admin', 'AdminController');
     Route::resource('/pharmacy', 'PharmacyController');
+    Route::resource('/user', 'UsersController');
+    Route::get('excelDownload/{value}', 'UsersController@excelTemplate');
 });
 
 

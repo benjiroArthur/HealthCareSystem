@@ -29,7 +29,7 @@
 </template>
 
 <script>
-     import BootstrapTable from 'bootstrap-table/dist/bootstrap-table-vue.min.js'
+    import BootstrapTable from 'bootstrap-table/dist/bootstrap-table-vue.min.js'
     export default {
         name: "OutPatient",
         components: {
@@ -54,8 +54,8 @@
 
                 },
                 myColumns: [
-                    { field: 'id', title: 'ID', sortable: true, visible: "false"},
-                    { field: 'srn', title: 'SRN', sortable: true},
+                    { field: 'id', title: 'ID', sortable: true, class: 'd-none'},
+                    { field: 'index', title: 'SRN'},
                     { field: 'userable.full_name', title: 'Name', sortable: true, filterControl: 'input' },
                     { field: 'email', title: 'Email', sortable: true, filterControl: 'input'},
                     { field: 'dob', title: 'Date Of Birth', sortable: true, filterControl: 'input'},
@@ -107,15 +107,15 @@
                 });
             },
 
-                update(){
+            update(){
 
-                }
-            },
-        created()
-            {
-                this.index();
-                // console.log(self.out_patients)
             }
+        },
+        created()
+        {
+            this.index();
+            // console.log(self.out_patients)
+        }
 
     }
 </script>
