@@ -6,6 +6,7 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-vue/src/index.scss';
 @import '~admin-lte/dist/css/adminlte.css';
 //font awesome
 
@@ -25,6 +26,9 @@ $material-icons-font-path: '~material-icons/iconfont/';
 //@import '~material-design-icons-iconfont/dist/material-design-icons.css';
 
 //mdi
+
+
+
 
 @import '~@mdi/font/scss/materialdesignicons.scss';
 

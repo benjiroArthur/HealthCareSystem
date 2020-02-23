@@ -107,7 +107,7 @@ class UsersImport implements WithHeadingRow, ToCollection, ToModel
                     if($outid == null){
                         $val = 1;
                         $ph = new PharmId;
-                        $ph->out_patient_id = $val;
+                        $ph->pharmacy_id = $val;
                         $ph->save();
                     }
                     else{

@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\OutPatient;
+use App\Role;
+use App\User;
 use Illuminate\Http\Request;
 
 class OutPatientController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,24 +21,9 @@ class OutPatientController extends Controller
     public function index()
     {
         //get all patients
-        $patients = OutPatient::all();
-
-        foreach ($patients as $patient)
-        {
-            $data = [
-                'id' => $patient->id,
-                'email' => $patient->email,
-                'dob' => $patient->dob,
-                'gender' => $patient->gender,
-                'phone_number' => $patient->phone_number,
-                'location' => $patient->location,
-                'image' => $patient->image,
-                'name' => $patient->full_name
-            ];
-        }
-
-        //return response($data);
-        return response()->json($data);
+        $role = Role::where('name', 'out_patient')->first();
+        $patients = User::where('role_id', $role->id)->get();
+        return response($patients);
     }
 
     /**

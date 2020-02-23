@@ -4,10 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Pharmacy;
+use App\Role;
+use App\User;
 use Illuminate\Http\Request;
 
 class PharmacyController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +23,8 @@ class PharmacyController extends Controller
     public function index()
     {
         //get list of pharmacies
-        $pharmacies = Pharmacy::all();
+        $role = Role::where('name', 'pharmacy')->first();
+        $pharmacies = User::where('role_id', $role->id)->get();
         return response($pharmacies);
     }
 

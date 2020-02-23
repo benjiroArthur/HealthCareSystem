@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="login-box">
                 <div class="login-logo">
-                    <img src="{{asset('assets/user.png')}}" width="100" height="auto">
+                    <img src="{{asset('assets/images/user.png')}}" width="100" height="auto">
                 </div>
                 <!-- /.login-logo -->
                 <div class="card">
