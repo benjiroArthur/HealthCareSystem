@@ -17,10 +17,10 @@ class AdminController extends Controller
     public function index()
     {
         $role = Role::where('name', 'admin')->first();
-        $admin = Admin::all();
+
         $user = User::where('role_id', $role->id)->get();
 
-        return response()->json($user);
+        return response($user);
     }
 
     /**

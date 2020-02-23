@@ -8,6 +8,7 @@ use App\Imports\UsersImport;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Intervention\Image\Facades\Image;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -40,6 +41,31 @@ class UsersController extends Controller
         //
         Excel::import(new UsersImport, $request->file('file'));
         return response('User Records Created Successfully', 200);
+    }
+
+    public function excelTemplate($value)
+    {
+        if($value == 'admin'){
+            $filename = 'adminTemplate.xlsx';
+        }
+        elseif($value == 'doctor'){
+            $filename = 'doctorTemplate.xlsx';
+        }
+        elseif($value == 'pharmacy'){
+            $filename = 'pharmacyTemplate.xlsx';
+        }
+        else{
+            $filename = 'outPatientTemplate.xlsx';
+        }
+        $file_path = public_path().'/assets/excelFiles/'.$filename;
+
+        if(file_exists($file_path))
+        {
+            $headers = [
+                'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            ];
+            return response::download($file_path, $filename, $headers);
+        }
     }
 
     /**

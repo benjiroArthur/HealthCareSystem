@@ -24,6 +24,10 @@ require('bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-c
 import VueRouter from 'vue-router';
 import axios from "axios";
 import { VuejsDatatableFactory } from 'vuejs-datatable';
+
+// import vmodal from 'vue-js-modal';
+
+
 import Form from 'vform';
 window.Form = Form;
 
