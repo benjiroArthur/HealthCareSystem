@@ -143,13 +143,14 @@
 
                 },
                 myColumns: [
-                    { field: 'index', title: 'ID'},
+                    { field: 'index', title: 'ID'
+                    },
                     { field: 'id', title: 'ID', sortable: true,  class: 'd-none'},
-                    { field: 'userable.full_name', title: 'Name', sortable: true, filterControl: 'input'},
-                    { field: 'email', title: 'Email', sortable: true, filterControl: 'input'},
-                    { field: 'dob', title: 'Date Of Birth', sortable: true, filterControl: 'input'},
-                    { field: 'gender', title: 'Gender', sortable: true, filterControl: 'input'},
-                    { field: 'phone_number', title: 'Phone Number', sortable: true, filterControl: 'select'},
+                    { field: 'userable.full_name', title: 'Name', sortable: true},
+                    { field: 'email', title: 'Email', sortable: true},
+                    { field: 'dob', title: 'Date Of Birth', sortable: true},
+                    { field: 'gender', title: 'Gender', sortable: true},
+                    { field: 'phone_number', title: 'Phone Number', sortable: true},
                     {
                         field: 'action',
                         title: 'Actions',
