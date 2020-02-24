@@ -38,7 +38,6 @@ class UsersImport implements WithHeadingRow, ToCollection, ToModel
             if($row->filter()->isNotEmpty())
             {
                 if(str::lower($row['role']) == 'admin'){
-
                     $admin = Admin::create([
                         'last_name' => $row['last_name'],
                         'first_name' => $row['first_name'],

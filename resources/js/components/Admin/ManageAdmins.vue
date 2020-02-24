@@ -33,7 +33,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
+                            <input type="file" name="file" ref="file" v-on:change="handleFileUpload()"/>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -185,11 +185,12 @@
                this.$Progress.start();
                this.form.post('/data/admin');
                $('#adminUserModal').modal('hide');
+
+                this.$Progress.finish();
                 toast({
                     type: 'success',
                     title: 'User Created Successfully'
                 });
-                this.$Progress.finish();
 
             },
 
@@ -228,17 +229,20 @@
                         }
                     }
                 ).then(function(){
+                    console.log('SUCCESS!!');
+                    this.$Progress.finish();
                     toast({
                         type: 'success',
                         title: 'Records Uploaded Successfully'
                     });
-                    console.log('SUCCESS!!');
-                    this.$Progress.finish();
                 })
                     .catch(function(){
                         console.log('FAILURE!!');
                         this.$Progress.fail();
                     });
+                $('#adminUserModalBulk').modal('hide');
+
+
             },
             downloadExcel(){
                 let filename = 'adminTemplate.xlsx';

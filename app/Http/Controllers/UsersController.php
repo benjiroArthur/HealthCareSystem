@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Imports\UserImport;
 use App\Imports\UsersImport;
 use App\Role;
 use App\User;
@@ -39,8 +38,13 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         //
-        Excel::import(new UsersImport, $request->file('file'));
-        return response('User Records Created Successfully', 200);
+       if($request->hasFile('file')){
+           Excel::import(new UsersImport, $request->file('file'));
+           return response('User Records Created Successfully', 200);
+       }
+       else{
+           return response('No file available to upload', 404);
+       }
     }
 
     public function excelTemplate($value)
