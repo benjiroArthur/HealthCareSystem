@@ -12,6 +12,9 @@ window.Vue = require('vue');
 import moment from 'moment';
 
 
+window.Fire = new Vue();
+
+
 require('@fortawesome/fontawesome-free/js/all.js');
 require('bootstrap-table/dist/bootstrap-table.min.css');
 require('bootstrap-table/dist/bootstrap-table.js');

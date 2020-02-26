@@ -185,6 +185,7 @@
             createUser(){
                this.$Progress.start();
                this.form.post('/data/admin');
+               Fire.$emit('userCreated');
                $('#adminUserModal').modal('hide');
 
                 this.$Progress.finish();
@@ -195,7 +196,7 @@
 
             },
 
-            index() {
+            getAllUsers() {
                 this.error = this.admins = null;
                 this.loading = true;
                 axios
@@ -284,7 +285,10 @@
         },
         created()
         {
-            this.index();
+            this.getAllUsers();
+            Fire.$on('userCreated', function(){
+                this.getAllUsers();
+            });
         }
     }
 
