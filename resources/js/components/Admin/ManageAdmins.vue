@@ -184,16 +184,20 @@
         methods: {
             createUser(){
                this.$Progress.start();
-               this.form.post('/data/admin');
-               Fire.$emit('userCreated');
-               $('#adminUserModal').modal('hide');
-
-                this.$Progress.finish();
-                toast({
-                    type: 'success',
-                    title: 'User Created Successfully'
-                });
-
+               this.form.post('/data/admin')
+               .then(function(){
+                   Fire.$emit('userCreated');
+                   $('#adminUserModal').modal('hide');
+                   this.$Progress.finish();
+                   toast.fire({
+                       type: 'success',
+                       title: 'User Created Successfully'
+                   });
+               })
+               .catch(error => {
+                   this.loading = false;
+                   this.error = error.response.data.message || error.message;
+               });
             },
 
             getAllUsers() {
@@ -289,6 +293,8 @@
             Fire.$on('userCreated', function(){
                 this.getAllUsers();
             });
+
+            Echo.channel('user.'+).listen('newUser');
         }
     }
 

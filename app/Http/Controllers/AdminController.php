@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
+use App\Events\newUser;
 
 class AdminController extends Controller
 {
@@ -67,11 +68,13 @@ class AdminController extends Controller
             'full_name' => $full_name
         ]);
         $role = Role::where('name', $request->role)->first();
-        $admin->user()->create([
+       $user = $admin->user()->create([
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role_id' => $role->id
         ]);
+
+        event(new newUser($user));
         return response(['message' => 'User Created Successfully']);
     }
 
