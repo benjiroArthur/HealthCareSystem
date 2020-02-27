@@ -108,6 +108,7 @@
 
 
     export default {
+        props: {},
         name: "Admin",
         components: {
             'bootstrap-table': BootstrapTable,
@@ -143,8 +144,7 @@
 
                 },
                 myColumns: [
-                    { field: 'index', title: 'ID'
-                    },
+                    { field: 'index', title: 'ID'},
                     { field: 'id', title: 'ID', sortable: true,  class: 'd-none'},
                     { field: 'userable.full_name', title: 'Name', sortable: true},
                     { field: 'email', title: 'Email', sortable: true},
@@ -155,7 +155,6 @@
                         field: 'action',
                         title: 'Actions',
                         align: 'center',
-                        width: '140px',
                         clickToSelect: false,
                         formatter: function (e, value, row){
                             return '<a class="btn btn-sm show"><i class="fas fa-eye text-info"></i></a><a class="btn btn-sm edit"><i class="fas fa-edit text-yellow"></i></a><a class="btn btn-sm destroy"><i class="fas fa-trash text-danger"></i></a>'
@@ -186,7 +185,6 @@
                this.$Progress.start();
                this.form.post('/data/admin')
                .then(function(){
-                   Fire.$emit('userCreated');
                    $('#adminUserModal').modal('hide');
                    this.$Progress.finish();
                    toast.fire({
@@ -290,11 +288,11 @@
         created()
         {
             this.getAllUsers();
-            Fire.$on('userCreated', function(){
-                this.getAllUsers();
-            });
 
-            Echo.channel('user.'+).listen('newUser');
+            Echo.private('adminChannel').listen('newUser', function(e){
+                // this.getAllUsers();
+                comsole.log('Yes');
+            });
         }
     }
 

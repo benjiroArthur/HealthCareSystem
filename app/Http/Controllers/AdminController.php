@@ -74,7 +74,7 @@ class AdminController extends Controller
             'role_id' => $role->id
         ]);
 
-        event(new newUser($user));
+        broadcast(new newUser($user))->toOthers();
         return response(['message' => 'User Created Successfully']);
     }
 

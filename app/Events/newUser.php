@@ -33,6 +33,6 @@ class newUser implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('user.'.$this->user->role_id );
+        return new PrivateChannel('adminChannel' );
     }
 }
