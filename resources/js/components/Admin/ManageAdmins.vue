@@ -157,7 +157,7 @@
                         align: 'center',
                         clickToSelect: false,
                         formatter: function (e, value, row){
-                            return '<a class="btn btn-sm show"><i class="fas fa-eye text-info"></i></a><a class="btn btn-sm edit"><i class="fas fa-edit text-yellow"></i></a><a class="btn btn-sm destroy"><i class="fas fa-trash text-danger"></i></a>'
+                            return '<a class="btn btn-sm show" data-toggle="modal" data-target="#"><i class="fas fa-eye text-info"></i></a><a class="btn btn-sm edit"><i class="fas fa-edit text-yellow"></i></a><a class="btn btn-sm destroy"><i class="fas fa-trash text-danger"></i></a>'
                         },
                         events: {
                             'click .show': function (e, value, row){
@@ -188,7 +188,7 @@
                    $('#adminUserModal').modal('hide');
                    this.$Progress.finish();
                    toast.fire({
-                       type: 'success',
+                       icon: 'success',
                        title: 'User Created Successfully'
                    });
                })
@@ -281,6 +281,26 @@
                     link.download = filename;
                     link.click();
                 },
+
+            deleteUser(id){
+                        Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                    }
+                });
+            }
 
 
 

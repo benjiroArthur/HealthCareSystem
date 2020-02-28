@@ -120,7 +120,12 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(auth()->user()->role->name == "admin"){
+            $admin = Admin::find($id);
+        }
+        else{
+            return response('Unautorised Access' );
+        }
     }
 
 }

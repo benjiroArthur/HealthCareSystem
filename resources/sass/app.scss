@@ -39,3 +39,9 @@ $material-icons-font-path: '~material-icons/iconfont/';
     background-color: #2288ff !important;
     color: white !important;
 }
+
+@import '~sweetalert2/src/variables';
+
+$swal2-background: #990000;
+
+@import '~sweetalert2/src/sweetalert2';

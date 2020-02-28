@@ -26,6 +26,8 @@ require('bootstrap-table/dist/extensions/print/bootstrap-table-print.min.js');
 require('bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.min.css');
 require('bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.min.js');
 
+import 'sweetalert2/dist/sweetalert2.min.css';
+
 
 import VueRouter from 'vue-router';
 import axios from "axios";
@@ -54,14 +56,28 @@ Vue.use(VueRouter, axios, VuejsDatatableFactory);
 import Swal from 'sweetalert2';
 window.swal = Swal;
 
-const toast = swal.mixin({
+/*const toast = swal.mixin({
     toast: true,
     Position: 'top-end',
     showConfirmButton: false,
     timer: 3000
-});
-window.toast = toast;
+});*/
 
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    onOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+})
+window.toast = Toast;
+
+import VueSweetalert2 from 'vue-sweetalert2';
+Vue.use(VueSweetalert2);
 
 //vue routers
 let routes = [
