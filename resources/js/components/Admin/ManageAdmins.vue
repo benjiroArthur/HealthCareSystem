@@ -22,6 +22,7 @@
                 <!-- /.card -->
             </div>
         </div>
+        <!--Bulk upload modal-->
         <div class="modal" id="adminUserModalBulk" tabindex="-1" role="dialog" aria-labelledby="adminUserModalBulkLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -97,6 +98,78 @@
                 </div>
             </div>
         </div>
+        <div class="modal" id="adminEditModal" tabindex="-1" role="dialog" aria-labelledby="adminEditModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title">Add Administrators</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form @submit.prevent="UpdateUser">
+                    <div class="modal-body">
+                        <div class="login-logo">
+                            <img src="" width="100" height="auto" alt="user">
+                        </div>
+                        <div class="form-group">
+                        <label>Last Name</label>
+                        <input v-model="userForm.last_name" type="text" name="last_name"
+                            class="form-control" :class="{ 'is-invalid': userForm.errors.has('last_name') }">
+                        <has-error :form="userForm" field="last_name"></has-error>
+                        </div>
+                        <div class="form-group">
+                        <label>Firat Name</label>
+                        <input v-model="userForm.first_name" type="text" name="first_name"
+                            class="form-control" :class="{ 'is-invalid': userForm.errors.has('first_name') }">
+                        <has-error :form="userForm" field="first_name"></has-error>
+                        </div>
+                        <div class="form-group">
+                        <label>Other Name</label>
+                        <input v-model="userForm.other_name" type="text" name="other_name"
+                            class="form-control" :class="{ 'is-invalid': userForm.errors.has('other_name') }">
+                        <has-error :form="userForm" field="other_name"></has-error>
+                        </div>
+                        <div class="form-group">
+                        <label>Email</label>
+                        <input v-model="userForm.email" type="email" name="email"
+                            class="form-control" :class="{ 'is-invalid': userForm.errors.has('email') }">
+                        <has-error :form="userForm" field="email"></has-error>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Date Of Birth</label>
+                            <input v-model="userForm.dob" type="date" name="dob"
+                                   class="form-control" :class="{ 'is-invalid': userForm.errors.has('dob') }">
+                            <has-error :form="userForm" field="dob"></has-error>
+                        </div>
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <select v-model="userForm.gender" type="text" name="gender"
+                                           class="form-control" :class="{ 'is-invalid': userForm.errors.has('gender') }" >
+                                <option>Male</option>
+                                <option>Female</option>
+
+                            </select>
+                            <has-error :form="userForm" field="gender"></has-error>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input v-model="userForm.phone_number" type="text" name="phone_number"
+                                   class="form-control" :class="{ 'is-invalid': userForm.errors.has('phone_number') }">
+                            <has-error :form="userForm" field="phone_number"></has-error>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Update <i class="fas fa-upload"></i></button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -125,6 +198,15 @@
                     email: '',
                     role: 'admin',
                     password: '',
+                }),
+                userForm: new Form({
+                    last_name: '',
+                    first_name: '',
+                    other_name: '',
+                    email: '',
+                    dob: '',
+                    gender: '',
+                    phone_number: '',
                 }),
 
                 admins: {},
@@ -157,21 +239,56 @@
                         align: 'center',
                         clickToSelect: false,
                         formatter: function (e, value, row){
-                            return '<a class="btn btn-sm show" data-toggle="modal" data-target="#"><i class="fas fa-eye text-info"></i></a><a class="btn btn-sm edit"><i class="fas fa-edit text-yellow"></i></a><a class="btn btn-sm destroy"><i class="fas fa-trash text-danger"></i></a>'
+                            return '<a class="btn btn-sm show" data-toggle="modal" data-target="#"><i class="fas fa-eye text-info"></i></a><a class="btn btn-sm edit"><i class="fas fa-edit text-yellow"></i></a><a class="btn btn-sm destroy"><i @click="deleteUser()" class="fas fa-trash text-danger"></i></a>'
                         },
                         events: {
                             'click .show': function (e, value, row){
                                 return window.location.assign('/posts/'+row.id)
                             },
                             'click .edit': function (e, value, row){
-                                return window.location.assign('/posts/'+row.id+'/edit')
+                                //this.userForm.reset();
+                                $('#adminEditModal').modal('show');
+                                this.userForm.fill(value);
                             },
                             'click .destroy': function (e, value, row){
-                                axios.delete('/posts/'+row.id, {
-                                    id: row.id
-                                });
+                                swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You won't be able to revert this!",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes, delete it!'
+                                }).then((result) => {
+                                    if (result.value) {
+                                    axios.delete('/data/admin/' + row.id).then((response) => {
+                                        if(response.data === "success")
+                                        {
+                                            Fire.$emit('tableUpdate');
+                                            swal.fire(
+                                                'Deleted!',
+                                                'User Deleted Successfully',
+                                                'success'
+                                            );
 
-                                return window.location.replace('/assign-posts/posts.index')
+                                        }
+                                        else{
+                                            swal.fire(
+                                                'Failed!',
+                                                response.data,
+                                                'warning'
+                                            )
+                                        }
+                                    }).catch(() => {
+                                        swal.fire(
+                                            'Failed!',
+                                            'User Could Not Be Deleted.',
+                                            'warning'
+                                        )
+                                    });
+                                }
+
+                                });
                             },
                         }
                     }
@@ -186,15 +303,26 @@
                this.form.post('/data/admin')
                .then(function(){
                    $('#adminUserModal').modal('hide');
-                   this.$Progress.finish();
-                   toast.fire({
+
+                   swal.fire({
+                       toast: true,
+                       position: 'top-end',
+                       showConfirmButton: false,
+                       timer: 3000,
+                       timerProgressBar: true,
+                       onOpen: (toast) => {
+                           toast.addEventListener('mouseenter', Swal.stopTimer);
+                           toast.addEventListener('mouseleave', Swal.resumeTimer);},
                        icon: 'success',
-                       title: 'User Created Successfully'
+                       title: 'User Added Successfully'
                    });
+                        Fire.$emit('tableUpdate');
+                       this.$Progress.finish();
+
                })
                .catch(error => {
                    this.loading = false;
-                   this.error = error.response.data.message || error.message;
+                   this.error = error.response.message || error.message;
                });
             },
 
@@ -283,23 +411,7 @@
                 },
 
             deleteUser(id){
-                        Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
-                    if (result.value) {
-                        Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
-                            'success'
-                        )
-                    }
-                });
+
             }
 
 
@@ -309,9 +421,13 @@
         {
             this.getAllUsers();
 
-            Echo.private('adminChannel').listen('newUser', function(e){
-                // this.getAllUsers();
-                comsole.log('Yes');
+            // Echo.private('adminChannel').listen('newUser', function(e){
+            //     // this.getAllUsers();
+            //     comsole.log('Yes');
+            // });
+
+            Fire.$on('tableUpdate', () => {
+                this.getAllUsers();
             });
         }
     }

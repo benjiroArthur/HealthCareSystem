@@ -44,7 +44,6 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-
         //validate request
         $this->validate($request, [
             'last_name' => 'string|required|max:255',
@@ -120,12 +119,21 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        if(auth()->user()->role->name == "admin"){
-            $admin = Admin::find($id);
-        }
-        else{
-            return response('Unautorised Access' );
-        }
+        return response('No');
+//        if(auth()->user()->role->name === "admin"){
+//            if(auth()->user()->id != $id){
+//                $user = User::findOrFail($id);
+//                $user->userable()->delete();
+//                $user->delete();
+//                    return response('success');
+//            }
+//            else{
+//                return response('Active User Cannot Be Deleted' );
+//            }
+//        }
+//        else{
+//            return response('Unauthorised Access' );
+//        }
     }
 
 }
