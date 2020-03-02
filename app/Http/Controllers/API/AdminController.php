@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Admin;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -59,10 +60,10 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         //
     }
@@ -104,5 +105,11 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function profile(){
+        $user = auth('api')->user()->userable()->first();
+        //$user = User::findOrFail(auth()->user()->id)->userable()->get()->toArray();
+        return response()->json($user);
     }
 }

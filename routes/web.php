@@ -22,10 +22,11 @@ Auth::routes();
 
 //Route::post('/new-register', 'Auth\MyRegisterController@userRegister')->name('userRegister');
 Route::group(['prefix' => 'data', 'as' => 'data.'], function(){
-    Route::resource('/out_patient', 'OutPatientController');
-    Route::resource('/doctor', 'DoctorController');
-    Route::resource('/admin', 'AdminController');
-    Route::resource('/pharmacy', 'PharmacyController');
+    Route::resource('/out_patient', 'Admin\OutPatientController');
+    Route::resource('/doctor', 'Admin\DoctorController');
+    Route::resource('/admin', 'Admin\AdminController');
+    Route::get('/profile', 'AdminController@profile');
+    Route::resource('/pharmacy', 'Admin\PharmacyController');
     Route::resource('/user', 'UsersController');
     Route::get('excelDownload/{value}', 'UsersController@excelTemplate');
 });

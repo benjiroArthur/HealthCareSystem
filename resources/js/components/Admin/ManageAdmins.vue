@@ -7,14 +7,14 @@
                         <h3 class="card-title text-center">Administrators</h3>
                         <div class="card-tools">
                             <div class="input-group input-group-sm">
-                                <button class="btn btn-danger btn-sm mr-2" title="Download template" @click="downloadExcel()"><i class="fas fa-download"></i></button>
+                                <button class="btn btn-danger btn-sm mr-2" title="Download template" @click="downloadExcel"><i class="fas fa-download"></i></button>
                                 <button class="btn btn-success btn-sm mr-2" title="Add Bulk Users" data-toggle="modal" data-target="#adminUserModalBulk"><i class="fas fa-file-excel"></i></button>
                                 <button class="btn btn-primary btn-sm mr-2" title="Add New User" data-toggle="modal" data-target="#adminUserModal"><i class="fas fa-plus"></i></button>
                             </div>
                         </div>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body table-responsive p-0">
+                    <div class="card-body table table-responsive table-striped p-0">
                         <bootstrap-table :data="admins" :options="myOptions" :columns="myColumns"/>
                     </div>
                     <!-- /.card-body -->
@@ -34,12 +34,12 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="file" name="file" ref="file" v-on:change="handleFileUpload()"/>
+                            <input type="file" name="file" ref="file" v-on:change="handleFileUpload"/>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-success" v-on:click="submitUser()">Upload <i class="fas fa-user-plus"></i></button>
+                        <button type="button" class="btn btn-success" v-on:click="submitUser">Upload <i class="fas fa-user-plus"></i></button>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form @submit.prevent="createUser()">
+                    <form @submit.prevent="createUser">
                     <div class="modal-body">
                         <div class="form-group">
                         <label>Last Name</label>
@@ -98,6 +98,7 @@
                 </div>
             </div>
         </div>
+        <!--EDIT FORM MODAL-->
         <div class="modal" id="adminEditModal" tabindex="-1" role="dialog" aria-labelledby="adminEditModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -107,7 +108,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form @submit.prevent="UpdateUser">
+                    <form @submit.prevent="update" ref="userForm">
                     <div class="modal-body">
                         <div class="login-logo">
                             <img src="" width="100" height="auto" alt="user">
@@ -170,6 +171,79 @@
                 </div>
             </div>
         </div>
+        <!--show details-->
+        <div class="modal" id="adminShowModal" tabindex="-1" role="dialog" aria-labelledby="adminShowModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title">Add Administrators</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form @submit.prevent="" ref="userForm">
+                    <div class="modal-body">
+                        <div class="login-logo">
+                            <img src="" width="100" height="auto" alt="user">
+                        </div>
+                        <div class="form-group">
+                        <label>Last Name</label>
+                        <input v-model="userForm.last_name" type="text" name="last_name"
+                            class="form-control" :class="{ 'is-invalid': userForm.errors.has('last_name') }">
+                        <has-error :form="userForm" field="last_name"></has-error>
+                        </div>
+                        <div class="form-group">
+                        <label>Firat Name</label>
+                        <input v-model="userForm.first_name" type="text" name="first_name"
+                            class="form-control" :class="{ 'is-invalid': userForm.errors.has('first_name') }">
+                        <has-error :form="userForm" field="first_name"></has-error>
+                        </div>
+                        <div class="form-group">
+                        <label>Other Name</label>
+                        <input v-model="userForm.other_name" type="text" name="other_name"
+                            class="form-control" :class="{ 'is-invalid': userForm.errors.has('other_name') }">
+                        <has-error :form="userForm" field="other_name"></has-error>
+                        </div>
+                        <div class="form-group">
+                        <label>Email</label>
+                        <input v-model="userForm.email" type="email" name="email"
+                            class="form-control" :class="{ 'is-invalid': userForm.errors.has('email') }">
+                        <has-error :form="userForm" field="email"></has-error>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Date Of Birth</label>
+                            <input v-model="userForm.dob" type="date" name="dob"
+                                   class="form-control" :class="{ 'is-invalid': userForm.errors.has('dob') }">
+                            <has-error :form="userForm" field="dob"></has-error>
+                        </div>
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <select v-model="userForm.gender" type="text" name="gender"
+                                           class="form-control" :class="{ 'is-invalid': userForm.errors.has('gender') }" >
+                                <option>Male</option>
+                                <option>Female</option>
+
+                            </select>
+                            <has-error :form="userForm" field="gender"></has-error>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input v-model="userForm.phone_number" type="text" name="phone_number"
+                                   class="form-control" :class="{ 'is-invalid': userForm.errors.has('phone_number') }">
+                            <has-error :form="userForm" field="phone_number"></has-error>
+                        </div>
+
+                    </div>
+<!--                    <div class="modal-footer">-->
+<!--                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
+<!--                        <button type="submit" class="btn btn-success">Update <i class="fas fa-upload"></i></button>-->
+<!--                    </div>-->
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -207,8 +281,12 @@
                     dob: '',
                     gender: '',
                     phone_number: '',
+                    image: '',
+                    full_name: ''
                 }),
-
+                props: {
+                    adminShow: {}
+                },
                 admins: {},
                 admin: '',
                 file: '',
@@ -243,12 +321,40 @@
                         },
                         events: {
                             'click .show': function (e, value, row){
-                                return window.location.assign('/posts/'+row.id)
+                                this.getData(row.id);
+                                /*this.userForm.reset();
+                                this.loading = true;
+                                axios
+                                    .get('/data/admin/'+row.id)
+                                    .then(response => {
+                                        this.loading = false;
+                                        this.adminShow = response.data;
+                                        console.log(response.data);
+                                        this.userForm.fill(this.adminShow);
+                                        $('#adminShowModal').modal('show');
+                                    }).catch(error => {
+                                    this.loading = false;
+                                    console.log(error.data.message);
+                                });*/
+
+
                             },
                             'click .edit': function (e, value, row){
-                                //this.userForm.reset();
-                                $('#adminEditModal').modal('show');
-                                this.userForm.fill(value);
+                                this.loading = true;
+                                this.userForm.reset();
+                                axios
+                                    .get('/data/admin/'+row.id)
+                                    .then(response => {
+                                        this.loading = false;
+                                        this.adminShow = response.data;
+                                        console.log(response.data);
+                                        this.userForm.fill(this.adminShow);
+                                        $('#adminEditModal').modal('show');
+                                    }).catch(error => {
+                                    this.loading = false;
+                                    this.error = error.response.data.message || error.message;
+                                });
+
                             },
                             'click .destroy': function (e, value, row){
                                 swal.fire({
@@ -293,6 +399,11 @@
                         }
                     }
                 ],
+                // 'drawCallBack': function(settings){
+                //     $('.show').on('click', function(e){
+                //
+                //     })
+                // }
 
 
             }
@@ -410,8 +521,12 @@
                     link.click();
                 },
 
-            deleteUser(id){
+            getData(id){
 
+                axios.get('/data/admin/'+id).then(response => {this.adminShow = response.data;
+                this.userForm.reset();
+                this.userForm.fill(response.data);
+                }).catch(console.log());
             }
 
 
@@ -420,6 +535,7 @@
         created()
         {
             this.getAllUsers();
+            //this.getData();
 
             // Echo.private('adminChannel').listen('newUser', function(e){
             //     // this.getAllUsers();

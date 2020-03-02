@@ -19,11 +19,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $role = Role::where('name', 'admin')->first();
 
-        $user = User::where('role_id', $role->id)->get();
-
-        return response($user);
     }
 
     /**
@@ -39,42 +35,14 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
-        //validate request
-        $this->validate($request, [
-            'last_name' => 'string|required|max:255',
-            'first_name' => 'string|required|max:255',
-            'email' => 'email|required|max:255|unique:admins|unique:users',
-            'password' => 'required|min:8'
-        ]);
 
-//        return response($request->all());
-            if($request->other_name == null){
-                $full_name = $request->first_name.' '.$request->last_name;
-            }
-            else{
-                $full_name = $request->first_name.' '.$request->other_name.' '.$request->last_name;
-            }
-        $admin = Admin::create([
-            'last_name' => $request->last_name,
-            'first_name' => $request->first_name,
-            'other_name' => $request->other_name,
-            'email' => $request->email,
-            'full_name' => $full_name
-        ]);
-        $role = Role::where('name', $request->role)->first();
-       $user = $admin->user()->create([
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role_id' => $role->id
-        ]);
 
-        broadcast(new newUser($user))->toOthers();
-        return response(['message' => 'User Created Successfully']);
     }
 
     /**
@@ -85,7 +53,10 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $admin = User::findOrFail($id)->userable()->get();
+
+        return response($admin);
     }
 
     /**
@@ -96,7 +67,8 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $admin = User::findOrFail($id)->userable()->first();
+        return response($admin);
     }
 
     /**
@@ -119,21 +91,12 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        return response('No');
-//        if(auth()->user()->role->name === "admin"){
-//            if(auth()->user()->id != $id){
-//                $user = User::findOrFail($id);
-//                $user->userable()->delete();
-//                $user->delete();
-//                    return response('success');
-//            }
-//            else{
-//                return response('Active User Cannot Be Deleted' );
-//            }
-//        }
-//        else{
-//            return response('Unauthorised Access' );
-//        }
+
+
+    }
+    public function profile(){
+        $user = User::findOrFail(auth()->user()->id)->userable()->first()->toArray();
+        return response()->json($user);
     }
 
 }
