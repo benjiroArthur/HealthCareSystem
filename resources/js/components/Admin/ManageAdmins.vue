@@ -321,39 +321,18 @@
                         },
                         events: {
                             'click .show': function (e, value, row){
-                                this.getData(row.id);
-                                /*this.userForm.reset();
-                                this.loading = true;
-                                axios
-                                    .get('/data/admin/'+row.id)
-                                    .then(response => {
-                                        this.loading = false;
-                                        this.adminShow = response.data;
-                                        console.log(response.data);
-                                        this.userForm.fill(this.adminShow);
-                                        $('#adminShowModal').modal('show');
-                                    }).catch(error => {
-                                    this.loading = false;
-                                    console.log(error.data.message);
-                                });*/
-
-
+                                swal.fire(
+                                    'Access Denied!',
+                                    'You Cannot Access This Content',
+                                    'warning'
+                                );
                             },
                             'click .edit': function (e, value, row){
-                                this.loading = true;
-                                this.userForm.reset();
-                                axios
-                                    .get('/data/admin/'+row.id)
-                                    .then(response => {
-                                        this.loading = false;
-                                        this.adminShow = response.data;
-                                        console.log(response.data);
-                                        this.userForm.fill(this.adminShow);
-                                        $('#adminEditModal').modal('show');
-                                    }).catch(error => {
-                                    this.loading = false;
-                                    this.error = error.response.data.message || error.message;
-                                });
+                                swal.fire(
+                                    'Access Denied!',
+                                    'You Cannot Access This Content',
+                                    'warning'
+                                );
 
                             },
                             'click .destroy': function (e, value, row){
@@ -399,11 +378,6 @@
                         }
                     }
                 ],
-                // 'drawCallBack': function(settings){
-                //     $('.show').on('click', function(e){
-                //
-                //     })
-                // }
 
 
             }

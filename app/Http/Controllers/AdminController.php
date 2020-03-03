@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
 use App\Events\newUser;
+use Intervention\Image\Facades\Image;
 
 class AdminController extends Controller
 {
@@ -95,8 +96,23 @@ class AdminController extends Controller
 
     }
     public function profile(){
-        $user = User::findOrFail(auth()->user()->id)->userable()->first()->toArray();
+        $user = User::findOrFail(auth()->user()->id)->userable()->first();
         return response()->json($user);
+    }
+    public function updateProfile(Request $request){
+        //return $request->image;
+        if($request->image){
+
+            $name = time().'.'.explode('/', explode(':', substr($request->image, 0, strpos($request->image, ';')))[1])[1];
+
+            $image = base64_decode($request->image);
+            //return "Yes";
+            Image::make($image)->save(public_path('assets/ProfilePictures'), $name);
+
+        }
+//        $user = User::findOrFail(auth()->user()->id)->userable()->first();
+//
+//        $user->update();
     }
 
 }
