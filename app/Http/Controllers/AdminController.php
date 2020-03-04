@@ -122,14 +122,15 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function uploadImage(Request $request){
+        //dd($request);
         try {
             $this->validate($request, [
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:225'
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
             ]);
         } catch (ValidationException $e) {
-            return $e;
+            return response($e);
         }
-        $image_file = $request->image;
+        $image_file = $request->file('image');
 
         $imageNameWithExt = $image_file->getClientOriginalName();
         //Get just extension
@@ -140,8 +141,8 @@ class AdminController extends Controller
 
         //upload file
 
-        $path = $image_file->storeAs('public/assets/ProfilePictures/', $imageNameToStore);
-
+//      $path = $image_file->storeAs('public/assets/ProfilePictures/', $imageNameToStore);
+//
         $image_path = public_path().'/assets/ProfilePictures/'.$imageNameToStore;
         //resize image
         Image::make($image_file->getRealPath())->resize(140,128)->save($image_path);
