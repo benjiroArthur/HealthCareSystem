@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
 use App\Events\newUser;
+use Illuminate\Validation\ValidationException;
 use Intervention\Image\Facades\Image;
 
 class AdminController extends Controller
@@ -99,20 +100,58 @@ class AdminController extends Controller
         $user = User::findOrFail(auth()->user()->id)->userable()->first();
         return response()->json($user);
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function updateProfile(Request $request){
-        //return $request->image;
-        if($request->image){
 
-            $name = time().'.'.explode('/', explode(':', substr($request->image, 0, strpos($request->image, ';')))[1])[1];
+        $user = User::findOrFail(auth()->user()->id)->userable()->first();
 
-            $image = base64_decode($request->image);
-            //return "Yes";
-            Image::make($image)->save(public_path('assets/ProfilePictures'), $name);
+        $user->update($request->all());
+        return response($request->all());
+    }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function uploadImage(Request $request){
+        try {
+            $this->validate($request, [
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:225'
+            ]);
+        } catch (ValidationException $e) {
+            return $e;
         }
-//        $user = User::findOrFail(auth()->user()->id)->userable()->first();
-//
-//        $user->update();
+        $image_file = $request->image;
+
+        $imageNameWithExt = $image_file->getClientOriginalName();
+        //Get just extension
+        $extension = $image_file->getClientOriginalExtension();
+
+        //Filename to store
+        $imageNameToStore = time().'.'.$extension;
+
+        //upload file
+
+        $path = $image_file->storeAs('public/assets/ProfilePictures/', $imageNameToStore);
+
+        $image_path = public_path().'/assets/ProfilePictures/'.$imageNameToStore;
+        //resize image
+        Image::make($image_file->getRealPath())->resize(140,128)->save($image_path);
+
+        $id = Auth()->user()->userable->id;
+        $user = Admin::findOrFail($id);
+        $user->image = $imageNameToStore;
+        $user->save();
+
+        return response($imageNameToStore);
     }
 
 }

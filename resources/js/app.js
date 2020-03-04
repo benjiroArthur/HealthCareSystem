@@ -81,6 +81,8 @@ window.toast = Toast;
 import VueSweetalert2 from 'vue-sweetalert2';
 Vue.use(VueSweetalert2);
 
+//Vue.prototype.$image = document.querySelector("meta['name = user-image']").getAttribute('content');
+
 //vue routers
 let routes = [
     //Users routes

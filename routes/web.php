@@ -27,6 +27,7 @@ Route::group(['prefix' => 'data', 'as' => 'data.'], function(){
     Route::resource('/admin', 'Admin\AdminController');
     Route::get('/profile', 'AdminController@profile');
     Route::put('/profile', 'AdminController@updateProfile');
+    Route::put('/profile/image', 'AdminController@uploadImage');
     Route::resource('/pharmacy', 'Admin\PharmacyController');
     Route::resource('/user', 'UsersController');
     Route::get('excelDownload/{value}', 'UsersController@excelTemplate');

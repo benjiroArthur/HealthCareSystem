@@ -10,7 +10,9 @@
                      <form @submit.prevent="updateProfile" ref="form">
                     <div class="modal-body">
                         <div class="login-logo">
-                            <img src="" width="100" height="auto" alt="user" class="userImage">
+                            <img :src="this.admin.image" width="100" height="auto" alt="user" class="userImage">
+                            <span class="fas fa-camera" data-toggle="modal" data-target="#profileModal" tooltip="Edit Profile Picture"
+                                  style="position: absolute; transform: translate(-70%, 200%); -ms-transform: translate(-70%, 200%); width:20px;"></span>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 col-md-6 col-lg-6">
@@ -62,11 +64,7 @@
                                            class="form-control" :class="{ 'is-invalid': form.errors.has('phone_number') }">
                                     <has-error :form="form" field="phone_number"></has-error>
                                 </div>
-                                <div class="form-group">
-                                    <label>Profile Picture</label>
-                                    <input  type="file" name="image"
-                                            class="form-control" style="border: none" @change="uploadImage">
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -80,6 +78,29 @@
                 </div>
             </div>
         </div>
+        <div class="modal" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title">Upload Profile Picture</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Profile Picture</label>
+                            <input  type="file" name="file" ref="file"
+                                    class="form-control" style="border: none" @change="loadImage">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success" @click="submitImage">Upload <i class="fas fa-user-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -88,6 +109,7 @@
         data(){
             return{
                 admin: {},
+                file: '',
                 form: new Form({
                     id: '',
                     last_name: '',
@@ -97,48 +119,86 @@
                     dob: '',
                     gender: '',
                     phone_number: '',
-                    image: '',
                     trying: ''
                 }),
             };
         },
         methods:{
-            uploadImage(e){
-                let image = e.target.files[0];
-                console.log(image);
-                let reader = new FileReader();
-                reader.onloadend = (image) => {
-                    this.form.image = reader.result;
-                    //console.log('RESULT', reader.result);
-                };
-                reader.readAsDataURL(image);
+            profileInfo(){
+                this.loading = true;
+                axios
+                    .get('/data/profile')
+                    .then(response => {
+                        this.loading = false;
+                        this.admin = response.data;
+                        console.log(response.data);
+                        this.form.fill(this.admin);
+
+                    }).catch(error => {
+                    this.loading = false;
+                    this.error = error.response.data.message || error.message;
+                });
+            },
+            loadImage(){
+                this.file = this.$refs.file.files[0];
+            },
+            submitImage(){
+                this.$Progress.start();
+                //Initialize the form data
+                let formData = new FormData();
+
+                //Add the form data we need to submit
+                formData.append('image', this.file);
+
+                //Make the request to the POST /single-file URL
+                axios.put( '/data/profile/image',
+                    formData,
+                    {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                        }
+                    }
+                ).then(function(response){
+                    Fire.$emit('profileUpdate');
+                    console.log(response.data);
+                    this.$Progress.finish();
+                    swal.fire(
+                        'Update',
+                        'Profile Picture Updated Successfully',
+                        'success'
+                    );
+
+                })
+                    .catch(function(error){
+                        console.log(error.data);
+                    });
+                $('#profileModal').modal('hide');
             },
             updateProfile(){
+                this.$Progress.start();
                 this.form.put('/data/profile/')
                     .then((response) => {
+                        Fire.$emit('profileUpdate');
                         console.log(response.data);
+                        this.$Progress.finish();
+                        swal.fire(
+                            'Update',
+                            'User Profile Updated Successfully',
+                            'success'
+                        );
                     })
                     .catch((error) => {
                         console.log(error.message);
                     });
             }
+
         },
         created(){
 
-            this.loading = true;
-            axios
-                .get('/data/profile')
-                .then(response => {
-                     this.loading = false;
-                    this.admin = response.data;
-                    console.log(response.data);
-                    this.form.fill(this.admin);
-
-                }).catch(error => {
-                this.loading = false;
-                this.error = error.response.data.message || error.message;
+            this.profileInfo();
+            Fire.$on('profileUpdate', () => {
+                this.profileInfo();
             });
-
         }
     }
 </script>
