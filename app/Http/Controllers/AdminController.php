@@ -122,6 +122,10 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function uploadImage(Request $request){
+        if($request->hasfile('image')){
+            return "Yes";
+        }
+        else{return "No";}
         return response($request->all());
         try {
             $this->validate($request, [

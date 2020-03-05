@@ -87,12 +87,14 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    <form @submit.prevent="submitImage" ref="fileForm" class="imageData">
                     <div class="modal-body">
                         <div class="form-group">
                             <div class="row">
                             <div class="col-6">
                                 <label>Profile Picture</label>
-                                <input id="file" type="file" name="file" ref="file" accept="image/*" class="form-control" style="border: none" @change="loadImage($event)">
+
+                                <input  id="image" type="file" name="image" accept="image/*" class="form-control" style="border: none" @change="loadImage()">
                             </div>
                             <div class="col-6">
                                 <img :src="this.image_file" class="uploading-image img-thumbnail" height="128" alt="Preview" />
@@ -102,8 +104,9 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-success" @click="submitImage">Upload <i class="fas fa-user-plus"></i></button>
+                        <button type="submit" class="btn btn-success" @click="submitImage">Upload <i class="fas fa-user-plus"></i></button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -115,6 +118,9 @@
         data(){
             return{
                 formData: new FormData(),
+                fileForm: new Form({
+                    image: null
+                }),
                 admin: {},
                 file: null,
                 image_file: '',
@@ -149,6 +155,7 @@
             },
             loadImage(e){
                 //
+
                 this.file = e.target.files[0];
                 const reader = new FileReader();
                 reader.readAsDataURL(this.file);
@@ -156,26 +163,27 @@
                 this.image_file = e.target.result;
 
                 };
-                //console.log(this.file);
+                console.log(this.file);
             },
             submitImage(){
 
                 //Initialize the form data
-
+                let form = $('.imageData').serialize();
+                let data = new FormData($(form)[1]);
 
                 //Add the form data we need to submit
-                this.formData.append('image', this.file);
-                console.log(this.formData);
+
+                console.log(data);
 
                 //Make the request to the POST /single-file URL
                 axios.put( '/data/profile/image',
-                    this.formData,
+                    this.fileForm,
                     {
                         headers: {
                                     'Content-Type': 'multipart/form-data'
                                 }
                     },
-                    this.$Progress.start()
+                    //this.$Progress.start()
                 ).then(function(response){
                     Fire.$emit('profileUpdate');
                     console.log(response.data);
