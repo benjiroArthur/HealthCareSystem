@@ -304,13 +304,13 @@
 
                 },
                 myColumns: [
-                    { field: 'index', title: 'ID'},
+                    { field: 'key', title: 'ID'},
                     { field: 'id', title: 'ID', sortable: true,  class: 'd-none'},
                     { field: 'userable.full_name', title: 'Name', sortable: true},
-                    { field: 'email', title: 'Email', sortable: true},
-                    { field: 'dob', title: 'Date Of Birth', sortable: true},
-                    { field: 'gender', title: 'Gender', sortable: true},
-                    { field: 'phone_number', title: 'Phone Number', sortable: true},
+                    { field: 'userable.email', title: 'Email', sortable: true},
+                    { field: 'userable.dob', title: 'Date Of Birth', sortable: true},
+                    { field: 'userable.gender', title: 'Gender', sortable: true},
+                    { field: 'userable.phone_number', title: 'Phone Number', sortable: true},
                     {
                         field: 'action',
                         title: 'Actions',

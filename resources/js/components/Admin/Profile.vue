@@ -89,9 +89,15 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Profile Picture</label>
-                            <input  type="file" name="file" ref="file"
-                                    class="form-control" style="border: none" @change="loadImage">
+                            <div class="row">
+                            <div class="col-6">
+                                <label>Profile Picture</label>
+                                <input id="file" type="file" name="file" ref="file" accept="image/*" class="form-control" style="border: none" @change="loadImage($event)">
+                            </div>
+                            <div class="col-6">
+                                <img :src="this.image_file" class="uploading-image img-thumbnail" height="128" alt="Preview" />
+                            </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -108,8 +114,10 @@
     export default {
         data(){
             return{
+                formData: new FormData(),
                 admin: {},
-                file: '',
+                file: null,
+                image_file: '',
                 form: new Form({
                     id: '',
                     last_name: '',
@@ -139,25 +147,35 @@
                     this.error = error.response.data.message || error.message;
                 });
             },
-            loadImage(){
-                this.file = this.$refs.file.files[0];
+            loadImage(e){
+                //
+                this.file = e.target.files[0];
+                const reader = new FileReader();
+                reader.readAsDataURL(this.file);
+                reader.onload = e =>{
+                this.image_file = e.target.result;
+
+                };
+                //console.log(this.file);
             },
             submitImage(){
-                this.$Progress.start();
+
                 //Initialize the form data
-                let formData = new FormData();
+
 
                 //Add the form data we need to submit
-                formData.append('image', this.file);
+                this.formData.append('image', this.file);
+                console.log(this.formData);
 
                 //Make the request to the POST /single-file URL
                 axios.put( '/data/profile/image',
-                    formData,
+                    this.formData,
                     {
                         headers: {
-                            'Content-Type': 'multipart/form-data',
-                        }
-                    }
+                                    'Content-Type': 'multipart/form-data'
+                                }
+                    },
+                    this.$Progress.start()
                 ).then(function(response){
                     Fire.$emit('profileUpdate');
                     console.log(response.data);

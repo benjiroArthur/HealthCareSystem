@@ -122,7 +122,7 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function uploadImage(Request $request){
-        //dd($request);
+        return response($request->all());
         try {
             $this->validate($request, [
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
