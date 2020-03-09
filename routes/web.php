@@ -35,9 +35,9 @@ Route::group(['prefix' => 'data', 'as' => 'data.'], function(){
     Route::resource('/out_patient', 'Admin\OutPatientController');
     Route::resource('/doctor', 'Admin\DoctorController');
     Route::resource('/admin', 'Admin\AdminController');
-    Route::get('/profile', 'AdminController@profile');
-    Route::put('/profile', 'AdminController@updateProfile');
-    Route::post('/profile/image', 'AdminController@uploadImage');
+    Route::get('/admin/profile', 'AdminController@profile');
+    Route::put('/admin/profile', 'AdminController@updateProfile');
+    Route::post('/admin/profile/image', 'AdminController@uploadImage');
     Route::resource('/pharmacy', 'Admin\PharmacyController');
     Route::resource('/user', 'UsersController');
     Route::get('excelDownload/{value}', 'UsersController@excelTemplate');
@@ -46,6 +46,9 @@ Route::group(['prefix' => 'data', 'as' => 'data.'], function(){
 Route::get('/css/adminlte.css.map', function () {
     return redirect('/home');
 });
+
+Route::resource('/out_patient', 'OutPatientController');
+Route::get('/out_patient/profile', 'OutPatientController@profile');
 
 
 

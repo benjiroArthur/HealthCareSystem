@@ -64,6 +64,7 @@ class LoginController extends Controller
                    // Increment the failed login attempts and redirect back to the
                    // login form with an error message.
                    $this->incrementLoginAttempts($request);
+
                    return redirect()
                        ->back()
                        ->with('error', 'Invalid Username or Password.');

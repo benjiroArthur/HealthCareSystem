@@ -150,7 +150,8 @@
                 },
                 myColumns: [
                     { field: 'key', title: 'ID'},
-                    { field: 'id', title: 'ID', sortable: true,  class: 'd-none'},
+                    { field: 'id', title: 'ID', sortable: true,  class: ''},
+                    { field: 'active', title: 'Active', sortable: true},
                     { field: 'userable.full_name', title: 'Name', sortable: true},
                     { field: 'userable.email', title: 'Email', sortable: true},
                     { field: 'userable.dob', title: 'Date Of Birth', sortable: true},
@@ -162,7 +163,10 @@
                         align: 'center',
                         clickToSelect: false,
                         formatter: function (e, value, row){
-                            return '<a class="btn btn-sm show" data-toggle="modal" data-target="#"><i class="fas fa-eye text-info"></i></a><a class="btn btn-sm edit"><i class="fas fa-edit text-yellow"></i></a><a class="btn btn-sm destroy"><i @click="deleteUser()" class="fas fa-trash text-danger"></i></a>'
+                            if(toString(row.id) === 'true'){
+                                return 'Yes'
+                            }else{return row.id}
+                            //return '<a class="btn btn-sm show" data-toggle="modal" data-target="#"><i class="fas fa-eye text-info"></i></a><a class="btn btn-sm edit"><i class="fas fa-edit text-yellow"></i></a><a class="btn btn-sm destroy"><i @click="deleteUser()" class="fas fa-trash text-danger"></i></a>'
                         },
                         events: {
                             'click .show': function (e, value, row){
@@ -253,7 +257,7 @@
                 this.error = this.admins = null;
                 this.loading = true;
                 axios
-                    .get('/data/pharmacy')
+                    .get('/data/admin')
                     .then(response => {
                         this.loading = false;
                         this.admins = response.data;

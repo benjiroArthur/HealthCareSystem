@@ -115,7 +115,11 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //deactivate user
+        $user = User::find($id);
+        $user->active = 0;
+        $user->save();
+        return response('success');
     }
 
     /**

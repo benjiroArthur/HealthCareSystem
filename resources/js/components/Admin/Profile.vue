@@ -131,8 +131,7 @@
                     email: '',
                     dob: '',
                     gender: '',
-                    phone_number: '',
-                    trying: ''
+                    phone_number: ''
                 }),
             };
         },
@@ -140,7 +139,7 @@
             profileInfo(){
                 this.loading = true;
                 axios
-                    .get('/data/profile')
+                    .get('/data/admin/profile')
                     .then(response => {
                         this.loading = false;
                         this.admin = response.data;
@@ -160,7 +159,7 @@
                 this.image_file = e.target.result;
 
                 };
-                
+
             },
             submitImage(){
 
@@ -169,10 +168,8 @@
 
                 //Add the form data we need to submit
 
-                
-
                 //Make the request to the POST /single-file URL
-                axios.post( '/data/profile/image',
+                axios.post( '/data/admin/profile/image',
                     this.formData,
                     {
                         headers: {
@@ -182,7 +179,7 @@
                     this.$Progress.start()
                 ).then((response) => {
                     Fire.$emit('profileUpdate');
-                   
+
                    if(response.data == 'Success'){
                         swal.fire(
                         'Update',
@@ -201,13 +198,13 @@
 
                 })
                     .catch(function(error){
-                        
+
                     });
                 $('#profileModal').modal('hide');
             },
             updateProfile(){
                 this.$Progress.start();
-                this.form.put('/data/profile/')
+                this.form.put('/data/admin/profile/')
                     .then((response) => {
                         Fire.$emit('profileUpdate');
                         console.log(response.data);

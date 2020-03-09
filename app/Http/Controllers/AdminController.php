@@ -116,7 +116,9 @@ class AdminController extends Controller
         $user = User::findOrFail(auth()->user()->id)->userable()->first();
 
         $user->update($request->all());
-        return response($request->all());
+        $user->user()->profile_updated = 1;
+        $user->save();
+        return response('success');
     }
 
     /**
@@ -127,7 +129,7 @@ class AdminController extends Controller
      */
     public function uploadImage(Request $request){
         if($request->hasfile('image')){
-            
+
         try {
             $this->validate($request, [
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
