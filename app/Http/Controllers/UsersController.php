@@ -39,7 +39,8 @@ class UsersController extends Controller
     {
         //
        if($request->hasFile('file')){
-           Excel::import(new UsersImport, $request->file('file'));
+           $file = $request->file('file');
+           Excel::import(new UsersImport, $file);
            return response('User Records Created Successfully', 200);
        }
        else{
@@ -100,6 +101,7 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(Request $request, $id)
     {
@@ -115,8 +117,7 @@ class UsersController extends Controller
                 'gender'=>'required|string|max:225',
                 'dob'=>'required|date|max:225',
                 'phone_number'=>'required|string|max:225',
-                'gender'=>'required|string|max:225',
-            ]);
+                ]);
         }
         else if($updateUser->role == 'out_patient'){
             $this->validate($request,[
@@ -126,7 +127,6 @@ class UsersController extends Controller
                 'gender'=>'required|string|max:225',
                 'dob'=>'required|date|max:225',
                 'phone_number'=>'required|string|max:225',
-                'gender'=>'required|string|max:225',
                 'location'=>'required|string|max:225',
             ]);
         }
@@ -138,7 +138,6 @@ class UsersController extends Controller
                 'gender'=>'required|string|max:225',
                 'dob'=>'required|date|max:225',
                 'phone_number'=>'required|string|max:225',
-                'gender'=>'required|string|max:225',
                 'location'=>'required|string|max:225',
                 'specialization'=>'required',
                 'qualification'=>'required|string|max:225',

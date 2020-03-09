@@ -31,13 +31,17 @@ class UsersImport implements WithHeadingRow, ToCollection, ToModel
             //
         ]);
     }
+
+     /**
+    * @param  $rows
+    */
     public function collection(Collection $rows)
     {
         foreach ($rows as $row)
         {
             if($row->filter()->isNotEmpty())
             {
-                if(str::lower($row['role']) == 'admin'){
+                if(str::lower($row['role']) === 'admin'){
                     $admin = Admin::create([
                         'last_name' => $row['last_name'],
                         'first_name' => $row['first_name'],
@@ -54,7 +58,7 @@ class UsersImport implements WithHeadingRow, ToCollection, ToModel
                         'role_id' => $roleId
                     ]);
                 }
-                else if(str::lower($row['role']) == 'doctor'){
+                else if(str::lower($row['role']) === 'doctor'){
                     $doctor_id = "";
 
                     $outid = DocId::latest()->first();
@@ -100,7 +104,7 @@ class UsersImport implements WithHeadingRow, ToCollection, ToModel
                     ]);
                 }
 
-                else if(str::lower($row['role']) == 'pharmacy'){
+                else if(str::lower($row['role']) === 'pharmacy'){
                     $pharmacy_id = "";
                     $outid = PharmId::latest()->first();
                     if($outid == null){
@@ -142,7 +146,7 @@ class UsersImport implements WithHeadingRow, ToCollection, ToModel
                     ]);
                 }
 
-                else if(str::lower($row['role']) == 'out_patient'){
+                else if(str::lower($row['role']) === 'out_patient'){
                     $patient_id = "";
                     $outid = OpId::latest()->first();
                     if($outid == null){
@@ -184,6 +188,9 @@ class UsersImport implements WithHeadingRow, ToCollection, ToModel
                         'password' => Hash::make($row['password']),
                         'role_id' => $roleId
                     ]);
+                }
+                else{
+                    
                 }
 
             }

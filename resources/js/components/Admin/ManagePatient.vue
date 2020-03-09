@@ -7,13 +7,7 @@
                         <h3 class="card-title">Out Patients</h3>
 
                         <div class="card-tools">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -25,6 +19,7 @@
                 <!-- /.card -->
             </div>
         </div>
+
     </div>
 </template>
 
@@ -37,6 +32,14 @@
         },
         data(){
             return{
+                form: new Form({
+                    last_name: '',
+                    first_name: '',
+                    other_name: '',
+                    email: '',
+                    role: 'out_patient',
+                    password: '',
+                }),
                 out_patients: {},
                 out_patient: '',
                 myOptions: {
@@ -50,40 +53,78 @@
                     clickToSelect: true,
                     idField: 'id',
                     selectItemName: 'id',
-                    dataShowPaginationSwitch: "true"
+                    dataShowPaginationSwitch: "true",
+                    index:true
 
                 },
                 myColumns: [
                     { field: 'id', title: 'ID', sortable: true, class: 'd-none'},
-                    { field: 'index', title: 'SRN'},
-                    { field: 'userable.full_name', title: 'Name', sortable: true, filterControl: 'input' },
-                    { field: 'email', title: 'Email', sortable: true, filterControl: 'input'},
-                    { field: 'dob', title: 'Date Of Birth', sortable: true, filterControl: 'input'},
-                    { field: 'gender', title: 'Gender', sortable: true, filterControl: 'input'},
-                    { field: 'phone_number', title: 'Phone Number', sortable: true, filterControl: 'select'},
-                    { field: 'location', title: 'Location', sortable: true, filterControl: 'select'},
+                    { title: 'SRN', render(row, cell, index){
+                            return index.toString();
+                        }},
+                    { field: 'userable.full_name', title: 'Name', sortable: true},
+                    { field: 'email', title: 'Email', sortable: true},
+                    { field: 'dob', title: 'Date Of Birth', sortable: true},
+                    { field: 'gender', title: 'Gender', sortable: true},
+                    { field: 'phone_number', title: 'Phone Number', sortable: true},
+                    { field: 'location', title: 'Location', sortable: true},
+                    { field: 'active', title: 'Active', sortable: true},
                     {
                         field: 'action',
                         title: 'Actions',
                         align: 'center',
-                        width: '140px',
                         clickToSelect: false,
                         formatter: function (e, value, row){
                             return '<a class="btn btn-sm show"><i class="fas fa-eye text-info"></i></a><a class="btn btn-sm edit"><i class="fas fa-edit text-warning"></i></a><a class="btn btn-sm destroy"><i class="fas fa-trash text-danger"></i></a>'
                         },
                         events: {
                             'click .show': function (e, value, row){
-                                return window.location.assign('/posts/'+row.id)
+                                return window.location.assign('/admin/show/'+row.id)
+
                             },
                             'click .edit': function (e, value, row){
-                                return window.location.assign('/posts/'+row.id+'/edit')
+                                return window.location.assign('/admin/show/'+row.id)
+
                             },
                             'click .destroy': function (e, value, row){
-                                axios.delete('/posts/'+row.id, {
-                                    id: row.id
-                                });
+                                swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You won't be able to revert this!",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes, delete it!'
+                                }).then((result) => {
+                                    if (result.value) {
+                                        axios.delete('/data/out_patient/' + row.id).then((response) => {
+                                            if(response.data === "success")
+                                            {
+                                                Fire.$emit('tableUpdate');
+                                                swal.fire(
+                                                    'Deleted!',
+                                                    'User Deleted Successfully',
+                                                    'success'
+                                                );
 
-                                return window.location.replace('/assign-posts/posts.index')
+                                            }
+                                            else{
+                                                swal.fire(
+                                                    'Failed!',
+                                                    response.data,
+                                                    'warning'
+                                                )
+                                            }
+                                        }).catch(() => {
+                                            swal.fire(
+                                                'Failed!',
+                                                'User Could Not Be Deleted.',
+                                                'warning'
+                                            )
+                                        });
+                                    }
+
+                                });
                             },
                         }
                     }
@@ -93,6 +134,7 @@
         },
         methods: {
 
+            //load all users
             index() {
                 this.error = this.out_patients = null;
                 this.loading = true;
@@ -107,14 +149,20 @@
                 });
             },
 
+
             update(){
 
             }
         },
         created()
         {
+            //load all data
             this.index();
-            // console.log(self.out_patients)
+
+            //listen to event and fire this function
+            Fire.$on('tableUpdate', () => {
+                this.getAllUsers();
+            });
         }
 
     }

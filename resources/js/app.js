@@ -14,6 +14,10 @@ import moment from 'moment';
 
 window.Fire = new Vue();
 
+import DataTable from 'laravel-vue-datatable';
+
+Vue.use(DataTable);
+
 
 require('@fortawesome/fontawesome-free/js/all.js');
 require('bootstrap-table/dist/bootstrap-table.min.css');
@@ -27,6 +31,10 @@ require('bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-c
 require('bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.min.js');
 
 import 'sweetalert2/dist/sweetalert2.min.css';
+
+import {RotateSquare2} from 'vue-loading-spinner';
+
+window.RotateSquare2 = RotateSquare2;
 
 
 import VueRouter from 'vue-router';
@@ -104,6 +112,7 @@ let routes = [
     {path:'/admin/profile', component: require('./components/Admin/Profile.vue').default},
     {path:'/admin/upcoming-appointment', component: require('./components/Admin/UpAppointment.vue').default},
     {path:'/admin/past-appointment', component: require('./components/Admin/PastAppointment.vue').default},
+    {path:'/admin/show/:id', component: require('./components/Admin/ShowAdmin').default, name:'admin-show'},
 
     //Doctors routes
     {path:'/doctor/dashboard', component: require('./components/Doctor/Dashboard.vue').default},
@@ -157,6 +166,17 @@ Vue.component('page-number', require('laravel-vue-pagination'));
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+ router.beforeResolve((to, from, next)=>{
+     if(to.path){
+
+     }
+     next();
+ });
+
+ router.afterEach(()=>{
+
+ });
 
 const app = new Vue({
     el: '#app',

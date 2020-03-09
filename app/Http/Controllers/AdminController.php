@@ -14,6 +14,10 @@ use Intervention\Image\Facades\Image;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -123,10 +127,7 @@ class AdminController extends Controller
      */
     public function uploadImage(Request $request){
         if($request->hasfile('image')){
-            return "Yes";
-        }
-        else{return "No";}
-        return response($request->all());
+            
         try {
             $this->validate($request, [
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
@@ -156,7 +157,12 @@ class AdminController extends Controller
         $user->image = $imageNameToStore;
         $user->save();
 
-        return response($imageNameToStore);
+        return response('Success');
+        }
+        else
+        {
+            return response('No file selected');
+        }
     }
 
 }

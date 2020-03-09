@@ -78,6 +78,7 @@
                 </div>
             </div>
         </div>
+        <!--modal for profile image starts here-->
         <div class="modal" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -87,14 +88,14 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form @submit.prevent="submitImage" ref="fileForm" class="imageData">
+
                     <div class="modal-body">
                         <div class="form-group">
                             <div class="row">
                             <div class="col-6">
                                 <label>Profile Picture</label>
 
-                                <input  id="image" type="file" name="image" accept="image/*" class="form-control" style="border: none" @change="loadImage()">
+                                <input ref="image"  id="image" type="file" name="image" accept="image/*" class="form-control" style="border: none" @change="loadImage($event)">
                             </div>
                             <div class="col-6">
                                 <img :src="this.image_file" class="uploading-image img-thumbnail" height="128" alt="Preview" />
@@ -106,10 +107,11 @@
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success" @click="submitImage">Upload <i class="fas fa-user-plus"></i></button>
                     </div>
-                    </form>
+
                 </div>
             </div>
         </div>
+        <!--modal for profile image ends here-->
     </div>
 </template>
 
@@ -118,9 +120,6 @@
         data(){
             return{
                 formData: new FormData(),
-                fileForm: new Form({
-                    image: null
-                }),
                 admin: {},
                 file: null,
                 image_file: '',
@@ -145,7 +144,6 @@
                     .then(response => {
                         this.loading = false;
                         this.admin = response.data;
-                        console.log(response.data);
                         this.form.fill(this.admin);
 
                     }).catch(error => {
@@ -155,7 +153,6 @@
             },
             loadImage(e){
                 //
-
                 this.file = e.target.files[0];
                 const reader = new FileReader();
                 reader.readAsDataURL(this.file);
@@ -163,40 +160,48 @@
                 this.image_file = e.target.result;
 
                 };
-                console.log(this.file);
+                
             },
             submitImage(){
 
                 //Initialize the form data
-                let form = $('.imageData').serialize();
-                let data = new FormData($(form)[1]);
+                this.formData.append('image', this.file);
 
                 //Add the form data we need to submit
 
-                console.log(data);
+                
 
                 //Make the request to the POST /single-file URL
-                axios.put( '/data/profile/image',
-                    this.fileForm,
+                axios.post( '/data/profile/image',
+                    this.formData,
                     {
                         headers: {
                                     'Content-Type': 'multipart/form-data'
                                 }
                     },
-                    //this.$Progress.start()
-                ).then(function(response){
+                    this.$Progress.start()
+                ).then((response) => {
                     Fire.$emit('profileUpdate');
-                    console.log(response.data);
-                    this.$Progress.finish();
-                    swal.fire(
+                   
+                   if(response.data == 'Success'){
+                        swal.fire(
                         'Update',
                         'Profile Picture Updated Successfully',
                         'success'
                     );
+                   }
+                   else{
+                       swal.fire(
+                        'Update',
+                        response.data,
+                        'warning'
+                    );
+                   }
+                   this.$Progress.finish();
 
                 })
                     .catch(function(error){
-                        console.log(error.data);
+                        
                     });
                 $('#profileModal').modal('hide');
             },

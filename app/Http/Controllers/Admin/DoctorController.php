@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Role;
+use App\User;
 
 class DoctorController extends Controller
 {
@@ -14,7 +16,12 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        //
+        //get all doctors
+        $role = Role::where('name', 'doctor')->first();
+
+        $user = User::where('role_id', $role->id)->get();
+
+        return response()->json($user);
     }
 
     /**

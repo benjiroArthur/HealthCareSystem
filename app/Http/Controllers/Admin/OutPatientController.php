@@ -3,10 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Role;
+use App\User;
 use Illuminate\Http\Request;
 
 class OutPatientController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,12 @@ class OutPatientController extends Controller
      */
     public function index()
     {
-        //
+        //get all patients
+        $role = Role::where('name', 'out_patient')->first();
+
+        $user = User::where('role_id', $role->id)->get();
+
+        return response()->json($user);
     }
 
     /**

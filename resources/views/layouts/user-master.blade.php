@@ -22,6 +22,18 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini">
+<div class="spinner-grow text-primary" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+<!-- <div class="site-preloader-wrap">
+    <div class="spinner">
+        <img src="{{asset('assets/images/user.png')}}" style="width: 150px">
+
+    </div>
+
+</div> -->
+<!-- Preloader -->
+
 <div class="wrapper" id="app">
 @include('includes.navbar')
 
@@ -35,13 +47,15 @@
         <div class="container-fluid mt-3">
             @include('includes.messages')
 
-            {{--<div id="div-route-content">--}}
-                <router-view>
-                    @yield('content')
+            
+               <transition name="router-anim" enter-active-class="animated fadeInDown" leave-active-class="animated fadeOutDown">
+               <router-view>
+                    
                     {{--Vue elements goes here--}}
                 </router-view>
+               </transition>
                 <vue-progress-bar></vue-progress-bar>
-            {{--</div>--}}
+            
         </div>
 
     </div>
@@ -80,24 +94,11 @@
 {{--scripts--}}
 <!-- Scripts -->
 
-{{--<script>
+<script>
 
-    $(document).ready(function(){
-        $('#div-route-content').html('<router-view>\n' +
-            '\n' +
-            '                    --}}{{--Vue elements goes here--}}{{--\n' +
-            '                </router-view>');
-    });
-
-    function showContent()
-    {
-        $("#home-content").show();
-    }
-
-    function hideContent(){
-        $('#home-content').hide();
-    }
-</script>--}}
+  
+    
+</script>
 @yield('script')
 
 </body>

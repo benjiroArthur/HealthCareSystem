@@ -8,8 +8,8 @@
                         <div class="card-tools">
                             <div class="input-group input-group-sm">
                                 <button class="btn btn-danger btn-sm mr-2" title="Download template" @click="downloadExcel"><i class="fas fa-download"></i></button>
-                                <button class="btn btn-success btn-sm mr-2" title="Add Bulk Users" data-toggle="modal" data-target="#adminUserModalBulk"><i class="fas fa-file-excel"></i></button>
-                                <button class="btn btn-primary btn-sm mr-2" title="Add New User" data-toggle="modal" data-target="#adminUserModal"><i class="fas fa-plus"></i></button>
+                                <button class="btn btn-success btn-sm mr-2" title="Add Bulk Users" data-toggle="modal" data-target="#pharmacyUserModalBulk"><i class="fas fa-file-excel"></i></button>
+                                <button class="btn btn-primary btn-sm mr-2" title="Add New User" data-toggle="modal" data-target="#pharmacyUserModal"><i class="fas fa-plus"></i></button>
                             </div>
                         </div>
                     </div>
@@ -23,7 +23,7 @@
             </div>
         </div>
         <!--Bulk upload modal-->
-        <div class="modal" id="adminUserModalBulk" tabindex="-1" role="dialog" aria-labelledby="adminUserModalBulkLabel" aria-hidden="true">
+        <div class="modal" id="pharmacyUserModalBulk" tabindex="-1" role="dialog" aria-labelledby="pharmacyUserModalBulkLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header text-center">
@@ -45,8 +45,8 @@
             </div>
         </div>
 
-        <!-- form modal -->
-        <div class="modal" id="adminUserModal" tabindex="-1" role="dialog" aria-labelledby="adminUserModalLabel" aria-hidden="true">
+        <!-- form modal Add User -->
+        <div class="modal" id="pharmacyUserModal" tabindex="-1" role="dialog" aria-labelledby="pharmacyUserModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header text-center">
@@ -98,152 +98,7 @@
                 </div>
             </div>
         </div>
-        <!--EDIT FORM MODAL-->
-        <div class="modal" id="adminEditModal" tabindex="-1" role="dialog" aria-labelledby="adminEditModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                        <h5 class="modal-title">Add Administrators</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form @submit.prevent="update" ref="userForm">
-                    <div class="modal-body">
-                        <div class="login-logo">
-                            <img src="" width="100" height="auto" alt="user">
-                        </div>
-                        <div class="form-group">
-                        <label>Last Name</label>
-                        <input v-model="userForm.last_name" type="text" name="last_name"
-                            class="form-control" :class="{ 'is-invalid': userForm.errors.has('last_name') }">
-                        <has-error :form="userForm" field="last_name"></has-error>
-                        </div>
-                        <div class="form-group">
-                        <label>Firat Name</label>
-                        <input v-model="userForm.first_name" type="text" name="first_name"
-                            class="form-control" :class="{ 'is-invalid': userForm.errors.has('first_name') }">
-                        <has-error :form="userForm" field="first_name"></has-error>
-                        </div>
-                        <div class="form-group">
-                        <label>Other Name</label>
-                        <input v-model="userForm.other_name" type="text" name="other_name"
-                            class="form-control" :class="{ 'is-invalid': userForm.errors.has('other_name') }">
-                        <has-error :form="userForm" field="other_name"></has-error>
-                        </div>
-                        <div class="form-group">
-                        <label>Email</label>
-                        <input v-model="userForm.email" type="email" name="email"
-                            class="form-control" :class="{ 'is-invalid': userForm.errors.has('email') }">
-                        <has-error :form="userForm" field="email"></has-error>
-                        </div>
 
-
-                        <div class="form-group">
-                            <label>Date Of Birth</label>
-                            <input v-model="userForm.dob" type="date" name="dob"
-                                   class="form-control" :class="{ 'is-invalid': userForm.errors.has('dob') }">
-                            <has-error :form="userForm" field="dob"></has-error>
-                        </div>
-                        <div class="form-group">
-                            <label>Gender</label>
-                            <select v-model="userForm.gender" type="text" name="gender"
-                                           class="form-control" :class="{ 'is-invalid': userForm.errors.has('gender') }" >
-                                <option>Male</option>
-                                <option>Female</option>
-
-                            </select>
-                            <has-error :form="userForm" field="gender"></has-error>
-                        </div>
-                        <div class="form-group">
-                            <label>Phone Number</label>
-                            <input v-model="userForm.phone_number" type="text" name="phone_number"
-                                   class="form-control" :class="{ 'is-invalid': userForm.errors.has('phone_number') }">
-                            <has-error :form="userForm" field="phone_number"></has-error>
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success">Update <i class="fas fa-upload"></i></button>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!--show details-->
-        <div class="modal" id="adminShowModal" tabindex="-1" role="dialog" aria-labelledby="adminShowModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                        <h5 class="modal-title">Add Administrators</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form @submit.prevent="" ref="userForm">
-                    <div class="modal-body">
-                        <div class="login-logo">
-                            <img src="" width="100" height="auto" alt="user">
-                        </div>
-                        <div class="form-group">
-                        <label>Last Name</label>
-                        <input v-model="userForm.last_name" type="text" name="last_name"
-                            class="form-control" :class="{ 'is-invalid': userForm.errors.has('last_name') }">
-                        <has-error :form="userForm" field="last_name"></has-error>
-                        </div>
-                        <div class="form-group">
-                        <label>Firat Name</label>
-                        <input v-model="userForm.first_name" type="text" name="first_name"
-                            class="form-control" :class="{ 'is-invalid': userForm.errors.has('first_name') }">
-                        <has-error :form="userForm" field="first_name"></has-error>
-                        </div>
-                        <div class="form-group">
-                        <label>Other Name</label>
-                        <input v-model="userForm.other_name" type="text" name="other_name"
-                            class="form-control" :class="{ 'is-invalid': userForm.errors.has('other_name') }">
-                        <has-error :form="userForm" field="other_name"></has-error>
-                        </div>
-                        <div class="form-group">
-                        <label>Email</label>
-                        <input v-model="userForm.email" type="email" name="email"
-                            class="form-control" :class="{ 'is-invalid': userForm.errors.has('email') }">
-                        <has-error :form="userForm" field="email"></has-error>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label>Date Of Birth</label>
-                            <input v-model="userForm.dob" type="date" name="dob"
-                                   class="form-control" :class="{ 'is-invalid': userForm.errors.has('dob') }">
-                            <has-error :form="userForm" field="dob"></has-error>
-                        </div>
-                        <div class="form-group">
-                            <label>Gender</label>
-                            <select v-model="userForm.gender" type="text" name="gender"
-                                           class="form-control" :class="{ 'is-invalid': userForm.errors.has('gender') }" >
-                                <option>Male</option>
-                                <option>Female</option>
-
-                            </select>
-                            <has-error :form="userForm" field="gender"></has-error>
-                        </div>
-                        <div class="form-group">
-                            <label>Phone Number</label>
-                            <input v-model="userForm.phone_number" type="text" name="phone_number"
-                                   class="form-control" :class="{ 'is-invalid': userForm.errors.has('phone_number') }">
-                            <has-error :form="userForm" field="phone_number"></has-error>
-                        </div>
-
-                    </div>
-<!--                    <div class="modal-footer">-->
-<!--                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
-<!--                        <button type="submit" class="btn btn-success">Update <i class="fas fa-upload"></i></button>-->
-<!--                    </div>-->
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
 
 
@@ -273,17 +128,7 @@
                     role: 'admin',
                     password: '',
                 }),
-                userForm: new Form({
-                    last_name: '',
-                    first_name: '',
-                    other_name: '',
-                    email: '',
-                    dob: '',
-                    gender: '',
-                    phone_number: '',
-                    image: '',
-                    full_name: ''
-                }),
+
                 props: {
                     adminShow: {}
                 },
@@ -321,18 +166,11 @@
                         },
                         events: {
                             'click .show': function (e, value, row){
-                                swal.fire(
-                                    'Access Denied!',
-                                    'You Cannot Access This Content',
-                                    'warning'
-                                );
+                                return window.location.assign('/admin/show/'+row.id)
+
                             },
                             'click .edit': function (e, value, row){
-                                swal.fire(
-                                    'Access Denied!',
-                                    'You Cannot Access This Content',
-                                    'warning'
-                                );
+                                return window.location.assign('/admin/show/'+row.id)
 
                             },
                             'click .destroy': function (e, value, row){
@@ -387,7 +225,7 @@
                this.$Progress.start();
                this.form.post('/data/admin')
                .then(function(){
-                   $('#adminUserModal').modal('hide');
+                   $('#pharmacyUserModal').modal('hide');
 
                    swal.fire({
                        toast: true,
@@ -411,11 +249,11 @@
                });
             },
 
-            getAllUsers() {
+            index() {
                 this.error = this.admins = null;
                 this.loading = true;
                 axios
-                    .get('/data/admin')
+                    .get('/data/pharmacy')
                     .then(response => {
                         this.loading = false;
                         this.admins = response.data;
@@ -457,7 +295,7 @@
                         console.log('FAILURE!!');
                         this.$Progress.fail();
                     });
-                $('#adminUserModalBulk').modal('hide');
+                $('#pharmacyUserModalBulk').modal('hide');
 
 
             },
@@ -495,29 +333,23 @@
                     link.click();
                 },
 
-            getData(id){
 
-                axios.get('/data/admin/'+id).then(response => {this.adminShow = response.data;
-                this.userForm.reset();
-                this.userForm.fill(response.data);
-                }).catch(console.log());
-            }
 
 
 
         },
         created()
         {
-            this.getAllUsers();
+            this.index();
             //this.getData();
 
             // Echo.private('adminChannel').listen('newUser', function(e){
-            //     // this.getAllUsers();
+            //     // this.index();
             //     comsole.log('Yes');
             // });
 
             Fire.$on('tableUpdate', () => {
-                this.getAllUsers();
+                this.index();
             });
         }
     }
