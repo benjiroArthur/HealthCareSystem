@@ -98,7 +98,7 @@ class OutPatientController extends Controller
     public function profile(){
         //return response('yes');
         $id = Auth()->user()->id;
-        $user = User::findOrFail($id)->userable()->first();
+        $user = User::find($id)->userable()->first();
         return response()->json($user);
     }
 }

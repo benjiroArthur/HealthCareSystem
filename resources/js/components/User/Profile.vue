@@ -103,11 +103,10 @@
         },
         methods:{
             profileInfo(){
-                this.loading = true;
-                axios.get('/out_patient/profile')
+
+                axios.get('/records/out_patient/profile')
                     .then(response => {
                         console.log(response.data);
-                        this.loading = false;
                         this.out_patient = response.data;
                         this.form.fill(this.out_patient);
 
@@ -136,7 +135,7 @@
                 //Add the form data we need to submit
 
                 //Make the request to the POST /single-file URL
-                axios.post( '/data/profile/image',
+                axios.post( '/records/out_patient/profile/image',
                     this.formData,
                     {
                         headers: {
@@ -147,7 +146,7 @@
                 ).then((response) => {
                     Fire.$emit('profileUpdate');
 
-                    if(response.data == 'Success'){
+                    if(response.data === 'Success'){
                         swal.fire(
                             'Update',
                             'Profile Picture Updated Successfully',
@@ -171,7 +170,7 @@
             },
             updateProfile(){
                 this.$Progress.start();
-                this.form.put('/data/profile/')
+                this.form.put('/records/out_patient/profile')
                     .then((response) => {
                         Fire.$emit('profileUpdate');
                         console.log(response.data);

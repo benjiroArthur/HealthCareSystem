@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-{{--    @if(Auth::check())--}}
-{{--        <meta name="user-image" content="{{ Auth()->user()->userable->image }}">--}}
-{{--    @endif--}}
+    {{--@if(Auth::check())--}}
+        {{--<meta name="user-image" content="{{ Auth()->user()->userable->image }}">--}}
+    {{--@endif--}}
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -22,9 +22,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini">
-<div class="spinner-grow text-primary" role="status">
-  <span class="sr-only">Loading...</span>
-</div>
+
 <!-- <div class="site-preloader-wrap">
     <div class="spinner">
         <img src="{{asset('assets/images/user.png')}}" style="width: 150px">

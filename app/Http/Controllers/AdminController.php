@@ -25,7 +25,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-
+        $id = auth()->user()->id;
+        $user = User::find($id);
+        return response()->json($user);
     }
 
     /**
@@ -100,8 +102,10 @@ class AdminController extends Controller
 
 
     }
+
     public function profile(){
-        $user = User::findOrFail(auth()->user()->id)->userable()->first();
+        $id = Auth()->user()->id;
+        $user = User::find($id);
         return response()->json($user);
     }
 

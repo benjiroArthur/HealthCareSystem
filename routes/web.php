@@ -35,9 +35,6 @@ Route::group(['prefix' => 'data', 'as' => 'data.'], function(){
     Route::resource('/out_patient', 'Admin\OutPatientController');
     Route::resource('/doctor', 'Admin\DoctorController');
     Route::resource('/admin', 'Admin\AdminController');
-    Route::get('/admin/profile', 'AdminController@profile');
-    Route::put('/admin/profile', 'AdminController@updateProfile');
-    Route::post('/admin/profile/image', 'AdminController@uploadImage');
     Route::resource('/pharmacy', 'Admin\PharmacyController');
     Route::resource('/user', 'UsersController');
     Route::get('excelDownload/{value}', 'UsersController@excelTemplate');
@@ -47,8 +44,34 @@ Route::get('/css/adminlte.css.map', function () {
     return redirect('/home');
 });
 
-Route::resource('/out_patient', 'OutPatientController');
-Route::get('/out_patient/profile', 'OutPatientController@profile');
+
+Route::group(['prefix' => 'records', 'as' => 'records.'], function(){
+    //admin routes
+    Route::resource('/admin', 'AdminController');
+    Route::get('/admin/profile', 'AdminController@profile');
+    Route::put('/admin/profile', 'AdminController@updateProfile');
+    Route::post('/admin/profile/image', 'AdminController@uploadImage');
+
+    //patients routes
+    Route::resource('/out_patient', 'OutPatientController');
+    Route::get('/out_patient/profile', 'OutPatientController@profile');
+    Route::put('/out_patient/profile', 'OutPatientController@updateProfile');
+    Route::post('/out_patient/profile/image', 'OutPatientController@uploadImage');
+
+    //doctors routes
+    Route::resource('/doctor', 'DoctorController');
+    Route::get('/doctor/profile', 'DoctorController@profile');
+    Route::put('/doctor/profile', 'DoctorController@updateProfile');
+    Route::post('/doctor/profile/image', 'DoctorController@uploadImage');
+
+    //pharmacy routes
+    Route::resource('/pharmacy', 'PharmacyController');
+    Route::get('/pharmacy/profile', 'PharmacyController@profile');
+    Route::put('/pharmacy/profile', 'PharmacyController@updateProfile');
+    Route::post('/pharmacy/profile/image', 'PharmacyController@uploadImage');
+
+
+});
 
 
 

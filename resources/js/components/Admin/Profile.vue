@@ -139,7 +139,7 @@
             profileInfo(){
                 this.loading = true;
                 axios
-                    .get('/data/admin/profile')
+                    .get('/records/admin/profile')
                     .then(response => {
                         this.loading = false;
                         this.admin = response.data;
@@ -169,7 +169,7 @@
                 //Add the form data we need to submit
 
                 //Make the request to the POST /single-file URL
-                axios.post( '/data/admin/profile/image',
+                axios.post( '/records/admin/profile/image',
                     this.formData,
                     {
                         headers: {
@@ -204,7 +204,7 @@
             },
             updateProfile(){
                 this.$Progress.start();
-                this.form.put('/data/admin/profile/')
+                this.form.put('/records/admin/profile')
                     .then((response) => {
                         Fire.$emit('profileUpdate');
                         console.log(response.data);
@@ -227,6 +227,7 @@
             Fire.$on('profileUpdate', () => {
                 this.profileInfo();
             });
+
         }
     }
 </script>

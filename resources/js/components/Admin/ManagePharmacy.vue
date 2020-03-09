@@ -16,7 +16,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table table-responsive table-striped p-0">
-                        <bootstrap-table :data="admins" :options="myOptions" :columns="myColumns"/>
+                        <bootstrap-table :data="pharmacies" :options="myOptions" :columns="myColumns"/>
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -316,7 +316,7 @@
                 // For other browsers:
                 // Create a link pointing to the ObjectURL containing the blob.
                 const data = window.URL.createObjectURL(newBlob);
-                var link = document.createElement('a');
+                let link = document.createElement('a');
                 link.href = data;
                 link.download = filename;
                 link.click();
