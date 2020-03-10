@@ -10,7 +10,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import moment from 'moment';
-Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttribute('content');
+ Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttribute('content');
 Vue.prototype.$status = document.querySelector("meta[name='status']").getAttribute('content');
 
 
@@ -161,6 +161,7 @@ Vue.filter('myDate', function(text){
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('contact-us', require('./components/ContactUs.vue').default);
 Vue.component('page-number', require('laravel-vue-pagination'));
 
 /**

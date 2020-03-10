@@ -6,6 +6,9 @@
     @auth
         <meta name="user-id" content="{{ Auth::user()->id }}">
         <meta name="status" content="{{ Auth::user()->active }}">
+        @else
+        <meta name="user-id" content="1">
+        <meta name="status" content="1">
     @endauth
 
     <!-- CSRF Token -->
@@ -46,15 +49,15 @@
         <div class="container-fluid mt-3">
             @include('includes.messages')
 
-            
+
                <transition name="router-anim" enter-active-class="animated fadeInDown" leave-active-class="animated fadeOutDown">
                <router-view>
-                    
+
                     {{--Vue elements goes here--}}
                 </router-view>
                </transition>
                 <vue-progress-bar></vue-progress-bar>
-            
+
         </div>
 
     </div>
@@ -95,8 +98,8 @@
 
 <script>
 
-  
-    
+
+
 </script>
 @yield('script')
 
