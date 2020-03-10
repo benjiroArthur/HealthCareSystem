@@ -15,7 +15,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table table-responsive table-striped p-0">
-                        <bootstrap-table :data="admins" :options="myOptions" :columns="myColumns"/>
+                        <bootstrap-table :data="admins" :options="myOptions" :columns="myColumns" sticky-header responsive />
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -162,11 +162,10 @@
                         title: 'Actions',
                         align: 'center',
                         clickToSelect: false,
+                        render: function(e, value, row){},
                         formatter: function (e, value, row){
-                            // if(toString(row.id) === 'true'){
-                            //     return 'Yes'
-                            // }else{return row.id}
-                            return '<a class="btn btn-sm show" data-toggle="modal" data-target="#"><i class="fas fa-eye text-info"></i></a><a class="btn btn-sm edit"><i class="fas fa-edit text-yellow"></i></a><a class="btn btn-sm destroy"><i @click="deleteUser()" class="fas fa-trash text-danger"></i></a>'
+
+                            return '<a class="btn btn-sm show" data-toggle="modal" data-target="#"><i class="fas fa-eye text-info"></i></a>'
                         },
                         events: {
                             'click .show': function (e, value, row){
@@ -345,6 +344,7 @@
         created()
         {
             this.index();
+            //alert(this.$status);
             //this.getData();
 
             // Echo.private('adminChannel').listen('newUser', function(e){

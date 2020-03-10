@@ -10,7 +10,7 @@
                      <form @submit.prevent="updateProfile" ref="form">
                     <div class="modal-body">
                         <div class="login-logo">
-                            <img :src="this.admin.image" width="100" height="auto" alt="user" class="userImage">
+                            <img :src="this.admin.image" width="100" height="auto" alt="user" class="userImage img-circle">
                             <span class="fas fa-camera" data-toggle="modal" data-target="#profileModal" tooltip="Edit Profile Picture"
                                   style="position: absolute; transform: translate(-70%, 200%); -ms-transform: translate(-70%, 200%); width:20px;"></span>
                         </div>
@@ -139,7 +139,7 @@
             profileInfo(){
                 this.loading = true;
                 axios
-                    .get('/records/admin/profile')
+                    .get('/records/admin/'+ this.$userId)
                     .then(response => {
                         this.loading = false;
                         this.admin = response.data;
@@ -169,7 +169,7 @@
                 //Add the form data we need to submit
 
                 //Make the request to the POST /single-file URL
-                axios.post( '/records/admin/profile/image',
+                axios.post( '/data/user/profile/image',
                     this.formData,
                     {
                         headers: {
@@ -179,8 +179,7 @@
                     this.$Progress.start()
                 ).then((response) => {
                     Fire.$emit('profileUpdate');
-
-                   if(response.data == 'Success'){
+                   if(response.data === 'Success'){
                         swal.fire(
                         'Update',
                         'Profile Picture Updated Successfully',
@@ -204,7 +203,7 @@
             },
             updateProfile(){
                 this.$Progress.start();
-                this.form.put('/records/admin/profile')
+                this.form.put('/records/admin/'+this.$userId)
                     .then((response) => {
                         Fire.$emit('profileUpdate');
                         console.log(response.data);

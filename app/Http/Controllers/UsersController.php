@@ -7,6 +7,7 @@ use App\Imports\UsersImport;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 use Intervention\Image\Facades\Image;
 use Maatwebsite\Excel\Facades\Excel;
@@ -162,5 +163,55 @@ class UsersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function uploadImage(Request $request){
+        $user = Auth()->user()->userable;
+
+        $oldImage = $user->image;
+        $oldSplit = explode('/', $oldImage);
+
+
+        if($request->hasfile('image')){
+
+            try {
+                $this->validate($request, [
+                    'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
+                ]);
+            } catch (ValidationException $e) {
+                return response($e);
+            }
+
+            $image_file = $request->file('image');
+
+            $imageNameWithExt = $image_file->getClientOriginalName();
+            //Get just extension
+            $extension = $image_file->getClientOriginalExtension();
+
+            //Filename to store
+            $imageNameToStore = time().'.'.$extension;
+
+            //upload file
+
+//      $path = $image_file->storeAs('public/assets/ProfilePictures/', $imageNameToStore);
+//
+            $image_path = public_path().'/assets/ProfilePictures/'.$imageNameToStore;
+            //resize image
+            Image::make($image_file->getRealPath())->resize(140,128)->save($image_path);
+
+            if(file_exists($oldImage) && $oldSplit[sizeof($oldSplit) -1] !== 'noimage.jpg'){
+                $path = public_path().'/assets/ProfilePictures/'.$oldSplit[sizeof($oldSplit) -1];
+                File::delete($path);
+            }
+
+            $user->image = $imageNameToStore;
+            $user->save();
+
+            return response('Success');
+        }
+        else
+        {
+            return response('No file selected');
+        }
     }
 }

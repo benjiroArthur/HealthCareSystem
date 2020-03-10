@@ -55,7 +55,9 @@ class OutPatientController extends Controller
      */
     public function show($id)
     {
-        //
+        $out_patient = User::findOrFail($id)->userable()->first();
+
+        return response()->json($out_patient);
     }
 
     /**
@@ -78,7 +80,12 @@ class OutPatientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id)->userable()->first();
+
+        $user->update($request->all());
+        $user->user()->profile_updated = 1;
+        $user->save();
+        return response('success');
     }
 
     /**
@@ -101,4 +108,6 @@ class OutPatientController extends Controller
         $user = User::find($id)->userable()->first();
         return response()->json($user);
     }
+
+
 }

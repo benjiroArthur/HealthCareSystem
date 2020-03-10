@@ -62,9 +62,9 @@ class AdminController extends Controller
     public function show($id)
     {
 
-        $admin = User::findOrFail($id)->userable()->get();
+        $admin = User::findOrFail($id)->userable()->first();
 
-        return response($admin);
+        return response()->json($admin);
     }
 
     /**
@@ -88,7 +88,12 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id)->userable()->first();
+
+        $user->update($request->all());
+        $user->user()->profile_updated = 1;
+        $user->save();
+        return response('success');
     }
 
     /**
@@ -103,10 +108,16 @@ class AdminController extends Controller
 
     }
 
+    /**
+     * Display the specified resource.
+     *
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function profile(){
         $id = Auth()->user()->id;
         $user = User::find($id);
-        return response()->json($user);
+        return response()->json($id);
     }
 
     /**
@@ -131,44 +142,6 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function uploadImage(Request $request){
-        if($request->hasfile('image')){
 
-        try {
-            $this->validate($request, [
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
-            ]);
-        } catch (ValidationException $e) {
-            return response($e);
-        }
-        $image_file = $request->file('image');
-
-        $imageNameWithExt = $image_file->getClientOriginalName();
-        //Get just extension
-        $extension = $image_file->getClientOriginalExtension();
-
-        //Filename to store
-        $imageNameToStore = time().'.'.$extension;
-
-        //upload file
-
-//      $path = $image_file->storeAs('public/assets/ProfilePictures/', $imageNameToStore);
-//
-        $image_path = public_path().'/assets/ProfilePictures/'.$imageNameToStore;
-        //resize image
-        Image::make($image_file->getRealPath())->resize(140,128)->save($image_path);
-
-        $id = Auth()->user()->userable->id;
-        $user = Admin::findOrFail($id);
-        $user->image = $imageNameToStore;
-        $user->save();
-
-        return response('Success');
-        }
-        else
-        {
-            return response('No file selected');
-        }
-    }
 
 }

@@ -10,7 +10,7 @@
                         <form @submit.prevent="updateProfile" ref="form">
                             <div class="modal-body">
                                 <div class="login-logo">
-                                    <img :src="this.out_patient.image" width="100" height="auto" alt="user" class="userImage">
+                                    <img :src="this.out_patient.image" width="100" height="auto" alt="user" class="userImage img-circle">
                                     <span class="fas fa-camera" data-toggle="modal" data-target="#profileModal" tooltip="Edit Profile Picture"
                                           style="position: absolute; transform: translate(-70%, 200%); -ms-transform: translate(-70%, 200%); width:20px;"></span>
                                 </div>
@@ -78,6 +78,40 @@
                 </div>
             </div>
         </div>
+        <!--modal for profile image starts here-->
+        <div class="modal" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title">Upload Profile Picture</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Profile Picture</label>
+
+                                    <input ref="image"  id="image" type="file" name="image" accept="image/*" class="form-control" style="border: none" @change="loadImage($event)">
+                                </div>
+                                <div class="col-6">
+                                    <img :src="this.image_file" class="uploading-image img-thumbnail" height="128" alt="Preview" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success" @click="submitImage">Upload <i class="fas fa-user-plus"></i></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--modal for profile image ends here-->
     </div>
 </template>
 
@@ -104,7 +138,7 @@
         methods:{
             profileInfo(){
 
-                axios.get('/records/out_patient/profile')
+                axios.get('/records/out_patient/'+ this.$userId)
                     .then(response => {
                         console.log(response.data);
                         this.out_patient = response.data;
@@ -135,7 +169,7 @@
                 //Add the form data we need to submit
 
                 //Make the request to the POST /single-file URL
-                axios.post( '/records/out_patient/profile/image',
+                axios.post( '/data/user/profile/image',
                     this.formData,
                     {
                         headers: {
@@ -170,7 +204,7 @@
             },
             updateProfile(){
                 this.$Progress.start();
-                this.form.put('/records/out_patient/profile')
+                this.form.put('/records/out_patient/'+ this.$userId)
                     .then((response) => {
                         Fire.$emit('profileUpdate');
                         console.log(response.data);

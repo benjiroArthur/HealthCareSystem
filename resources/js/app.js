@@ -10,6 +10,8 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import moment from 'moment';
+Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttribute('content');
+Vue.prototype.$status = document.querySelector("meta[name='status']").getAttribute('content');
 
 
 window.Fire = new Vue();
