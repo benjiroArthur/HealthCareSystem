@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="login-box">
                 <div class="login-logo">
@@ -77,4 +77,9 @@
             <!-- /.login-box -->
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        $('#')
+    </script>
 @endsection

@@ -27,6 +27,13 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style type="text/css">
 
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html, body{
+            height: 100% !important;
+        }
         #bgg:hover
         {
             color: black;
@@ -46,12 +53,29 @@
         #bgg:active{
             border-bottom: 2px solid blue;
         }
+        #footer{
+            position: relative;
+            height: 70px;
+            margin-top: -70px;
+            clear: both;
+            border-top: 1px solid grey;
+            padding-top: 10px;
+        }
+        .cont{
+            min-height: 100%
+        }
+        #main{
+            overflow: auto;
+            padding-bottom: 70px;
+        }
+
     </style>
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="cont">
+        <div class="wrapper" id="main">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
-            <div class="container">
+            <div class="container" style="height: 100%">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'HealthCare') }} {{--Logo comes Here--}}
                 </a>
@@ -68,9 +92,11 @@
                     {{--middle navbar--}}
                     <ul class="navbar-nav mr-auto">
 
+                        @auth
                         <li class="nav-item active" id="bgg1">
                             <a class="nav-link" href="{{url('/home')}}" id="bgg">Home <span class="sr-only">(current)</span></a>
                         </li>
+                        @endauth
                         <li class="nav-item" id="bgg1">
                             <a class="nav-link" href="#about" id="bgg">About</a>
                         </li>
@@ -125,25 +151,28 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            <div class="wrapper">
+        <main class="py-4" style="height: 100%">
+
                 <div class="container-fluid mt-3">
             @include('includes.messages')
             @yield('content')
                 </div>
-            </div>
+
         </main>
-        <div class="footer navbar-fixed-bottom">
-            <div class="row container mb-2">
-                <!-- Default to the left -->
-                <div class="clo-sm-12 col-md-12 col-lg-8 text-center"> <strong>Copyright &copy; {{date('Y')}} <a href="#">  Health Care System  </a>.</strong> All rights reserved.</div>
-                <div class="clo-sm-12 col-md-12 col-lg-4 float-right d-sm-inline pl-2 text-center">
-                    Your Health Our Concern
-                    <a href="#banner" style="float: right; width: 20px"><span class="fas fa-arrow-alt-circle-up"></span></a>
-                </div>
-            </div>
         </div>
+
     </div>
+    <footer id="footer">
+        <div class="row container mb-2">
+            <!-- Default to the left -->
+            <div class="clo-sm-12 col-md-12 col-lg-8 text-center"> <strong>Copyright &copy; {{date('Y')}} <a href="#">  Health Care System  </a>.</strong> All rights reserved.</div>
+            <div class="clo-sm-12 col-md-12 col-lg-4 float-right d-sm-inline pl-2 text-center">
+                Your Health Our Concern
+                <a href="#banner"><span class="fas fa-arrow-alt-circle-up" style="float: right; width: 40px; height: 40px;"></span></a>
+            </div>
+
+        </div>
+    </footer>
 @yield('script')
 </body>
 </html>

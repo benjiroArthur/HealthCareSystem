@@ -41,7 +41,7 @@
     </div>
     </div>
         <div class="mt-5 row justify-content-center" id="about">
-            <div class="col-12"><h3>About Us</h3></div>
+            <div class="col-12 text-center"><h3>About Us</h3></div>
             <div class="col-12">
                 <div class="row justify-content-center">
                     <div class="col-lg-3 col-sm-12 card mr-2 ">

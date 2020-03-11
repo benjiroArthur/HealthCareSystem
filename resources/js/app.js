@@ -39,6 +39,13 @@ import {RotateSquare2} from 'vue-loading-spinner';
 window.RotateSquare2 = RotateSquare2;
 
 
+
+// Import this component
+import datePicker from 'vue-bootstrap-datetimepicker';
+
+// Import date picker css
+import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
+
 import VueRouter from 'vue-router';
 import axios from "axios";
 import { VuejsDatatableFactory } from 'vuejs-datatable';
