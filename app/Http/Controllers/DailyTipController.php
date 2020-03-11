@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DailyTips;
 use Illuminate\Http\Request;
 
 class DailyTipController extends Controller
@@ -14,7 +15,9 @@ class DailyTipController extends Controller
      */
     public function index()
     {
-        //
+        //all tips
+        $tips = DailyTips::all();
+        return response()->json($tips);
     }
 
     /**
@@ -35,7 +38,10 @@ class DailyTipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //save tips
+        $tip = new DailyTips();
+        $tip->create($request->all());
+        return response('success');
     }
 
     /**
@@ -80,6 +86,9 @@ class DailyTipController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //delete tip
+        $tip = DailyTips::findOrFail($id);
+        $tip->delete();
+        return response('success');
     }
 }

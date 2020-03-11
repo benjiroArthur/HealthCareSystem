@@ -91,13 +91,13 @@
                     <ul class="navbar-nav mr-auto">
 
                         <li class="nav-item active" id="bgg1">
-                            <a class="nav-link" href="#" id="bgg">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{url('/home')}}" id="bgg">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item" id="bgg1">
-                            <a class="nav-link" href="#" id="bgg">About</a>
+                            <a class="nav-link" href="#about" id="bgg">About</a>
                         </li>
                         <li class="nav-item" id="bgg1">
-                            <a class="nav-link" href="#" id="bgg">Contact</a>
+                            <a class="nav-link" href="#contact" id="bgg">Contact</a>
                         </li>
 
                     </ul>

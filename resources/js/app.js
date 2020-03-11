@@ -115,6 +115,7 @@ let routes = [
     {path:'/admin/upcoming-appointment', component: require('./components/Admin/UpAppointment.vue').default},
     {path:'/admin/past-appointment', component: require('./components/Admin/PastAppointment.vue').default},
     {path:'/admin/show/:id', component: require('./components/Admin/ShowAdmin').default, name:'admin-show'},
+    {path:'/admin/daily-tips', component: require('./components/Admin/DailyTips').default},
 
     //Doctors routes
     {path:'/doctor/dashboard', component: require('./components/Doctor/Dashboard.vue').default},
