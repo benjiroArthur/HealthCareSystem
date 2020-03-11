@@ -48,12 +48,7 @@ section
 
 .loginBox
 {
-    /*position: absolute;*/
-    /*top: 700px;*/
-    /*left: 50%;*/
-    /*transform: translate(-50%,-50%);*/
-    /*width: 700px;*/
-    //height: 500px;
+
     padding: 80px 40px;
 
     box-sizing: border-box;
@@ -264,3 +259,7 @@ h2
 //::-moz-placeholder{
 //    color: blue !important;
 //}
+
+.tip-box{
+    background-color: rgba(1, 4, 5, 0.5);
+}

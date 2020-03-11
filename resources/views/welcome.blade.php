@@ -1,13 +1,23 @@
 @extends('layouts.app')
 @section('content')
-    {{--@dd($tip)--}}
-    <div class="mt-5">
+
+        <div class="mt-5" id="banner">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-
-                    <div class="carousel-item active">
-                        <img src="{{asset('assets/sliders/banner1.jpg')}}" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
+@php($i = 1)
+            <div class="carousel-item active">
+                <img src="{{asset('assets/sliders/banner'.$i.'.jpg')}}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block tip-box">
+                    <h5>Tip Of The Day</h5>
+                    @if(!empty($tip))
+                        <p>{{$tip->info}}</p>
+                    @endif
+                </div>
+            </div>
+            @for($i = 1; $i <= 6; $i++)
+                    <div class="carousel-item">
+                        <img src="{{asset('assets/sliders/banner'.$i.'.jpg')}}" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block tip-box">
                             <h5>Tip Of The Day</h5>
                             @if(!empty($tip))
                                 <p>{{$tip->info}}</p>
@@ -15,55 +25,9 @@
                         </div>
                     </div>
 
-                    <div class="carousel-item">
-                            <img src="{{asset('assets/sliders/banner2.jpg')}}" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Tip Of The Day</h5>
-                            @if(!empty($tip))
-                                <p>{{$tip->info}}</p>
-                                @endif
-                        </div>
-                     </div>
+            @endfor
 
-                    <div class="carousel-item">
-                        <img src="{{asset('assets/sliders/banner3.jpg')}}" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Tip Of The Day</h5>
-                            @if(!empty($tip))
-                                <p>{{$tip->info}}</p>
-                                @endif
-                        </div>
-                    </div>
 
-                    <div class="carousel-item">
-                        <img src="{{asset('assets/sliders/banner4.jpg')}}" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Tip Of The Day</h5>
-                            @if(!empty($tip))
-                                <p>{{$tip->info}}</p>
-                                @endif
-                        </div>
-                    </div>
-
-                    <div class="carousel-item">
-                        <img src="{{asset('assets/sliders/banner5.jpg')}}" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Tip Of The Day</h5>
-                            @if(!empty($tip))
-                                <p>{{$tip->info}}</p>
-                                @endif
-                        </div>
-                    </div>
-
-                    <div class="carousel-item">
-                        <img src="{{asset('assets/sliders/banner6.jpg')}}" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Tip Of The Day</h5>
-                            @if(!empty($tip))
-                                <p>{{$tip->info}}</p>
-                                @endif
-                        </div>
-                    </div>
 
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -76,8 +40,33 @@
         </a>
     </div>
     </div>
-        <div class="mt-5" id="contact">
-            <h3>About Ua</h3>
+        <div class="mt-5 row justify-content-center" id="about">
+            <div class="col-12"><h3>About Us</h3></div>
+            <div class="col-12">
+                <div class="row justify-content-center">
+                    <div class="col-lg-3 col-sm-12 card mr-2 ">
+                        <div class="card-header text-center">About</div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore
+                            magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
+                            Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                    </div>
+                    <div class="col-lg-3 col-sm-12 card mr-2 ">
+                        <div class="card-header text-center">Mission</div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore
+                            magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
+                            Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                    </div>
+                    <div class="col-lg-3 col-sm-12 card ml-2">
+                        <div class="card-header text-center">Vision</div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore
+                            magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
+                            Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="mt-5" id="contact">
             <contact-us class="mt-3"></contact-us>

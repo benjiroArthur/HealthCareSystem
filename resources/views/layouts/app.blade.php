@@ -7,11 +7,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @auth
-        <meta name="user-id" content="{{ auth::user()->id }}">
-        <meta name="status" content="{{ auth::user()->active }}">
+        <meta name="user-id" content="{{ Auth::user()->id }}">
+        <meta name="status" content="{{ Auth::user()->active }}">
     @else
-        <meta name="user-id" content="1">
-        <meta name="status" content="1">
+        <meta name="user-id" content="0">
+        <meta name="status" content="0">
     @endauth
 
     <title>{{ config('app.name', 'HealthCare') }}</title>
@@ -26,47 +26,25 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style type="text/css">
-        .logotext
-        {
-            font-family: Arial bold; font-size: 16px; font-weight: bolder;
-            text-shadow: rgb(110,110,110) 3px 3px 5px;
-            color: mediumvioletred;
-        }
-        .logotext1
-        {
-            font-family: Arial bold; font-size: 9px; font-weight: bold;
-            text-shadow: rgb(110,110,110) 3px 3px 5px;
-            color: mediumvioletred;
-            text-decoration: none;
-        }
-        #inout
-        {
-            background: transparent;
-            border: 4px mediumvioletred;
-            border-radius: 25px;
-            color: white;
-            /*top: 20px;*/
-            /*position: absolute;*/
-            padding: 15px 15px;
-        }
+
         #bgg:hover
         {
-            color: white;
+            color: black;
             background-color:transparent;
         }
         #bgg
         {
             padding-right: 25px;
             padding-left: 25px;
-            color: lightgrey;
-            border: 2px mediumvioletred;
+            color: black;
+            border: 2px blue;
             text-decoration: #1fad83;
         }
         #bgg1:hover{
-            border-bottom: 2px solid mediumvioletred;
+            border-bottom: 2px solid blue;
         }
         #bgg:active{
-            border-bottom: 2px solid mediumvioletred;
+            border-bottom: 2px solid blue;
         }
     </style>
 </head>
@@ -155,6 +133,16 @@
                 </div>
             </div>
         </main>
+        <div class="footer navbar-fixed-bottom">
+            <div class="row container mb-2">
+                <!-- Default to the left -->
+                <div class="clo-sm-12 col-md-12 col-lg-8 text-center"> <strong>Copyright &copy; {{date('Y')}} <a href="#">  Health Care System  </a>.</strong> All rights reserved.</div>
+                <div class="clo-sm-12 col-md-12 col-lg-4 float-right d-sm-inline pl-2 text-center">
+                    Your Health Our Concern
+                    <a href="#banner" style="float: right; width: 20px"><span class="fas fa-arrow-alt-circle-up"></span></a>
+                </div>
+            </div>
+        </div>
     </div>
 @yield('script')
 </body>
