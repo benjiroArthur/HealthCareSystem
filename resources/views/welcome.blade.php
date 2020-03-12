@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-        <div class="mt-5" id="banner">
+        <div class="mt-5 mb-2" id="banner">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
 @php($i = 1)
@@ -40,8 +40,11 @@
         </a>
     </div>
     </div>
-        <div class="mt-5 row justify-content-center" id="about">
-            <div class="col-12 text-center"><h3>About Us</h3></div>
+        <div class="row justify-content-center" id="about">
+            <div style="min-height: 70px; border-top: 2px solid black; min-width: 100%">
+
+            </div>
+            <div class="col-12 mt-5 text-center"><h3>About Us</h3></div>
             <div class="col-12">
                 <div class="row justify-content-center">
                     <div class="col-lg-3 col-sm-12 card mr-2 ">
@@ -71,5 +74,7 @@
         <div class="mt-5" id="contact">
             <contact-us class="mt-3"></contact-us>
         </div>
+
+        <a href="#banner" title="Move to top"><span class="fas fa-arrow-alt-circle-up" style="float: right; width: 40px; height: 40px;"></span></a>
 @endsection
 
