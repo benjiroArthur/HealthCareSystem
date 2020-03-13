@@ -122,6 +122,7 @@ let routes = [
     {path:'/user/doctors', component: require('./components/User/Doctors.vue').default},
     {path:'/user/medical-records', component: require('./components/User/MedicalRecords.vue').default},
     {path:'/user/profile', component: require('./components/User/Profile.vue').default},
+    {path:'/user/my-appointment', component: require('./components/User/MyAppointments.vue').default},
     {path:'/user/upcoming-appointment', component: require('./components/User/UpAppointment.vue').default},
     {path:'/user/past-appointment', component: require('./components/User/PastAppointment.vue').default},
 

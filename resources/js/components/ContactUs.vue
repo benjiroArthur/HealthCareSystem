@@ -59,7 +59,26 @@
             }
         },
         methods:{
-
+                contact(){
+                    this.progress.start();
+                    this.form.post('').then((response) => {
+                        if(response.data === "Yes"){
+                            swal.fire(
+                                'Sent',
+                                'Message Sent Successfully',
+                                'success'
+                            );
+                        }
+                        else{
+                            swal.fire(
+                                'Error',
+                                response.data,
+                                'error'
+                            );
+                        }
+                        this.progress.end();
+                    }).catch((response) => {console.log(response.data)})
+                }
         },
 
         created(){

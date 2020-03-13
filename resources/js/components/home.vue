@@ -1,5 +1,9 @@
 <template>
     <div class="container-fluid">
+        <div class="row justify-content-center">
+            <h3>Welcome to Healthcare System</h3>
+            <p>We provide you with the opportunity to chat with the best of Doctors around the globe</p>
+        </div>
 
         <div class="row">
             <div class="col-lg-3 col-6">
@@ -21,7 +25,7 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>Patients></h3>
+                        <h3>Patients</h3>
 
                         <p>General public who are seeking health care</p>
                     </div>
@@ -51,7 +55,7 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>Register As Patient</h3>
+                        <h4>Register As Patient</h4>
 
                         <p>Register as a Patient and get the chance to talk to a Doctor on all your health issues</p>
                     </div>

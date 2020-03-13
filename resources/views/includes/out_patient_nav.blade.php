@@ -57,38 +57,20 @@
         </li>
 
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <router-link to="/user/medical-records" class="nav-link">
                 <i class="nav-icon fas fa-notes-medical purple"></i>
                 <p>
                     Medical Records
                 </p>
-            </a>
+            </router-link>
 
         </li>
 
-        <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-calendar-alt purple"></i>
-                <p>
-                    Appointments
-                    <i class="right fas fa-angle-left"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-
-                <li class="nav-item">
-                    <router-link to="/user/book-apointment" class="nav-link">
-                        <i class="far fa-calendar-alt pink nav-icon"></i>
-                        <p>Book Apointment</p>
-                    </router-link>
-                </li>
-                <li class="nav-item">
-                    <router-link to="/user/apointment" class="nav-link">
-                        <i class="far fa-calendar-alt pink nav-icon"></i>
-                        <p>My Apointment</p>
-                    </router-link>
-                </li>
-            </ul>
+        <li class="nav-item">
+            <router-link to="/user/my-appointment" class="nav-link">
+                <i class="far fa-calendar-alt pink nav-icon"></i>
+                <p>My Appointments</p>
+            </router-link>
         </li>
 
 
