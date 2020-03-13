@@ -60,14 +60,16 @@
         },
         methods:{
                 contact(){
-                    this.progress.start();
+                    this.$Progress.start();
                     this.form.post('/records/contact').then((response) => {
-                        if(response.data === "Yes"){
+                        if(response.data === "success"){
+                            this.form.clear();
                             swal.fire(
                                 'Sent',
                                 'Message Sent Successfully',
                                 'success'
                             );
+
                         }
                         else{
                             swal.fire(
@@ -76,8 +78,10 @@
                                 'error'
                             );
                         }
-                        this.progress.end();
-                    }).catch((response) => {console.log(response.data)})
+                        this.$Progress.end();
+                    }).catch((response) => {
+                        this.$Progress.fail();
+                        console.log(response.data)})
                 }
         },
 

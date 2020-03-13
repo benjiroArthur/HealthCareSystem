@@ -47,11 +47,13 @@ class ContactUsController extends Controller
             'full_name' => $request->full_name,
             'subject' => 'Enquiries'
         );
-        Mail::send('emails.contact_us', $data, function($message) use($data){
+        Mail::queue('emails.contact_us', $data, function($message) use($data){
             $message->from($data['email']);
             $message->to('majorcaios@gmail.com');
             $message->subject($data['subject']);
         });
+
+        return response('success');
     }
 
     /**
