@@ -61,7 +61,7 @@
         methods:{
                 contact(){
                     this.progress.start();
-                    this.form.post('').then((response) => {
+                    this.form.post('/records/contact').then((response) => {
                         if(response.data === "Yes"){
                             swal.fire(
                                 'Sent',

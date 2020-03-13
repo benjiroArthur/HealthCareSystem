@@ -10,9 +10,9 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>Doctors</h3>
+                        <h3>Tip Of The Day</h3>
 
-                        <p>Our highly expert Doctors will serve you</p>
+                        <p>{{tips.info}}</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-user-md"></i>
@@ -72,12 +72,12 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>Doctors</h3>
 
-                        <p>New Orders</p>
+                        <p>Our highly expert Doctors will serve you</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-bag"></i>
+                        <i class="fas fa-user-md"></i>
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -138,6 +138,7 @@
     export default {
         data(){
             return{
+                tips:'',
                 date: new Date(),
                 options: {
                     format: 'DD/MM/YYYY',
@@ -145,7 +146,19 @@
                 }
             }
         },
-        mounted() {
+        methods:{
+            index(){
+                this.error = this.tips = null;
+                this.loading = true;
+                axios.get('/records/latest-tips')
+                    .then((response) => {this.loading = false;
+                        this.tips = response.data})
+                    .catch((response)=>{ this.loading = false;
+                        console.log(response.error)})
+            },
+        },
+        created() {
+            this.index();
             console.log('Component mounted.')
         }
     }

@@ -62,6 +62,13 @@ Route::group(['prefix' => 'records', 'as' => 'records.'], function(){
     //pharmacy routes
     Route::resource('/pharmacy', 'PharmacyController');
 
+    //contact routes
+    Route::resource('/contact', 'ContactUsController');
+
+    //dailyTips routes
+    Route::resource('/daily-tips', 'DailyTipController');
+    Route::get('/latest-tips', 'DailyTipController@getLatest');
+
 
 });
 

@@ -91,4 +91,9 @@ class DailyTipController extends Controller
         $tip->delete();
         return response('success');
     }
+
+    public function getLatest(){
+        $tip = DailyTips::latest()->first();
+        return response()->json($tip);
+    }
 }
