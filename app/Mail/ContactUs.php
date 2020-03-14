@@ -16,9 +16,11 @@ class ContactUs extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $data;
+    public function __construct(Array $data)
     {
-        //
+        $this->data = $data;
+
     }
 
     /**
@@ -28,6 +30,7 @@ class ContactUs extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.contact_us');
+        return $this->from($this->data['email'])->subject($this->data['subject'])
+            ->view('emails.contact_us')->with('data', $this->data);
     }
 }

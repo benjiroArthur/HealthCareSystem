@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ContactUsJob;
+use App\Mail\ContactUs;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -45,14 +48,18 @@ class ContactUsController extends Controller
             'email' => $request->email,
             'bodymessage' => $request->bodymessage,
             'full_name' => $request->full_name,
-            'subject' => 'Enquiries'
+            'subject' => 'User Enquiries'
         );
-        Mail::queue('emails.contact_us', $data, function($message) use($data){
-            $message->from($data['email']);
-            $message->to('majorcaios@gmail.com');
-            $message->subject($data['subject']);
+//        Mail::send('emails.contact_us', $data, function($message) use($data){
+//            $message->from($data['email']);
+//            $message->to('majorcaios@gmail.com');
+//            $message->subject($data['subject']);
+//
+//        });
 
-        });
+
+            $job = (new ContactUsJob($data))->delay(Carbon::now()->addMinutes(10));
+            dispatch($job);
 
         return response('success');
     }

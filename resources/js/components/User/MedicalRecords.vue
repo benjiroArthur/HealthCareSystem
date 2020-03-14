@@ -20,8 +20,6 @@
         name: 'MedicalRecords',
         components: {
             'bootstrap-table': BootstrapTable,
-            'b-modal': BModal,
-            'vb-modal': VBModal,
         },
         data(){
             return{
