@@ -1,7 +1,7 @@
 @component('mail::message')
-<p>Hi! I'm {{$data['full_name']}}.</p>
+<p>Hi! I'm {{$full_name}}.</p>
 
-<p>{{$data['bodymessage']}}.</p>
+<p>{{$bodymessage}}.</p>
 
 
 Thanks,<br>

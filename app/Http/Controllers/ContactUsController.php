@@ -33,8 +33,9 @@ class ContactUsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
@@ -58,8 +59,9 @@ class ContactUsController extends Controller
 //        });
 
 
-            $job = (new ContactUsJob($data))->delay(Carbon::now()->addMinutes(10));
-            dispatch($job);
+//            $job = (new ContactUsJob($data))->delay(Carbon::now()->addSeconds(5));
+
+            ContactUsJob::dispatch($data)->delay(now()->addSeconds(5));
 
         return response('success');
     }

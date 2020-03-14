@@ -21,7 +21,7 @@ class ContactUsJob implements ShouldQueue
      * @data
      * @param $data
      */
-    public function __construct(Array $data)
+    public function __construct($data)
     {
         $this->data = $data;
     }
