@@ -14,7 +14,7 @@ class AddPharmacyIdToPharmaciesTable extends Migration
     public function up()
     {
         Schema::table('pharmacies', function (Blueprint $table) {
-            $table->string('pharmacy_id');
+            $table->string('pharmacy_srn');
         });
     }
 

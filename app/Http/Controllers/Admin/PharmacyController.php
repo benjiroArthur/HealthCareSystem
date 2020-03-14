@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\newUser;
 use App\Http\Controllers\Controller;
+use App\Pharmacy;
+use App\PharmId;
+use App\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PharmacyController extends Controller
 {
@@ -36,10 +41,59 @@ class PharmacyController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
-        //
+        //validate request
+        $this->validate($request, [
+            'pharmacy_name' => 'string|required|max:255',
+            'email' => 'email|required|max:255|unique:admins|unique:users',
+            'password' => 'required|min:8'
+        ]);
+
+        $pharmacy_id = "";
+        $outid = PharmId::latest()->first();
+        if($outid == null){
+            $val = 1;
+            $ph = new PharmId;
+            $ph->pharmacy_id = $val;
+            $ph->save();
+        }
+        else{
+            $val = $outid->pharmacy_id + 1;
+            $ph = new PharmId;
+            $ph->pharmacy_id = $val;
+            $ph->save();
+        }
+        if($val < 10){
+            $pharmacy_id = "hcph000".$val;
+        }
+        elseif($val > 9 && $val < 100){
+            $pharmacy_id = "hcph00".$val;
+        }
+        elseif($val > 99 && $val < 1000){
+            $pharmacy_id = "hcph0".$val;
+        }
+        elseif($val > 900){
+            $pharmacy_id = "hcph".$val;
+        }
+
+        $pharmacy = Pharmacy::create([
+            'pharmacy_name' => $request->last_name,
+            'email' => $request->email,
+            'pharmacy_srn' => $pharmacy_id
+
+        ]);
+        $role = Role::where('name', $request->role)->first();
+        $user = $pharmacy->user()->create([
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role_id' => $role->id
+        ]);
+
+        broadcast(new newUser($user))->toOthers();
+        return response(['message' => 'User Created Successfully']);
     }
 
     /**

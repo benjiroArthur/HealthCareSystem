@@ -18,6 +18,7 @@ window.Fire = new Vue();
 
 import DataTable from 'laravel-vue-datatable';
 
+
 Vue.use(DataTable);
 
 

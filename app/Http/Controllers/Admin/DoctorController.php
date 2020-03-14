@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Doctor;
+use App\Events\newUser;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Role;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class DoctorController extends Controller
 {
@@ -37,12 +40,43 @@ class DoctorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
-        //
+        //validate request
+        $this->validate($request, [
+            'last_name' => 'string|required|max:255',
+            'first_name' => 'string|required|max:255',
+            'email' => 'email|required|max:255|unique:admins|unique:users',
+            'password' => 'required|min:8'
+        ]);
+
+
+        if($request->other_name == null){
+            $full_name = $request->first_name.' '.$request->last_name;
+        }
+        else{
+            $full_name = $request->first_name.' '.$request->other_name.' '.$request->last_name;
+        }
+        $doctor = Doctor::create([
+            'last_name' => $request->last_name,
+            'first_name' => $request->first_name,
+            'other_name' => $request->other_name,
+            'email' => $request->email,
+            'full_name' => $full_name
+        ]);
+        $role = Role::where('name', $request->role)->first();
+        $user = $doctor->user()->create([
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role_id' => $role->id
+        ]);
+
+        broadcast(new newUser($user))->toOthers();
+        return response(['message' => 'User Created Successfully']);
     }
 
     /**

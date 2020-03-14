@@ -14,7 +14,7 @@ class AddPatientIdToOutPatientsTable extends Migration
     public function up()
     {
         Schema::table('out_patients', function (Blueprint $table) {
-            $table->string('patient_id');
+            $table->string('patient_srn');
         });
     }
 

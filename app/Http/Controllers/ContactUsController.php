@@ -51,6 +51,7 @@ class ContactUsController extends Controller
             $message->from($data['email']);
             $message->to('majorcaios@gmail.com');
             $message->subject($data['subject']);
+
         });
 
         return response('success');

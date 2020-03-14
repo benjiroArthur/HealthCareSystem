@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\MedicalRecord;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MedicalRecordsController extends Controller
 {
@@ -18,7 +20,19 @@ class MedicalRecordsController extends Controller
      */
     public function index()
     {
-        //
+        //check user
+        if(Auth::user()->role->name === 'admin'){
+            $records = MedicalRecord::all();
+            return response()->json($records);
+        }
+        else if(Auth::user()->role->name === 'doctor'){
+            $records = Auth::user()->userable->medical_record->get();
+            return response()->json($records);
+        }
+        else if(Auth::user()->role->name === 'out_patient'){
+            $records = Auth::user()->userable->medical_record->get();
+            return response()->json($records);
+        }
     }
 
     /**

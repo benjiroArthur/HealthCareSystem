@@ -10,7 +10,7 @@ class Doctor extends Model
     //fillables
     protected $fillable = [
         'first_name', 'last_name', 'other_name', 'dob', 'gender', 'phone_number', 'image',
-        'specialization', 'qualification', 'email', 'location', 'doctor_id', 'full_name'
+        'specialization', 'qualification', 'email', 'location', 'doctor_srn', 'full_name'
     ];
 
     protected $guarded = [];
@@ -21,5 +21,9 @@ class Doctor extends Model
 
     public function getImageAttribute($val){
         return asset('assets/ProfilePictures/'.$val);
+    }
+
+    public function medical_record(){
+        $this->hasMany('App\MedicalRecord');
     }
 }

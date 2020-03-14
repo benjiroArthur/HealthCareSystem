@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\newUser;
 use App\Http\Controllers\Controller;
+use App\OpId;
+use App\OutPatient;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class OutPatientController extends Controller
 {
@@ -41,12 +45,70 @@ class OutPatientController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
-        //
+        //validate request
+        $this->validate($request, [
+            'last_name' => 'string|required|max:255',
+            'first_name' => 'string|required|max:255',
+            'email' => 'email|required|max:255|unique:admins|unique:users',
+            'password' => 'required|min:8'
+        ]);
+
+
+        if($request->other_name == null){
+            $full_name = $request->first_name.' '.$request->last_name;
+        }
+        else{
+            $full_name = $request->first_name.' '.$request->other_name.' '.$request->last_name;
+        }
+        $patient_id = "";
+        $outid = OpId::latest()->first();
+        if($outid == null){
+            $val = 1;
+            $op = new OpId;
+            $op->out_patient_id = $val;
+            $op->save();
+        }
+        else{
+            $val = $outid->out_patient_id + 1;
+            $op = new OpId;
+            $op->out_patient_id = $val;
+            $op->save();
+        }
+        if($val < 10){
+            $patient_id = "hcpt000".$val;
+        }
+        elseif($val > 9 && $val < 100){
+            $patient_id = "hcpt00".$val;
+        }
+        elseif($val > 99 && $val < 1000){
+            $patient_id = "hcpt0".$val;
+        }
+        elseif($val > 900){
+            $patient_id = "hcpt".$val;
+        }
+        $patient = OutPatient::create([
+            'last_name' => $request->last_name,
+            'first_name' => $request->first_name,
+            'other_name' => $request->other_name,
+            'email' => $request->email,
+            'full_name' => $full_name,
+            'patient_srn' => $patient_id
+        ]);
+        $role = Role::where('name', $request->role)->first();
+        $user = $patient->user()->create([
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role_id' => $role->id
+        ]);
+
+        broadcast(new newUser($user))->toOthers();
+        return response(['message' => 'User Created Successfully']);
     }
 
     /**

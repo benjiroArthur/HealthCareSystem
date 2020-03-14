@@ -14,7 +14,7 @@ class AddDoctorIdToDoctorsTable extends Migration
     public function up()
     {
         Schema::table('doctors', function (Blueprint $table) {
-            $table->string('doctor_id');
+            $table->string('doctor_srn');
         });
     }
 

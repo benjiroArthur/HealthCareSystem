@@ -103,7 +103,7 @@ class RegisterController extends Controller
             'last_name' => $data['last_name'],
             'other_name' => $data['other_name'],
             'email' => $data['email'],
-            'patient_id' => $patient_id
+            'patient_srn' => $patient_id
         ]);
 
 

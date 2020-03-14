@@ -59,7 +59,7 @@ class UsersImport implements WithHeadingRow, ToCollection, ToModel
                     ]);
                 }
                 else if(str::lower($row['role']) === 'doctor'){
-                    $doctor_id = "";
+                    $doctor_srn = "";
 
                     $outid = DocId::latest()->first();
                     if($outid == null){
@@ -75,16 +75,16 @@ class UsersImport implements WithHeadingRow, ToCollection, ToModel
                         $doc->save();
                     }
                     if($val < 10){
-                        $doctor_id = "hcdoc000".$val;
+                        $doctor_srn = "hcdoc000".$val;
                     }
                     elseif($val > 9 && $val < 100){
-                        $doctor_id = "hcdoc00".$val;
+                        $doctor_srn = "hcdoc00".$val;
                     }
                     elseif($val > 99 && $val < 1000){
-                        $doctor_id = "hcdoc0".$val;
+                        $doctor_srn = "hcdoc0".$val;
                     }
                     elseif($val > 900){
-                        $doctor_id = "hcdoc".$val;
+                        $doctor_srn = "hcdoc".$val;
                     }
                     $doctor = Doctor::create([
                         'last_name' => $row['last_name'],
@@ -92,7 +92,7 @@ class UsersImport implements WithHeadingRow, ToCollection, ToModel
                         'other_name' => $row['other_name'],
                         'email' => $row['email'],
                         'full_name' => $row['full_name'],
-                        'doctor_id' => $doctor_id
+                        'doctor_srn' => $doctor_srn
                     ]);
 //                    $doctor = Doctor::where('email', $row['email'])->first();
                     $role = Role::where('name', 'doctor')->first();
@@ -134,7 +134,7 @@ class UsersImport implements WithHeadingRow, ToCollection, ToModel
                     $pharmacy = Pharmacy::create([
                         'pharmacy_name' => $row['pharmacy_name'],
                         'email' => $row['email'],
-                        'pharmacy_id' => $pharmacy_id
+                        'pharmacy_srn' => $pharmacy_id
                     ]);
 //                    $pharmacy = Pharmacy::where('email', $row['email'])->first();
                     $role = Role::where('name', 'pharmacy')->first();
@@ -178,7 +178,7 @@ class UsersImport implements WithHeadingRow, ToCollection, ToModel
                         'first_name' => $row['first_name'],
                         'other_name' => $row['other_name'],
                         'email' => $row['email'],
-                        'patient_id' => $patient_id
+                        'patient_srn' => $patient_id
                     ]);
 //                    $out_patient = OutPatient::where('email', $row['email'])->first();
                     $role = Role::where('name', 'out_patient')->first();
