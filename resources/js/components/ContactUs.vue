@@ -63,7 +63,7 @@
                     this.$Progress.start();
                     this.form.post('/records/contact').then((response) => {
                         if(response.data === "success"){
-                            this.form.clear();
+                            this.form.reset();
                             swal.fire(
                                 'Sent',
                                 'Message Sent Successfully',
@@ -86,7 +86,7 @@
         },
 
         created(){
-
+            this.form.reset();
         }
     }
 </script>

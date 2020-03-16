@@ -87,6 +87,9 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function(){
     //pharmacy routes
     Route::get('/new/admin', 'Admin\DashboardController@getAdmin');
 
+    //stat route
+    Route::get('/statistics', 'Admin\DashboardController@getStat');
+
 
 
 });
