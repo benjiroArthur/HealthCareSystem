@@ -51,6 +51,8 @@ import VueRouter from 'vue-router';
 import axios from "axios";
 import { VuejsDatatableFactory } from 'vuejs-datatable';
 
+Vue.use(VueRouter, axios, VuejsDatatableFactory);
+
 
 
 import * as VueGoogleMaps from 'vue2-google-maps';
@@ -84,7 +86,7 @@ Vue.use(VueProgressBar, {
 });
 
 
-Vue.use(VueRouter, axios, VuejsDatatableFactory);
+
 
 
 import Swal from 'sweetalert2';
@@ -167,10 +169,14 @@ const router = new VueRouter({
 });
 
 Vue.filter('uptext', function(text){
-   return text.toUpperCase();
+   return text.charAt(0).toUpperCase() + text.slice(1);
 });
 Vue.filter('myDate', function(text){
-   return created.moment().format('Do MMMM YYYY, h:mm:ss a');
+   return moment(text).format('MMMM Do YYYY');
+});
+
+Vue.filter('fromdate', function(text){
+    return moment(text).fromNow();
 });
 
 /**
@@ -204,6 +210,8 @@ Vue.component('page-number', require('laravel-vue-pagination'));
  router.afterEach(()=>{
 
  });
+
+
 
 const app = new Vue({
     el: '#app',

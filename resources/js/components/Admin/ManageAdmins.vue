@@ -149,7 +149,7 @@
 
                 },
                 myColumns: [
-                    { field: 'key', title: 'ID'},
+                    { field: 'index', title: 'ID'},
                     { field: 'id', title: 'ID', sortable: true,  class: ''},
                     { field: 'active', title: 'Active', sortable: true},
                     { field: 'userable.full_name', title: 'Name', sortable: true},

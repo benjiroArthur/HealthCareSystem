@@ -73,6 +73,23 @@ Route::group(['prefix' => 'records', 'as' => 'records.'], function(){
 });
 
 
+//admin dashboard
+Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function(){
+    //admin routes
+    Route::get('/new/out_patient', 'Admin\DashboardController@getOutPatient');
+
+    //patients routes
+    Route::get('/new/doctor', 'Admin\DashboardController@getDoctor');
+
+    //doctors routes
+    Route::get('/new/pharmacy', 'Admin\DashboardController@getPharmacy');
+
+    //pharmacy routes
+    Route::get('/new/admin', 'Admin\DashboardController@getAdmin');
+
+
+
+});
 
 
 

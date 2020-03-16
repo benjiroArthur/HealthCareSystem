@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Pharmacy;
 use App\PharmId;
 use App\Role;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -23,7 +24,11 @@ class PharmacyController extends Controller
      */
     public function index()
     {
-        //
+        $role = Role::where('name', 'pharmacy')->first();
+
+        $users = User::where('role_id', $role->id)->get();
+
+        return response()->json($users);
     }
 
     /**
@@ -52,7 +57,7 @@ class PharmacyController extends Controller
             'password' => 'required|min:8'
         ]);
 
-        $pharmacy_id = "";
+        $pharmacy_srn = "";
         $outid = PharmId::latest()->first();
         if($outid == null){
             $val = 1;
@@ -67,22 +72,23 @@ class PharmacyController extends Controller
             $ph->save();
         }
         if($val < 10){
-            $pharmacy_id = "hcph000".$val;
+            $pharmacy_srn = "hcph000".$val;
         }
         elseif($val > 9 && $val < 100){
-            $pharmacy_id = "hcph00".$val;
+            $pharmacy_srn = "hcph00".$val;
         }
         elseif($val > 99 && $val < 1000){
-            $pharmacy_id = "hcph0".$val;
+            $pharmacy_srn = "hcph0".$val;
         }
         elseif($val > 900){
-            $pharmacy_id = "hcph".$val;
+            $pharmacy_srn = "hcph".$val;
         }
 
+
         $pharmacy = Pharmacy::create([
-            'pharmacy_name' => $request->last_name,
+            'pharmacy_name' => $request->pharmacy_name,
             'email' => $request->email,
-            'pharmacy_srn' => $pharmacy_id
+            'pharmacy_srn' => $pharmacy_srn
 
         ]);
         $role = Role::where('name', $request->role)->first();
@@ -93,7 +99,7 @@ class PharmacyController extends Controller
         ]);
 
         broadcast(new newUser($user))->toOthers();
-        return response(['message' => 'User Created Successfully']);
+        return response('success');
     }
 
     /**

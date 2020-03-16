@@ -78,7 +78,7 @@
             storeTip(){
                 this.$Progress.start();
                 this.form.post('/records/daily-tips').then((response) => {
-                    this.form.clear();
+
                     if(response.data === "success"){
                         Fire.$emit('tableUpdate');
                         swal.fire(
@@ -94,7 +94,8 @@
                             'error'
                         );
                     }
-                    this.$Progress.end();
+                    this.$Progress.finish();
+                    this.form.reset();
 
                 }).catch((response) => {
                     this.$Progress.fail();

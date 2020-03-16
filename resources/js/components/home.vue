@@ -1,8 +1,8 @@
 <template>
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <h3>Welcome to Healthcare System</h3>
-            <p>We provide you with the opportunity to chat with the best of Doctors around the globe</p>
+            <!--<h3>Welcome to Healthcare System</h3>-->
+            <!--<p>We provide you with the opportunity to chat with the best of Doctors around the globe</p>-->
         </div>
 
         <div class="row">
@@ -12,7 +12,7 @@
                     <div class="inner">
                         <h3>Tip Of The Day</h3>
 
-                        <p>{{tips.info}}</p>
+                        <p v-if="tips !== null">{{tips.info}}</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-user-md"></i>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DocId;
 use App\Doctor;
 use App\Events\newUser;
 use App\Http\Controllers\Controller;
@@ -53,7 +54,7 @@ class DoctorController extends Controller
             'email' => 'email|required|max:255|unique:admins|unique:users',
             'password' => 'required|min:8'
         ]);
-
+//return response($request->all());
 
         if($request->other_name == null){
             $full_name = $request->first_name.' '.$request->last_name;
@@ -61,12 +62,40 @@ class DoctorController extends Controller
         else{
             $full_name = $request->first_name.' '.$request->other_name.' '.$request->last_name;
         }
+        $doctor_srn = "";
+
+        $outid = DocId::latest()->first();
+        if($outid == null){
+            $val = 1;
+            $doc = new DocId;
+            $doc->doctor_id = $val;
+            $doc->save();
+        }
+        else{
+            $val = $outid->doctor_id + 1;
+            $doc = new DocId;
+            $doc->doctor_id = $val;
+            $doc->save();
+        }
+        if($val < 10){
+            $doctor_srn = "hcdoc000".$val;
+        }
+        elseif($val > 9 && $val < 100){
+            $doctor_srn = "hcdoc00".$val;
+        }
+        elseif($val > 99 && $val < 1000){
+            $doctor_srn = "hcdoc0".$val;
+        }
+        elseif($val > 900){
+            $doctor_srn = "hcdoc".$val;
+        }
         $doctor = Doctor::create([
             'last_name' => $request->last_name,
             'first_name' => $request->first_name,
             'other_name' => $request->other_name,
             'email' => $request->email,
-            'full_name' => $full_name
+            'full_name' => $full_name,
+            'doctor_srn' => $doctor_srn
         ]);
         $role = Role::where('name', $request->role)->first();
         $user = $doctor->user()->create([
@@ -76,7 +105,7 @@ class DoctorController extends Controller
         ]);
 
         broadcast(new newUser($user))->toOthers();
-        return response(['message' => 'User Created Successfully']);
+        return response('success');
     }
 
     /**

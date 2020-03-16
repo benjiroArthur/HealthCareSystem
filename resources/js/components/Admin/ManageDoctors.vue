@@ -30,7 +30,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header text-center">
-                        <h5 class="modal-title">Upload Administrators</h5>
+                        <h5 class="modal-title">Upload Doctor</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -53,7 +53,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header text-center">
-                        <h5 class="modal-title">Add Administrators</h5>
+                        <h5 class="modal-title">Add Doctor</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -240,23 +240,26 @@
             createUser(){
                 this.$Progress.start();
                 this.form.post('/data/doctor')
-                    .then(function(){
-                        $('#doctorUserModal').modal('hide');
+                    .then((response)=>{
+                        if(response.data === 'success') {
+                            $('#doctorUserModal').modal('hide');
 
-                        swal.fire({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 3000,
-                            timerProgressBar: true,
-                            onOpen: (toast) => {
-                                toast.addEventListener('mouseenter', Swal.stopTimer);
-                                toast.addEventListener('mouseleave', Swal.resumeTimer);},
-                            icon: 'success',
-                            title: 'User Added Successfully'
-                        });
-                        Fire.$emit('tableUpdate');
-                        this.$Progress.finish();
+                            swal.fire({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                onOpen: (toast) => {
+                                    toast.addEventListener('mouseenter', Swal.stopTimer);
+                                    toast.addEventListener('mouseleave', Swal.resumeTimer);
+                                },
+                                icon: 'success',
+                                title: 'User Added Successfully'
+                            });
+                            Fire.$emit('tableUpdate');
+                            this.$Progress.finish();
+                        }
 
                     })
                     .catch(error => {
