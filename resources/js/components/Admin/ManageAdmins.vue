@@ -347,10 +347,10 @@
             //alert(this.$status);
             //this.getData();
 
-            // Echo.private('adminChannel').listen('newUser', function(e){
-            //     // this.index();
-            //     comsole.log('Yes');
-            // });
+            Echo.private('adminChannel').listen('newUser', function(e){
+                // this.index();
+                comsole.log(e);
+            });
 
             Fire.$on('tableUpdate', () => {
                 this.index();
