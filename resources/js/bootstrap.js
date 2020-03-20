@@ -9,6 +9,8 @@ window._ = require('lodash');
 try {
     window.$ = window.jQuery = require('jquery');
     window.Popper = require('@popperjs/core');
+    //window.laravel_echo_port='{{env("LARAVEL_ECHO_PORT")}}';
+    window.laravel_echo_port= process.env.LARAVEL_ECHO_PORT;
 
 
     require('bootstrap');

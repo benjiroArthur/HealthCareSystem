@@ -17,6 +17,8 @@
     <title>{{ config('app.name', 'HEALTH CARE SYSTEM') }}</title>
 {{--Script--}}
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="//{{ Request::getHost() }}:{{env('LARAVEL_ECHO_PORT')}}/socket.io/socket.io.js"></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
