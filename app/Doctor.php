@@ -10,8 +10,10 @@ class Doctor extends Model
     //fillables
     protected $fillable = [
         'first_name', 'last_name', 'other_name', 'dob', 'gender', 'phone_number', 'image',
-        'specialization', 'qualification', 'email', 'location', 'doctor_srn', 'full_name'
+        'specialization_id', 'qualification', 'email', 'location', 'doctor_srn', 'full_name'
     ];
+
+    protected $with = ['specialization'];
 
     protected $guarded = [];
 
@@ -24,6 +26,10 @@ class Doctor extends Model
     }
 
     public function medical_record(){
-        $this->hasMany('App\MedicalRecord');
+        return $this->hasMany('App\MedicalRecord');
+    }
+
+    public function specialization(){
+        return $this->belongsTo('App\Specialization');
     }
 }

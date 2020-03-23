@@ -18,11 +18,12 @@ class CreateDoctorsTable extends Migration
             $table->string('last_name');
             $table->string('first_name');
             $table->string('other_name')->nullable();
+            $table->string('full_name');
             $table->string('email');
             $table->date('dob')->nullable();
             $table->string('gender')->nullable();
             $table->string('phone_number')->nullable();
-            $table->integer('specialization')->nullable();
+            $table->unsignedBigInteger('specialization_id')->nullable();
             $table->string('qualification')->nullable();
             $table->string('location')->nullable();
             $table->string('image')->default('noimage.jpg');

@@ -71,7 +71,7 @@
 
     </style>
 </head>
-<body>
+<body class="bodyColor">
     <div id="app" class="cont">
         <div class="wrapper" id="main">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">

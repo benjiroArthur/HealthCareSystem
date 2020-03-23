@@ -11,35 +11,27 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Email</th>
-                                <th>Date Of Birth</th>
                                 <th>Gender</th>
-                                <th>Phone Number</th>
                                 <th>Location</th>
                                 <th>Specialization</th>
-                                <th>Qualification</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
 
-                            <tr v-for="doctor in doctors" v-bind:key="doctor.id">
-                                <td>{{doctor.id}}</td>
+                            <tr v-for="(doctor, index) in doctors" v-bind:key="doctor.id">
+                                <td>{{index + 1}}</td>
                                 <td>{{doctor.full_name}}</td>
-                                <td>{{doctor.email}}</td>
-                                <td>{{doctor.dob}}</td>
-                                <td>{{doctor.gender}}</td>
-                                <td>{{doctor.phone_number}}</td>
-                                <td>{{doctor.location}}</td>
                                 <td>{{doctor.specialization}}</td>
-                                <td>{{doctor.qualification}}</td>
+                                <td>{{doctor.gender}}</td>
+                                <td>{{doctor.location}}</td>
                                 <td>
                                     <a href="#">
-                                        <i class="fa fa-edit blue"></i>
+                                        <i class="fa fa-user-plus blue"></i>
                                     </a>
                                     |
                                     <a href="#">
-                                        <i class="fa fa-trash red"></i>
+                                        <i class="fa fa-user-minus red"></i>
                                     </a>
                                 </td>
                             </tr>
@@ -65,13 +57,15 @@
         methods: {
             //get all medical records
             index() {
+
                 this.error = this.doctors = null;
                 this.loading = true;
                 axios
-                    .get('/data/admin')
+                    .get('/records/doctor')
                     .then(response => {
                         this.loading = false;
-                        this.doctors = response.data;
+                        let data1 = response.data;
+                        this.doctors = data1.userable;
                     }).catch(error => {
                     this.loading = false;
                     this.error = error.response.data.message || error.message;

@@ -10,33 +10,15 @@
                 </p>
             </router-link>
         </li>
+
+
         <li class="nav-item">
-            <router-link to="/dashboard" class="nav-link">
-                <i class="nav-icon fa fa-tachometer-alt"></i>
-                <p>
-                    Dashboard
-                </p>
+            <router-link to="/user/chat" class="nav-link">
+                <i class="far fa-circle nav-icon green"></i>
+                <p>Doctor Name</p>
             </router-link>
         </li>
 
-        <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fab fa-facebook-messenger cyan"></i>
-                <p>
-                    Chat
-                    <i class="right fas fa-angle-left"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <router-link to="/user/chat" class="nav-link">
-                        <i class="far fa-circle nav-icon green"></i>
-                        <p>Doctor Name</p>
-                    </router-link>
-                </li>
-
-            </ul>
-        </li>
         <li class="nav-item">
             <router-link to="/user/profile" class="nav-link">
                 <i class="nav-icon fas fa-user-circle orange"></i>
