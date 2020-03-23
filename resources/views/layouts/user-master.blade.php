@@ -7,8 +7,8 @@
         <meta name="user-id" content="{{ Auth::user()->id }}">
         <meta name="status" content="{{ Auth::user()->active }}">
         @else
-        <meta name="user-id" content="1">
-        <meta name="status" content="1">
+        <meta name="user-id" content="0">
+        <meta name="status" content="0">
     @endauth
 
     <!-- CSRF Token -->

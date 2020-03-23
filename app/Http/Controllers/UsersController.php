@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Validation\ValidationException;
 use Intervention\Image\Facades\Image;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -170,6 +171,7 @@ class UsersController extends Controller
 
         $oldImage = $user->image;
         $oldSplit = explode('/', $oldImage);
+        $oldSplit = $oldSplit[sizeof($oldSplit) -1];
 
 
         if($request->hasfile('image')){
@@ -199,9 +201,9 @@ class UsersController extends Controller
             //resize image
             Image::make($image_file->getRealPath())->resize(140,128)->save($image_path);
 
-            if(file_exists($oldImage) && $oldSplit[sizeof($oldSplit) -1] !== 'noimage.jpg'){
-                $path = public_path().'/assets/ProfilePictures/'.$oldSplit[sizeof($oldSplit) -1];
-                File::delete($path);
+            if(File::exists(public_path('/assets/ProfilePictures/'.$oldSplit)) && $oldSplit !== 'noimage.jpg'){
+
+                File::delete(public_path('/assets/ProfilePictures/'.$oldSplit));
             }
 
             $user->image = $imageNameToStore;
