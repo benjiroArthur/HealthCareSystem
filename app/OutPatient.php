@@ -10,7 +10,7 @@ class OutPatient extends Model
     //protected $table = 'out_patients';
     //fillables
     protected $fillable = [
-        'first_name', 'last_name', 'other_name', 'dob', 'gender', 'phone_number', 'image', 'email', 'location', 'patient_srn', 'full_name'
+        'first_name', 'last_name', 'other_name', 'dob', 'gender', 'phone_number', 'image', 'email', 'location', 'srn', 'full_name'
     ];
 
 

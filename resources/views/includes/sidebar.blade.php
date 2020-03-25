@@ -3,7 +3,7 @@
 
     <!-- Brand Logo -->
     <a href="{{url('/')}}" class="brand-link">
-        <img src="" alt="HealthCareSystem" class="brand-image img-circle elevation-3"
+        <img src="" alt="E - HEALTH CARE" class="brand-image img-circle elevation-3"
              style="opacity: .8">
         <span class="fas fa-clinic-medical"></span>
     </a>

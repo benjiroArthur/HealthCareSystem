@@ -69,7 +69,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $patient_id = "";
+        $srn = "";
         $outid = OpId::latest()->first();
         if($outid == null){
             $val = 1;
@@ -84,16 +84,16 @@ class RegisterController extends Controller
             $op->save();
         }
         if($val < 10){
-            $patient_id = "hcpt000".$val;
+            $srn = "HC-PT-000".$val;
         }
         elseif($val > 9 && $val < 100){
-            $patient_id = "hcpt00".$val;
+            $srn = "HC-PT-00".$val;
         }
         elseif($val > 99 && $val < 1000){
-            $patient_id = "hcpt0".$val;
+            $srn = "HC-PT-0".$val;
         }
         elseif($val > 900){
-            $patient_id = "hcpt".$val;
+            $srn = "HC-PT-".$val;
         }
 
         $role = Role::where('name', 'out_patient')->first();
@@ -103,15 +103,10 @@ class RegisterController extends Controller
             'last_name' => $data['last_name'],
             'other_name' => $data['other_name'],
             'email' => $data['email'],
-            'patient_srn' => $patient_id
+            'srn' => $srn
         ]);
 
 
-
-        //$role = Role::where('name', 'out_patient')->first();
-
-        //$out_patient1 = OutPatient::where('email', $data['email'])->first();
-        //return $out_patient1;
        $user = $out_patient->user()->create([
            'email' => $data['email'],
            'password'=> Hash::make($data['password']),

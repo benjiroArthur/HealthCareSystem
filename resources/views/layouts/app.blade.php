@@ -14,7 +14,7 @@
         <meta name="status" content="0">
     @endauth
 
-    <title>{{ config('app.name', 'HealthCare') }}</title>
+    <title>{{ config('app.name', 'E - HEALTH CARE') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

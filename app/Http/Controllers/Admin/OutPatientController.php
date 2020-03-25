@@ -81,16 +81,16 @@ class OutPatientController extends Controller
             $op->save();
         }
         if($val < 10){
-            $patient_id = "hcpt000".$val;
+            $patient_id = "HC-PT-000".$val;
         }
         elseif($val > 9 && $val < 100){
-            $patient_id = "hcpt00".$val;
+            $patient_id = "HC-PT-00".$val;
         }
         elseif($val > 99 && $val < 1000){
-            $patient_id = "hcpt0".$val;
+            $patient_id = "HC-PT-0".$val;
         }
         elseif($val > 900){
-            $patient_id = "hcpt".$val;
+            $patient_id = "HC-PT-".$val;
         }
         $patient = OutPatient::create([
             'last_name' => $request->last_name,
@@ -98,7 +98,7 @@ class OutPatientController extends Controller
             'other_name' => $request->other_name,
             'email' => $request->email,
             'full_name' => $full_name,
-            'patient_srn' => $patient_id
+            'srn' => $patient_id
         ]);
         $role = Role::where('name', $request->role)->first();
         $user = $patient->user()->create([

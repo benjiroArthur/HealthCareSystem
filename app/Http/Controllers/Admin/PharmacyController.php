@@ -72,23 +72,23 @@ class PharmacyController extends Controller
             $ph->save();
         }
         if($val < 10){
-            $pharmacy_srn = "hcph000".$val;
+            $pharmacy_srn = "HC-PH-000".$val;
         }
         elseif($val > 9 && $val < 100){
-            $pharmacy_srn = "hcph00".$val;
+            $pharmacy_srn = "HC-PH-00".$val;
         }
         elseif($val > 99 && $val < 1000){
-            $pharmacy_srn = "hcph0".$val;
+            $pharmacy_srn = "HC-PH-0".$val;
         }
         elseif($val > 900){
-            $pharmacy_srn = "hcph".$val;
+            $pharmacy_srn = "HC-PH-".$val;
         }
 
 
         $pharmacy = Pharmacy::create([
             'pharmacy_name' => $request->pharmacy_name,
             'email' => $request->email,
-            'pharmacy_srn' => $pharmacy_srn
+            'srn' => $pharmacy_srn
 
         ]);
         $role = Role::where('name', $request->role)->first();

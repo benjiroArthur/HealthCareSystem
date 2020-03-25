@@ -62,7 +62,7 @@ class DoctorController extends Controller
         else{
             $full_name = $request->first_name.' '.$request->other_name.' '.$request->last_name;
         }
-        $doctor_srn = "";
+        $srn = "";
 
         $outid = DocId::latest()->first();
         if($outid == null){
@@ -78,16 +78,16 @@ class DoctorController extends Controller
             $doc->save();
         }
         if($val < 10){
-            $doctor_srn = "hcdoc000".$val;
+            $srn = "HC-DOC-000".$val;
         }
         elseif($val > 9 && $val < 100){
-            $doctor_srn = "hcdoc00".$val;
+            $srn = "HC-DOC-00".$val;
         }
         elseif($val > 99 && $val < 1000){
-            $doctor_srn = "hcdoc0".$val;
+            $srn = "HC-DOC-0".$val;
         }
         elseif($val > 900){
-            $doctor_srn = "hcdoc".$val;
+            $srn = "HC-DOC-".$val;
         }
         $doctor = Doctor::create([
             'last_name' => $request->last_name,
@@ -95,7 +95,7 @@ class DoctorController extends Controller
             'other_name' => $request->other_name,
             'email' => $request->email,
             'full_name' => $full_name,
-            'doctor_srn' => $doctor_srn
+            'srn' => $srn
         ]);
         $role = Role::where('name', $request->role)->first();
         $user = $doctor->user()->create([

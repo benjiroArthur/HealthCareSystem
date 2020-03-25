@@ -35,7 +35,6 @@
         "bootstrap-vue": "latest",
         "font-awesome": "^4.7.0",
         "laravel-echo": "^1.6.1",
-        "laravel-echo-server": "^1.6.1",
         "laravel-vue-datatable": "^0.5.7",
         "laravel-vue-pagination": "^2.3.1",
         "material-design-icons-iconfont": "^5.0.1",
