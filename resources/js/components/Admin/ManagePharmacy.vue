@@ -127,7 +127,9 @@
 
                 },
                 myColumns: [
-                    { field: 'key', title: 'ID'},
+                    { field: 'index', title: 'ID', formatter: function(row, cell, index){
+                            return `<p>${index+1}</p>`;
+                        }},
                     { field: 'id', title: 'ID', sortable: true,  class: 'd-none'},
                     { field: 'userable.pharmacy_name', title: 'Name', sortable: true},
                     { field: 'userable.email', title: 'Email', sortable: true},

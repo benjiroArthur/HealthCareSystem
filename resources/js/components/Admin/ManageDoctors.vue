@@ -146,7 +146,10 @@
 
                 },
                 myColumns: [
-                    { field: 'key', title: 'ID'},
+                    { field: 'key', title: 'ID', formatter: function(row, cell, index){
+
+                            return `<p>${index+1}</p>`;
+                        }},
                     { field: 'id', title: 'ID', sortable: true,  class: 'd-none'},
                     { field: 'userable.full_name', title: 'Name', sortable: true},
                     { field: 'userable.doctor_id', title: 'Doctor ID', sortable: true},

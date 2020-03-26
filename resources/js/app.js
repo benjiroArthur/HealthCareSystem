@@ -215,5 +215,13 @@ Vue.component('page-number', require('laravel-vue-pagination'));
 
 const app = new Vue({
     el: '#app',
-    router
+    router,
+    data: () => ({
+        pageLoader: true,
+    }),
+    mounted() {
+        setTimeout(val => {
+            this.pageLoader = false;
+        }, 4000);
+    }
 });

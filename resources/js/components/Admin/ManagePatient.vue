@@ -59,8 +59,8 @@
                 },
                 myColumns: [
                     { field: 'id', title: 'ID', sortable: true, class: 'd-none'},
-                    { title: 'SRN', render(row, cell, index){
-                            return index.toString();
+                    { title: 'SRN', formatter: function(row, cell, index){
+                            return `<p>${index+1}</p>`;
                         }},
                     { field: 'userable.full_name', title: 'Name', sortable: true},
                     { field: 'email', title: 'Email', sortable: true},

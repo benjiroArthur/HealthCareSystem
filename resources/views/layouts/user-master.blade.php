@@ -26,6 +26,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('head')
+    @include('includes.pageLoader.css.loader')
 </head>
 <body class="hold-transition sidebar-mini bodyColor">
 
@@ -47,7 +49,8 @@
 <div class="content-wrapper">
 
     <!-- Main content -->
-    <div class="content">
+    <div class="content" v-cloak>
+
         <div class="container-fluid mt-3">
             @include('includes.messages')
 
@@ -62,6 +65,15 @@
 
         </div>
 
+    </div>
+    <div class="animated slower" :class="true ? 'zoomOut':''" v-if="pageLoader"
+         style="display:flex;background-color: #0b80e1;width: 100%;height: 100%;top: 0px;position: fixed;left: 0px;">
+        <div style="margin: auto;width: 50%;">
+            <div style="text-align: center">
+                @include('includes.pageLoader.html.loader')
+            </div>
+
+        </div>
     </div>
     <!-- /.content -->
 
@@ -104,6 +116,6 @@
 
 </script>
 @yield('script')
-
+{{--@include('includes.pageLoader.js.loader-js')--}}
 </body>
 </html>
