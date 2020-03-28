@@ -2,10 +2,10 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
     <!-- Brand Logo -->
-    <a href="{{url('/')}}" class="brand-link">
-        <img src="" alt="E - HEALTH CARE" class="brand-image img-circle elevation-3"
+    <a href="{{url('/')}}" class="brand-link bg-light text-health">
+        <img src="" alt="E - HEALTH CARE" class="brand-image img-circle elevation-3 text-health"
              style="opacity: .8">
-        <span class="fas fa-clinic-medical"></span>
+        <span class="fas fa-clinic-medical text-health"></span>
     </a>
 
     <!-- Sidebar -->
