@@ -14,8 +14,8 @@
 
         <li class="nav-item">
             <router-link to="/user/chat" class="nav-link">
-                <i class="far fa-circle nav-icon green"></i>
-                <p>Doctor Name</p>
+                <i class="far fa-comments nav-icon green"></i>
+                <p>Chat</p>
             </router-link>
         </li>
 

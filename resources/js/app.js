@@ -194,6 +194,12 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('contact-us', require('./components/ContactUs.vue').default);
 Vue.component('page-number', require('laravel-vue-pagination'));
 
+//chat component extras
+Vue.component('contact-list', require('./components/ChatExtra/ContactList.vue').default);
+Vue.component('conversation', require('./components/ChatExtra/Conversation.vue').default);
+Vue.component('message-composer', require('./components/ChatExtra/MessageComposer.vue').default);
+Vue.component('feed', require('./components/ChatExtra/Feed.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -211,6 +217,13 @@ Vue.component('page-number', require('laravel-vue-pagination'));
 
  });
 
+import VueLazyload from 'vue-lazyload';
+
+Vue.use(VueLazyload);
+
+import VueCropper from 'vue-cropperjs';
+import 'cropperjs/dist/cropper.css';
+Vue.component(VueCropper);
 
 
 const app = new Vue({

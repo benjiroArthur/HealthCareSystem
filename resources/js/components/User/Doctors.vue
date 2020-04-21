@@ -35,7 +35,7 @@
                                     </a>
                                 </td>
                             </tr>
-                            <!--                            @php($id++)-->
+
                             </tbody>
                         </table>
                     </div>
@@ -57,12 +57,10 @@
         methods: {
             //get all medical records
             index() {
-
-                this.error = this.doctors = null;
                 this.loading = true;
                 axios
                     .get('/records/doctor')
-                    .then(response => {
+                    .then((response) => {
                         this.loading = false;
                         let data1 = response.data;
                         this.doctors = data1.userable;

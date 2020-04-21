@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Doctor;
 use App\Http\Controllers\Controller;
 use App\Role;
+use App\User;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -24,7 +25,7 @@ class DoctorController extends Controller
         //return all doctors
         $role = Role::where('name', 'doctor')->first();
         $doctors = User::where('role_id', $role->id)->get();
-        return response($doctors);
+        return response()->json($doctors);
     }
 
     /**

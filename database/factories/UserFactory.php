@@ -1,7 +1,10 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+
+use App\Friend;
 use App\User;
+use App\Message;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -23,5 +26,28 @@ $factory->define(User::class, function (Faker $faker) {
         'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
+    ];
+});
+$factory->define(Message::class, function (Faker $faker) {
+    do{
+        $from = rand(1, 13);
+        $to = rand(1, 13);
+    }while($from == $to);
+    return [
+        'from' => $from,
+        'to' => $to,
+        'chat' => $faker->sentence,
+
+    ];
+});
+
+$factory->define(Friend::class, function (Faker $faker) {
+    do{
+        $user_id = rand(1, 13);
+        $friend_id = rand(1, 13);
+    }while($user_id == $friend_id);
+    return [
+        'user_id' => $user_id,
+        'friend_id' => $friend_id,
     ];
 });

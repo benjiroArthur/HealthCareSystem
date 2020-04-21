@@ -64,7 +64,7 @@
                         <has-error :form="form" field="last_name"></has-error>
                         </div>
                         <div class="form-group">
-                        <label>Firat Name</label>
+                        <label>First Name</label>
                         <input v-model="form.first_name" type="text" name="first_name"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('first_name') }">
                         <has-error :form="form" field="first_name"></has-error>
