@@ -65,10 +65,13 @@
                     this.contacts = response.data;
                 });
 
-            Echo.private(`messages${this.$userId}`)
+            Echo.private(`messages.${this.$userId}`)
                 .listen('NewMessage', (e) => {
                     this.handleIncoming(e.message);
                 });
+            /*setTimeout(() => {
+
+            }, 5000);*/
         }
     }
 </script>
