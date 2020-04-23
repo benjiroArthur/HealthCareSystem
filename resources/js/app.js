@@ -119,9 +119,12 @@ Vue.use(VueSweetalert2);
 
 //vue routers
 let routes = [
+
+    //general routes
+    {path:'/chat', component: require('./components/ChatExtra/Chat.vue').default},
     //Users routes
     {path:'/home', component: require('./components/home.vue').default},
-    {path:'/user/chat', component: require('./components/User/Chat.vue').default},
+
     {path:'/user/doctors', component: require('./components/User/Doctors.vue').default},
     {path:'/user/medical-records', component: require('./components/User/MedicalRecords.vue').default},
     {path:'/user/profile', component: require('./components/User/Profile.vue').default},
@@ -144,7 +147,7 @@ let routes = [
 
     //Doctors routes
     {path:'/doctor/dashboard', component: require('./components/Doctor/Dashboard.vue').default},
-    {path:'/doctor/chat', component: require('./components/Doctor/Chat.vue').default},
+   /* {path:'/doctor/chat', component: require('./components/Doctor/Chat.vue').default},*/
     {path:'/doctor/users', component: require('./components/Doctor/Doctors.vue').default},
     {path:'/doctor/medical-records', component: require('./components/Doctor/MedicalRecords.vue').default},
     {path:'/doctor/profile', component: require('./components/Doctor/Profile.vue').default},

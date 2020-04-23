@@ -13,7 +13,7 @@
 
 
         <li class="nav-item">
-            <router-link to="/user/chat" class="nav-link">
+            <router-link to="/chat" class="nav-link">
                 <i class="far fa-comments nav-icon green"></i>
                 <p>Chat</p>
             </router-link>

@@ -4,7 +4,7 @@
             <div class="card-header"> Chat Page</div>
             <div class="card-body">
                 <div class="chat-app">
-                    <conversation :contact="selectedContact" :messages="messages"></conversation>
+                    <conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"></conversation>
                     <contact-list :contacts="contacts" @selected="startConversationWith"/>
                 </div>
             </div>
@@ -27,12 +27,15 @@
         },
         methods:{
             startConversationWith(contact){
-                axios.get(`/messages/user/${contact.id}`)
+                axios.get(`/records/messages/chat/${contact.id}`)
                     .then((response) => {
                         this.messages = response.data;
                         this.selectedContact = contact;
                     })
-            }
+            },
+            saveNewMessage(chat){
+                this.messages.push(chat);
+            },
         },
         mounted() {
             axios.get('/records/friends')

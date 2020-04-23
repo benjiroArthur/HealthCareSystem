@@ -19,23 +19,11 @@
                     </router-link>
                 </li>
 
-        <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fab fa-facebook-messenger cyan"></i>
-                <p>
-                    Chat
-                    <i class="right fas fa-angle-left"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <router-link to="/user/chat" class="nav-link">
-                        <i class="far fa-circle nav-icon green"></i>
-                        <p>Doctor Name</p>
-                    </router-link>
-                </li>
-
-            </ul>
+        <li class="nav-item">
+            <router-link to="/chat" class="nav-link">
+                <i class="far fa-comments nav-icon green"></i>
+                <p>Chat</p>
+            </router-link>
         </li>
         <li class="nav-item">
             <router-link to="/doctor/profile" class="nav-link">

@@ -70,7 +70,7 @@ Route::group(['prefix' => 'records', 'as' => 'records.'], function(){
 
     //messages route
     Route::resource('/messages', 'MessagesController');
-    Route::get('/messages/user/{id}', 'MessagesController@getMessagesFor');
+    Route::get('/messages/chat/{id}', 'MessagesController@getMessagesFor');
 
     //dailyTips routes
     Route::resource('/daily-tips', 'DailyTipController');

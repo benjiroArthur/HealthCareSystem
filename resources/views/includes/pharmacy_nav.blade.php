@@ -19,6 +19,13 @@
             </router-link>
         </li>
 
+        <li class="nav-item">
+            <router-link to="/chat" class="nav-link">
+                <i class="far fa-comments nav-icon green"></i>
+                <p>Chat</p>
+            </router-link>
+        </li>
+
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-file-invoice-dollar cyan"></i>

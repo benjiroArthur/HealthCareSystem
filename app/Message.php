@@ -10,4 +10,9 @@ class Message extends Model
     protected $fillable = [
         'from', 'to', 'chat'
     ];
+    protected $with = ['fromContact'];
+
+    public function fromContact(){
+        return $this->hasOne(User::class, 'id', 'from');
+    }
 }

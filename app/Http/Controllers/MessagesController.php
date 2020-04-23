@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewMessage;
 use App\Message;
 use Illuminate\Http\Request;
 
 class MessagesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +40,17 @@ class MessagesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate
+        $this->validate($request, [
+            'chat' => 'required'
+        ]);
+        $data = $request->all();
+        $data['from'] = auth()->user()->id;
+        $message = new Message();
+        $message = $message->create($data);
+
+        broadcast(new NewMessage($message))->toOthers();
+        return response()->json($message);
     }
 
     /**
@@ -84,7 +99,16 @@ class MessagesController extends Controller
     }
 
     public function getMessagesFor($id){
-        $messages = Message::where('from', $id)->orWhere('to', $id)->get();
+
+        //mark all messages as read
+        Message::where('from', $id)->where('to', auth()->user()->id)->update(['read' => true]);
+        $messages = Message::where(function ($query) use($id){
+            $query->where('from', auth()->user()->id);
+            $query->where('to', $id);
+        })->orWhere(function($query) use($id){
+            $query->where('from', $id);
+            $query->where('to', auth()->user()->id);
+        })->get();
         return response()->json($messages);
     }
 }

@@ -45,3 +45,16 @@ window.Echo = new Echo({
     wsHost: window.location.hostname,
     wsPort: 6002
 });
+
+/*
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: 'your key',
+    cluster: 'your cluster',
+    encrypted: true,
+    auth: {
+        headers: {
+            Authorization: 'Bearer ' + YourTokenLogin
+        },
+    },
+});*/
