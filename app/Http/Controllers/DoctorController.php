@@ -57,7 +57,8 @@ class DoctorController extends Controller
      */
     public function show($id)
     {
-        //
+        $doctor = User::findOrFail($id)->userable()->first();
+        return response()->json($doctor);
     }
 
     /**

@@ -69,9 +69,7 @@
                 .listen('NewMessage', (e) => {
                     this.handleIncoming(e.message);
                 });
-            /*setTimeout(() => {
 
-            }, 5000);*/
         }
     }
 </script>
