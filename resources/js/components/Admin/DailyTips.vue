@@ -117,6 +117,8 @@
             Fire.$on('tableUpdate', () => {
                 this.getAllTips();
             });
+        },
+        mounted() {
         }
     }
 </script>

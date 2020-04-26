@@ -7,7 +7,7 @@
 @php($i = 1)
             <div class="carousel-item active">
                 <img src="{{asset('assets/sliders/banner'.$i.'.jpg')}}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block tip-box">
+                <div class="carousel-caption d-md-block tip-box">
                     <h5>Tip Of The Day</h5>
                     @if(!empty($tip))
                         <p>{{$tip->info}}</p>
@@ -17,10 +17,10 @@
             @for($i = 1; $i <= 6; $i++)
                     <div class="carousel-item">
                         <img src="{{asset('assets/sliders/banner'.$i.'.jpg')}}" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block tip-box">
-                            <h5>Tip Of The Day</h5>
+                        <div class="carousel-caption d-block tip-box">
+                            <h5 class="pt-0">Tip Of The Day</h5>
                             @if(!empty($tip))
-                                <p>{{$tip->info}}</p>
+                                <p class="pb-0">{{$tip->info}}</p>
                                 @endif
                         </div>
                     </div>

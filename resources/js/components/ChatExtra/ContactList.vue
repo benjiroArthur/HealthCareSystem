@@ -7,21 +7,25 @@
             </div>
             <div class="contact">
                 <p class="name">{{contact.userable.full_name}}</p>
-                <p>{{contact.role.name}}</p>
+                <p>{{contact.role.name === 'doctor' ? 'Doctor' : contact.role.name === 'pharmacy' ? 'Pharmacy' : contact.role.name === 'admin' ? 'Admin' : 'Patient'}}</p>
             </div>
             <span class="unread" v-if="contact.unread">{{ contact.unread }}</span>
+            <online-user :contact="contact" :onlineusers="onlineUsers"></online-user>
         </li>
     </ul>
 </div>
 </template>
 
 <script>
+    import OnlineUser from '../ChatExtra/OnlineUser';
     export default {
+        components:{ OnlineUser },
         name: "ContactList",
         props:{
             contacts:{
                 type: Array,
             },
+            onlineUsers:{},
         },
         data(){
             return{
@@ -32,7 +36,8 @@
             selectedContact(contact){
                 this.selected = contact;
                 this.$emit('selected', contact);
-            }
+            },
+
         },
         computed:{
             sortedContacts(){
@@ -110,6 +115,21 @@
                 font-size: 12px;
                 padding: 0 4px;
                 border-radius: 3px;
+            }
+
+            span.online{
+                background: #0eb815;
+                color: #0eb815;
+                position: absolute;
+                top: 20px;
+                right: 2px;
+                display: flex;
+                font-weight: 700;
+                min-width: 20px;
+                justify-content: center;
+                align-items: center;
+                line-height: 20px;
+                font-size: 12px;
             }
         }
 

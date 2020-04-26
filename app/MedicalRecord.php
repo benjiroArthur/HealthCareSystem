@@ -8,14 +8,17 @@ class MedicalRecord extends Model
 {
     //fillable
     protected $fillable = [
-        'patient_id', 'doctor_id', 'diagnosis', 'heart_rate', 'weight'
+        'out_patient_id', 'doctor_id', 'diagnosis', 'heart_rate'
     ];
 
+    protected $with = ['doctor', 'out_patient'];
+
     public function doctor(){
-        $this->belongsTo('App\Doctor');
+        return $this->belongsTo('App\Doctor');
     }
     public function out_patient(){
-        $this->belongsTo('App\OutPatient');
+       return $this->belongsTo('App\OutPatient');
     }
+
 
 }

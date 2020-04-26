@@ -265,6 +265,9 @@
                     this.error = error.response.data.message || error.message;
                 });
             },
+            handleIncoming(user){
+                this.admins.push(user);
+            },
 
             update(){
 
@@ -354,9 +357,12 @@
             });
         },
         mounted() {
-            Echo.private('adminChannel').listen('newUser', function(e){
-                this.index();
-            });
+
+
+            Echo.private('adminChannel')
+                .listen('NewUser', (e) => {
+                    this.handleIncoming(e.user);
+                });
         }
     }
 

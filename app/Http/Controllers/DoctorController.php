@@ -82,11 +82,7 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //update Doctor records
-//        if($request->hasFile('image'))
-//        {
-//
-//        }
+
     }
 
     /**

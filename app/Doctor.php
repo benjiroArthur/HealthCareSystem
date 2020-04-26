@@ -25,11 +25,15 @@ class Doctor extends Model
         return asset('assets/ProfilePictures/'.$val);
     }
 
-    public function medical_record(){
+    public function medicalRecords(){
         return $this->hasMany('App\MedicalRecord');
     }
 
     public function specialization(){
         return $this->belongsTo('App\Specialization');
+    }
+
+    public function prescription(){
+        return $this->hasMany('App\Prescription');
     }
 }

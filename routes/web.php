@@ -68,6 +68,15 @@ Route::group(['prefix' => 'records', 'as' => 'records.'], function(){
     //contact list routes
     Route::resource('/friends', 'FriendsController');
 
+    //specialization list routes
+    Route::resource('/specialization', 'SpecializationController');
+
+    Route::resource('/prescription', 'PrescriptionController');
+
+
+    Route::resource('/medical-records', 'MedicalRecordsController');
+    Route::get('/medical-records/patient/{id}', 'MedicalRecordsController@searchMedicalRecords');
+
     //messages route
     Route::resource('/messages', 'MessagesController');
     Route::get('/messages/chat/{id}', 'MessagesController@getMessagesFor');

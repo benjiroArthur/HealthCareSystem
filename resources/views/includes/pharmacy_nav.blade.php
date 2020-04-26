@@ -10,14 +10,6 @@
                 </p>
             </router-link>
         </li>
-        <li class="nav-item">
-            <router-link to="/pharmacy/dashboard" class="nav-link">
-                <i class="nav-icon fa fa-tachometer-alt"></i>
-                <p>
-                    Dashboard
-                </p>
-            </router-link>
-        </li>
 
         <li class="nav-item">
             <router-link to="/chat" class="nav-link">
@@ -26,105 +18,24 @@
             </router-link>
         </li>
 
-        <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-file-invoice-dollar cyan"></i>
-                <p>
-                    Orders
-                    <i class="right fas fa-angle-left"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <router-link to="/user/chat" class="nav-link">
-                        <i class="far fa-circle nav-icon green"></i>
-                        <p>All Orders</p>
-                    </router-link>
-                </li>
-            <li class="nav-item">
-                    <router-link to="/user/chat" class="nav-link">
-                        <i class="far fa-circle nav-icon green"></i>
-                        <p>All Orders</p>
-                    </router-link>
-            </li>
-
-            </ul>
-        </li>
         <li class="nav-item">
-            <router-link to="/user/profile" class="nav-link">
+            <router-link to="/pharmacy/prescription" class="nav-link">
+                <i class="nav-icon fas fa-capsules orange"></i>
+                <p>
+                    Prescription
+                </p>
+            </router-link>
+        </li>
+
+        <li class="nav-item">
+            <router-link to="/pharmacy/profile" class="nav-link">
                 <i class="nav-icon fas fa-user-circle orange"></i>
                 <p>
                     Profile
-
                 </p>
             </router-link>
         </li>
-        <li class="nav-item">
-            <router-link to="/user/doctors" class="nav-link">
-                <i class="nav-icon fas fa-user-nurse teal"></i>
-                <p>
-                    Doctors
 
-                </p>
-            </router-link>
-        </li>
-        <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-notes-medical purple"></i>
-                <p>
-                    Medical Records
-                    <i class="right fas fa-angle-left"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                {{--//for patients only--}}
-                <li class="nav-item">
-                    <router-link to="/user/medical-records" class="nav-link">
-                        <i class="fas fa-file-medical pink nav-icon"></i>
-                        <p>My Medical Records</p>
-                    </router-link>
-                </li>
-                {{--//for doctors only--}}
-                <li class="nav-item">
-                    <router-link to="/user/medical-records" class="nav-link">
-                        <i class="fas fa-file-medical pink nav-icon"></i>
-                        <p>Create New Records</p>
-                    </router-link>
-                </li>
-            </ul>
-        </li>
-        <li class="nav-item">
-            <router-link to="/user/medical-records" class="nav-link">
-                <i class="nav-icon fas fa-file-medical pink"></i>
-                <p>
-                    Medical Records
-
-                </p>
-            </router-link>
-        </li>
-        <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-notes-medical purple"></i>
-                <p>
-                    Appointments
-                    <i class="right fas fa-angle-left"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <router-link to="/user/upcoming-appointment" class="nav-link">
-                        <i class="far fa-circle nav-icon indigo"></i>
-                        <p>Upcoming Appointments</p>
-                    </router-link>
-                </li>
-                <li class="nav-item">
-                    <router-link to="/user/past-appointment" class="nav-link">
-                        <i class="far fa-circle nav-icon indigo"></i>
-                        <p>Past Appointments</p>
-                    </router-link>
-                </li>
-            </ul>
-        </li>
 
         <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}"

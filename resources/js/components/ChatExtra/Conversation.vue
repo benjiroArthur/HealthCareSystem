@@ -1,7 +1,7 @@
 <template>
 <div class="conversation">
     <div class="title">
-        <h3>{{contact ? contact.userable.full_name : 'Select a Contact'}}</h3>
+        <h3>{{contact ? contact.userable.srn : 'Select a Contact'}}</h3>
     </div>
     <feed :contact="contact" :messages="messages"/>
     <message-composer @send="sendMessage"/>

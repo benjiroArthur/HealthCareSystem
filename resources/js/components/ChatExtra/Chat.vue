@@ -5,7 +5,7 @@
             <div class="card-body">
                 <div class="chat-app">
                     <conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"></conversation>
-                    <contact-list :contacts="contacts" @selected="startConversationWith"/>
+                    <contact-list :onlineUsers="onlineUsers" :contacts="contacts" @selected="startConversationWith"/>
                 </div>
             </div>
         </div>
@@ -23,6 +23,7 @@
                 selectedContact: null,
                 messages: [],
                 contacts: [],
+                onlineUsers: null,
             }
         },
         methods:{
@@ -37,9 +38,16 @@
             saveNewMessage(message){
                 this.messages.push(message);
             },
+            markAsRead(message){
+              axios.put(`/records/messages/${message.id}`, message)
+                  .then((response) => {
+
+                  })
+            },
             handleIncoming(message){
                 if(this.selectedContact && message.from === this.selectedContact.id){
                     this.saveNewMessage(message);
+                    this.markAsRead(message);
                     return;
                 }
                 this.updateUnreadContact(message.from_contact, false);
@@ -69,6 +77,21 @@
                 .listen('NewMessage', (e) => {
                     this.handleIncoming(e.message);
                 });
+
+            if(this.$userId !== 0){
+                Echo.join('Online')
+                    .here((users) => {
+                        this.onlineUsers = users;
+                    })
+                    .joining((user) => {
+                        this.onlineUsers.push(user);
+                    })
+                    .leaving((user) => {
+                        this.onlineUsers = this.onlineUsers.filter((u) => {
+                            u !== user;
+                        });
+                    })
+            }
 
         }
     }

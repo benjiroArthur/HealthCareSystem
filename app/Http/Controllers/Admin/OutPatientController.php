@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Events\newUser;
+use App\Events\NewUser;
 use App\Http\Controllers\Controller;
 use App\OpId;
 use App\OutPatient;
@@ -107,7 +107,7 @@ class OutPatientController extends Controller
             'role_id' => $role->id
         ]);
 
-        broadcast(new newUser($user))->toOthers();
+        broadcast(new NewUser($user))->toOthers();
         return response(['message' => 'User Created Successfully']);
     }
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\MedicalRecord;
+use App\OutPatient;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -53,7 +55,28 @@ class MedicalRecordsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'srn' => 'required',
+            'diagnosis' => 'required'
+        ]);
+        $srn = str_replace(' ', '', $request->srn);
+        $srn = strtoupper($srn);
+        $patient = OutPatient::where('srn', $srn)->first();
+        if(!empty($patient)){
+            $data = [
+                'out_patient_id' => $patient->id,
+                'doctor_id' => auth()->user()->userable->id,
+                'diagnosis' => $request->diagnosis,
+                'heart_rate' => $request->heart_rate
+            ];
+            $records = new MedicalRecord();
+            $record = $records->create($data);
+            return response()->json($record);
+        }
+        else{
+            return response('error');
+        }
+
     }
 
     /**
@@ -99,5 +122,19 @@ class MedicalRecordsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function searchMedicalRecords($srn){
+        $srn = str_replace(' ', '', $srn);
+        $srn = strtoupper($srn);
+        $patient = OutPatient::where('srn', $srn)->first();
+        if(!empty($patient)){
+            $records = $patient->medicalRecords()->get();
+            return response()->json($records);
+        }
+        else{
+            return response('error');
+        }
+
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Events\newUser;
+use App\Events\NewUser;
 use App\Http\Controllers\Controller;
 use App\Pharmacy;
 use App\PharmId;
@@ -98,7 +98,7 @@ class PharmacyController extends Controller
             'role_id' => $role->id
         ]);
 
-        broadcast(new newUser($user))->toOthers();
+        broadcast(new NewUser($user))->toOthers();
         return response('success');
     }
 

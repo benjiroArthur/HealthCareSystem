@@ -10,9 +10,8 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import moment from 'moment';
- Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttribute('content');
+Vue.prototype.$userId = document.querySelector("meta[name='userId']").getAttribute('content');
 Vue.prototype.$status = document.querySelector("meta[name='status']").getAttribute('content');
-
 
 window.Fire = new Vue();
 
@@ -151,8 +150,7 @@ let routes = [
     {path:'/doctor/users', component: require('./components/Doctor/Doctors.vue').default},
     {path:'/doctor/medical-records', component: require('./components/Doctor/MedicalRecords.vue').default},
     {path:'/doctor/profile', component: require('./components/Doctor/Profile.vue').default},
-    {path:'/doctor/upcoming-appointment', component: require('./components/Doctor/UpAppointment.vue').default},
-    {path:'/doctor/past-appointment', component: require('./components/Doctor/PastAppointment.vue').default},
+    {path:'/doctor/prescription', component: require('./components/Doctor/Prescription.vue').default},
 
     //Pharmacy routes
     {path:'/pharmacy/dashboard', component: require('./components/Pharmacy/Dashboard.vue').default},
@@ -202,6 +200,8 @@ Vue.component('contact-list', require('./components/ChatExtra/ContactList.vue').
 Vue.component('conversation', require('./components/ChatExtra/Conversation.vue').default);
 Vue.component('message-composer', require('./components/ChatExtra/MessageComposer.vue').default);
 Vue.component('feed', require('./components/ChatExtra/Feed.vue').default);
+Vue.component('online-user', require('./components/ChatExtra/OnlineUser.vue').default);
+Vue.component('load-prescription', require('./components/Doctor/LoadPrescription.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -234,10 +234,12 @@ const app = new Vue({
     router,
     data: () => ({
         pageLoader: true,
+        userId: '',
     }),
     mounted() {
         setTimeout(val => {
             this.pageLoader = false;
         }, 4000);
+
     }
 });

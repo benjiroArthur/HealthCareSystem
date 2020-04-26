@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-12 c0l-sm-12">
                 <div class="card">
-                    <div class="card-header">My Profile</div>
+                    <div class="card-header">My Profile ( {{this.out_patient.srn}} )</div>
 
                     <div class="card-body">
 

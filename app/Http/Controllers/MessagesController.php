@@ -84,7 +84,10 @@ class MessagesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $message = Message::findOrFail($id);
+        $message->read = true;
+        $message->save();
+        return response('success');
     }
 
     /**

@@ -22,3 +22,7 @@ Broadcast::channel('adminChannel', function () {
 Broadcast::channel('messages.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
+
+Broadcast::channel('Online', function ($user) {
+    return $user;
+});

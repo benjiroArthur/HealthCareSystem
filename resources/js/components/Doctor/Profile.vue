@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-12 c0l-sm-12">
                 <div class="card">
-                    <div class="card-header"><h3>My Profile</h3></div>
+                    <div class="card-header">My Profile ( {{this.doctor.srn}} )</div>
 
                     <div class="card-body">
 
@@ -40,6 +40,12 @@
                                                    class="form-control" :class="{ 'is-invalid': form.errors.has('email') }" readonly>
                                             <has-error :form="form" field="email"></has-error>
                                         </div>
+                                        <div class="form-group">
+                                            <label>Ghana Post GPS Address</label>
+                                            <input v-model="form.location" type="text" name="location"
+                                                   class="form-control" :class="{ 'is-invalid': form.errors.has('location') }">
+                                            <has-error :form="form" field="location"></has-error>
+                                        </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6 col-lg-6">
                                         <div class="form-group">
@@ -63,6 +69,23 @@
                                             <input v-model="form.phone_number" type="text" name="phone_number"
                                                    class="form-control" :class="{ 'is-invalid': form.errors.has('phone_number') }">
                                             <has-error :form="form" field="phone_number"></has-error>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Qualification</label>
+                                            <input v-model="form.qualification" type="text" name="qualification"
+                                                   class="form-control" :class="{ 'is-invalid': form.errors.has('qualification') }">
+                                            <has-error :form="form" field="qualification"></has-error>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Specialization</label>
+                                            <select v-model="form.specialization_id" name="specialization_id"
+                                                    class="form-control" :class="{ 'is-invalid': form.errors.has('specialization_id') }">
+                                                <option></option>
+                                                <option v-for="specialization in specializations" :value="specialization.id">{{specialization.name}}</option>
+                                            </select>
+                                            <has-error :form="form" field="specialization_id"></has-error>
                                         </div>
 
                                     </div>
@@ -121,6 +144,7 @@
             return{
                 formData: new FormData(),
                 doctor: {},
+                specializations: {},
                 file: null,
                 image_file: '',
                 form: new Form({
@@ -131,7 +155,10 @@
                     email: '',
                     dob: '',
                     gender: '',
-                    phone_number: ''
+                    phone_number: '',
+                    location: '',
+                    specialization_id: '',
+                    qualification: ''
                 }),
             };
         },
@@ -217,11 +244,25 @@
                     .catch((error) => {
                         console.log(error.message);
                     });
-            }
+            },
+            getSpec(){
+                this.loading = true;
+                axios
+                    .get('/records/specialization')
+                    .then(response => {
+                        this.loading = false;
+                        this.specializations = response.data;
+
+
+                    }).catch(error => {
+                    this.loading = false;
+                    this.error = error.response.data.message || error.message;
+                });
+            },
 
         },
         created(){
-
+            this.getSpec();
             this.profileInfo();
             Fire.$on('profileUpdate', () => {
                 this.profileInfo();

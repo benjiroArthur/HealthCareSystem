@@ -71,39 +71,6 @@
         </li>
 
         <li class="nav-item">
-            <router-link to="/admin/medical-records" class="nav-link">
-                <i class="nav-icon fas fa-file-medical pink"></i>
-                <p>
-                    Medical Records
-
-                </p>
-            </router-link>
-        </li>
-        <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-calendar-check purple"></i>
-                <p>
-                    Appointments
-                    <i class="right fas fa-angle-left"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <router-link to="/user/upcoming-appointment" class="nav-link">
-                        <i class="far fa-calendar-check nav-icon indigo"></i>
-                        <p>Upcoming Appointments</p>
-                    </router-link>
-                </li>
-                <li class="nav-item">
-                    <router-link to="/user/past-appointment" class="nav-link">
-                        <i class="far fa-calendar-check nav-icon indigo"></i>
-                        <p>Past Appointments</p>
-                    </router-link>
-                </li>
-            </ul>
-        </li>
-
-        <li class="nav-item">
             <router-link to="/admin/daily-tips" class="nav-link">
                 <i class="nav-icon fas fa-history"></i>
                 <p>

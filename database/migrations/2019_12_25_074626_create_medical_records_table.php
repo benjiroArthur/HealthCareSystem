@@ -15,11 +15,10 @@ class CreateMedicalRecordsTable extends Migration
     {
         Schema::create('medical_records', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('patient_id');
+            $table->bigInteger('out_patient_id');
             $table->bigInteger('doctor_id');
-            $table->string('diagnosis');
+            $table->text('diagnosis');
             $table->string('heart_rate')->nullable();
-            $table->string('weight')->nullable();
             $table->timestamps();
         });
     }

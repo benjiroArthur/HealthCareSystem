@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\DocId;
 use App\Doctor;
-use App\Events\newUser;
+use App\Events\NewUser;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Role;
@@ -104,7 +104,7 @@ class DoctorController extends Controller
             'role_id' => $role->id
         ]);
 
-        broadcast(new newUser($user))->toOthers();
+        broadcast(new NewUser($user))->toOthers();
         return response('success');
     }
 

@@ -19,20 +19,22 @@
             </router-link>
         </li>
 
-        <li class="nav-item">
-            <router-link to="/user/profile" class="nav-link">
-                <i class="nav-icon fas fa-user-circle orange"></i>
-                <p>
-                    Profile
 
-                </p>
-            </router-link>
-        </li>
         <li class="nav-item">
             <router-link to="/user/doctors" class="nav-link">
                 <i class="nav-icon fas fa-user-nurse teal"></i>
                 <p>
                     Doctors
+
+                </p>
+            </router-link>
+        </li>
+
+        <li class="nav-item">
+            <router-link to="/user/pharmacy" class="nav-link">
+                <i class="nav-icon fas fa-user-nurse teal"></i>
+                <p>
+                    Pharmacy
 
                 </p>
             </router-link>
@@ -49,13 +51,14 @@
         </li>
 
         <li class="nav-item">
-            <router-link to="/user/my-appointment" class="nav-link">
-                <i class="far fa-calendar-alt pink nav-icon"></i>
-                <p>My Appointments</p>
+            <router-link to="/user/profile" class="nav-link">
+                <i class="nav-icon fas fa-user-circle orange"></i>
+                <p>
+                    Profile
+
+                </p>
             </router-link>
         </li>
-
-
 
         <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}"

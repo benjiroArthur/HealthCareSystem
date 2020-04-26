@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Admin;
-use App\Events\newUser;
+use App\Events\NewUser;
 use App\Http\Controllers\Controller;
 use App\Role;
 use App\User;
@@ -78,7 +78,7 @@ class AdminController extends Controller
             'role_id' => $role->id
         ]);
 
-        broadcast(new newUser($user))->toOthers();
+        broadcast(new NewUser($user))->toOthers();
         return response(['message' => 'User Created Successfully']);
     }
 
