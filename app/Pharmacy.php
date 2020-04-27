@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Pharmacy extends Model
@@ -12,6 +13,7 @@ class Pharmacy extends Model
     ];
 
     protected $guarded = [];
+    protected $appends = ['from_now'];
 
     public function user(){
         return $this->morphOne('App\User', 'userable');
@@ -19,6 +21,12 @@ class Pharmacy extends Model
 
     public function getImageAttribute($val){
         return asset('assets/ProfilePictures/'.$val);
+    }
+    public function getCreatedAtAttribute($val){
+        return Carbon::parse($val)->isoFormat('Do MMMM, YYYY');
+    }
+    public function getFromNowAttribute(){
+        return Carbon::parse($this->created_at)->diffForHumans();
     }
 
 }

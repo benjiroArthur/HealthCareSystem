@@ -92,14 +92,14 @@ class PharmacyController extends Controller
 
         ]);
         $role = Role::where('name', $request->role)->first();
-        $user = $pharmacy->user()->create([
+        $users = $pharmacy->user()->create([
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role_id' => $role->id
         ]);
-
-        broadcast(new NewUser($user))->toOthers();
-        return response('success');
+        $user = User::findOrFail($users->id);
+        broadcast(new NewUser($user));
+        return response()->json($user);
     }
 
     /**

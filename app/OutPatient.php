@@ -25,7 +25,7 @@ class OutPatient extends Model
     /**
      *
      */
-    public function medicalRecords(){
+    public function medical_records(){
         return $this->hasMany('App\MedicalRecord');
     }
 

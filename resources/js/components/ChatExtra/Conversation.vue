@@ -55,7 +55,7 @@
         flex-direction: column;
         justify-content: space-between;
     }
-    h1{
+    h3{
         font-size: 20px;
         padding: 10px;
         margin: 0;

@@ -9,6 +9,9 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import Vuetify from 'vuetify';
+Vue.use(Vuetify);
+
 import moment from 'moment';
 Vue.prototype.$userId = document.querySelector("meta[name='userId']").getAttribute('content');
 Vue.prototype.$status = document.querySelector("meta[name='status']").getAttribute('content');
@@ -89,9 +92,9 @@ Vue.use(VueProgressBar, {
 
 
 import Swal from 'sweetalert2';
-window.swal = Swal;
+window.Swal = Swal;
 
-/*const toast = swal.mixin({
+/*const toast = Swal.mixin({
     toast: true,
     Position: 'top-end',
     showConfirmButton: false,
@@ -127,7 +130,7 @@ let routes = [
     {path:'/user/doctors', component: require('./components/User/Doctors.vue').default},
     {path:'/user/medical-records', component: require('./components/User/MedicalRecords.vue').default},
     {path:'/user/profile', component: require('./components/User/Profile.vue').default},
-    {path:'/user/my-appointment', component: require('./components/User/MyAppointments.vue').default},
+    {path:'/user/pharmacy', component: require('./components/User/Pharmacy.vue').default},
     {path:'/user/upcoming-appointment', component: require('./components/User/UpAppointment.vue').default},
     {path:'/user/past-appointment', component: require('./components/User/PastAppointment.vue').default},
 
@@ -232,6 +235,7 @@ Vue.component(VueCropper);
 const app = new Vue({
     el: '#app',
     router,
+    vuetify: new Vuetify(),
     data: () => ({
         pageLoader: true,
         userId: '',

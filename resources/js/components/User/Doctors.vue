@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header">List Of Doctors</div>
 
-                    <div class="card-body">
+                    <div class="card-body table table-responsive table-borderless">
                         <!--<table class="table table-hover">
                             <thead>
                             <tr>
@@ -38,7 +38,7 @@
 
                             </tbody>
                         </table>-->
-                        <bootstrap-table :data="doctors" :options="myOptions" :columns="myColumns"/>
+                        <bootstrap-table :data="doctors" :options="myOptions" :columns="myColumns" sticky-header responsive table-borderless/>
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@
         },
         data(){
             return{
-                doctors: null,
+                doctors: {},
                 doctor:'',
                 //table
                 myOptions: {

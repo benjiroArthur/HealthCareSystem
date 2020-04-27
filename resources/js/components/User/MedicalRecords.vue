@@ -41,76 +41,14 @@
 
                 },
                 myColumns: [
-                    { field: 'index', title: 'ID'},
+                    { field: 'key', title: 'ID', formatter: function(row, cell, index){
+                            return `<p>${index+1}</p>`;
+                    }},
                     { field: 'id', title: 'ID', sortable: true,  class: 'd-none'},
-                    { field: 'userable.full_name', title: 'Name', sortable: true},
-                    { field: 'userable.doctor_id', title: 'Doctor ID', sortable: true},
-                    { field: 'userable.email', title: 'Email', sortable: true},
-                    { field: 'userable.dob', title: 'Date Of Birth', sortable: true},
-                    { field: 'userable.gender', title: 'Gender', sortable: true},
-                    { field: 'userable.phone_number', title: 'Phone Number', sortable: true},
-                    { field: 'userable.specialization', title: 'Specialization', sortable: true},
-                    { field: 'userable.qualification', title: 'Qualification', sortable: true},
-                    { field: 'active', title: 'Active', sortable: true},
-                    /*{
-                        field: 'action',
-                        title: 'Actions',
-                        align: 'center',
-                        clickToSelect: false,
-                        formatter: function (e, value, row){
-                            return '<a class="btn btn-sm show" data-toggle="modal" data-target="#"><i class="fas fa-eye text-info"></i></a><a class="btn btn-sm edit"><i class="fas fa-edit text-yellow"></i></a><a class="btn btn-sm destroy"><i @click="deleteUser()" class="fas fa-trash text-danger"></i></a>'
-                        },
-                        events: {
-                            'click .show': function (e, value, row){
-                                return window.location.assign('/admin/show/'+row.id)
+                    { field: 'diagnosis', title: 'Diagnosis', sortable: true},
+                    { field: 'heart_rate', title: 'Heart Rate', sortable: true},
+                    { field: 'doctor.full_name', title: 'Doctor\'s Name', sortable: true}
 
-                            },
-                            'click .edit': function (e, value, row){
-                                return window.location.assign('/admin/show/'+row.id)
-
-                            },
-                            'click .destroy': function (e, value, row){
-                                swal.fire({
-                                    title: 'Are you sure?',
-                                    text: "You won't be able to revert this!",
-                                    icon: 'warning',
-                                    showCancelButton: true,
-                                    confirmButtonColor: '#3085d6',
-                                    cancelButtonColor: '#d33',
-                                    confirmButtonText: 'Yes, delete it!'
-                                }).then((result) => {
-                                    if (result.value) {
-                                        axios.delete('/data/admin/' + row.id).then((response) => {
-                                            if(response.data === "success")
-                                            {
-                                                Fire.$emit('tableUpdate');
-                                                swal.fire(
-                                                    'Deleted!',
-                                                    'User Deleted Successfully',
-                                                    'success'
-                                                );
-
-                                            }
-                                            else{
-                                                swal.fire(
-                                                    'Failed!',
-                                                    response.data,
-                                                    'warning'
-                                                )
-                                            }
-                                        }).catch(() => {
-                                            swal.fire(
-                                                'Failed!',
-                                                'User Could Not Be Deleted.',
-                                                'warning'
-                                            )
-                                        });
-                                    }
-
-                                });
-                            },
-                        }
-                    }*/
                 ],
             }
         },
@@ -120,9 +58,9 @@
                 this.error = this.records = null;
                 this.loading = true;
                 axios
-                    .get('/data/admin')
+                    .get('/records/medical-records')
                     .then(response => {
-                        this.loading = false;
+
                         this.records = response.data;
                     }).catch(error => {
                     this.loading = false;

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Admin extends Model
@@ -13,6 +14,8 @@ class Admin extends Model
     ];
 
     protected $guarded = [];
+    protected $appends = ['from_now'];
+
 
 
     public function user(){
@@ -20,5 +23,11 @@ class Admin extends Model
     }
     public function getImageAttribute($val){
         return asset('assets/ProfilePictures/'.$val);
+    }
+    public function getCreatedAtAttribute($val){
+        return Carbon::parse($val)->isoFormat('Do MMMM, YYYY');
+    }
+    public function getFromNowAttribute(){
+        return Carbon::parse($this->created_at)->diffForHumans();
     }
 }

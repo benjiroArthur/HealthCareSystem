@@ -89,8 +89,13 @@ class PrescriptionController extends Controller
                     'name' => $drug
                 ]);
             }
-
-            return response()->json($prescription);
+            $pres = Prescription::where('id', $prescription->id)->get();
+            $drugs = $prescription->drugs()->get();
+            $data = [
+                'prescription' => $pres,
+                'drugs' => $drugs
+            ];
+            return response()->json($data);
         }
         else{
             return response('error');
@@ -154,5 +159,24 @@ class PrescriptionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function allPrescription($srn){
+        $srn = str_replace(' ', '', $srn);
+        $srn = strtoupper($srn);
+
+        $patient = OutPatient::where('srn', $srn)->first();
+        if(!empty($patient)){
+        $pres = $patient->prescription()->latest()->get();
+        if(!empty($pres)){
+            return response()->json($pres);
+        }
+        else{
+            return response('no prescription');
+        }
+        }
+        else{
+            return response('no patient');
+        }
     }
 }

@@ -17,4 +17,12 @@ class Drug extends Model
     {
         return $this->belongsTo('App\Prescription');
     }
+    public function getDispensedAttribute($val){
+        if($val == true){
+            return 'Yes';
+        }
+        else{
+            return 'No';
+        }
+    }
 }

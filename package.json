@@ -58,6 +58,7 @@
         "vue-sweetalert2": "^3.0.3",
         "vue-upload-multiple-image": "^1.1.4",
         "vue2-google-maps": "^0.10.7",
-        "vuejs-datatable": "^2.0.0-alpha.7"
+        "vuejs-datatable": "^2.0.0-alpha.7",
+        "vuetify": "^2.2.25"
     }
 }

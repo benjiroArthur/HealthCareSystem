@@ -1,5 +1,6 @@
 <template>
 <div class="contact-list">
+    <input v-model="searchContact" class="form-control form-control-navbar" type="text" placeholder="Search Contact" aria-label="Search Contact">
     <ul>
         <li v-for="(contact) in sortedContacts" :key="contact.id" @click="selectedContact(contact)" :class="{ 'selected' : contact === selected }">
             <div class="avatar">
@@ -30,6 +31,7 @@
         data(){
             return{
                 selected: this.contacts.length ? this.contacts[0] : null,
+                searchContact:'',
             }
         },
         methods:{
@@ -41,12 +43,18 @@
         },
         computed:{
             sortedContacts(){
-                return _.sortBy(this.contacts, [(contact) => {
+                return _.sortBy(this.filteredContact, [(contact) => {
                     if(contact === this.selected){
                         return Infinity;
                     }
                     return contact.unread;
                 }]).reverse();
+            },
+            filteredContact(){
+                return this.contacts.filter((contact) => {
+                    return contact.userable.full_name.toLowerCase().match(this.searchContact.toLowerCase()) ||
+                        contact.role.name.toLowerCase().match(this.searchContact.toLowerCase());
+                })
             }
         }
     }
@@ -57,7 +65,8 @@
         flex: 2;
         max-height: 600px;
         min-height: 600px;
-        overflow: scroll;
+        overflow-y: scroll;
+        overflow-x: hidden;
         border-left: 1px solid #a6a6a6;
     }
     ul{

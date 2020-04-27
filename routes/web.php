@@ -72,6 +72,7 @@ Route::group(['prefix' => 'records', 'as' => 'records.'], function(){
     Route::resource('/specialization', 'SpecializationController');
 
     Route::resource('/prescription', 'PrescriptionController');
+    Route::get('/allPrescription/{id}', 'PrescriptionController@allPrescription');
 
 
     Route::resource('/medical-records', 'MedicalRecordsController');

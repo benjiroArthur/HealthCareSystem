@@ -134,7 +134,7 @@
                     { field: 'userable.pharmacy_name', title: 'Name', sortable: true},
                     { field: 'userable.email', title: 'Email', sortable: true},
                     { field: 'userable.location', title: 'Location', sortable: true},
-                    { field: 'userable.phone_number', title: 'Phone Number', sortable: true},
+                    { field: 'userable.created_at', title: 'Phone Number', sortable: true},
                     {
                         field: 'action',
                         title: 'Actions',
@@ -153,7 +153,7 @@
 
                             },
                             'click .destroy': function (e, value, row){
-                                swal.fire({
+                                Swal.fire({
                                     title: 'Are you sure?',
                                     text: "You won't be able to revert this!",
                                     icon: 'warning',
@@ -167,7 +167,7 @@
                                             if(response.data === "success")
                                             {
                                                 Fire.$emit('tableUpdate');
-                                                swal.fire(
+                                                Swal.fire(
                                                     'Deleted!',
                                                     'User Deleted Successfully',
                                                     'success'
@@ -175,14 +175,14 @@
 
                                             }
                                             else{
-                                                swal.fire(
+                                                Swal.fire(
                                                     'Failed!',
                                                     response.data,
                                                     'warning'
                                                 )
                                             }
                                         }).catch(() => {
-                                            swal.fire(
+                                            Swal.fire(
                                                 'Failed!',
                                                 'User Could Not Be Deleted.',
                                                 'warning'
@@ -204,10 +204,11 @@
                 this.$Progress.start();
                 this.form.post('/data/pharmacy')
                     .then((response)=>{
-                        if(response.data === 'success') {
+                        if(response.data !== 'error') {
+                            console.log(response.data);
                             $('#adminUserModal').modal('hide');
 
-                            swal.fire({
+                            Swal.fire({
                                 toast: true,
                                 position: 'top-end',
                                 showConfirmButton: false,
@@ -220,11 +221,12 @@
                                 icon: 'success',
                                 title: 'User Added Successfully'
                             });
-                            Fire.$emit('tableUpdate');
+                            //this.pharmacies.push(response.data);
+                            //Fire.$emit('tableUpdate');
                             this.$Progress.finish();
                         }
                         else{
-                            swal.fire({
+                            Swal.fire({
                                 toast: true,
                                 position: 'top-end',
                                 showConfirmButton: false,
@@ -331,6 +333,10 @@
                 link.download = filename;
                 link.click();
             },
+            handleIncoming(user){
+                this.pharmacies.push(user);
+            }
+
         },
         created()
         {
@@ -338,6 +344,12 @@
             Fire.$on('tableUpdate', () => {
                 this.index();
             });
+        },
+        mounted() {
+            Echo.private(`adminChannel`)
+                .listen('NewUser', (e) => {
+                    this.handleIncoming(e.user);
+                });
         }
     }
 </script>

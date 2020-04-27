@@ -27,14 +27,12 @@ class MedicalRecordsController extends Controller
             $records = MedicalRecord::all();
             return response()->json($records);
         }
-        else if(Auth::user()->role->name === 'doctor'){
-            $records = Auth::user()->userable->medical_record->get();
+        else{
+            $user = Auth::user()->userable()->first();
+            $records = $user->medical_records()->latest()->get();
             return response()->json($records);
         }
-        else if(Auth::user()->role->name === 'out_patient'){
-            $records = Auth::user()->userable->medical_record->get();
-            return response()->json($records);
-        }
+
     }
 
     /**
