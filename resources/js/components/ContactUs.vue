@@ -70,7 +70,7 @@
                     this.form.post('/records/contact').then((response) => {
                         if(response.data === "success"){
                             this.form.reset();
-                            swal.fire(
+                            Swal.fire(
                                 'Sent',
                                 'Message Sent Successfully',
                                 'success'
@@ -78,7 +78,7 @@
 
                         }
                         else{
-                            swal.fire(
+                            Swal.fire(
                                 'Error',
                                 response.data,
                                 'error'

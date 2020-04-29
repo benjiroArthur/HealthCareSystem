@@ -8,11 +8,11 @@
     </ul>
 
     <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
+    <form class="form-inline ml-3" @submit.prevent="searchIt">
         <div class="input-group input-group-sm">
-            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control form-control-navbar" v-model="search" @keyup.enter="searchIt" type="search" placeholder="Search" aria-label="Search">
             <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
+                <button class="btn btn-navbar" @click="searchIt">
                     <i class="fas fa-search"></i>
                 </button>
             </div>

@@ -88,11 +88,23 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id)->userable()->first();
+        $this->validate($request, [
+            'first_name' => 'requires|string',
+            'last_name' => 'requires|string',
+            'email' => 'requires|email',
+            'gender' => 'requires',
+            'phone_number' => 'requires',
+            'dob' => 'requires|string',
+        ]);
+        //return response('Yes');
+        $userable = User::findOrFail($id)->userable()->first();
 
-        $user->update($request->all());
-        $user->user()->profile_updated = 1;
-        $user->save();
+        $userable->update($request->all());
+        $user = User::findOrFail($id);
+        $user->update([
+            'profile_updated' => 1
+        ]);
+        //$user->save();
         return response('success');
     }
 

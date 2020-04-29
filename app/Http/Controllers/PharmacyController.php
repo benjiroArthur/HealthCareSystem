@@ -24,7 +24,7 @@ class PharmacyController extends Controller
     {
         //get list of pharmacies
         $role = Role::where('name', 'pharmacy')->first();
-        $pharmacies = User::where('role_id', $role->id)->get();
+        $pharmacies = User::where('role_id', $role->id)->where('profile_updated', 1)->get();
         return response($pharmacies);
     }
 

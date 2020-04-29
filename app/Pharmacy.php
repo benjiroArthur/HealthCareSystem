@@ -13,7 +13,7 @@ class Pharmacy extends Model
     ];
 
     protected $guarded = [];
-    protected $appends = ['from_now'];
+    protected $appends = ['from_now', 'full_name'];
 
     public function user(){
         return $this->morphOne('App\User', 'userable');
@@ -27,6 +27,10 @@ class Pharmacy extends Model
     }
     public function getFromNowAttribute(){
         return Carbon::parse($this->created_at)->diffForHumans();
+    }
+
+    public function getFullNameAttribute(){
+        return $this->pharmacy_name;
     }
 
 }

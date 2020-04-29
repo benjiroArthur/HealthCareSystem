@@ -78,6 +78,7 @@ import {Form, HasError, AlertError} from 'vform';
 window.Form = Form;
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
+Vue.component('pagination', require('laravel-vue-pagination'));
 
 import VueProgressBar from 'vue-progressbar'
 
@@ -124,15 +125,15 @@ let routes = [
 
     //general routes
     {path:'/chat', component: require('./components/ChatExtra/Chat.vue').default},
-    //Users routes
     {path:'/home', component: require('./components/home.vue').default},
+    {path:'/password/update', component: require('./components/Password.vue').default},
 
+//Users routes
     {path:'/user/doctors', component: require('./components/User/Doctors.vue').default},
     {path:'/user/medical-records', component: require('./components/User/MedicalRecords.vue').default},
     {path:'/user/profile', component: require('./components/User/Profile.vue').default},
     {path:'/user/pharmacy', component: require('./components/User/Pharmacy.vue').default},
-    {path:'/user/upcoming-appointment', component: require('./components/User/UpAppointment.vue').default},
-    {path:'/user/past-appointment', component: require('./components/User/PastAppointment.vue').default},
+    {path:'/user/prescription', component: require('./components/User/Prescription.vue').default},
 
     //Admins routes
     {path:'/admin/dashboard', component: require('./components/Admin/Dashboard.vue').default},
@@ -149,7 +150,6 @@ let routes = [
 
     //Doctors routes
     {path:'/doctor/dashboard', component: require('./components/Doctor/Dashboard.vue').default},
-   /* {path:'/doctor/chat', component: require('./components/Doctor/Chat.vue').default},*/
     {path:'/doctor/users', component: require('./components/Doctor/Doctors.vue').default},
     {path:'/doctor/medical-records', component: require('./components/Doctor/MedicalRecords.vue').default},
     {path:'/doctor/profile', component: require('./components/Doctor/Profile.vue').default},
@@ -172,14 +172,14 @@ const router = new VueRouter({
 
 });
 
-Vue.filter('uptext', function(text){
+Vue.filter('upText', function(text){
    return text.charAt(0).toUpperCase() + text.slice(1);
 });
 Vue.filter('myDate', function(text){
    return moment(text).format('MMMM Do YYYY');
 });
 
-Vue.filter('fromdate', function(text){
+Vue.filter('fromNow', function(text){
     return moment(text).fromNow();
 });
 
@@ -238,8 +238,14 @@ const app = new Vue({
     vuetify: new Vuetify(),
     data: () => ({
         pageLoader: true,
-        userId: '',
+        userId: 'ddd',
+        search:'',
     }),
+    methods:{
+        searchIt(){
+            Fire.$emit('searching')
+        }
+    },
     mounted() {
         setTimeout(val => {
             this.pageLoader = false;

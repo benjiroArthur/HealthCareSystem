@@ -81,14 +81,14 @@
 
                     if(response.data === "success"){
                         Fire.$emit('tableUpdate');
-                        swal.fire(
+                        Swal.fire(
                             'Save',
                             'Data Sent Successfully',
                             'success'
                         );
                     }
                     else{
-                        swal.fire(
+                        Swal.fire(
                             'Error',
                             response.data,
                             'error'

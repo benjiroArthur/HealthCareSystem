@@ -43,6 +43,38 @@
                 </div>
             </div>
         </div>
+
+        <!-- form modal Add User -->
+        <div class="modal" id="selectedDoctorModal" tabindex="-1" role="dialog" aria-labelledby="selectedDoctorModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title">Doctor Details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">{{ this.selectedDoctorTitle }}</div>
+                            </div>
+
+                            <div class="card-body">
+                                <h5>Description of Doctor's Specialization</h5>
+                                <p>{{this.selectedDoctorDetails}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Add <i class="fas fa-upload"></i></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -58,6 +90,9 @@
             return{
                 doctors: {},
                 doctor:'',
+                selectedDoctorTitle: '',
+                selectedDoctorDetails: '',
+                vowels: new RegExp('^[aeiou].*', 'i'),
                 //table
                 myOptions: {
                     search: true,
@@ -80,18 +115,18 @@
                     { field: 'userable.full_name', title: 'Name', sortable: true},
                     { field: 'userable.srn', title: 'Doctor ID', sortable: true},
                     { field: 'userable.gender', title: 'Gender', sortable: true},
-                    { field: 'userable.specialization', title: 'Specialization', sortable: true},
+                    { field: 'userable.specialization.name', title: 'Specialization', sortable: true},
                     {
                         field: 'action',
                         title: 'Actions',
                         align: 'center',
                         clickToSelect: false,
                         formatter: function (e, value, row){
-                            return '<a class="btn btn-sm btn-primary add" title="Add to contact"><i class="fas fa-plus text-white"></i></a><a class="btn btn-sm destroy btn-danger" title="remove from contact" @click=""><i  class="fas fa-trash text-white"></i></a>'
+                            return '<a class="btn btn-sm btn-success show" title="Show Details"><i class="fas fa-eye text-white"></i></a> <a class="btn btn-sm btn-primary add" title="Add to contact"><i class="fas fa-plus text-white"></i></a> <a class="btn btn-sm destroy btn-danger" title="remove from contact" @click=""><i  class="fas fa-trash text-white"></i></a>'
                         },
                         events: {
                             'click .add': function (e, value, row){
-                                swal.fire({
+                                Swal.fire({
                                     title: 'Add To Contact',
                                     text: "You are about to add this doctor to your contact list",
                                     icon: 'warning',
@@ -105,7 +140,7 @@
                                             if(response.data === "success")
                                             {
                                                 Fire.$emit('tableUpdate');
-                                                swal.fire(
+                                                Swal.fire(
                                                     'Process Complete',
                                                     'You Can Now Chat With This Doctor',
                                                     'success'
@@ -113,7 +148,7 @@
 
                                             }
                                             else{
-                                                swal.fire(
+                                                Swal.fire(
                                                     'Failed!',
                                                     response.data,
                                                     'warning'
@@ -121,7 +156,7 @@
 
                                             }
                                         }).catch(() => {
-                                            swal.fire(
+                                            Swal.fire(
                                                 'Failed!',
                                                 'Process Could Not Be Completed.',
                                                 'warning'
@@ -132,12 +167,13 @@
                                 });
 
                             },
-                            'click .edit': function (e, value, row){
+                            'click .show': function (e, value, row){
                                /* return window.location.assign('/admin/show/'+row.id)*/
+                                Fire.$emit('showDoctorDetails', row);
 
                             },
                             'click .destroy': function (e, value, row){
-                                swal.fire({
+                                Swal.fire({
                                     title: 'Are you sure?',
                                     text: "You won't be able to Chat With this Doctor!",
                                     icon: 'warning',
@@ -151,7 +187,7 @@
                                             if(response.data === "success")
                                             {
                                                 Fire.$emit('tableUpdate');
-                                                swal.fire(
+                                                Swal.fire(
                                                     'Deleted!',
                                                     'User Deleted Successfully',
                                                     'success'
@@ -159,14 +195,14 @@
 
                                             }
                                             else{
-                                                swal.fire(
+                                                Swal.fire(
                                                     'Failed!',
                                                     response.data,
                                                     'warning'
                                                 )
                                             }
                                         }).catch(() => {
-                                            swal.fire(
+                                            Swal.fire(
                                                 'Failed!',
                                                 'User Could Not Be Deleted.',
                                                 'warning'
@@ -197,22 +233,27 @@
                 });
             },
 
-            /*index() {
-                this.error = this.doctors = null;
-                this.loading = true;
-                axios
-                    .get('/data/doctor')
-                    .then(response => {
-                        this.loading = false;
-                        this.doctors = response.data;
-                    }).catch(error => {
-                    this.loading = false;
-                    this.error = error.response.data.message || error.message;
-                });
-            },*/
+            showDoctorDetails(row){
+                let modi = (row.userable.specialization.name.match(this.vowels) ? 'an' : 'a');
+                let title = 'Dr ' + row.userable.full_name + ' is ' + modi + ' ' + row.userable.specialization.name;
+                this.selectedDoctorTitle = title;
+                this.selectedDoctorDetails = row.userable.specialization.description.replace('?', ' ');
+                $('#selectedDoctorModal').modal('show');
+
+
+               /* let modi = (row.userable.first_name.match(this.vowels) ? 'an' : 'a');
+                let title = 'Dr ' + row.userable.full_name + ' is ' + modi + ' ' + row.userable.first_name;
+                this.selectedDoctorTitle = title;
+                $('#selectedDoctorModal').modal('show');*/
+            },
         },
         created() {
             this.index();
+        },
+        mounted() {
+            Fire.$on('showDoctorDetails', (row) => {
+                this.showDoctorDetails(row);
+            });
         }
     }
 </script>

@@ -57,7 +57,7 @@
                         },
                         events: {
                             'click .add': function (e, value, row){
-                                swal.fire({
+                                Swal.fire({
                                     title: 'Add To Contact',
                                     text: "You are about to add this doctor to your contact list",
                                     icon: 'warning',
@@ -71,7 +71,7 @@
                                             if(response.data === "success")
                                             {
                                                 Fire.$emit('tableUpdate');
-                                                swal.fire(
+                                                Swal.fire(
                                                     'Process Complete',
                                                     'You Can Now Chat With This Doctor',
                                                     'success'
@@ -79,7 +79,7 @@
 
                                             }
                                             else{
-                                                swal.fire(
+                                                Swal.fire(
                                                     'Failed!',
                                                     response.data,
                                                     'warning'
@@ -87,7 +87,7 @@
 
                                             }
                                         }).catch(() => {
-                                            swal.fire(
+                                            Swal.fire(
                                                 'Failed!',
                                                 'Process Could Not Be Completed.',
                                                 'warning'
@@ -103,7 +103,7 @@
 
                             },
                             'click .destroy': function (e, value, row){
-                                swal.fire({
+                                Swal.fire({
                                     title: 'Are you sure?',
                                     text: "You won't be able to Chat With this Doctor!",
                                     icon: 'warning',
@@ -117,7 +117,7 @@
                                             if(response.data === "success")
                                             {
                                                 Fire.$emit('tableUpdate');
-                                                swal.fire(
+                                                Swal.fire(
                                                     'Deleted!',
                                                     'User Deleted Successfully',
                                                     'success'
@@ -125,14 +125,14 @@
 
                                             }
                                             else{
-                                                swal.fire(
+                                                Swal.fire(
                                                     'Failed!',
                                                     response.data,
                                                     'warning'
                                                 )
                                             }
                                         }).catch(() => {
-                                            swal.fire(
+                                            Swal.fire(
                                                 'Failed!',
                                                 'User Could Not Be Deleted.',
                                                 'warning'

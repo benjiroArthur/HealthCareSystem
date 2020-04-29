@@ -1,7 +1,12 @@
 <template>
     <div class="container-fluid">
         <div class="card">
-            <div class="card-header"> Chat Page</div>
+            <div class="card-header">
+                <div class="card-title text-md">Chat Page</div>
+                <div class="card-tools">
+                    <button class="btn-sm" @click="toggleContactList"><span class="fas fa-user-friends"></span></button>
+                </div>
+            </div>
             <div class="card-body">
                 <div class="chat-app">
                     <conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"></conversation>
@@ -65,6 +70,9 @@
 
                     return single;
                 })
+            },
+            toggleContactList(){
+
             },
         },
         mounted() {

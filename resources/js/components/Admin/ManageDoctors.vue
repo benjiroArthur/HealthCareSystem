@@ -178,7 +178,7 @@
 
                             },
                             'click .destroy': function (e, value, row){
-                                swal.fire({
+                                Swal.fire({
                                     title: 'Are you sure?',
                                     text: "You won't be able to revert this!",
                                     icon: 'warning',
@@ -192,7 +192,7 @@
                                             if(response.data === "success")
                                             {
                                                 Fire.$emit('tableUpdate');
-                                                swal.fire(
+                                                Swal.fire(
                                                     'Deleted!',
                                                     'User Deleted Successfully',
                                                     'success'
@@ -200,14 +200,14 @@
 
                                             }
                                             else{
-                                                swal.fire(
+                                                Swal.fire(
                                                     'Failed!',
                                                     response.data,
                                                     'warning'
                                                 )
                                             }
                                         }).catch(() => {
-                                            swal.fire(
+                                            Swal.fire(
                                                 'Failed!',
                                                 'User Could Not Be Deleted.',
                                                 'warning'
@@ -247,7 +247,7 @@
                         if(response.data === 'success') {
                             $('#doctorUserModal').modal('hide');
 
-                            swal.fire({
+                            Swal.fire({
                                 toast: true,
                                 position: 'top-end',
                                 showConfirmButton: false,

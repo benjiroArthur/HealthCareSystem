@@ -32,7 +32,7 @@
 
         <li class="nav-item">
             <router-link to="/user/pharmacy" class="nav-link">
-                <i class="nav-icon fas fa-user-nurse teal"></i>
+                <i class="nav-icon fas fa-tablets teal"></i>
                 <p>
                     Pharmacy
 
@@ -42,19 +42,36 @@
 
         <li class="nav-item">
             <router-link to="/user/medical-records" class="nav-link">
-                <i class="nav-icon fas fa-notes-medical purple"></i>
+                <i class="nav-icon fas fa-notes-medical pink"></i>
                 <p>
                     Medical Records
                 </p>
             </router-link>
-
         </li>
+        <li class="nav-item">
+                    <router-link to="/user/prescription" class="nav-link">
+                        <i class="nav-icon fas fa-capsules orange"></i>
+                        <p>
+                            My Prescriptions
+                        </p>
+                    </router-link>
+                </li>
 
         <li class="nav-item">
             <router-link to="/user/profile" class="nav-link">
                 <i class="nav-icon fas fa-user-circle orange"></i>
                 <p>
                     Profile
+
+                </p>
+            </router-link>
+        </li>
+
+        <li class="nav-item">
+            <router-link to="/password/update" class="nav-link">
+                <i class="nav-icon fas fa-lock yellow"></i>
+                <p>
+                    Password Update
 
                 </p>
             </router-link>

@@ -17,7 +17,9 @@ class PrescriptionController extends Controller
      */
     public function index()
     {
-        //
+        $user = auth()->user()->userable()->first();
+        return $pres = $user->prescription()->latest()->paginate(1);
+        //return response($pres);
     }
 
     /**
@@ -178,5 +180,12 @@ class PrescriptionController extends Controller
         else{
             return response('no patient');
         }
+    }
+
+    public function despenseDrug($id){
+        $drug = Drug::findOrFail($id);
+        $drug->dispensed = true;
+        $drug->save();
+        return response('success');
     }
 }

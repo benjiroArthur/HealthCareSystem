@@ -91,7 +91,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" @click="resetModalForm">Close</button>
                         <button type="submit" class="btn btn-success">Add <i class="fas fa-upload"></i></button>
                     </div>
                     </form>
@@ -169,7 +169,8 @@
                         },
                         events: {
                             'click .show': function (e, value, row){
-                                return window.location.assign('/admin/show/'+row.id)
+                                /*return window.location.assign('/admin/show/'+row.id)*/
+                                Fire.$emit('editUser', row);
 
                             },
                             'click .edit': function (e, value, row){
@@ -177,7 +178,7 @@
 
                             },
                             'click .destroy': function (e, value, row){
-                                swal.fire({
+                                Swal.fire({
                                     title: 'Are you sure?',
                                     text: "You won't be able to revert this!",
                                     icon: 'warning',
@@ -191,7 +192,7 @@
                                         if(response.data === "success")
                                         {
                                             Fire.$emit('tableUpdate');
-                                            swal.fire(
+                                            Swal.fire(
                                                 'Deleted!',
                                                 'User Deleted Successfully',
                                                 'success'
@@ -199,14 +200,14 @@
 
                                         }
                                         else{
-                                            swal.fire(
+                                            Swal.fire(
                                                 'Failed!',
                                                 response.data,
                                                 'warning'
                                             )
                                         }
                                     }).catch(() => {
-                                        swal.fire(
+                                        Swal.fire(
                                             'Failed!',
                                             'User Could Not Be Deleted.',
                                             'warning'
@@ -230,7 +231,7 @@
                .then(function(){
                    $('#pharmacyUserModal').modal('hide');
 
-                   swal.fire({
+                   Swal.fire({
                        toast: true,
                        position: 'top-end',
                        showConfirmButton: false,
@@ -316,8 +317,6 @@
                     this.error = error.response.data.message || error.message;
                 });
             },
-
-
              downloadFile(response, filename) {
                     // It is necessary to create a new blob object with mime-type explicitly set
                     // otherwise only Chrome works like it should
@@ -338,6 +337,14 @@
                     link.download = filename;
                     link.click();
                 },
+
+            editUser(row){
+              this.form.fill(row);
+                $('#pharmacyUserModal').modal('show');
+            },
+            resetModalForm(){
+                this.form.reset();
+            },
 
 
 
@@ -363,6 +370,10 @@
                 .listen('NewUser', (e) => {
                     this.handleIncoming(e.user);
                 });
+
+            Fire.$on('editUser', (row) => {
+                this.editUser(row);
+            });
         }
     }
 

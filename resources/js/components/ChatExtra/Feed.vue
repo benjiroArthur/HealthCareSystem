@@ -2,7 +2,7 @@
     <div class="feed" ref="feed">
         <ul v-if="contact">
             <li v-for="message in messages" :class="`message${message.to === contact.id ? ' sent' : ' received'} `" :key="message.id">
-                <span>{{message.from_now}}</span>
+                <!--<span>{{message.from_now}}</span><br>-->
                 <div class="text">
                     {{ message.chat }}
                 </div>
@@ -46,17 +46,19 @@
 .feed{
     background: #f8f8f8;
     height: 100%;
-    max-height: 476px;
+    max-height: 475px;
     overflow-y: scroll;
     overflow-x: hidden;
     ul{
         list-style: none;
-        padding: 5px;
+        padding-left: 0;
+        padding-right: 10px;
 
         li{
             &.message{
-                margin: 10px;
+                margin: 5px;
                 width: 100%;
+                padding-top: 10px;
 
                 .text{
                     max-width: 70%;

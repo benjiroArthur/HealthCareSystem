@@ -8,6 +8,7 @@ use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Validation\ValidationException;
 use Intervention\Image\Facades\Image;
@@ -215,5 +216,21 @@ class UsersController extends Controller
         {
             return response('No file selected');
         }
+    }
+
+    public function passwordUpdate(Request $request, $id){
+        $this->validate($request, [
+            'old_password' => 'required',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+        $user = User::findOrFail($id);
+
+        if(Hash::check($request->old_password, $user->password)){
+            $user->update([
+                'password' => Hash::make($request->password)
+            ]);
+            return response('success');
+        }
+        else{ return response('Password do not match');}
     }
 }

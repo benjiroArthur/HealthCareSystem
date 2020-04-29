@@ -170,7 +170,7 @@
                     .get(`/records/allPrescription/${this.patient_srn}`)
                     .then((response) => {
                         if(response.data === 'no patient'){
-                           swal.fire(
+                           Swal.fire(
                                 'Warning',
                                 'Patient SRN Does Not Exist In Our Database',
                                 'warning'
@@ -179,7 +179,7 @@
                         }
 
                         if(response.data === 'no prescription'){
-                            swal.fire(
+                            Swal.fire(
                                 'Warning',
                                 'This Patient Does Not Have Prescriptions Yet',
                                 'warning'
@@ -208,7 +208,7 @@
                     })
                     .then((response) => {
                         if(response.data === 'error'){
-                            swal.fire(
+                            Swal.fire(
                                 'Error',
                                 'Patient SRN Does Not Exist In Our Database',
                                 'warning'
@@ -218,7 +218,7 @@
                         this.allData = response.data;
                         this.prescriptions = this.allData.prescription;
                         this.drugs = this.allData.drugs;
-                        swal.fire(
+                        Swal.fire(
                             'Success',
                             'Prescription Added Successfully',
                             'success'

@@ -71,8 +71,12 @@ Route::group(['prefix' => 'records', 'as' => 'records.'], function(){
     //specialization list routes
     Route::resource('/specialization', 'SpecializationController');
 
+    //Prescription list routes
     Route::resource('/prescription', 'PrescriptionController');
     Route::get('/allPrescription/{id}', 'PrescriptionController@allPrescription');
+    Route::put('/drug/dispense/{id}', 'PrescriptionController@despenseDrug');
+
+
 
 
     Route::resource('/medical-records', 'MedicalRecordsController');
@@ -85,6 +89,9 @@ Route::group(['prefix' => 'records', 'as' => 'records.'], function(){
     //dailyTips routes
     Route::resource('/daily-tips', 'DailyTipController');
     Route::get('/latest-tips', 'DailyTipController@getLatest');
+
+    //password Update
+    Route::post('/password/update/{id}', 'UsersController@passwordUpdate');
 
 
 });

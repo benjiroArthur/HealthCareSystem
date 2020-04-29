@@ -47,6 +47,16 @@
         </li>
 
         <li class="nav-item">
+            <router-link to="/password/update" class="nav-link">
+                <i class="nav-icon fas fa-lock yellow"></i>
+                <p>
+                    Password Update
+
+                </p>
+            </router-link>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}"
                onclick="event.preventDefault();
                        document.getElementById('logout-form').submit();">

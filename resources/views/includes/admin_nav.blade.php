@@ -71,6 +71,16 @@
         </li>
 
         <li class="nav-item">
+            <router-link to="/password/update" class="nav-link">
+                <i class="nav-icon fas fa-lock yellow"></i>
+                <p>
+                    Password Update
+
+                </p>
+            </router-link>
+        </li>
+
+        <li class="nav-item">
             <router-link to="/admin/daily-tips" class="nav-link">
                 <i class="nav-icon fas fa-history"></i>
                 <p>

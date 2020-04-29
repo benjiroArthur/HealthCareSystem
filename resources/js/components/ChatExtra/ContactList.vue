@@ -54,7 +54,13 @@
                 return this.contacts.filter((contact) => {
                     return contact.userable.full_name.toLowerCase().match(this.searchContact.toLowerCase()) ||
                         contact.role.name.toLowerCase().match(this.searchContact.toLowerCase());
-                })
+                });
+
+
+                /*return this.contacts.filter((contact) => {
+                    return contact.userable.full_name.toLowerCase().match(this.searchContact.toLowerCase()) ||
+                        contact.role.name.toLowerCase().match(this.searchContact.toLowerCase());
+                });*/
             }
         }
     }
