@@ -83,7 +83,6 @@
                                 'success'
                             );
                         }
-                        alert(response.data);
                     })
                     .catch((error) => {
                         Swal.fire(

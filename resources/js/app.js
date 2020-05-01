@@ -157,12 +157,7 @@ let routes = [
 
     //Pharmacy routes
     {path:'/pharmacy/dashboard', component: require('./components/Pharmacy/Dashboard.vue').default},
-    {path:'/pharmacy/orders', component: require('./components/Pharmacy/Chat.vue').default},
-    {path:'/pharmacy/users', component: require('./components/Pharmacy/Doctors.vue').default},
-    {path:'/pharmacy/medical-records', component: require('./components/Pharmacy/MedicalRecords.vue').default},
     {path:'/pharmacy/profile', component: require('./components/Pharmacy/Profile.vue').default},
-    {path:'/pharmacy/upcoming-appointment', component: require('./components/Pharmacy/UpAppointment.vue').default},
-    {path:'/pharmacy/past-appointment', component: require('./components/Pharmacy/PastAppointment.vue').default},
 
 ];
 

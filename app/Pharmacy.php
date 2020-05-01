@@ -13,7 +13,7 @@ class Pharmacy extends Model
     ];
 
     protected $guarded = [];
-    protected $appends = ['from_now', 'full_name'];
+    protected $appends = ['from_now', 'full_name', 'first_name'];
 
     public function user(){
         return $this->morphOne('App\User', 'userable');
@@ -31,6 +31,11 @@ class Pharmacy extends Model
 
     public function getFullNameAttribute(){
         return $this->pharmacy_name;
+    }
+
+    public function getFirstNameAttribute(){
+        $phName = $this->pharmacy_name;
+        return true;
     }
 
 }

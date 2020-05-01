@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer justify-content-center">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Reset</button>
                                 <button type="submit" class="btn btn-success">Update <i class="fas fa-upload"></i></button>
                             </div>
                         </form>
