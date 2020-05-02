@@ -35,7 +35,9 @@ class Pharmacy extends Model
 
     public function getFirstNameAttribute(){
         $phName = $this->pharmacy_name;
-        return true;
+        $phName = explode(" ", $phName);
+        $phName = $phName[0];
+        return $phName;
     }
 
 }

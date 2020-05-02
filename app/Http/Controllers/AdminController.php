@@ -96,7 +96,7 @@ class AdminController extends Controller
             'phone_number' => 'requires',
             'dob' => 'requires|string',
         ]);
-        //return response('Yes');
+
         $userable = User::findOrFail($id)->userable()->first();
 
         $userable->update($request->all());
@@ -104,7 +104,7 @@ class AdminController extends Controller
         $user->update([
             'profile_updated' => 1
         ]);
-        //$user->save();
+
         return response('success');
     }
 

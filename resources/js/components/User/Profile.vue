@@ -204,7 +204,7 @@
             },
             updateProfile(){
                 this.$Progress.start();
-                this.form.put('/records/out_patient/'+ this.$userId)
+                this.form.put('/records/admin/'+ this.$userId)
                     .then((response) => {
                         Fire.$emit('profileUpdate');
                         console.log(response.data);
