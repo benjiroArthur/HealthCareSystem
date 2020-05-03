@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <div class="row table table-responsive table-borderless">
                             <table class="table table-striped table-dark">
-                                <thead>
+                                <thead class="justify-content-center">
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Prescription Code</th>
@@ -36,7 +36,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="(pres, index) in myPrescription.data" :key="pres.id">
+                                <tr v-for="(pres, index) in myPrescription" :key="pres.id">
                                     <th scope="row">{{index + 1}}</th>
                                     <td>{{pres.prescription_code}}</td>
                                     <td>{{pres.out_patient.full_name}}</td>
@@ -70,9 +70,6 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <pagination :data="myPrescription" @pagination-change-page="getResults">
-
-                        </pagination>
                     </div>
                 </div>
             </div>
@@ -88,6 +85,7 @@
         data(){
             return{
                 myPrescription:{},
+                prescription:{},
                 pres:'',
                 drug:'',
                 prescription_code: '',
@@ -96,9 +94,10 @@
         methods:{
             getPrescription(){
                 axios
-                    .get(`/records/prescription`)
+                    .get(`/records/prescription/${this.prescription_code}`)
                     .then((response) => {
-                        this.myPrescription = response.data;
+                        this.prescription = response.data;
+                        this.myPrescription = this.prescription.prescription;
                     })
             },
 
@@ -149,7 +148,9 @@
         },
         created() {
 
-
+            Fire.$on('tableUpdate', () => {
+                this.getPrescription();
+            })
         }
     }
 </script>

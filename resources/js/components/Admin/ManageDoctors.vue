@@ -8,8 +8,9 @@
 
                         <div class="card-tools">
                             <div class="input-group input-group-sm">
-                                <button class="btn btn-danger btn-sm mr-2" title="Download template" @click="downloadExcel"><i class="fas fa-download"></i></button>
+                                <!--<button class="btn btn-danger btn-sm mr-2" title="Download template" @click="downloadExcel"><i class="fas fa-download"></i></button>
                                 <button class="btn btn-success btn-sm mr-2" title="Add Bulk Users" data-toggle="modal" data-target="#doctorUserModalBulk"><i class="fas fa-file-excel"></i></button>
+                                -->
                                 <button class="btn btn-primary btn-sm mr-2" title="Add New User" data-toggle="modal" data-target="#doctorUserModal"><i class="fas fa-plus"></i></button>
                             </div>
                         </div>
@@ -128,6 +129,7 @@
                     role: 'doctor',
                     password: '',
                 }),
+                statusForm: new FormData(),
 
 
                 //table
@@ -157,7 +159,7 @@
                     { field: 'userable.dob', title: 'Date Of Birth', sortable: true},
                     { field: 'userable.gender', title: 'Gender', sortable: true},
                     { field: 'userable.phone_number', title: 'Phone Number', sortable: true},
-                    { field: 'userable.specialization', title: 'Specialization', sortable: true},
+                    { field: 'userable.specialization.name', title: 'Specialization', sortable: true},
                     { field: 'userable.qualification', title: 'Qualification', sortable: true},
                     { field: 'active', title: 'Active', sortable: true},
                     {
@@ -166,21 +168,24 @@
                         align: 'center',
                         clickToSelect: false,
                         formatter: function (e, value, row){
-                            return '<a class="btn btn-sm show" data-toggle="modal" data-target="#"><i class="fas fa-eye text-info"></i></a><a class="btn btn-sm edit"><i class="fas fa-edit text-yellow"></i></a><a class="btn btn-sm destroy"><i @click="deleteUser()" class="fas fa-trash text-danger"></i></a>'
+
+                                return `<a class="btn btn-sm edit" title="Activate"><i class="fas fa-check text-success"></i></a> <a class="btn btn-sm show" title="Deactivate"><i class="fas fa-trash text-danger"></i></a>`;
+
                         },
                         events: {
                             'click .show': function (e, value, row){
-                                return window.location.assign('/admin/show/'+row.id)
-
+                               /* return window.location.assign('/admin/show/'+row.id)*/
+                                Fire.$emit('deactivateUser', row);
                             },
                             'click .edit': function (e, value, row){
-                                return window.location.assign('/admin/show/'+row.id)
+                               /* return window.location.assign('/admin/show/'+row.id)*/
+                                Fire.$emit('activateUser', row);
 
                             },
                             'click .destroy': function (e, value, row){
                                 Swal.fire({
                                     title: 'Are you sure?',
-                                    text: "You won't be able to revert this!",
+                                    text: "You Are about To Deactivate this Account!",
                                     icon: 'warning',
                                     showCancelButton: true,
                                     confirmButtonColor: '#3085d6',
@@ -194,7 +199,7 @@
                                                 Fire.$emit('tableUpdate');
                                                 Swal.fire(
                                                     'Deleted!',
-                                                    'User Deleted Successfully',
+                                                    'User Account Deactivated Successfully',
                                                     'success'
                                                 );
 
@@ -271,9 +276,6 @@
                     });
             },
 
-            update(){
-
-            },
 
             //download excel template
             downloadExcel(){
@@ -342,6 +344,21 @@
 
 
             },
+            updateStatus(id, active){
+
+                this.statusForm.append('active', active);
+                axios.post(`/data/user/status-update/${id}`, this.statusForm)
+                    .then((res) => {
+                        Swal.fire(
+                            'Update',
+                            res.data,
+                            'success'
+                        );
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                    })
+            }
         },
         created()
         {
@@ -351,6 +368,26 @@
             Fire.$on('tableUpdate', () => {
                 this.index();
             });
+            Fire.$on('deactivateUser', (row) => {
+                if(row.active === true){
+                    this.updateStatus(row.id, 'deactivate')
+                }
+                this.index();
+            });
+
+            Fire.$on('activateUser', (row) => {
+                if(row.active === false){
+                    this.updateStatus(row.id, 'activate')
+                }
+                this.index();
+            });
+
+        },
+        mounted() {
+            Echo.private('adminChannel')
+                .listen('NewUser', (e) => {
+                    this.index();
+                });
         }
     }
 </script>

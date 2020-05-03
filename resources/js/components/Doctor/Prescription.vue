@@ -110,9 +110,8 @@
 
 <script>
     import BootstrapTable from 'bootstrap-table/dist/bootstrap-table-vue.min.js';
-    import LoadPrescription from '../Doctor/LoadPrescription';
     export default {
-        components:{ LoadPrescription, BootstrapTable },
+        components:{ BootstrapTable },
         name: "prescription",
         data(){
             return{

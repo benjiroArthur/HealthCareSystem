@@ -56,12 +56,7 @@ class DoctorController extends Controller
         ]);
 //return response($request->all());
 
-        if($request->other_name == null){
-            $full_name = $request->first_name.' '.$request->last_name;
-        }
-        else{
-            $full_name = $request->first_name.' '.$request->other_name.' '.$request->last_name;
-        }
+
         $srn = "";
 
         $outid = DocId::latest()->first();
@@ -94,7 +89,6 @@ class DoctorController extends Controller
             'first_name' => $request->first_name,
             'other_name' => $request->other_name,
             'email' => $request->email,
-            'full_name' => $full_name,
             'srn' => $srn
         ]);
         $role = Role::where('name', $request->role)->first();

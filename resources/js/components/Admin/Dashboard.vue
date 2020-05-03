@@ -6,14 +6,11 @@
         <div class="row">
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box">
-                    <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+                    <span class="info-box-icon bg-info elevation-1"><i class="fas fa-user-injured"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">CPU Traffic</span>
-                        <span class="info-box-number">
-                  10
-                  <small>%</small>
-                </span>
+                        <span class="info-box-text">Patients</span>
+                        <span class="info-box-number">{{this.count.patient}}</span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -22,11 +19,11 @@
             <!-- /.col -->
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box mb-3">
-                    <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+                    <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-user-md"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Likes</span>
-                        <span class="info-box-number">41,410</span>
+                        <span class="info-box-text">Doctors</span>
+                        <span class="info-box-number">{{this.count.doctor}}</span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -35,14 +32,11 @@
 
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box">
-                    <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+                    <span class="info-box-icon bg-success elevation-1"><i class="fas fa-first-aid"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">CPU Traffic</span>
-                        <span class="info-box-number">
-                  10
-                  <small>%</small>
-                </span>
+                        <span class="info-box-text">Pharmacies</span>
+                        <span class="info-box-number">{{this.count.pharmacy}}</span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -51,11 +45,11 @@
             <!-- /.col -->
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box mb-3">
-                    <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+                    <span class="info-box-icon bg-health elevation-1"><i class="fas fa-user-cog text-white"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Likes</span>
-                        <span class="info-box-number">41,410</span>
+                        <span class="info-box-text">Administrators</span>
+                        <span class="info-box-number">{{this.count.admin}}</span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -67,12 +61,12 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>{{this.count.medRecord}}</h3>
 
-                        <p>New Orders</p>
+                        <p>Medical Records</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-bag"></i>
+                        <i class="fas fa-file-medical text-white"></i>
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -82,27 +76,27 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>53<sup style="font-size: 20px">%</sup></h3>
+                        <h3>{{this.count.prescription}}</h3>
 
-                        <p>Bounce Rate</p>
+                        <p>Prescriptions</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="fas fa-capsules text-white"></i>
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-3 col-6 text-white">
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>44</h3>
+                        <h3>{{this.count.users}}</h3>
 
-                        <p>User Registrations</p>
+                        <p>Total Users</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-person-add"></i>
+                        <i class="fas fa-users text-white"></i>
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -112,12 +106,12 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>65</h3>
+                        <h3>{{this.onlineSize}}</h3>
 
-                        <p>Unique Visitors</p>
+                        <p>Users Online</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
+                        <i class="fas fa-user-clock text-white"></i>
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -143,7 +137,7 @@
                             <li v-for="outPatient in outPatients" v-bind:key="outPatient.id">
                                 <img :src="outPatient.image" alt="User Image" width="50">
                                 <a class="users-list-name" href="#">{{outPatient.full_name}}</a>
-                                <span class="users-list-date">{{outPatient.created_at | fromdate}}</span>
+                                <span class="users-list-date">{{outPatient.created_at | fromNow}}</span>
                             </li>
 
                         </ul>
@@ -177,7 +171,7 @@
                             <li v-for="doctor in doctors" v-bind:key="doctor.id">
                                 <img :src="doctor.image" alt="User Image" width="50">
                                 <a class="users-list-name" href="#">{{doctor.full_name}}</a>
-                                <span class="users-list-date">{{doctor.created_at | fromdate}}</span>
+                                <span class="users-list-date">{{doctor.created_at | fromNow}}</span>
                             </li>
 
                         </ul>
@@ -212,7 +206,7 @@
                             <li v-for="pharmacy in pharmacies" v-bind:key="pharmacy.id">
                                 <img :src="pharmacy.image" alt="User Image" width="50">
                                 <a class="users-list-name" href="#">{{pharmacy.full_name}}</a>
-                                <span class="users-list-date">{{pharmacy.created_at | fromdate}}</span>
+                                <span class="users-list-date">{{pharmacy.created_at | fromNow}}</span>
                             </li>
                         </ul>
                         <!-- /.users-list -->
@@ -245,7 +239,7 @@
                             <li v-for="admin in admins" v-bind:key="admin.id">
                                 <img :src="admin.image" alt="User Image" width="50">
                                 <a class="users-list-name" href="#">{{admin.full_name}}</a>
-                                <span class="users-list-date">{{admin.created_at | fromdate}}</span>
+                                <span class="users-list-date">{{admin.created_at | fromNow}}</span>
                             </li>
                         </ul>
                         <!-- /.users-list -->
@@ -277,6 +271,9 @@
                 pharmacy:'',
                 admins:{},
                 admin:'',
+                count:{},
+                onlineUsers: null,
+                onlineSize: 0,
 
             }
 
@@ -337,12 +334,67 @@
                     this.error = error.response.data.message || error.message;
                 });
             },
+
+            getStat(){
+                axios.get('/dashboard/statistics')
+                    .then((response) => {
+                        this.count = response.data
+                    })
+                    .catch((error) => {
+                        console.log(error.message)
+                    })
+            },
+
+            handleIncoming(user){
+                if(user.role.name === 'admin'){this.getAdmin();}
+                else if(user.role.name === 'out_patient'){this.getPatients();}
+                else if(user.role.name === 'pharmacy'){this.getPharmacy();}
+                else if(user.role.name === 'doctor'){this.getDoctors();}
+                this.getStat();
+            },
+            countOnline(){
+                this.onlineSize = 0;
+                for (let key in this.onlineUsers) {
+                    if (this.onlineUsers.hasOwnProperty(key)) this.onlineSize++;
+                }
+            },
+            countOnlineMinus(){
+                this.onlineSize = this.onlineSize - 1;
+            },
         },
         created(){
             this.getPatients();
             this.getDoctors();
             this.getPharmacy();
             this.getAdmin();
+            this.getStat();
+            this.countOnline();
+        },
+
+        mounted() {
+            Echo.private('adminChannel')
+                .listen('NewUser', (e) => {
+                    this.handleIncoming(e.user);
+                });
+
+            if(this.$userId !== 0){
+                Echo.join('Online')
+                    .here((users) => {
+                        this.onlineUsers = users;
+                        this.countOnline();
+                    })
+                    .joining((user) => {
+                        this.onlineUsers.push(user);
+                        this.countOnline();
+
+                    })
+                    .leaving((user) => {
+                        this.onlineUsers = this.onlineUsers.filter((u) => {
+                            u !== user;
+                        });
+                        this.countOnlineMinus();
+                    })
+            }
         }
     }
 </script>

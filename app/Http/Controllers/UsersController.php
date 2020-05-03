@@ -233,4 +233,22 @@ class UsersController extends Controller
         }
         else{ return response('Password do not match');}
     }
+
+
+    public function statusUpdate(Request $request, $id){
+        $user = User::find($id);
+
+        if($request->active == 'activate'){
+            $user->update([
+                'active' => 1
+            ]);
+            return response('User Activated Successfully');
+        }
+        else{
+            $user->update([
+                'active' => 0
+            ]);
+            return response('User Deactivated Successfully');
+        }
+    }
 }

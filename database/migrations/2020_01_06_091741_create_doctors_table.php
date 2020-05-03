@@ -19,7 +19,6 @@ class CreateDoctorsTable extends Migration
             $table->string('last_name');
             $table->string('first_name');
             $table->string('other_name')->nullable();
-            $table->string('full_name');
             $table->string('email');
             $table->date('dob')->nullable();
             $table->string('gender')->nullable();

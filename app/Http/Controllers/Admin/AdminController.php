@@ -58,18 +58,12 @@ class AdminController extends Controller
         ]);
 
 
-        if($request->other_name == null){
-            $full_name = $request->first_name.' '.$request->last_name;
-        }
-        else{
-            $full_name = $request->first_name.' '.$request->other_name.' '.$request->last_name;
-        }
+
         $admin = Admin::create([
             'last_name' => $request->last_name,
             'first_name' => $request->first_name,
             'other_name' => $request->other_name,
             'email' => $request->email,
-            'full_name' => $full_name
         ]);
         $role = Role::where('name', $request->role)->first();
         $user = $admin->user()->create([

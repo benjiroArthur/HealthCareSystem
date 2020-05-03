@@ -41,6 +41,7 @@ Route::group(['prefix' => 'data', 'as' => 'data.'], function(){
     Route::resource('/pharmacy', 'Admin\PharmacyController');
     Route::resource('/user', 'UsersController');
     Route::post('/user/profile/image', 'UsersController@uploadImage');
+    Route::post('/user/status-update/{id}', 'UsersController@statusUpdate');
     Route::get('excelDownload/{value}', 'UsersController@excelTemplate');
 });
 

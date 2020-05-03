@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\MedicalRecord;
 use App\OutPatient;
 use App\Pharmacy;
+use App\Prescription;
+use App\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -66,15 +68,18 @@ class DashboardController extends Controller
         $doctorCount = Doctor::all()->count();
         $pharmacyCount = Pharmacy::all()->count();
         $medRecordCount = MedicalRecord::all()->count();
-        $appointCount = Appointment::where('appointment_date', '>', date(''))->count();
+        $pres = Prescription::all()->count();
+        $users = User::all()->count();
+        $online =
 
         $data = [
-            'adminCount' => $adminCount,
-            'patientCount' => $patientCount,
-            'doctorCount' => $doctorCount,
-            'pharmacyCount' => $pharmacyCount,
-            'medRecordCount' => $medRecordCount,
-            'appointCount' => $appointCount
+            'admin' => $adminCount,
+            'patient' => $patientCount,
+            'doctor' => $doctorCount,
+            'pharmacy' => $pharmacyCount,
+            'medRecord' => $medRecordCount,
+            'prescription' => $pres,
+            'users' => $users
         ];
 
         return response()->json($data);

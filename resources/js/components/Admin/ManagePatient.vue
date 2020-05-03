@@ -75,15 +75,16 @@
                         align: 'center',
                         clickToSelect: false,
                         formatter: function (e, value, row){
-                            return '<a class="btn btn-sm show"><i class="fas fa-eye text-info"></i></a><a class="btn btn-sm edit"><i class="fas fa-edit text-warning"></i></a><a class="btn btn-sm destroy"><i class="fas fa-trash text-danger"></i></a>'
+                            return `<a class="btn btn-sm edit" title="Activate"><i class="fas fa-check text-success"></i></a> <a class="btn btn-sm show" title="Deactivate"><i class="fas fa-trash text-danger"></i></a>`;
                         },
                         events: {
                             'click .show': function (e, value, row){
-                                return window.location.assign('/admin/show/'+row.id)
-
+                                /* return window.location.assign('/admin/show/'+row.id)*/
+                                Fire.$emit('deactivateUser', row);
                             },
                             'click .edit': function (e, value, row){
-                                return window.location.assign('/admin/show/'+row.id)
+                                /* return window.location.assign('/admin/show/'+row.id)*/
+                                Fire.$emit('activateUser', row);
 
                             },
                             'click .destroy': function (e, value, row){
@@ -150,8 +151,20 @@
             },
 
 
-            update(){
+            updateStatus(id, active){
 
+                this.statusForm.append('active', active);
+                axios.post(`/data/user/status-update/${id}`, this.statusForm)
+                    .then((res) => {
+                        Swal.fire(
+                            'Update',
+                            res.data,
+                            'success'
+                        );
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                    })
             }
         },
         created()
@@ -161,8 +174,28 @@
 
             //listen to event and fire this function
             Fire.$on('tableUpdate', () => {
-                this.getAllUsers();
+                this.index();
             });
+
+            Fire.$on('deactivateUser', (row) => {
+                if(row.active === true){
+                    this.updateStatus(row.id, 'deactivate')
+                }
+                this.index();
+            });
+
+            Fire.$on('activateUser', (row) => {
+                if(row.active === false){
+                    this.updateStatus(row.id, 'activate')
+                }
+                this.index();
+            });
+        },
+        mounted() {
+            Echo.private('adminChannel')
+                .listen('NewUser', (e) => {
+                    this.index();
+                });
         }
 
     }

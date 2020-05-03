@@ -141,23 +141,17 @@ let routes = [
     {path:'/admin/manage/doctors', component: require('./components/Admin/ManageDoctors.vue').default},
     {path:'/admin/manage/out_patients', component: require('./components/Admin/ManagePatient.vue').default},
     {path:'/admin/manage/pharmacy', component: require('./components/Admin/ManagePharmacy.vue').default},
-    {path:'/admin/medical-records', component: require('./components/Admin/MedicalRecords.vue').default},
     {path:'/admin/profile', component: require('./components/Admin/Profile.vue').default},
-    {path:'/admin/upcoming-appointment', component: require('./components/Admin/UpAppointment.vue').default},
-    {path:'/admin/past-appointment', component: require('./components/Admin/PastAppointment.vue').default},
-    {path:'/admin/show/:id', component: require('./components/Admin/ShowAdmin').default, name:'admin-show'},
     {path:'/admin/daily-tips', component: require('./components/Admin/DailyTips').default},
 
     //Doctors routes
-    {path:'/doctor/dashboard', component: require('./components/Doctor/Dashboard.vue').default},
-    {path:'/doctor/users', component: require('./components/Doctor/Doctors.vue').default},
     {path:'/doctor/medical-records', component: require('./components/Doctor/MedicalRecords.vue').default},
     {path:'/doctor/profile', component: require('./components/Doctor/Profile.vue').default},
     {path:'/doctor/prescription', component: require('./components/Doctor/Prescription.vue').default},
 
     //Pharmacy routes
-    {path:'/pharmacy/dashboard', component: require('./components/Pharmacy/Dashboard.vue').default},
     {path:'/pharmacy/profile', component: require('./components/Pharmacy/Profile.vue').default},
+    {path:'/pharmacy/prescription', component: require('./components/Pharmacy/Prescription.vue').default},
 
 ];
 
@@ -199,7 +193,6 @@ Vue.component('conversation', require('./components/ChatExtra/Conversation.vue')
 Vue.component('message-composer', require('./components/ChatExtra/MessageComposer.vue').default);
 Vue.component('feed', require('./components/ChatExtra/Feed.vue').default);
 Vue.component('online-user', require('./components/ChatExtra/OnlineUser.vue').default);
-Vue.component('load-prescription', require('./components/Doctor/LoadPrescription.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

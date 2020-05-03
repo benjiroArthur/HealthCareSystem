@@ -14,7 +14,7 @@ class Admin extends Model
     ];
 
     protected $guarded = [];
-    protected $appends = ['from_now'];
+    protected $appends = ['from_now', 'full_name'];
 
 
 
@@ -29,5 +29,11 @@ class Admin extends Model
     }
     public function getFromNowAttribute(){
         return Carbon::parse($this->created_at)->diffForHumans();
+    }
+    public function getFullNameAttribute(){
+        if($this->other_name == null){
+            return $this->first_name.' '.$this->last_name;
+        }
+        return $this->first_name.' '.$this->other_name.' '.$this->last_name;
     }
 }

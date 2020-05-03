@@ -60,12 +60,7 @@ class OutPatientController extends Controller
         ]);
 
 
-        if($request->other_name == null){
-            $full_name = $request->first_name.' '.$request->last_name;
-        }
-        else{
-            $full_name = $request->first_name.' '.$request->other_name.' '.$request->last_name;
-        }
+
         $patient_id = "";
         $outid = OpId::latest()->first();
         if($outid == null){
@@ -97,7 +92,6 @@ class OutPatientController extends Controller
             'first_name' => $request->first_name,
             'other_name' => $request->other_name,
             'email' => $request->email,
-            'full_name' => $full_name,
             'srn' => $patient_id
         ]);
         $role = Role::where('name', $request->role)->first();

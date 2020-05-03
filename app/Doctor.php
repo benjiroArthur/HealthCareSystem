@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Doctor extends Model
@@ -16,6 +17,7 @@ class Doctor extends Model
     protected $with = ['specialization'];
 
     protected $guarded = [];
+    protected $appends = ['from_now', 'full_name'];
 
     public function user(){
         return $this->morphOne('App\User', 'userable');
@@ -35,5 +37,14 @@ class Doctor extends Model
 
     public function prescription(){
         return $this->hasMany('App\Prescription');
+    }
+    public function getFromNowAttribute(){
+        return Carbon::parse($this->created_at)->diffForHumans();
+    }
+    public function getFullNameAttribute(){
+        if($this->other_name == null){
+            return $this->first_name.' '.$this->last_name;
+        }
+        return $this->first_name.' '.$this->other_name.' '.$this->last_name;
     }
 }

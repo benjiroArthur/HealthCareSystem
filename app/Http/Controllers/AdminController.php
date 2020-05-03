@@ -88,15 +88,6 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'first_name' => 'requires|string',
-            'last_name' => 'requires|string',
-            'email' => 'requires|email',
-            'gender' => 'requires',
-            'phone_number' => 'requires',
-            'dob' => 'requires|string',
-        ]);
-
         $userable = User::findOrFail($id)->userable()->first();
 
         $userable->update($request->all());

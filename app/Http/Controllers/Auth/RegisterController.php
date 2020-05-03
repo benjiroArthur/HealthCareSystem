@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\NewUser;
 use App\Http\Controllers\Controller;
 use App\OpId;
 use App\Role;
@@ -112,6 +113,7 @@ class RegisterController extends Controller
            'password'=> Hash::make($data['password']),
            'role_id'=> $role->id
         ]);
+        broadcast(new NewUser($user))->toOthers();
         return $user;
 
     }
