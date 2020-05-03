@@ -115,6 +115,8 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function(){
     //stat route
     Route::get('/statistics', 'Admin\DashboardController@getStat');
 
+    Route::get('/sliders', 'SliderController@index');
+
 
 
 });

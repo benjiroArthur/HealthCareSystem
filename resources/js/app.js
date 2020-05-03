@@ -89,7 +89,8 @@ Vue.use(VueProgressBar, {
 });
 
 
-
+import { CarouselPlugin } from 'bootstrap-vue';
+Vue.use(CarouselPlugin);
 
 
 import Swal from 'sweetalert2';

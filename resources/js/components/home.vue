@@ -5,132 +5,51 @@
             <!--<p>We provide you with the opportunity to chat with the best of Doctors around the globe</p>-->
         </div>
 
-        <div class="row">
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info">
-                    <div class="inner">
-                        <h3>Tip Of The Day</h3>
-
-                        <p v-if="tips !== null">{{tips.info}}</p>
+        <div class="mb-2 row justify-content-center" id="banner">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item" v-for="(slider,idx) in sliders" :class="{ active: idx==0 }">
+                    <img :src="slider.image" alt="" class="img-fluid">
+                    <div class="carousel-caption d-md-block tip-box">
+                        <h5>Tip Of The Day</h5>
+                        <p v-if="tips">{{tips.info}}</p>
                     </div>
-                    <div class="icon">
-                        <i class="fas fa-user-md"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-success">
-                    <div class="inner">
-                        <h3>Patients</h3>
 
-                        <p>General public who are seeking health care</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-user-injured"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
             </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3>Pharmacy</h3>
-
-                        <p>We have selected Pharmacies where you can order drugs</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-danger">
-                    <div class="inner">
-                        <h4>Register As Patient</h4>
-
-                        <p>Register as a Patient and get the chance to talk to a Doctor on all your health issues</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-hospital-user"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
         </div>
-        <div class="row">
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info">
-                    <div class="inner">
-                        <h3>Doctors</h3>
-
-                        <p>Our highly expert Doctors will serve you</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-user-md"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-success">
-                    <div class="inner">
-                        <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                        <p>Bounce Rate</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3>44</h3>
-
-                        <p>User Registrations</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-person-add"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-danger">
-                    <div class="inner">
-                        <h3>65</h3>
-
-                        <p>Unique Visitors</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
         </div>
-
-
+        <div class="row justify-content-center" id="about">
+            <div class="col-12 mt-2 text-center"><h3>About Us</h3></div>
+            <div class="col-12">
+                <div class="row justify-content-center">
+                    <div class="col-lg-3 col-sm-12 card mr-2 ">
+                        <div class="card-header text-center">About</div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore
+                            magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
+                            Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                    </div>
+                    <div class="col-lg-3 col-sm-12 card mr-2 ">
+                        <div class="card-header text-center">Mission</div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore
+                            magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
+                            Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                    </div>
+                    <div class="col-lg-3 col-sm-12 card ml-2">
+                        <div class="card-header text-center">Vision</div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore
+                            magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
+                            Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-5" id="contact">
+            <contact-us class="mt-3"></contact-us>
+        </div>
     </div>
 </template>
 
@@ -138,12 +57,9 @@
     export default {
         data(){
             return{
-                tips:'',
+                tips: null,
                 date: new Date(),
-                options: {
-                    format: 'DD/MM/YYYY',
-                    useCurrent: true,
-                }
+                sliders:{},
             }
         },
         methods:{
@@ -156,9 +72,20 @@
                     .catch((response)=>{ this.loading = false;
                         console.log(response.error)})
             },
+
+            getSliders(){
+                this.error = this.tips = null;
+                this.loading = true;
+                axios.get('/dashboard/sliders')
+                    .then((response) => {this.loading = false;
+                        this.sliders = response.data})
+                    .catch((response)=>{ this.loading = false;
+                        console.log(response.error)})
+            },
         },
         created() {
             this.index();
+            this.getSliders();
             console.log('Component mounted.')
         }
     }
