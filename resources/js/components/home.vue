@@ -8,7 +8,7 @@
         <div class="mb-2 row justify-content-center" id="banner">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item" v-for="(slider,idx) in sliders" :class="{ active: idx==0 }">
+                <div class="carousel-item" v-for="(slider,idx) in sliders" :class="{ active: idx===0 }">
                     <img :src="slider.image" alt="" class="img-fluid">
                     <div class="carousel-caption d-md-block tip-box">
                         <h5>Tip Of The Day</h5>
@@ -82,11 +82,21 @@
                     .catch((response)=>{ this.loading = false;
                         console.log(response.error)})
             },
+            handleIncoming(tips){
+                this.tips = null;
+                this.tips = tips;
+            }
         },
         created() {
             this.index();
             this.getSliders();
             console.log('Component mounted.')
+        },
+        mounted() {
+            Echo.private(`daily-tip`)
+                .listen('NewDailyTips', (e) => {
+                    this.handleIncoming(e.tips);
+                });
         }
     }
 </script>

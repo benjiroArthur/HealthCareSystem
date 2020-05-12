@@ -18,6 +18,16 @@ class Message extends Model
         return $this->hasOne(User::class, 'id', 'from');
     }
     public function getFromNowAttribute(){
-        return Carbon::parse($this->created_at)->diffForHumans();
+        if($this->created_at == Carbon::today()){
+            return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('H:i');
+        }
+        else if($this->created_at > Carbon::today() && $this->created_at == date('Y')){
+            return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('d M');
+        }
+        else{
+            return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('d M Y');
+        }
+       /* return Carbon::parse($this->created_at)->diffForHumans();*/
+
     }
 }

@@ -251,4 +251,9 @@ class UsersController extends Controller
             return response('User Deactivated Successfully');
         }
     }
+
+    public function onlineUsersCount(){
+        $usersCount = User::where('online', 1)->get()->count();
+        return response($usersCount);
+    }
 }

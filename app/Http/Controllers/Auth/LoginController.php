@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\CheckOnline;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -58,6 +60,10 @@ class LoginController extends Controller
 
                if($this->attemptLogin($request)){
                    // Send the normal successful login response
+                   $user->update(
+                      [ 'online' => 1,]
+                   );
+                   broadcast(new CheckOnline());
                    return $this->sendLoginResponse($request);
                }
                else {
@@ -85,6 +91,20 @@ class LoginController extends Controller
         $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
+    }
+
+    public function logout(Request $request)
+    {
+        auth()->user()->update(['online' => 0]);
+        broadcast(new CheckOnline());
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+
+        return $this->loggedOut($request) ?: redirect('/');
     }
 
 

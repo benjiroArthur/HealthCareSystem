@@ -272,8 +272,7 @@
                 admins:{},
                 admin:'',
                 count:{},
-                onlineUsers: null,
-                onlineSize: 0,
+                onlineSize: '',
 
             }
 
@@ -353,14 +352,16 @@
                 this.getStat();
             },
             countOnline(){
-                this.onlineSize = 0;
-                for (let key in this.onlineUsers) {
-                    if (this.onlineUsers.hasOwnProperty(key)) this.onlineSize++;
-                }
+                axios.get('/records/online-users')
+                    .then((response) => {
+                        this.onlineSize = response.data
+                    })
+                    .catch((error) => {
+                        console.log(error.message)
+                    })
+
             },
-            countOnlineMinus(){
-                this.onlineSize = this.onlineSize - 1;
-            },
+
         },
         created(){
             this.getPatients();
@@ -377,24 +378,11 @@
                     this.handleIncoming(e.user);
                 });
 
-            if(this.$userId !== 0){
-                Echo.join('Online')
-                    .here((users) => {
-                        this.onlineUsers = users;
-                        this.countOnline();
-                    })
-                    .joining((user) => {
-                        this.onlineUsers.push(user);
-                        this.countOnline();
+            Echo.private('online-users')
+                .listen('CheckOnline', (e) => {
+                    this.countOnline();
+                });
 
-                    })
-                    .leaving((user) => {
-                        this.onlineUsers = this.onlineUsers.filter((u) => {
-                            u !== user;
-                        });
-                        this.countOnlineMinus();
-                    })
-            }
         }
     }
 </script>

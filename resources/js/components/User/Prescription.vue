@@ -116,8 +116,8 @@
 
             getResults(page=1){
                 axios.get('/records/prescription?page=' + page)
-                    .then(response => {
-                        this.getPrescription();
+                    .then((response) => {
+                        this.myPrescription = response.data;
                     });
             },
 

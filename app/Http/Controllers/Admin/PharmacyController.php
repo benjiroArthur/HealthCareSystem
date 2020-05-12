@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Events\NewUser;
+use App\Friend;
 use App\Http\Controllers\Controller;
 use App\Pharmacy;
 use App\PharmId;
@@ -57,6 +58,9 @@ class PharmacyController extends Controller
             'password' => 'required|min:8'
         ]);
 
+        $role = Role::where('name', 'admin')->first();
+        $allAdmins = User::where('role_id', $role->id)->get();
+
         $pharmacy_srn = "";
         $outid = PharmId::latest()->first();
         if($outid == null){
@@ -98,6 +102,15 @@ class PharmacyController extends Controller
             'role_id' => $role->id
         ]);
         $user = User::findOrFail($users->id);
+
+        foreach ($allAdmins as $singleAdmin){
+            $data = [
+                'user_id' => $singleAdmin->id,
+                'friend_id' => $user->id,
+            ];
+            $friend = new Friend();
+            $friend->create($data);
+        }
         broadcast(new NewUser($user));
         return response()->json($user);
     }

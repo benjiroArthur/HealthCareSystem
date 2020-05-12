@@ -13,7 +13,8 @@
 
                                 </div>
                                 <div class="col-2">
-                                    <button type="submit" class="btn btn-success">Submit <i class="fas fa-upload"></i></button>
+                                    <button type="submit" class="btn btn-success bg-health newBtn">Submit <i class="fas fa-upload"></i></button>
+                                    <button type="button" class="btn btn-primary d-none editBtn" @click="updateTip">Update <i class="fas fa-upload"></i></button>
                                 </div>
                             </div>
 
@@ -44,7 +45,7 @@
                                 <td>{{tip.info}}</td>
 
                                 <td>
-                                    <a href="#">
+                                    <a href="#" @click="editTips(tip)">
                                         <i class="fa fa-edit blue"></i>
                                     </a>
                                     |
@@ -68,9 +69,10 @@
     export default {
         name: "DailyTips",
         data(){return{
-            tips:'',
+            tips:{},
             tip:'',
             form: new Form({
+                id:'',
                 info:''
             }),
         }},
@@ -79,21 +81,14 @@
                 this.$Progress.start();
                 this.form.post('/records/daily-tips').then((response) => {
 
-                    if(response.data === "success"){
-                        Fire.$emit('tableUpdate');
+                    this.tips.push(response.data);
+
                         Swal.fire(
                             'Save',
                             'Data Sent Successfully',
                             'success'
                         );
-                    }
-                    else{
-                        Swal.fire(
-                            'Error',
-                            response.data,
-                            'error'
-                        );
-                    }
+
                     this.$Progress.finish();
                     this.form.reset();
 
@@ -111,12 +106,35 @@
                     .catch((response)=>{ this.loading = false;
                     console.log(response.error)})
             },
+            editTips(tip){
+                $('.newBtn').addClass('d-none');
+                $('.editBtn').removeClass('d-none');
+                this.form.fill(tip);
+                },
+            updateTip(){
+                    let id = this.form.id;
+                this.$Progress.start();
+                axios.put('/records/daily-tips/'+id, this.form).then((response) => {
+                    this.tips = {};
+                    this.tips = response.data;
+
+                    Swal.fire(
+                        'Save',
+                        'Data Updated Successfully',
+                        'success'
+                    );
+
+                    this.$Progress.finish();
+                    this.form.reset();
+
+                }).catch((response) => {
+                    this.$Progress.fail();
+                    console.log(response.data)})
+            },
         },
         created(){
             this.getAllTips();
-            Fire.$on('tableUpdate', () => {
-                this.getAllTips();
-            });
+
         },
         mounted() {
         }

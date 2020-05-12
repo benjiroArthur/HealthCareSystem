@@ -20,13 +20,6 @@ Route::get('/', function () {
     return view('welcome')->with('tip', $tip);
 });
 
-Route::get('/admin/show/{id}', function () {
-    if(Auth::check()){
-        return view('show-admin');
-    }
-    else{return redirect('/home');}
-
-});
 
 //all authentication routs must be on top of other routes
 Auth::routes();
@@ -93,6 +86,7 @@ Route::group(['prefix' => 'records', 'as' => 'records.'], function(){
 
     //password Update
     Route::post('/password/update/{id}', 'UsersController@passwordUpdate');
+    Route::get('/online-users', 'UsersController@onlineUsersCount');
 
 
 });

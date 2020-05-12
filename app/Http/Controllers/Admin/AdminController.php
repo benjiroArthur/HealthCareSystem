@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Admin;
 use App\Events\NewUser;
+use App\Friend;
 use App\Http\Controllers\Controller;
 use App\Role;
 use App\User;
@@ -57,7 +58,8 @@ class AdminController extends Controller
             'password' => 'required|min:8'
         ]);
 
-
+        $role = Role::where('name', 'admin')->first();
+        $allAdmins = User::where('role_id', $role->id)->get();
 
         $admin = Admin::create([
             'last_name' => $request->last_name,
@@ -65,12 +67,21 @@ class AdminController extends Controller
             'other_name' => $request->other_name,
             'email' => $request->email,
         ]);
-        $role = Role::where('name', $request->role)->first();
-        $user = $admin->user()->create([
+        $userrole = Role::where('name', $request->role)->first();
+        $users = $admin->user()->create([
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role_id' => $role->id
+            'role_id' => $userrole->id
         ]);
+        $user = User::findOrFail($users->id);
+        foreach ($allAdmins as $singleAdmin){
+            $data = [
+                'user_id' => $singleAdmin->id,
+                'friend_id' => $user->id,
+            ];
+            $friend = new Friend();
+            $friend->create($data);
+        }
 
         broadcast(new NewUser($user))->toOthers();
         return response(['message' => 'User Created Successfully']);

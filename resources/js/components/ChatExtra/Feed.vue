@@ -2,7 +2,7 @@
     <div class="feed" ref="feed">
         <ul v-if="contact">
             <li v-for="message in messages" :class="`message${message.to === contact.id ? ' sent' : ' received'} `" :key="message.id">
-                <!--<span>{{message.from_now}}</span><br>-->
+                <span class="text-sm">{{message.from_now}}</span><br>
                 <div class="text">
                     {{ message.chat }}
                 </div>

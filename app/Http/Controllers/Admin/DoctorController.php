@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\DocId;
 use App\Doctor;
 use App\Events\NewUser;
+use App\Friend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Role;
@@ -54,7 +55,8 @@ class DoctorController extends Controller
             'email' => 'email|required|max:255|unique:admins|unique:users',
             'password' => 'required|min:8'
         ]);
-//return response($request->all());
+        $role = Role::where('name', 'admin')->first();
+        $allAdmins = User::where('role_id', $role->id)->get();
 
 
         $srn = "";
@@ -92,11 +94,20 @@ class DoctorController extends Controller
             'srn' => $srn
         ]);
         $role = Role::where('name', $request->role)->first();
-        $user = $doctor->user()->create([
+        $users = $doctor->user()->create([
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role_id' => $role->id
         ]);
+        $user = User::findOrFail($users->id);
+        foreach ($allAdmins as $singleAdmin){
+            $data = [
+                'user_id' => $singleAdmin->id,
+                'friend_id' => $user->id,
+            ];
+            $friend = new Friend();
+            $friend->create($data);
+        }
 
         broadcast(new NewUser($user))->toOthers();
         return response('success');

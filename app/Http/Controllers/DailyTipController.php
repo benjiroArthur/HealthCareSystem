@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DailyTips;
+use App\Events\NewDailyTips;
 use Illuminate\Http\Request;
 
 class DailyTipController extends Controller
@@ -40,8 +41,9 @@ class DailyTipController extends Controller
     {
         //save tips
         $tip = new DailyTips();
-        $tip->create($request->all());
-        return response('success');
+        $tips = $tip->create($request->all());
+        broadcast(new NewDailyTips($tips));
+        return response()->json($tips);
     }
 
     /**
@@ -75,7 +77,12 @@ class DailyTipController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->except('id');
+        $tip = DailyTips::find($id);
+        $tip->update($data);
+
+        $tips = DailyTips::all();
+        return response()->json($tips);
     }
 
     /**
