@@ -71,6 +71,10 @@ Vue.use(VueGoogleMaps, {
         // v: '3.26',
     },});
 
+import TextareaAutosize from 'vue-textarea-autosize';
+
+Vue.use(TextareaAutosize);
+
 
 import {Form, HasError, AlertError} from 'vform';
 
@@ -125,7 +129,7 @@ Vue.use(VueSweetalert2);
 let routes = [
 
     //general routes
-    {path:'/chat', component: require('./components/ChatExtra/Chat.vue').default},
+    {path:'/chat', component: require('./components/Chat/Chat.vue').default},
     {path:'/home', component: require('./components/home.vue').default},
     {path:'/password/update', component: require('./components/Password.vue').default},
 
@@ -194,6 +198,13 @@ Vue.component('conversation', require('./components/ChatExtra/Conversation.vue')
 Vue.component('message-composer', require('./components/ChatExtra/MessageComposer.vue').default);
 Vue.component('feed', require('./components/ChatExtra/Feed.vue').default);
 Vue.component('online-user', require('./components/ChatExtra/OnlineUser.vue').default);
+
+Vue.component('contactList', require('./components/Chat/ContactList.vue').default);
+Vue.component('conversations', require('./components/Chat/Conversation.vue').default);
+Vue.component('messageComposer', require('./components/Chat/MessagesComposer.vue').default);
+Vue.component('messageFeed', require('./components/Chat/MessagesFeed.vue').default);
+Vue.component('onlineUser', require('./components/Chat/OnlineUser.vue').default);
+Vue.component('chatHead', require('./components/Chat/ChatHeader.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

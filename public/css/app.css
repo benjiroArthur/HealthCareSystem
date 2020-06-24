@@ -72351,6 +72351,10 @@ h2 {
   background-color: rgba(1, 4, 5, 0.5);
 }
 
+.card-success.card-outline {
+  border-top: 3px solid #9561e2 !important;
+}
+
 .router-link-exact-active {
   background-color: #9561e2 !important;
   color: white !important;

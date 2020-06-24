@@ -3,12 +3,12 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars text-blue"></i></a>
+            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars text-health"></i></a>
         </li>
     </ul>
 
     <!-- SEARCH FORM -->
-    <form class="form-inline ml-3" @submit.prevent="searchIt">
+    {{--<form class="form-inline ml-3" @submit.prevent="searchIt">
         <div class="input-group input-group-sm">
             <input class="form-control form-control-navbar" v-model="search" @keyup.enter="searchIt" type="search" placeholder="Search" aria-label="Search">
             <div class="input-group-append">
@@ -17,10 +17,10 @@
                 </button>
             </div>
         </div>
-    </form>
+    </form>--}}
 
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+    {{--<ul class="navbar-nav ml-auto">
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
@@ -110,6 +110,6 @@
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
                     class="fas fa-th-large"></i></a>
         </li>
-    </ul>
+    </ul>--}}
 </nav>
 <!-- /.navbar -->

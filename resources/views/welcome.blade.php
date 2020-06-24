@@ -40,10 +40,57 @@
         </a>
     </div>
     </div>
-        <div class="row justify-content-center" id="about">
-            <div style="min-height: 70px; border-top: 2px solid black; min-width: 100%">
 
+        <div class="features_area">
+            <div class="container-fluid">
+                <div class="row no-gutters">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="single_feature text-center">
+                            <div class="icon">
+                                <i class="flaticon-support"></i>
+                            </div>
+                            <h3>WE VALUE</h3>
+                            <p>We value quality and timely delivery within safe working environment</p>
+                            <p>Living by our values helps us to make the best decisions, be successful and
+                                stand out for all the right reasons.</p>
+                            <p> Customer satisfaction is our top most priority. </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="single_feature text-center">
+                            <div class="icon">
+                                <i class="flaticon-helmet"></i>
+                            </div>
+                            <h3>WE PLAN</h3>
+                            <p>
+                                We PLAN all aspect of our client's projects, conducting feasibility studies and impact analysis
+                                covering technical, logistical, legal, environmental and financial considerations. We contributes
+                                to a sustainable future for our people, clients and the entire society.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="single_feature text-center">
+                            <div class="icon">
+                                <i class="flaticon-sketch"></i>
+                            </div>
+                            <h3>WE DESIGN</h3>
+                            <p>
+                                We DESIGN building and civil structures, develop cutting edge solutions and combine them with tried
+                                and tested technologies to achieve an optimal result. It is living by our values that we have successfully
+                                built some of the Ghana's modern architectural marvels.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
+        </div>
+
+        <div class="row justify-content-center" id="about">
+            {{--<div style="min-height: 70px; border-top: 2px solid black; min-width: 100%">
+
+            </div>--}}
             <div class="col-12 mt-5 text-center"><h3>About Us</h3></div>
             <div class="col-12">
                 <div class="row justify-content-center">
