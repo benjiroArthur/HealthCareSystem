@@ -193,11 +193,11 @@ Vue.component('contact-us', require('./components/ContactUs.vue').default);
 Vue.component('page-number', require('laravel-vue-pagination'));
 
 //chat component extras
-Vue.component('contact-list', require('./components/ChatExtra/ContactList.vue').default);
+/*Vue.component('contact-list', require('./components/ChatExtra/ContactList.vue').default);
 Vue.component('conversation', require('./components/ChatExtra/Conversation.vue').default);
 Vue.component('message-composer', require('./components/ChatExtra/MessageComposer.vue').default);
 Vue.component('feed', require('./components/ChatExtra/Feed.vue').default);
-Vue.component('online-user', require('./components/ChatExtra/OnlineUser.vue').default);
+Vue.component('online-user', require('./components/ChatExtra/OnlineUser.vue').default);*/
 
 Vue.component('contactList', require('./components/Chat/ContactList.vue').default);
 Vue.component('conversations', require('./components/Chat/Conversation.vue').default);

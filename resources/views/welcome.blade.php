@@ -41,79 +41,132 @@
     </div>
     </div>
 
-        <div class="features_area">
-            <div class="container-fluid">
-                <div class="row no-gutters">
-                    <div class="col-lg-4 col-md-12 col-sm-12">
-                        <div class="single_feature text-center">
-                            <div class="icon">
-                                <i class="flaticon-support"></i>
-                            </div>
-                            <h3>WE VALUE</h3>
-                            <p>We value quality and timely delivery within safe working environment</p>
-                            <p>Living by our values helps us to make the best decisions, be successful and
-                                stand out for all the right reasons.</p>
-                            <p> Customer satisfaction is our top most priority. </p>
+        <h1 class="text-center text-dark text-bold">What You Can Do</h1>
+        <div class="container">
+            <div class="row" style="font-size: 24px">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body bg-health text-white text-center">
+                            <span class="fas fa-search"></span>
+                            Find A Doctor
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12">
-                        <div class="single_feature text-center">
-                            <div class="icon">
-                                <i class="flaticon-helmet"></i>
-                            </div>
-                            <h3>WE PLAN</h3>
-                            <p>
-                                We PLAN all aspect of our client's projects, conducting feasibility studies and impact analysis
-                                covering technical, logistical, legal, environmental and financial considerations. We contributes
-                                to a sustainable future for our people, clients and the entire society.
-                            </p>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body bg-health text-white text-center">
+                            <span class="fab fa-facebook-messenger"></span>
+                            Chat With A Doctor
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12">
-                        <div class="single_feature text-center">
-                            <div class="icon">
-                                <i class="flaticon-sketch"></i>
-                            </div>
-                            <h3>WE DESIGN</h3>
-                            <p>
-                                We DESIGN building and civil structures, develop cutting edge solutions and combine them with tried
-                                and tested technologies to achieve an optimal result. It is living by our values that we have successfully
-                                built some of the Ghana's modern architectural marvels.
-                            </p>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body bg-health text-white text-center">
+                            <span class="fas fa-search"></span>
+                            Find A Pharmacy
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row m-5">
+                <div class="col-md-4">
+                    <h1>Welcome To</h1>
+                    <h1>E-HealthCare Center</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam at deleniti distinctio eum facere illum, nulla quidem quisquam voluptates! Animi aspernatur doloremque hic illum minus non officia rem saepe!</p>
+                </div>
+                 <div class="col-md-4">
+                     <div class="row">
+                         <div class="col-4 text-right">
+                             <p class="h1"><span class="fas fa-user-md text-health w-100 font-weight-bold" style="font-size: 80px"></span></p>
+                         </div>
+                         <div class="col-8">
+                             <h4 class="text-bold">Trusted Doctors</h4>
+                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. doloremque hic illum minus non officia rem saepe!</p>
 
+                         </div>
+                     </div>
+                     <div class="row">
+                         <div class="col-4 text-right">
+                             <p class="h1"><span class="fab fa-facebook-messenger text-health w-100 font-weight-bold" style="font-size: 80px"></span></p>
+                         </div>
+                         <div class="col-8">
+                             <h4 class="text-bold">Secured Chat Platform</h4>
+                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. doloremque hic illum minus non officia rem saepe!</p>
+
+                         </div>
+                     </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-4 text-right">
+                            <p class="h1"><span class="fas fa-tablets text-health w-100 font-weight-bold" style="font-size: 80px"></span></p>
+                        </div>
+                        <div class="col-8">
+                            <h4 class="text-bold">Trusted Pharmacies</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. doloremque hic illum minus non officia rem saepe!</p>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 text-right">
+                            <p class="h1"><span class="fas fa-clock text-health w-100 font-weight-bold" style="font-size: 80px"></span></p>
+                        </div>
+                        <div class="col-8">
+                            <h4 class="text-bold">24/7 Services</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. doloremque hic illum minus non officia rem saepe!</p>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="row justify-content-center" id="about">
-            {{--<div style="min-height: 70px; border-top: 2px solid black; min-width: 100%">
+        <div class="container">
+            <div class="row justify-content-center" id="about">
+                {{--<div style="min-height: 70px; border-top: 2px solid black; min-width: 100%">
 
-            </div>--}}
-            <div class="col-12 mt-5 text-center"><h3>About Us</h3></div>
-            <div class="col-12">
-                <div class="row justify-content-center">
-                    <div class="col-lg-3 col-sm-12 card mr-2 ">
-                        <div class="card-header text-center">About</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore
-                            magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
-                            Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                </div>--}}
+                <div class="col-12 mt-5 text-center text-bold"><h1 class="text-bold">About Us</h1></div>
+
+                <div class="col-12">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 col-sm-12 card bg-transparent">
+                            <img src="{{asset('assets/about/about1.png')}}" alt="..." class="img-fluid">
+                        </div>
+                        <div class="col-md-6 col-sm-12 card">
+                            <div class="card-header text-center">About</div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore
+                                magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
+                                Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                        </div>
                     </div>
-                    <div class="col-lg-3 col-sm-12 card mr-2 ">
-                        <div class="card-header text-center">Mission</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore
-                            magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
-                            Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 col-sm-12 card">
+                            <div class="card-header text-center">Mission</div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore
+                                magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
+                                Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                        </div>
+                        <div class="col-md-6 col-sm-12 card bg-transparent">
+                            <img src="{{asset('assets/about/about2.png')}}" alt="..." class="img-fluid">
+                        </div>
                     </div>
-                    <div class="col-lg-3 col-sm-12 card ml-2">
-                        <div class="card-header text-center">Vision</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore
-                            magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
-                            Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 col-sm-12 card bg-transparent">
+                            <img src="{{asset('assets/about/about3.png')}}" alt="..." class="img-fluid">
+                        </div>
+                        <div class="col-md-6 col-sm-12 card">
+                            <div class="card-header text-center">Vision</div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore
+                                magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
+                                Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                        </div>
                     </div>
                 </div>
             </div>
