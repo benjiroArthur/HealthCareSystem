@@ -3,10 +3,10 @@
         <div class="row justify-content-center">
             <div class="col-sm-12 col-md-7 col-lg-7">
                 <div class="card">
-                    <div class="card-header">CONTACT US</div>
+                    <div class="card-header h2 text-bold">CONTACT US</div>
                     <div class="card-body justify-content-center">
                         <form @submit.prevent="contact" ref="form" class="justify-content-center">
-                            <div class="row">
+                            <div class="row text-center">
                                 <div class="col-md-6">
                                     <div class="form-group"><input v-model="form.full_name" type="text" name="name" placeholder="Full Name" required class="form-control"/></div>
                                     <div class="form-group"><input v-model="form.email" type="email" name="email" placeholder="Email" required class="form-control"/></div>
@@ -15,7 +15,7 @@
                                     <div class="form-group"><textarea v-model="form.message" name="message" class="form-control" cols="8" rows="3" placeholder="Message"></textarea></div>
                                 </div>
                             </div>
-                            <div class="form-group justify-content-center align-items-center">
+                            <div class="form-group justify-content-center align-items-center text-center">
                                 <button type="button" class="btn btn-danger" @click="reset">Cancel</button>
                                 <button type="submit" class="btn btn-success">Submit <i class="fas fa-upload"></i></button>
                             </div>

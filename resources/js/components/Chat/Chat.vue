@@ -7,7 +7,7 @@
                 <!-- /.card-header -->
 
                 <div class="card-body">
-                    <conversation :contact="selectedContact" :messages="messages"></conversation>
+                    <conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"></conversation>
                     <!-- Contacts are loaded here -->
                     <contact-list :contacts="contacts" :onlineUsers="onlineUsers" @selected="startConversationWith"></contact-list>
                     <!-- /.direct-chat-pane -->
@@ -89,7 +89,7 @@
                     })
             },
             handleIncoming(message){
-                if(this.selectedContact && message.from === this.selectedContact){
+                if(this.selectedContact && message.from === this.selectedContact.id){
                     this.saveNewMessage(message);
                     this.markAsRead(message);
                     return;

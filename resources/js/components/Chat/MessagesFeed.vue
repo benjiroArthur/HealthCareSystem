@@ -5,7 +5,7 @@
                 <!--<span class="text-sm">{{message.from_now}}</span><br>-->
                 <div class="text">
                     {{ message.chat }} <br>
-                    <span class="text-right">{{ message.from_now }}</span>
+                    <span class="text-right text-small" style="font-size: 8px">{{ message.from_now }}</span>
                 </div>
             </li>
 
@@ -70,7 +70,7 @@
                     &.received{
                         text-align: left;
                         .text{
-                            background: #515050;
+                            background: #500392;
                             color: white;
                         }
                     }

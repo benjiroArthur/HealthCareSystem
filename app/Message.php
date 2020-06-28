@@ -4,9 +4,12 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\FromNow;
+
 
 class Message extends Model
 {
+    use FromNow;
     //fillables
     protected $fillable = [
         'from', 'to', 'chat'
@@ -18,16 +21,6 @@ class Message extends Model
         return $this->hasOne(User::class, 'id', 'from');
     }
     public function getFromNowAttribute(){
-        /*if($this->created_at === Carbon::today()){
-            return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('H:i');
-        }
-        else if($this->created_at > Carbon::today() && $this->created_at === date('Y')){
-            return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('d M');
-        }
-        else{
-            return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('d M Y');
-        }*/
-        return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('H:i');
-
+        return $this->getAwesomeDateAttribute();
     }
 }

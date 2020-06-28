@@ -6,6 +6,7 @@
 
         <meta name="userId" content="{{ Auth::check() ? Auth::user()->id : 0 }}">
         <meta name="status" content="{{ Auth::check() ? Auth::user()->active : 0 }}">
+        <meta name="resourcePath" content="{{ asset('assets') }}">
 
 
     <!-- CSRF Token -->
@@ -23,6 +24,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('style')
     @yield('head')
     @include('includes.pageLoader.css.loader')
 </head>

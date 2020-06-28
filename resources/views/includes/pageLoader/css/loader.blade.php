@@ -4,7 +4,7 @@
     }
 
     .lds-spinner {
-        color: #00bcd4;
+        color: #f1f5f5;
         display: inline-block;
         position: relative;
         width: 80px;

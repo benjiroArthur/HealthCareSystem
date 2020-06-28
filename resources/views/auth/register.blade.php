@@ -10,7 +10,7 @@
                 <div class="card">
 
                     <div class="card-body register-card-body">
-                        <p class="login-box-msg">{{ __('Register') }}</p>
+                        <p class="login-box-msg h5 text-bold">{{ __('Register') }}</p>
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
                             <div class="row justify-content-center">
@@ -91,11 +91,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row mb-0 justify-content-center">
+                            <div class="form-group row mb-0 justify-content-center text-center">
                                 <div>
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
-                                    </button>
+                                    <button type="submit" class="btn btn-primary bg-health">Register</button>
                                 </div>
                             </div>
 

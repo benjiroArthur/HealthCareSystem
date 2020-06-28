@@ -15,6 +15,7 @@ Vue.use(Vuetify);
 import moment from 'moment';
 Vue.prototype.$userId = document.querySelector("meta[name='userId']").getAttribute('content');
 Vue.prototype.$status = document.querySelector("meta[name='status']").getAttribute('content');
+Vue.prototype.$resourcePath = document.querySelector("meta[name='resourcePath']").getAttribute('content');
 
 window.Fire = new Vue();
 
@@ -193,11 +194,6 @@ Vue.component('contact-us', require('./components/ContactUs.vue').default);
 Vue.component('page-number', require('laravel-vue-pagination'));
 
 //chat component extras
-/*Vue.component('contact-list', require('./components/ChatExtra/ContactList.vue').default);
-Vue.component('conversation', require('./components/ChatExtra/Conversation.vue').default);
-Vue.component('message-composer', require('./components/ChatExtra/MessageComposer.vue').default);
-Vue.component('feed', require('./components/ChatExtra/Feed.vue').default);
-Vue.component('online-user', require('./components/ChatExtra/OnlineUser.vue').default);*/
 
 Vue.component('contactList', require('./components/Chat/ContactList.vue').default);
 Vue.component('conversations', require('./components/Chat/Conversation.vue').default);

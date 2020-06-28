@@ -19,30 +19,151 @@
             </div>
         </div>
         </div>
-        <div class="row justify-content-center" id="about">
-            <div class="col-12 mt-2 text-center"><h3>About Us</h3></div>
-            <div class="col-12">
+        <h1 class="text-center text-dark text-bold">What You Can Do</h1>
+        <div class="container">
+            <div class="row" style="font-size: 24px">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body bg-health text-white text-center">
+                            <span class="fas fa-search"></span>
+                            Find A Doctor
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body bg-health text-white text-center">
+                            <span class="fab fa-facebook-messenger"></span>
+                            Chat With A Doctor
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body bg-health text-white text-center">
+                            <span class="fas fa-search"></span>
+                            Find A Pharmacy
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid bg-light shadow p-3">
+            <div class="row m-5">
+                <div class="col-md-4">
+                    <h1>Welcome To</h1>
+                    <h1>E-HealthCare Center</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam at deleniti distinctio eum facere illum, nulla quidem quisquam voluptates! Animi aspernatur doloremque hic illum minus non officia rem saepe!</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-4 text-right">
+                            <p class="h1"><span class="fas fa-user-md text-health w-100 font-weight-bold" style="font-size: 80px"></span></p>
+                        </div>
+                        <div class="col-8">
+                            <h4 class="text-bold">Trusted Doctors</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. doloremque hic illum minus non officia rem saepe!</p>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 text-right">
+                            <p class="h1"><span class="fab fa-facebook-messenger text-health w-100 font-weight-bold" style="font-size: 80px"></span></p>
+                        </div>
+                        <div class="col-8">
+                            <h4 class="text-bold">Secured Chat Platform</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. doloremque hic illum minus non officia rem saepe!</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-4 text-right">
+                            <p class="h1"><span class="fas fa-tablets text-health w-100 font-weight-bold" style="font-size: 80px"></span></p>
+                        </div>
+                        <div class="col-8">
+                            <h4 class="text-bold">Trusted Pharmacies</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. doloremque hic illum minus non officia rem saepe!</p>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 text-right">
+                            <p class="h1"><span class="fas fa-clock text-health w-100 font-weight-bold" style="font-size: 80px"></span></p>
+                        </div>
+                        <div class="col-8">
+                            <h4 class="text-bold">24/7 Services</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. doloremque hic illum minus non officia rem saepe!</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row"  id="about">
+            <div class="col-12 mt-5 text-center text-bold"><h1 class="text-bold">About Us</h1></div>
+        </div>
+        <div class="container-fliud bg-light shadow p-3 mb-3">
+            <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-lg-3 col-sm-12 card mr-2 ">
-                        <div class="card-header text-center">About</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore
-                            magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
-                            Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                    <div class="col-12">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 col-sm-12 bg-transparent">
+                                <img :src="`${this.$parent.$resourcePath}/about/about2.jpg`" alt="..." class="img-fluid">
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <p class="font-weight-light h2">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                    sed do eiusmod tempor incididunt ut labore et dolore
+                                    magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
+                                    Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-lg-3 col-sm-12 card mr-2 ">
-                        <div class="card-header text-center">Mission</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore
-                            magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
-                            Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-5 text-center text-bold"><h1 class="text-bold">Our Mission</h1></div>
+        </div>
+        <div class="container-fliud bg-light shadow p-3 mb-3">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 col-sm-12">
+                                <p class="font-weight-light h2">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                    sed do eiusmod tempor incididunt ut labore et dolore
+                                    magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
+                                    Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                            </div>
+                            <div class="col-md-6 col-sm-12" >
+                                <img :src="`${this.$parent.$resourcePath}/about/about1.jpg`" alt="..." class="img-fluid">
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-lg-3 col-sm-12 card ml-2">
-                        <div class="card-header text-center">Vision</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore
-                            magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
-                            Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-5 text-center text-bold"><h1 class="text-bold">Our vision</h1></div>
+        </div>
+        <div class="container-fliud bg-light shadow p-3 mb-3">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 col-sm-12">
+                                <img :src="`${this.$parent.$resourcePath}/about/about3.jpg`" alt="..." class="img-fluid">
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <p class="font-weight-light h2">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                    sed do eiusmod tempor incididunt ut labore et dolore
+                                    magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
+                                    Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

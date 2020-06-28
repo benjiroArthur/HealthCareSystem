@@ -70,7 +70,7 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
+        <div class="container-fluid bg-light shadow p-3">
             <div class="row m-5">
                 <div class="col-md-4">
                     <h1>Welcome To</h1>
@@ -124,57 +124,84 @@
             </div>
         </div>
 
-        <div class="container">
-            <div class="row justify-content-center" id="about">
-                {{--<div style="min-height: 70px; border-top: 2px solid black; min-width: 100%">
-
-                </div>--}}
-                <div class="col-12 mt-5 text-center text-bold"><h1 class="text-bold">About Us</h1></div>
-
-                <div class="col-12">
-                    <div class="row justify-content-center">
-                        <div class="col-md-6 col-sm-12 card bg-transparent">
-                            <img src="{{asset('assets/about/about1.png')}}" alt="..." class="img-fluid">
-                        </div>
-                        <div class="col-md-6 col-sm-12 card">
-                            <div class="card-header text-center">About</div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore
-                                magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
-                                Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-md-6 col-sm-12 card">
-                            <div class="card-header text-center">Mission</div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore
-                                magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
-                                Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
-                        </div>
-                        <div class="col-md-6 col-sm-12 card bg-transparent">
-                            <img src="{{asset('assets/about/about2.png')}}" alt="..." class="img-fluid">
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-md-6 col-sm-12 card bg-transparent">
-                            <img src="{{asset('assets/about/about3.png')}}" alt="..." class="img-fluid">
-                        </div>
-                        <div class="col-md-6 col-sm-12 card">
-                            <div class="card-header text-center">Vision</div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore
-                                magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
-                                Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+        <div class="row"  id="about">
+            <div class="col-12 mt-5 text-center text-bold"><h1 class="text-bold">About Us</h1></div>
+        </div>
+        <div class="container-fliud bg-light shadow p-3 mb-3">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 col-sm-12 bg-transparent">
+                                <img src="{{asset('assets/about/about2.jpg')}}" alt="..." class="img-fluid">
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <p class="font-weight-light h2">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                    sed do eiusmod tempor incididunt ut labore et dolore
+                                    magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
+                                    Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12 mt-5 text-center text-bold"><h1 class="text-bold">Our Mission</h1></div>
+        </div>
+        <div class="container-fliud bg-light shadow p-3 mb-3">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 col-sm-12">
+                                <p class="font-weight-light h2">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                    sed do eiusmod tempor incididunt ut labore et dolore
+                                    magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
+                                    Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                            </div>
+                            <div class="col-md-6 col-sm-12" >
+                                <img src="{{asset('assets/about/about1.jpg')}}" alt="..." class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-5 text-center text-bold"><h1 class="text-bold">Our vision</h1></div>
+        </div>
+        <div class="container-fliud bg-light shadow p-3 mb-3">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 col-sm-12">
+                                <img src="{{asset('assets/about/about3.jpg')}}" alt="..." class="img-fluid">
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <p class="font-weight-light h2">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                    sed do eiusmod tempor incididunt ut labore et dolore
+                                    magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
+                                    Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="mt-5" id="contact">
             <contact-us class="mt-3"></contact-us>
         </div>
 
         <a href="#banner" title="Move to top"><span class="fas fa-arrow-alt-circle-up" style="float: right; width: 40px; height: 40px;"></span></a>
 @endsection
+@section('style')
+    <style>
+        .about-bg{
+
+        }
+    </style>
+@endSection()
 

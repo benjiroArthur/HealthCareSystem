@@ -61,7 +61,7 @@ class ContactUsController extends Controller
 
 //            $job = (new ContactUsJob($data))->delay(Carbon::now()->addSeconds(5));
 
-            ContactUsJob::dispatch($data)->delay(now()->addSeconds(5));
+            //ContactUsJob::dispatch($data)->delay(now()->addSeconds(5));
 
         return response('success');
     }
