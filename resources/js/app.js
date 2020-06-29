@@ -13,9 +13,7 @@ import Vuetify from 'vuetify';
 Vue.use(Vuetify);
 
 import moment from 'moment';
-Vue.prototype.$userId = document.querySelector("meta[name='userId']").getAttribute('content');
-Vue.prototype.$status = document.querySelector("meta[name='status']").getAttribute('content');
-Vue.prototype.$resourcePath = document.querySelector("meta[name='resourcePath']").getAttribute('content');
+
 
 window.Fire = new Vue();
 
@@ -234,8 +232,10 @@ const app = new Vue({
     vuetify: new Vuetify(),
     data: () => ({
         pageLoader: true,
-        userId: 'ddd',
+        userId: '',
         search:'',
+        resourcePath: '',
+        status: ''
     }),
     methods:{
         searchIt(){
@@ -247,5 +247,10 @@ const app = new Vue({
             this.pageLoader = false;
         }, 4000);
 
+    },
+    created() {
+        this.userId = $('meta[name = "userId"]').attr('content');
+        this.status = $('meta[name = "status"]').attr('content');
+        this.resourcePath = $('meta[name = "resourcePath"]').attr('content');
     }
 });

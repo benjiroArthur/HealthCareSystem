@@ -1,5 +1,4 @@
 <template>
-
         <div class="row justify-content-center">
             <div class="col-sm-12 col-md-7 col-lg-7">
                 <div class="card">
