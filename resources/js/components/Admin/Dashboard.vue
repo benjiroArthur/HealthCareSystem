@@ -206,7 +206,7 @@
                             <li v-for="pharmacy in pharmacies" v-bind:key="pharmacy.id">
                                 <img :src="pharmacy.image" alt="User Image" width="50">
                                 <a class="users-list-name" href="#">{{pharmacy.full_name}}</a>
-                                <span class="users-list-date">{{pharmacy.created_at | fromNow}}</span>
+                                <span class="users-list-date">{{pharmacy.from_now}}</span>
                             </li>
                         </ul>
                         <!-- /.users-list -->
@@ -239,7 +239,7 @@
                             <li v-for="admin in admins" v-bind:key="admin.id">
                                 <img :src="admin.image" alt="User Image" width="50">
                                 <a class="users-list-name" href="#">{{admin.full_name}}</a>
-                                <span class="users-list-date">{{admin.created_at | fromNow}}</span>
+                                <span class="users-list-date">{{admin.from_now}}</span>
                             </li>
                         </ul>
                         <!-- /.users-list -->

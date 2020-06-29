@@ -90,7 +90,7 @@ class AdminController extends Controller
     {
         $userable = User::findOrFail($id)->userable()->first();
 
-        $userable->update($request->all());
+        $userable->update($request->except('email'));
         $user = User::findOrFail($id);
         $user->update([
             'profile_updated' => 1

@@ -10,7 +10,7 @@
                         <form @submit.prevent="updateProfile" ref="form">
                             <div class="modal-body">
                                 <div class="login-logo">
-                                    <img :src="this.doctor.image" width="100" height="auto" alt="user" class="userImage img-circle">
+                                    <img :src="this.doctor.image" width="100" height="auto" :alt="this.doctor.initials" class="userImage img-circle">
                                     <span class="fas fa-camera" data-toggle="modal" data-target="#profileModal" tooltip="Edit Profile Picture"
                                           style="position: absolute; transform: translate(-70%, 200%); -ms-transform: translate(-70%, 200%); width:20px;"></span>
                                 </div>
@@ -166,7 +166,7 @@
             profileInfo(){
                 this.loading = true;
                 axios
-                    .get('/records/doctor/'+ this.$userId)
+                    .get('/records/doctor/'+ this.$parent.userId)
                     .then(response => {
                         this.loading = false;
                         this.doctor = response.data;
@@ -230,7 +230,7 @@
             },
             updateProfile(){
                 this.$Progress.start();
-                this.form.put('/records/admin/'+this.$userId)
+                this.form.put('/records/admin/'+this.$parent.userId)
                     .then((response) => {
                         Fire.$emit('profileUpdate');
                         console.log(response.data);

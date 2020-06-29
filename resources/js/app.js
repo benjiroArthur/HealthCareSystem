@@ -232,7 +232,7 @@ const app = new Vue({
     vuetify: new Vuetify(),
     data: () => ({
         pageLoader: true,
-        userId: '',
+        userId: null,
         search:'',
         resourcePath: '',
         status: ''

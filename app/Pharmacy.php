@@ -39,5 +39,8 @@ class Pharmacy extends Model
         $phName = $phName[0];
         return $phName;
     }
+    public function getInitialsAttribute(){
+        return strtoupper($this->pharmacy_name[0]);
+    }
 
 }

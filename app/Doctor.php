@@ -17,7 +17,7 @@ class Doctor extends Model
     protected $with = ['specialization'];
 
     protected $guarded = [];
-    protected $appends = ['from_now', 'full_name'];
+    protected $appends = ['from_now', 'full_name', 'initials'];
 
     public function user(){
         return $this->morphOne('App\User', 'userable');
@@ -46,5 +46,10 @@ class Doctor extends Model
             return $this->first_name.' '.$this->last_name;
         }
         return $this->first_name.' '.$this->other_name.' '.$this->last_name;
+    }
+    public function getInitialsAttribute(){
+        $firstInitial = strtoupper($this->first_name[0]);
+        $lastInitial = strtoupper($this->last_name[0]);
+        return $firstInitial.$lastInitial;
     }
 }

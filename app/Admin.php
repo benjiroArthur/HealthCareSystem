@@ -14,7 +14,7 @@ class Admin extends Model
     ];
 
     protected $guarded = [];
-    protected $appends = ['from_now', 'full_name'];
+    protected $appends = ['from_now', 'full_name', 'initials'];
 
 
 
@@ -35,5 +35,10 @@ class Admin extends Model
             return $this->first_name.' '.$this->last_name;
         }
         return $this->first_name.' '.$this->other_name.' '.$this->last_name;
+    }
+    public function getInitialsAttribute(){
+        $firstInitial = strtoupper($this->first_name[0]);
+        $lastInitial = strtoupper($this->last_name[0]);
+        return $firstInitial.$lastInitial;
     }
 }
