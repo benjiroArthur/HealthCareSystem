@@ -45,7 +45,7 @@ window.Echo = new Echo({
     wsHost: window.location.hostname,
     wsPort: process.env.LARAVEL_WEBSOCKETS_PORT,
     wssPort: process.env.LARAVEL_WEBSOCKETS_PORT,
-    //disableStats: true,
+    disableStats: true,
     enabledTransports: ['ws', 'flash', 'wss']
 });
 /*window.Echo = new Echo({
