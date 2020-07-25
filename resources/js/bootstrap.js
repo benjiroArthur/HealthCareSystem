@@ -44,6 +44,7 @@ window.Echo = new Echo({
     //encrypted: false,
     wsHost: window.location.hostname,
     wsPort: process.env.LARAVEL_WEBSOCKETS_PORT
+    //disableStats: true,
 });
 
 /*

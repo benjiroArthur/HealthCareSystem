@@ -1,8 +1,8 @@
 <template>
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <!--<h3>Welcome to Healthcare System</h3>-->
-            <!--<p>We provide you with the opportunity to chat with the best of Doctors around the globe</p>-->
+            <!--<h3>Welcome to Healthcare System</h3>
+            <p>We provide you with the opportunity to chat with the best of Doctors around the globe</p>-->
         </div>
 
         <div class="mb-2 row justify-content-center" id="banner">
@@ -111,7 +111,7 @@
                     <div class="col-12">
                         <div class="row justify-content-center">
                             <div class="col-md-6 col-sm-12 bg-transparent">
-                                <img :src="`${this.$parent.$resourcePath}/about/about2.jpg`" alt="..." class="img-fluid">
+                                <img :src="`${this.$parent.resourcePath}/about/about2.jpg`" alt="..." class="img-fluid">
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <p class="font-weight-light h2">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -139,7 +139,7 @@
                                     Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
                             </div>
                             <div class="col-md-6 col-sm-12" >
-                                <img :src="`${this.$parent.$resourcePath}/about/about1.jpg`" alt="..." class="img-fluid">
+                                <img :src="`${this.$parent.resourcePath}/about/about1.jpg`" alt="..." class="img-fluid">
                             </div>
                         </div>
                     </div>
@@ -155,7 +155,7 @@
                     <div class="col-12">
                         <div class="row justify-content-center">
                             <div class="col-md-6 col-sm-12">
-                                <img :src="`${this.$parent.$resourcePath}/about/about3.jpg`" alt="..." class="img-fluid">
+                                <img :src="`${this.$parent.resourcePath}/about/about3.jpg`" alt="..." class="img-fluid">
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <p class="font-weight-light h2">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
