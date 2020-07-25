@@ -43,8 +43,8 @@ window.Echo = new Echo({
     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
     encrypted: false,
     wsHost: window.location.hostname,
-    wsPort: process.env.LARAVEL_WEBSOCKETS_PORT,
-    wssPort: process.env.LARAVEL_WEBSOCKETS_PORT,
+    wsPort: 6002,
+    wssPort: 6002,
     disableStats: true,
     enabledTransports: ['ws', 'flash', 'wss']
 });
