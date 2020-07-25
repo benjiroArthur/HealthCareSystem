@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 
 //all authentication routs must be on top of other routes
-Auth::routes();
+Auth::routes(['verify' => true]);
 //Auth routes ends
 
 

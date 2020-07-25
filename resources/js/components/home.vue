@@ -181,6 +181,7 @@
                 tips: null,
                 date: new Date(),
                 sliders:{},
+                myPath: '',
             }
         },
         methods:{
@@ -209,9 +210,9 @@
             }
         },
         created() {
+            this.myPath = this.$parent.resourcePath;
             this.index();
             this.getSliders();
-            console.log('Component mounted.')
         },
         mounted() {
             Echo.private(`daily-tip`)
