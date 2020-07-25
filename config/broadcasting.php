@@ -39,8 +39,12 @@ return [
                 'cluster' => env('PUSHER_APP_CLUSTER'),
                 //'useTLS' => true,
                 'host' => '127.0.0.1',
-                'port' => env('LARAVEL_WEBSOCKETS_PORT'),
-                'scheme' => 'http'
+                'port' => 6002,
+                'scheme' => 'http',
+                /*'curl_options' => [
+                    CURLOPT_SSL_VERIFYHOST => 0,
+                    CURLOPT_SSL_VERIFYPEER => 0,
+                ]*/
             ],
         ],
 
