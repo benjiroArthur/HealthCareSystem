@@ -64,6 +64,12 @@
                                                    class="form-control" :class="{ 'is-invalid': form.errors.has('phone_number') }">
                                             <has-error :form="form" field="phone_number"></has-error>
                                         </div>
+                                        <div class="form-group">
+                                            <label>Ghana Post GPS Location</label>
+                                            <input v-model="form.location" type="text" name="location"
+                                                   class="form-control" :class="{ 'is-invalid': form.errors.has('location') }">
+                                            <has-error :form="form" field="location"></has-error>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -131,7 +137,8 @@
                     email: '',
                     dob: '',
                     gender: '',
-                    phone_number: ''
+                    phone_number: '',
+                    location: ''
                 }),
             }
         },
