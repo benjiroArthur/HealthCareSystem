@@ -123,12 +123,13 @@
             });
 
             //listen to message event
-            Echo.private(`messages.${this.$userId}`)
+            Echo.private(`messages.${this.$parent.userId}`)
                 .listen('NewMessage', (e) => {
                     this.handleIncoming(e.message);
                 });
 
-            if(this.$userId !== 0){
+            if(this.$parent.userId !== 0){
+                //join online users list
                 Echo.join('Online')
                     .here((users) => {
                         this.onlineUsers = users;

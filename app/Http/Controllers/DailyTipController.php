@@ -35,7 +35,7 @@ class DailyTipController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\jsonResponse
      */
     public function store(Request $request)
     {

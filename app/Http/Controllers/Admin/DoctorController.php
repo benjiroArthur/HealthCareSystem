@@ -28,7 +28,7 @@ class DoctorController extends Controller
         //get all doctors
         $role = Role::where('name', 'doctor')->first();
 
-        $user = User::where('role_id', $role->id)->get();
+        $user = User::where('role_id', $role->id)->latest()->get();
 
         return response()->json($user);
     }
