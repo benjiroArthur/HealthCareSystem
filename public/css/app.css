@@ -72355,6 +72355,10 @@ h2 {
   border-top: 3px solid #9561e2 !important;
 }
 
+.make-link {
+  cursor: pointer;
+}
+
 .router-link-exact-active {
   background-color: #9561e2 !important;
   color: white !important;

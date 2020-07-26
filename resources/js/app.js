@@ -233,6 +233,7 @@ const app = new Vue({
     data: () => ({
         pageLoader: true,
         userId: null,
+        role: null,
         search:'',
         resourcePath: '',
         status: ''
@@ -250,6 +251,7 @@ const app = new Vue({
     },
     created() {
         this.userId = $('meta[name = "userId"]').attr('content');
+        this.role = $('meta[name = "role"]').attr('content');
         this.status = $('meta[name = "status"]').attr('content');
         this.resourcePath = $('meta[name = "resourcePath"]').attr('content');
     }

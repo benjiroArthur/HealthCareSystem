@@ -19,32 +19,39 @@
             </div>
         </div>
         </div>
-        <h1 class="text-center text-dark text-bold">What You Can Do</h1>
-        <div class="container">
+
+        <div v-show="this.role === 'out_patient'" class="container">
+            <h1 class="text-center text-dark text-bold">What You Can Do</h1>
             <div class="row" style="font-size: 24px">
                 <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body bg-health text-white text-center">
-                            <span class="fas fa-search"></span>
-                            Find A Doctor
-                        </div>
-                    </div>
+                        <router-link to="/user/doctors" class="nav-link">
+                            <div class="card make-link">
+                                <div class="card-body bg-health text-white text-center">
+                                    <span class="fas fa-search"></span>
+                                    Find A Doctor
+                                </div>
+                            </div>
+                        </router-link>
                 </div>
                 <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body bg-health text-white text-center">
-                            <span class="fab fa-facebook-messenger"></span>
-                            Chat With A Doctor
+                    <router-link to="/chat" class="nav-link">
+                        <div class="card make-link">
+                            <div class="card-body bg-health text-white text-center">
+                                <span class="fab fa-facebook-messenger"></span>
+                                Chat With A Doctor
+                            </div>
                         </div>
-                    </div>
+                    </router-link>
                 </div>
                 <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body bg-health text-white text-center">
-                            <span class="fas fa-search"></span>
-                            Find A Pharmacy
-                        </div>
-                    </div>
+                   <router-link to="/user/pharmacy" class="nav-link">
+                       <div class="card make-link">
+                           <div class="card-body bg-health text-white text-center">
+                               <span class="fas fa-search"></span>
+                               Find A Pharmacy
+                           </div>
+                       </div>
+                   </router-link>
                 </div>
             </div>
         </div>
@@ -181,7 +188,7 @@
                 tips: null,
                 date: new Date(),
                 sliders:{},
-                myPath: '',
+                role: '',
             }
         },
         methods:{
@@ -210,7 +217,7 @@
             }
         },
         created() {
-            this.myPath = this.$parent.resourcePath;
+            this.role = this.$parent.role;
             this.index();
             this.getSliders();
         },

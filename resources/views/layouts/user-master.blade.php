@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="userId" content="{{ Auth::check() ? Auth::user()->id : 0 }}">
+        <meta name="role" content="{{ Auth::check() ? Auth::user()->role->name : null }}">
         <meta name="status" content="{{ Auth::check() ? Auth::user()->active : 0 }}">
         <meta name="resourcePath" content="{{ asset('assets') }}">
 
