@@ -41,24 +41,16 @@ window.Echo = new Echo({
     broadcaster: 'pusher',
     key: process.env.MIX_PUSHER_APP_KEY,
     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-    //encrypted: false,
-    wsHost: window.location.hostname,
-    wsPort: process.env.LARAVEL_WEBSOCKETS_PORT,
-    wssPort: process.env.LARAVEL_WEBSOCKETS_PORT,
-    disableStats: true,
-    enabledTransports: ['ws', 'flash', 'wss']
-});
-/*window.Echo = new Echo({
-    broadcaster: 'pusher',
-    key: '61b2d97890526345bd88',
-    cluster: 'eu',
-    //encrypted: false,
+    encrypted: false,
     wsHost: window.location.hostname,
     wsPort: 6002,
     wssPort: 6002,
     disableStats: true,
     enabledTransports: ['ws', 'flash', 'wss']
-});*/
+});
+
+//console.log(process.env.MIX_PUSHER_APP_KEY)
+
 
 /*
 window.Echo = new Echo({
