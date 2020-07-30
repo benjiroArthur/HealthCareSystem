@@ -9,7 +9,7 @@ class Pharmacy extends Model
 {
     //fillables
     protected $fillable = [
-        'pharmacy_name', 'phone_number', 'image', 'email', 'location', 'srn'
+        'pharmacy_name', 'phone_number', 'image', 'email', 'srn'
     ];
 
     protected $guarded = [];

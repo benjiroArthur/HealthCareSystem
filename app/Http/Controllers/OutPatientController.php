@@ -55,7 +55,7 @@ class OutPatientController extends Controller
      */
     public function show($id)
     {
-        $out_patient = User::findOrFail($id)->userable()->first();
+        $out_patient = User::findOrFail($id);
 
         return response()->json($out_patient);
     }

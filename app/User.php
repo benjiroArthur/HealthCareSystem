@@ -22,7 +22,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected $guarded = [];
 
-    protected $with = ['role', 'userable'];
+    protected $with = ['role', 'userable', 'address'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -45,6 +45,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function role(){
         return $this->belongsTo(Role::class);
+    }
+
+    public function address(){
+        return $this->hasOne(Address::class);
     }
 
 

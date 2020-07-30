@@ -96,7 +96,7 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         auth()->user()->update(['online' => 0]);
-        broadcast(new CheckOnline());
+        broadcast(new CheckOnline())->toOthers();
         $this->guard()->logout();
 
         $request->session()->invalidate();

@@ -47,6 +47,10 @@ Route::group(['prefix' => 'records', 'as' => 'records.'], function(){
     //admin routes
     Route::resource('/admin', 'AdminController');
 
+    Route::get('/region', 'AdminController@region');
+    Route::get('/city/{region}', 'AdminController@city');
+    Route::put('/profile/{id}', 'ProfileController@profile');
+
     //patients routes
     Route::resource('/out_patient', 'OutPatientController');
 

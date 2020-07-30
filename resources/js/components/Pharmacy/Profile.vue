@@ -28,20 +28,41 @@
                                                    class="form-control" :class="{ 'is-invalid': form.errors.has('email') }" readonly>
                                             <has-error :form="form" field="email"></has-error>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-6 col-lg-6">
-                                        <div class="form-group">
-                                            <label>Ghana Post GPS Location</label>
-                                            <input v-model="form.location" type="text" name="location"
-                                                   class="form-control" :class="{ 'is-invalid': form.errors.has('location') }">
-                                            <has-error :form="form" field="location"></has-error>
-                                        </div>
                                         <div class="form-group">
                                             <label>Phone Number</label>
                                             <input v-model="form.phone_number" type="text" name="phone_number"
                                                    class="form-control" :class="{ 'is-invalid': form.errors.has('phone_number') }">
                                             <has-error :form="form" field="phone_number"></has-error>
                                         </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                        <div class="form-group">
+                                            <label>Region</label>
+                                            <select v-model="addressForm.region" name="region" v-on:change="getCity"
+                                                    class="form-control" :class="{ 'is-invalid': addressForm.errors.has('region') }" >
+                                                <option disabled value="">Select Region</option>
+                                                <option v-for="region in regions">{{region.name}}</option>
+
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>City</label>
+                                            <select v-model="addressForm.city" name="city"
+                                                    class="form-control" :class="{ 'is-invalid': addressForm.errors.has('city') }" >
+                                                <option v-if="addressForm.city !== ''" selected>{{addressForm.city}}</option>
+                                                <option v-else disabled value="">Select City</option>
+                                                <option v-for="city in cities">{{city.name}}</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Ghana Post GPS Location</label>
+                                            <input v-model="addressForm.gp_digital_address" type="text" name="gp_digital_address"
+                                                   class="form-control" :class="{ 'is-invalid': addressForm.errors.has('gp_digital_address') }">
+                                            <has-error :form="addressForm" field="location"></has-error>
+                                        </div>
+
 
                                     </div>
                                 </div>
@@ -97,7 +118,10 @@
     export default {
         data(){
             return{
+                cities: [],
+                regions: [],
                 pharmacy : {},
+                address : {},
                 file: null,
                 image_file: '',
                 formData: new FormData(),
@@ -106,8 +130,12 @@
                     pharmacy_name: '',
                     email: '',
                     srn: '',
-                    location: '',
                     phone_number: ''
+                }),
+                addressForm:  new Form({
+                    region: '',
+                    city: '',
+                    gp_digital_address: ''
                 }),
             }
         },
@@ -116,9 +144,11 @@
 
                 axios.get('/records/pharmacy/'+ this.$parent.userId)
                     .then(response => {
-                        console.log(response.data);
-                        this.pharmacy = response.data;
+                        let records = response.data;
+                        this.pharmacy = records.userable;
+                        this.address = records.address;
                         this.form.fill(this.pharmacy);
+                        this.addressForm.fill(this.address);
 
                     }).catch(error => {
                     console.log(error.message)
@@ -180,24 +210,57 @@
             },
             updateProfile(){
                 this.$Progress.start();
-                this.form.put('/records/admin/'+ this.$parent.userId)
+                axios.put('/records/profile/'+ this.$parent.userId, {
+                    userData: this.form,
+                    address: this.addressForm
+                })
                     .then((response) => {
-                        Fire.$emit('profileUpdate');
-                        console.log(response.data);
-                        this.$Progress.finish();
-                        Swal.fire(
-                            'Update',
-                            'Pharmacy Profile Updated Successfully',
-                            'success'
-                        );
+                        if(response.data === 'success'){
+                            Fire.$emit('profileUpdate');
+                            console.log(response.data);
+                            this.$Progress.finish();
+                            Swal.fire(
+                                'Update',
+                                'Pharmacy Profile Updated Successfully',
+                                'success'
+                            );
+                        }
                     })
                     .catch((error) => {
                         console.log(error.message);
                     });
-            }
+            },
+            getRegion(){
+                this.loading = true;
+                axios
+                    .get('/records/region')
+                    .then(response => {
+                        this.loading = false;
+                        this.regions = response.data;
+
+                    }).catch(error => {
+                    this.loading = false;
+                    this.error = error.response.data.message || error.message;
+                });
+            },
+            getCity(){
+                let re = this.addressForm.region;
+                this.loading = true;
+                axios
+                    .get('/records/city/'+re)
+                    .then(response => {
+                        this.loading = false;
+                        this.cities = response.data;
+
+                    }).catch(error => {
+                    this.loading = false;
+                    this.error = error.response.data.message || error.message;
+                });
+            },
         },
         created(){
             this.profileInfo();
+            this.getRegion();
             Fire.$on('profileUpdate', () => {
                 this.profileInfo();
             });
