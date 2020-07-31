@@ -58,7 +58,7 @@ class PasswordNotification extends Notification implements ShouldQueue
                     ->greeting('Hello! '.$this->data['name'])
                     ->line(Lang::get('Welcome to E-Health Care Center.'))
                     ->line(Lang::get('This is your password to your account.'))
-                    ->line(Lang::get('Password:  <strong>'.$this->data['password'].'</strong>'))
+                    ->line(Lang::get('Password:  '.$this->data['password']))
                     ->line(Lang::get('Please don\'t forget to change your password after login.'))
                     ->line(Lang::get('Thank You For Joining E-Health Care Center.'));
     }
