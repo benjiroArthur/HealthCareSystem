@@ -23,7 +23,6 @@ class CreateOutPatientsTable extends Migration
             $table->date('dob')->nullable();
             $table->string('gender')->nullable();
             $table->string('phone_number')->nullable();
-            $table->string('location')->nullable();
             $table->string('image')->default('noimage.jpg');
             $table->timestamps();
         });

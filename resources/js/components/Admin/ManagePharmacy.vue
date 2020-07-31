@@ -72,14 +72,6 @@
                                        class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
                                 <has-error :form="form" field="email"></has-error>
                             </div>
-
-
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input v-model="form.password" type="password" name="password"
-                                       class="form-control" :class="{ 'is-invalid': form.errors.has('password') }">
-                                <has-error :form="form" field="password"></has-error>
-                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -111,7 +103,6 @@
                     pharmacy_name: '',
                     email: '',
                     role: 'pharmacy',
-                    password: '',
                 }),
                 statusForm: new FormData(),
                 file: '',
@@ -130,13 +121,18 @@
                 },
                 myColumns: [
                     { field: 'index', title: 'ID', formatter: function(row, cell, index){
-                            return `<p>${index+1}</p>`;
+                            return `${index+1}`;
                         }},
                     { field: 'id', title: 'ID', sortable: true,  class: 'd-none'},
                     { field: 'userable.pharmacy_name', title: 'Name', sortable: true},
+                    { field: 'userable.srn', title: 'SRN', sortable: true},
                     { field: 'userable.email', title: 'Email', sortable: true},
-                    { field: 'userable.location', title: 'Location', sortable: true},
-                    { field: 'userable.created_at', title: 'Phone Number', sortable: true},
+                    { field: 'address', title: 'Location', sortable: true,
+                        formatter: function (e, value, row){
+                            return e !== null ? `<b>Region:</b> ${e.region} <br> <b>City:</b> ${e.city} <br> <b>GPS:</b> ${e.gp_digital_address}` : '';
+                        },
+                    },
+                    { field: 'userable.phone_number', title: 'Phone Number', sortable: true},
                     {
                         field: 'action',
                         title: 'Actions',

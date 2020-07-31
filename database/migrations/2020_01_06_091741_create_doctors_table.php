@@ -25,7 +25,6 @@ class CreateDoctorsTable extends Migration
             $table->string('phone_number')->nullable();
             $table->unsignedBigInteger('specialization_id')->nullable();
             $table->string('qualification')->nullable();
-            $table->string('location')->nullable();
             $table->string('image')->default('noimage.jpg');
             $table->timestamps();
         });

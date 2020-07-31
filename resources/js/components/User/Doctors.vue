@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header">List Of Doctors</div>
 
-                    <div class="card-body table table-responsive table-borderless">
+                    <div class="card-body table table-responsive table-borderless table-striped p-0">
                         <!--<table class="table table-hover">
                             <thead>
                             <tr>
@@ -56,16 +56,15 @@
                     </div>
 
                     <div class="modal-body">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="card-title">{{ this.selectedDoctorTitle }}</div>
+                            <div class="justify-content-center align-items-center text-center">
+                                <h5 class="text-center" style="text-decoration: underline">{{ this.selectedDoctorTitle }}</h5>
                             </div>
 
                             <div class="card-body">
-                                <h5>Description of Doctor's Specialization</h5>
+                                <h5 class="text-center">Description of Doctor's Specialization</h5>
                                 <p>{{this.selectedDoctorDetails}}</p>
                             </div>
-                        </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -240,11 +239,6 @@
                 this.selectedDoctorDetails = row.userable.specialization.description.replace('?', ' ');
                 $('#selectedDoctorModal').modal('show');
 
-
-               /* let modi = (row.userable.first_name.match(this.vowels) ? 'an' : 'a');
-                let title = 'Dr ' + row.userable.full_name + ' is ' + modi + ' ' + row.userable.first_name;
-                this.selectedDoctorTitle = title;
-                $('#selectedDoctorModal').modal('show');*/
             },
         },
         created() {

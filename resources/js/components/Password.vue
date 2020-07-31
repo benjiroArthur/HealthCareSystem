@@ -74,21 +74,28 @@
         methods:{
             updatePassword(){
                 axios
-                    .post(`/records/password/update/${this.$userId}`, this.passwordForm)
+                    .post(`/records/password/update/${this.$parent.userId}`, this.passwordForm)
                     .then((response) => {
                         if(response.data === 'success'){
+                            this.passwordForm.reset();
                             Swal.fire(
                                 'Update',
                                 'Password Updated Successfully',
                                 'success'
                             );
+                        }else{
+                            Swal.fire(
+                                'Update',
+                                response.data,
+                                'error'
+                            );
                         }
                     })
                     .catch((error) => {
                         Swal.fire(
-                            'Update',
+                            'Error',
                             error.message,
-                            'success'
+                            'error'
                         );
                     })
             },

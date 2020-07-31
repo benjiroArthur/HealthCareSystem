@@ -18,6 +18,7 @@ class CreateMessagesTable extends Migration
             $table->unsignedBigInteger('from');
             $table->unsignedBigInteger('to');
             $table->text('chat');
+            $table->boolean('read')->default(false);
             $table->timestamps();
         });
     }

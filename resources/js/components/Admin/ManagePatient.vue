@@ -11,7 +11,7 @@
                         </div>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body table-responsive p-0">
+                    <div class="card-body table-responsive table-striped p-0">
                         <bootstrap-table :data="out_patients" :options="myOptions" :columns="myColumns"/>
                     </div>
                     <!-- /.card-body -->
@@ -38,7 +38,6 @@
                     other_name: '',
                     email: '',
                     role: 'out_patient',
-                    password: '',
                 }),
                 out_patients: {},
                 out_patient: '',

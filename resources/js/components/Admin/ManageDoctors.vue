@@ -16,7 +16,7 @@
                         </div>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body table-responsive p-0">
+                    <div class="card-body table-responsive table-striped p-0">
                         <bootstrap-table :data="doctors" :options="myOptions" :columns="myColumns"/>
 
                     </div>
@@ -86,13 +86,6 @@
                                 <has-error :form="form" field="email"></has-error>
                             </div>
 
-
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input v-model="form.password" type="password" name="password"
-                                       class="form-control" :class="{ 'is-invalid': form.errors.has('password') }">
-                                <has-error :form="form" field="password"></has-error>
-                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -127,7 +120,6 @@
                     other_name: '',
                     email: '',
                     role: 'doctor',
-                    password: '',
                 }),
                 statusForm: new FormData(),
 
@@ -154,7 +146,7 @@
                         }},
                     { field: 'id', title: 'ID', sortable: true,  class: 'd-none'},
                     { field: 'userable.full_name', title: 'Name', sortable: true},
-                    { field: 'userable.doctor_id', title: 'Doctor ID', sortable: true},
+                    { field: 'userable.srn', title: 'Doctor ID', sortable: true},
                     { field: 'userable.email', title: 'Email', sortable: true},
                     { field: 'userable.dob', title: 'Date Of Birth', sortable: true},
                     { field: 'userable.gender', title: 'Gender', sortable: true},

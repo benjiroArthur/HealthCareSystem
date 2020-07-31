@@ -19,7 +19,6 @@ class CreatePharmaciesTable extends Migration
             $table->string('pharmacy_name')->nullable();
             $table->string('email');
             $table->string('phone_number')->nullable();
-            $table->string('location')->nullable();
             $table->string('image')->default('noimage.jpg');
             $table->timestamps();
         });

@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header">List Of Pharmacies</div>
 
-                    <div class="card-body table table-responsive table-borderless">
+                    <div class="card-body table table-responsive table-borderless table-striped p-0">
                         <bootstrap-table :data="pharmacy" :options="myOptions" :columns="myColumns" sticky-header responsive table-borderless />
                     </div>
                 </div>
@@ -40,13 +40,16 @@
                 myColumns: [
                     { field: 'key', title: 'ID', formatter: function(row, cell, index){
 
-                            return `<p>${index+1}</p>`;
+                            return `${index+1}`;
                         }},
                     { field: 'id', title: 'ID', sortable: true,  class: 'd-none'},
                     { field: 'userable.pharmacy_name', title: 'Pharmacy Name', sortable: true},
                     { field: 'userable.srn', title: 'Doctor ID', sortable: true},
-                    { field: 'userable.phone_number', title: 'Phone Number', sortable: true},
-                    { field: 'userable.location', title: 'Location', sortable: true},
+                    { field: 'address', title: 'Location', sortable: true,
+                        formatter: function (e, value, row){
+                            return e !== null ? `<b>Region:</b> ${e.region} <br> <b>City:</b> ${e.city} <br> <b>GPS:</b> ${e.gp_digital_address}` : '';
+                        },
+                    },
                     {
                         field: 'action',
                         title: 'Actions',
