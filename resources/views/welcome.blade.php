@@ -8,7 +8,7 @@
             <div class="carousel-item active">
                 <img src="{{asset('assets/sliders/banner'.$i.'.jpg')}}" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-md-block tip-box">
-                    <h5>Tip Of The Day</h5>
+                    <h5>Health Tip Of The Day</h5>
                     @if(!empty($tip))
                         <p>{{$tip->info}}</p>
                     @endif
