@@ -40183,10 +40183,8 @@ a.text-dark:focus {
   text-align: center;
   overflow: visible;
   position: relative;
-  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
- box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
- box-shadow 0.15s ease-in-out;
+  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .b-avatar:focus {
