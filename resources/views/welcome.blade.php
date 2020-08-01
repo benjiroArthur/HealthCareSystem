@@ -133,7 +133,7 @@
                     <div class="col-12">
                         <div class="row justify-content-center">
                             <div class="col-md-6 col-sm-12 bg-transparent">
-                                <img src="{{asset('assets/about/about.jpg')}}" alt="..." class="img-fluid">
+                                <img src="{{asset('assets/about/about2.jpg')}}" alt="..." class="img-fluid">
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <p class="font-weight-light h2">E-HealthCare System is an application developed by Top-Notch
@@ -160,7 +160,7 @@
                                                                 every patient through remote clinical practice, education and research</p>
                             </div>
                             <div class="col-md-6 col-sm-12" >
-                                <img src="{{asset('assets/about/vision.jpg')}}" alt="..." class="img-fluid">
+                                <img src="{{asset('assets/about/about1.jpg')}}" alt="..." class="img-fluid">
                             </div>
                         </div>
                     </div>
@@ -176,7 +176,7 @@
                     <div class="col-12">
                         <div class="row justify-content-center">
                             <div class="col-md-6 col-sm-12">
-                                <img src="{{asset('assets/about/mission.png')}}" alt="..." class="img-fluid">
+                                <img src="{{asset('assets/about/about3.png')}}" alt="..." class="img-fluid">
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <p class="font-weight-light h2">E-HealthCare will provide an unparalleled

@@ -101,7 +101,8 @@
                         </div>
                         <div class="col-8">
                             <h4 class="text-bold">24/7 Services</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. doloremque hic illum minus non officia rem saepe!</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. doloremque hic illum minus non
+                                officia rem saepe!</p>
 
                         </div>
                     </div>
@@ -121,10 +122,10 @@
                                 <img :src="`${this.$parent.resourcePath}/about/about2.jpg`" alt="..." class="img-fluid">
                             </div>
                             <div class="col-md-6 col-sm-12">
-                                <p class="font-weight-light h2">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore
-                                    magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
-                                    Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                                <p class="font-weight-light h2">E-HealthCare System is an application developed by Top-Notch
+                                    RoQue Technologies to help provide healthcare services to patients remotely. Top-Notch
+                                    Technologies, TNT is known for its contribution to help tackle societal challenges by developing
+                                    robust applications to solve problems technology-wise.</p>
                             </div>
                         </div>
                     </div>
@@ -140,10 +141,9 @@
                     <div class="col-12">
                         <div class="row justify-content-center">
                             <div class="col-md-6 col-sm-12">
-                                <p class="font-weight-light h2">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore
-                                    magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
-                                    Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                                <p class="font-weight-light h2">To inspire hope and contribute to health and well-being by
+                                    providing the best care to
+                                    every patient through remote clinical practice, education and research</p>
                             </div>
                             <div class="col-md-6 col-sm-12" >
                                 <img :src="`${this.$parent.resourcePath}/about/about1.jpg`" alt="..." class="img-fluid">
@@ -165,10 +165,8 @@
                                 <img :src="`${this.$parent.resourcePath}/about/about3.jpg`" alt="..." class="img-fluid">
                             </div>
                             <div class="col-md-6 col-sm-12">
-                                <p class="font-weight-light h2">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore
-                                    magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
-                                    Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                                <p class="font-weight-light h2">E-HealthCare will provide an unparalleled
+                                    experience as the most trusted partner for health care services remotely.</p>
                             </div>
                         </div>
                     </div>
