@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Events\NewUser;
 use App\Friend;
 use App\Http\Controllers\Controller;
+use App\Notifications\PasswordNotification;
 use App\Pharmacy;
 use App\PharmId;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class PharmacyController extends Controller
@@ -54,65 +56,77 @@ class PharmacyController extends Controller
         //validate request
         $this->validate($request, [
             'pharmacy_name' => 'string|required|max:255',
-            'email' => 'email|required|max:255|unique:admins|unique:users',
-            'password' => 'required|min:8'
+            'email' => 'email|required|max:255|unique:admins|unique:users'
         ]);
 
-        $role = Role::where('name', 'admin')->first();
-        $allAdmins = User::where('role_id', $role->id)->get();
+        try {
+            $userPassword = str_random(12);
+            $role = Role::where('name', 'admin')->first();
+            $allAdmins = User::where('role_id', $role->id)->get();
 
-        $pharmacy_srn = "";
-        $outid = PharmId::latest()->first();
-        if($outid == null){
-            $val = 1;
-            $ph = new PharmId;
-            $ph->pharmacy_id = $val;
-            $ph->save();
-        }
-        else{
-            $val = $outid->pharmacy_id + 1;
-            $ph = new PharmId;
-            $ph->pharmacy_id = $val;
-            $ph->save();
-        }
-        if($val < 10){
-            $pharmacy_srn = "HC-PH-000".$val;
-        }
-        elseif($val > 9 && $val < 100){
-            $pharmacy_srn = "HC-PH-00".$val;
-        }
-        elseif($val > 99 && $val < 1000){
-            $pharmacy_srn = "HC-PH-0".$val;
-        }
-        elseif($val > 900){
-            $pharmacy_srn = "HC-PH-".$val;
-        }
+            $pharmacy_srn = "";
+            $outid = PharmId::latest()->first();
+            if($outid == null){
+                $val = 1;
+                $ph = new PharmId;
+                $ph->pharmacy_id = $val;
+                $ph->save();
+            }
+            else{
+                $val = $outid->pharmacy_id + 1;
+                $ph = new PharmId;
+                $ph->pharmacy_id = $val;
+                $ph->save();
+            }
+            if($val < 10){
+                $pharmacy_srn = "HC-PH-000".$val;
+            }
+            elseif($val > 9 && $val < 100){
+                $pharmacy_srn = "HC-PH-00".$val;
+            }
+            elseif($val > 99 && $val < 1000){
+                $pharmacy_srn = "HC-PH-0".$val;
+            }
+            elseif($val > 900){
+                $pharmacy_srn = "HC-PH-".$val;
+            }
 
 
-        $pharmacy = Pharmacy::create([
-            'pharmacy_name' => $request->pharmacy_name,
-            'email' => $request->email,
-            'srn' => $pharmacy_srn
+            $pharmacy = Pharmacy::create([
+                'pharmacy_name' => $request->pharmacy_name,
+                'email' => $request->email,
+                'srn' => $pharmacy_srn
 
-        ]);
-        $role = Role::where('name', $request->role)->first();
-        $users = $pharmacy->user()->create([
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role_id' => $role->id
-        ]);
-        $user = User::findOrFail($users->id);
+            ]);
+            $role = Role::where('name', $request->role)->first();
+            $users = $pharmacy->user()->create([
+                'email' => $request->email,
+                'password' => Hash::make($userPassword),
+                'email_verified_at' => now(),
+                'role_id' => $role->id
+            ]);
+            $user = User::findOrFail($users->id);
 
-        foreach ($allAdmins as $singleAdmin){
-            $data = [
-                'user_id' => $singleAdmin->id,
-                'friend_id' => $user->id,
+            foreach ($allAdmins as $singleAdmin){
+                $data = [
+                    'user_id' => $singleAdmin->id,
+                    'friend_id' => $user->id,
+                ];
+                $friend = new Friend();
+                $friend->create($data);
+            }
+            $userData = [
+                'name' => 'Dr. '.$user->userable->pharmacy_name,
+                'password' => $userPassword
             ];
-            $friend = new Friend();
-            $friend->create($data);
+            DB::commit();
+            $user->notify(new PasswordNotification($userData));
+            broadcast(new NewUser($user));
+            return response()->json($user);
+        }catch (\Exception $e){
+            DB::rollBack();
+            return response($e);
         }
-        broadcast(new NewUser($user));
-        return response()->json($user);
     }
 
     /**

@@ -82,13 +82,6 @@
                         <has-error :form="form" field="email"></has-error>
                         </div>
 
-
-                        <div class="form-group">
-                        <label>Password</label>
-                        <input v-model="form.password" type="password" name="password"
-                            class="form-control" :class="{ 'is-invalid': form.errors.has('password') }">
-                        <has-error :form="form" field="password"></has-error>
-                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal" @click="resetModalForm">Close</button>
@@ -124,7 +117,6 @@
                     other_name: '',
                     email: '',
                     role: 'admin',
-                    password: '',
                 }),
                 statusForm: new FormData(),
 

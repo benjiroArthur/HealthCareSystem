@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
+use App\City;
+use App\Region;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
@@ -88,13 +90,16 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $userable = User::findOrFail($id)->userable()->first();
+        $userable = User::find($id)->userable()->first();
 
-        $userable->update($request->except('email'));
+        $userable->update($request->userData->except('email'));
+
         $user = User::findOrFail($id);
+        $user->address()->createOrUpdate($request->address);
         $user->update([
             'profile_updated' => 1
         ]);
+
 
         return response('success');
     }
@@ -139,12 +144,19 @@ class AdminController extends Controller
         return response('success');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function region(){
+        $regions = Region::all();
+        return response()->json($regions);
+    }
+
+    public function city($region){
+        $region = Region::where('name', $region)->first();
+        $region_id = $region->id;
+
+        $city = City::where('region_id', $region_id)->get();
+
+        return response()->json($city);
+    }
 
 
 }

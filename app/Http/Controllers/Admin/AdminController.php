@@ -6,9 +6,11 @@ use App\Admin;
 use App\Events\NewUser;
 use App\Friend;
 use App\Http\Controllers\Controller;
+use App\Notifications\PasswordNotification;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -54,37 +56,49 @@ class AdminController extends Controller
         $this->validate($request, [
             'last_name' => 'string|required|max:255',
             'first_name' => 'string|required|max:255',
-            'email' => 'email|required|max:255|unique:admins|unique:users',
-            'password' => 'required|min:8'
+            'email' => 'email|required|max:255|unique:admins|unique:users'
         ]);
 
-        $role = Role::where('name', 'admin')->first();
-        $allAdmins = User::where('role_id', $role->id)->get();
+        DB::beginTransaction();
+        try {
+            $role = Role::where('name', 'admin')->first();
+            $allAdmins = User::where('role_id', $role->id)->get();
 
-        $admin = Admin::create([
-            'last_name' => $request->last_name,
-            'first_name' => $request->first_name,
-            'other_name' => $request->other_name,
-            'email' => $request->email,
-        ]);
-        $userrole = Role::where('name', $request->role)->first();
-        $users = $admin->user()->create([
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role_id' => $userrole->id
-        ]);
-        $user = User::findOrFail($users->id);
-        foreach ($allAdmins as $singleAdmin){
-            $data = [
-                'user_id' => $singleAdmin->id,
-                'friend_id' => $user->id,
+            $admin = Admin::create([
+                'last_name' => $request->last_name,
+                'first_name' => $request->first_name,
+                'other_name' => $request->other_name,
+                'email' => $request->email,
+            ]);
+            $userPassword = str_random(24);
+            $users = $admin->user()->create([
+                'email' => $request->email,
+                'password' => Hash::make($userPassword),
+                'email_verified_at' => now(),
+                'role_id' => $role->id
+            ]);
+            $user = User::findOrFail($users->id);
+            foreach ($allAdmins as $singleAdmin){
+                $data = [
+                    'user_id' => $singleAdmin->id,
+                    'friend_id' => $user->id,
+                ];
+                $friend = new Friend();
+                $friend->create($data);
+            }
+            $userData = [
+                'name' => 'Mr/Miss. '.$user->userable->full_name,
+                'password' => $userPassword
             ];
-            $friend = new Friend();
-            $friend->create($data);
-        }
+            DB::commit();
 
-        broadcast(new NewUser($user))->toOthers();
-        return response(['message' => 'User Created Successfully']);
+            $user->notify(new PasswordNotification($userData));
+            broadcast(new NewUser($user))->toOthers();
+            return response(['message' => 'User Created Successfully']);
+        }catch (\Exception $e){
+            DB::rollBack();
+            return response($e);
+        }
     }
 
     /**

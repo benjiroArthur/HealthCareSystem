@@ -41,14 +41,6 @@
                                             <has-error :form="form" field="email"></has-error>
                                         </div>
                                         <div class="form-group">
-                                            <label>Ghana Post GPS Address</label>
-                                            <input v-model="form.location" type="text" name="location"
-                                                   class="form-control" :class="{ 'is-invalid': form.errors.has('location') }">
-                                            <has-error :form="form" field="location"></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-6 col-lg-6">
-                                        <div class="form-group">
                                             <label>Date Of Birth</label>
                                             <input v-model="form.dob" type="date" name="dob"
                                                    class="form-control" :class="{ 'is-invalid': form.errors.has('dob') }">
@@ -64,20 +56,14 @@
                                             </select>
                                             <has-error :form="form" field="gender"></has-error>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Phone Number</label>
-                                            <input v-model="form.phone_number" type="text" name="phone_number"
-                                                   class="form-control" :class="{ 'is-invalid': form.errors.has('phone_number') }">
-                                            <has-error :form="form" field="phone_number"></has-error>
-                                        </div>
-
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 col-lg-6">
                                         <div class="form-group">
                                             <label>Qualification</label>
                                             <input v-model="form.qualification" type="text" name="qualification"
                                                    class="form-control" :class="{ 'is-invalid': form.errors.has('qualification') }">
                                             <has-error :form="form" field="qualification"></has-error>
                                         </div>
-
                                         <div class="form-group">
                                             <label>Specialization</label>
                                             <select v-model="form.specialization_id" name="specialization_id"
@@ -86,6 +72,38 @@
                                                 <option v-for="specialization in specializations" :value="specialization.id">{{specialization.name}}</option>
                                             </select>
                                             <has-error :form="form" field="specialization_id"></has-error>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Phone Number</label>
+                                            <input v-model="form.phone_number" type="text" name="phone_number"
+                                                   class="form-control" :class="{ 'is-invalid': form.errors.has('phone_number') }">
+                                            <has-error :form="form" field="phone_number"></has-error>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Region</label>
+                                            <select v-model="addressForm.region" name="region" v-on:change="getCity"
+                                                    class="form-control" :class="{ 'is-invalid': addressForm.errors.has('region') }" >
+                                                <option disabled value="">Select Region</option>
+                                                <option v-for="region in regions">{{region.name}}</option>
+
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>City</label>
+                                            <select v-model="addressForm.city" name="city"
+                                                    class="form-control" :class="{ 'is-invalid': addressForm.errors.has('city') }" >
+                                                <option v-if="addressForm.city !== ''" selected>{{addressForm.city}}</option>
+                                                <option v-else disabled value="">Select City</option>
+                                                <option v-for="city in cities">{{city.name}}</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Ghana Post GPS Location</label>
+                                            <input v-model="addressForm.gp_digital_address" type="text" name="gp_digital_address"
+                                                   class="form-control" :class="{ 'is-invalid': addressForm.errors.has('gp_digital_address') }">
+                                            <has-error :form="addressForm" field="location"></has-error>
                                         </div>
 
                                     </div>
@@ -142,6 +160,9 @@
     export default {
         data(){
             return{
+                cities: [],
+                regions: [],
+                address: {},
                 formData: new FormData(),
                 doctor: {},
                 specializations: {},
@@ -156,9 +177,13 @@
                     dob: '',
                     gender: '',
                     phone_number: '',
-                    location: '',
                     specialization_id: '',
                     qualification: ''
+                }),
+                addressForm:  new Form({
+                    region: '',
+                    city: '',
+                    gp_digital_address: ''
                 }),
             };
         },
@@ -169,8 +194,11 @@
                     .get('/records/doctor/'+ this.$parent.userId)
                     .then(response => {
                         this.loading = false;
-                        this.doctor = response.data;
+                        let records = response.data;
+                        this.doctor = records.userable;
+                        this.address = records.address;
                         this.form.fill(this.doctor);
+                        this.addressForm.fill(this.address);
 
                     }).catch(error => {
                     this.loading = false;
@@ -230,20 +258,52 @@
             },
             updateProfile(){
                 this.$Progress.start();
-                this.form.put('/records/admin/'+this.$parent.userId)
+                axios.put('/records/profile/'+ this.$parent.userId, {
+                    userData: this.form,
+                    address: this.addressForm
+                })
                     .then((response) => {
-                        Fire.$emit('profileUpdate');
-                        console.log(response.data);
-                        this.$Progress.finish();
-                        Swal.fire(
-                            'Update',
-                            'User Profile Updated Successfully',
-                            'success'
-                        );
+                        if(response.data === 'success'){
+                            Fire.$emit('profileUpdate');
+                            console.log(response.data);
+                            this.$Progress.finish();
+                            Swal.fire(
+                                'Update',
+                                'User Profile Updated Successfully',
+                                'success'
+                            );
+                        }
                     })
                     .catch((error) => {
                         console.log(error.message);
                     });
+            },
+            getRegion(){
+                this.loading = true;
+                axios
+                    .get('/records/region')
+                    .then(response => {
+                        this.loading = false;
+                        this.regions = response.data;
+
+                    }).catch(error => {
+                    this.loading = false;
+                    this.error = error.response.data.message || error.message;
+                });
+            },
+            getCity(){
+                let re = this.addressForm.region;
+                this.loading = true;
+                axios
+                    .get('/records/city/'+re)
+                    .then(response => {
+                        this.loading = false;
+                        this.cities = response.data;
+
+                    }).catch(error => {
+                    this.loading = false;
+                    this.error = error.response.data.message || error.message;
+                });
             },
             getSpec(){
                 this.loading = true;
@@ -264,6 +324,7 @@
         created(){
             this.getSpec();
             this.profileInfo();
+            this.getRegion();
             Fire.$on('profileUpdate', () => {
                 this.profileInfo();
             });

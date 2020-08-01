@@ -57,7 +57,7 @@ class PharmacyController extends Controller
      */
     public function show($id)
     {
-        $pharmacy = User::findOrFail($id)->userable()->first();
+        $pharmacy = User::findOrFail($id);
 
         return response()->json($pharmacy);
     }

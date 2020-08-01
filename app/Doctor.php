@@ -11,7 +11,7 @@ class Doctor extends Model
     //fillables
     protected $fillable = [
         'first_name', 'last_name', 'other_name', 'dob', 'gender', 'phone_number', 'image',
-        'specialization_id', 'qualification', 'email', 'location', 'doctor_srn', 'full_name', 'srn'
+        'specialization_id', 'qualification', 'email', 'doctor_srn', 'full_name', 'srn'
     ];
 
     protected $with = ['specialization'];
