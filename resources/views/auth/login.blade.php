@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid m-0 p-0" style="background-image: url('assets/images/loginBackground.jpg'); background-size: cover; min-height: 550px">
-        <div class="container mt-5">
+    <div class="container-fluid m-0 p-0">
+        <div class="container mt-5" style="background-image: url('assets/images/gem.jpg'); background-size: cover; min-height: 550px">
             <div class="row justify-content-center">
                 <div class="login-box">
                     <div class="login-logo">
                         <img src="{{asset('assets/images/user.png')}}" width="100" height="auto">
                     </div>
                     <!-- /.login-logo -->
-                    <div class="card">
+                    <div class="card" >
                         <div class="card-body login-card-body">
                             <p class="login-box-msg">Sign in to start your session</p>
 

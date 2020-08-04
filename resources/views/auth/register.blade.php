@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mt-5">
+    <div class="container mt-5" style="background-image: url('assets/images/gem.jpg'); background-size: cover; min-height: 550px">
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="login-logo">

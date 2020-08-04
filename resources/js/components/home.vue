@@ -11,7 +11,7 @@
                 <div class="carousel-item" v-for="(slider,idx) in sliders" :class="{ active: idx===0 }">
                     <img :src="slider.image" alt="" class="img-fluid">
                     <div class="carousel-caption d-md-block tip-box">
-                        <h5>Tip Of The Day</h5>
+                        <h5>Health Tip Of The Day</h5>
                         <p v-if="tips">{{tips.info}}</p>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                         <div class="card make-link">
                             <div class="card-body bg-health text-white text-center">
                                 <span class="fab fa-facebook-messenger"></span>
-                                Chat With A Doctor
+                                Consult A Doctor
                             </div>
                         </div>
                     </router-link>
@@ -60,7 +60,9 @@
                 <div class="col-md-4">
                     <h1>Welcome To</h1>
                     <h1>E-HealthCare Center</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam at deleniti distinctio eum facere illum, nulla quidem quisquam voluptates! Animi aspernatur doloremque hic illum minus non officia rem saepe!</p>
+                    <p>24/7 Doctors Online Connects you to Medically
+                        Certified Doctors 24 hours a day 365 days a year using your phone, tablet,
+                        or computer</p>
                 </div>
                 <div class="col-md-4">
                     <div class="row">
@@ -68,8 +70,9 @@
                             <p class="h1"><span class="fas fa-user-md text-health w-100 font-weight-bold" style="font-size: 80px"></span></p>
                         </div>
                         <div class="col-8">
-                            <h4 class="text-bold">Trusted Doctors</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. doloremque hic illum minus non officia rem saepe!</p>
+                            <h4 class="text-bold">Certified Doctors</h4>
+                            <p>Quality healthcare starts with quality and certified doctors.
+                                Ours are amongst the best</p>
 
                         </div>
                     </div>
@@ -101,8 +104,9 @@
                         </div>
                         <div class="col-8">
                             <h4 class="text-bold">24/7 Services</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. doloremque hic illum minus non
-                                officia rem saepe!</p>
+                            <p>No Waiting Rooms.
+                                No Long Queues.
+                                No Traffic. Less Stress. We serve you anytime and anyday </p>
 
                         </div>
                     </div>
@@ -122,7 +126,7 @@
                                 <img :src="`${this.$parent.resourcePath}/about/about2.jpg`" alt="..." class="img-fluid">
                             </div>
                             <div class="col-md-6 col-sm-12">
-                                <p class="font-weight-light h2">E-HealthCare System is an application developed by Top-Notch
+                                <p class="font-weight-light h3">E-HealthCare System is an application developed by Top-Notch
                                     RoQue Technologies to help provide healthcare services to patients remotely. Top-Notch
                                     Technologies, TNT is known for its contribution to help tackle societal challenges by developing
                                     robust applications to solve problems technology-wise.</p>
@@ -141,7 +145,7 @@
                     <div class="col-12">
                         <div class="row justify-content-center">
                             <div class="col-md-6 col-sm-12">
-                                <p class="font-weight-light h2">To inspire hope and contribute to health and well-being by
+                                <p class="font-weight-light h3">To inspire hope and contribute to health and well-being by
                                     providing the best care to
                                     every patient through remote clinical practice, education and research</p>
                             </div>
@@ -162,10 +166,10 @@
                     <div class="col-12">
                         <div class="row justify-content-center">
                             <div class="col-md-6 col-sm-12">
-                                <img :src="`${this.$parent.resourcePath}/about/about3.jpg`" alt="..." class="img-fluid">
+                                <img :src="`${this.$parent.resourcePath}/about/about3.png`" alt="..." class="img-fluid">
                             </div>
                             <div class="col-md-6 col-sm-12">
-                                <p class="font-weight-light h2">E-HealthCare will provide an unparalleled
+                                <p class="font-weight-light h3">E-HealthCare will provide an unparalleled
                                     experience as the most trusted partner for health care services remotely.</p>
                             </div>
                         </div>

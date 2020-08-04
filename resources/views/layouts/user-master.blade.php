@@ -97,9 +97,9 @@
 
    <div class="row">
        <!-- Default to the left -->
-      <div class="clo-sm-12 col-md-12 col-lg-8 text-center"> <strong>Copyright &copy; {{date('Y')}} <a href="#">  Health Care System  </a>.</strong> All rights reserved.</div>
+      <div class="clo-sm-12 col-md-12 col-lg-8 text-center"> <strong>Copyright &copy; {{date('Y')}} <a href="#"> E-Health Care System  </a>.</strong> All rights reserved.</div>
        <div class="clo-sm-12 col-md-12 col-lg-4 float-right d-sm-inline pl-2 text-center">
-           Your Health Our Concern
+           Reshaping HealthCare Via Technology
        </div>
    </div>
 </footer>
