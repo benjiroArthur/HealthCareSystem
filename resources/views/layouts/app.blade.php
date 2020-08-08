@@ -34,7 +34,7 @@
         }
         #bgg:hover
         {
-            color: black;
+            color: red;
             background-color:transparent;
         }
         #bgg
@@ -111,7 +111,7 @@
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <div class="display-avatar bg-inverse-primary text-primary">
-                                        <img class="img-md rounded-circle" src="{{auth()->user()->userable->image}}" alt="AS" height="20">
+                                    <img class="img-md rounded-circle" src="{{auth()->user()->userable->image}}" alt="AS" height="20">
                                     </div>
                                 </a>
 
