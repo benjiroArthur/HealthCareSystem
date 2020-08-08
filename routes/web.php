@@ -35,7 +35,8 @@ Route::group(['prefix' => 'data', 'as' => 'data.'], function(){
     Route::resource('/user', 'UsersController');
     Route::post('/user/profile/image', 'UsersController@uploadImage');
     Route::post('/user/status-update/{id}', 'UsersController@statusUpdate');
-    Route::get('excelDownload/{value}', 'UsersController@excelTemplate');
+    Route::get('/excelDownload/{value}', 'UsersController@excelTemplate');
+    Route::get('/random-doctors', 'DailyTipController@getRandomDoctors');
 });
 
 Route::get('/css/adminlte.css.map', function () {

@@ -127,7 +127,7 @@
         <div class="row"  id="about">
             <div class="col-12 mt-5 text-center text-bold"><h1 class="text-bold">About Us</h1></div>
         </div>
-        <div class="container-fliud bg-light shadow p-3 mb-3">
+        <div class="container-fluid bg-none p-3 mb-3">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12">
@@ -146,50 +146,58 @@
                 </div>
             </div>
         </div>
+        <selected-doctors></selected-doctors>
         <div class="row">
-            <div class="col-12 mt-5 text-center text-bold"><h1 class="text-bold">Our Mission</h1></div>
-        </div>
-        <div class="container-fliud bg-light shadow p-3 mb-3">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12">
+            <div class="col-md-6">
+                <div class="row"><div class="col-12 mt-5 text-center text-bold"><h1 class="text-bold">Our Mission</h1></div></div>
+                <div class="container-fliud bg-light shadow p-3 mb-3">
+                    <div class="container">
                         <div class="row justify-content-center">
-                            <div class="col-md-6 col-sm-12">
-                                <p class="font-weight-light h2">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore
-                                    magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
-                                    Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
-                            </div>
-                            <div class="col-md-6 col-sm-12" >
-                                <img src="{{asset('assets/about/about1.jpg')}}" alt="..." class="img-fluid">
+                            <div class="col-12">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6 col-sm-12">
+                                        <p class="font-weight-light h2">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                            sed do eiusmod tempor incididunt ut labore et dolore
+                                            magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
+                                            Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12" >
+                                        <img src="{{asset('assets/about/about1.jpg')}}" alt="..." class="img-fluid">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12 mt-5 text-center text-bold"><h1 class="text-bold">Our vision</h1></div>
-        </div>
-        <div class="container-fliud bg-light shadow p-3 mb-3">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-12 mt-5 text-center text-bold"><h1 class="text-bold">Our vision</h1></div>
+                </div>
+                <div class="container-fliud bg-light shadow p-3 mb-3">
+                    <div class="container">
                         <div class="row justify-content-center">
-                            <div class="col-md-6 col-sm-12">
-                                <img src="{{asset('assets/about/about3.jpg')}}" alt="..." class="img-fluid">
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                                <p class="font-weight-light h2">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore
-                                    magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
-                                    Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                            <div class="col-12">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6 col-sm-12">
+                                        <img src="{{asset('assets/about/about3.jpg')}}" alt="..." class="img-fluid">
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <p class="font-weight-light h2">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                            sed do eiusmod tempor incididunt ut labore et dolore
+                                            magna aliqua. Leo urna molestie at elementum eu. Orci ac auctor augue mauris.
+                                            Nunc non blandit massa enim nec dui nunc. Feugiat vivamus at augue eget arcu dictum.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
+
+
 
         <div class="mt-5" id="contact">
             <contact-us class="mt-3"></contact-us>

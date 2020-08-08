@@ -72359,6 +72359,10 @@ h2 {
   cursor: pointer;
 }
 
+.by-bg-transparent {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
 .router-link-exact-active {
   background-color: #9561e2 !important;
   color: white !important;
