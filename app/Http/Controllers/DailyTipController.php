@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DailyTips;
+use App\Doctor;
 use App\Events\NewDailyTips;
 use Illuminate\Http\Request;
 
@@ -102,5 +103,10 @@ class DailyTipController extends Controller
     public function getLatest(){
         $tip = DailyTips::latest()->first();
         return response()->json($tip);
+    }
+
+    public function getRandomDoctors(){
+        return Doctor::whereHas('specialization')->inRandomOrder()->limit(3)->get();
+        //return Doctor::inRandomOrder()->limit(3)->get();
     }
 }

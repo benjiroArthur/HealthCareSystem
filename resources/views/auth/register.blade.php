@@ -1,15 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mt-5" style="background-image: url('assets/images/gem.jpg'); background-size: cover; min-height: 550px">
+    <div class="container-fluid m-0 p-0" style="background-image: url('assets/images/gem.jpg'); background-size: cover; min-height: 550px">
+    <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="login-logo">
                     <img src="{{asset('assets/images/user.png')}}" width="100" height="auto">
                 </div>
-                <div class="card">
+                <div>
 
-                    <div class="card-body register-card-body">
+                    <div class="card-body register-card-body by-bg-transparent">
                         <p class="login-box-msg h5 text-bold">{{ __('Register') }}</p>
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
@@ -102,5 +103,6 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection

@@ -9,9 +9,9 @@
                         <img src="{{asset('assets/images/user.png')}}" width="100" height="auto">
                     </div>
                     <!-- /.login-logo -->
-                    <div class="card" >
-                        <div class="card-body login-card-body">
-                            <p class="login-box-msg">Sign in to start your session</p>
+                    <div>
+                        <div class="card-body login-card-body by-bg-transparent">
+                            <h6 class="text-center text-dark text-bold h6">Sign in to start your session</h6>
 
                             <form action="{{route('login')}}" method="post" class="main-login-form">
                                 @csrf
@@ -19,8 +19,8 @@
                                 <div class="input-group mb-3">
                                     <input id="email" type="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                     <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            <span class="fas fa-envelope"></span>
+                                        <div class="input-group-text bg-light">
+                                            <span class="fas fa-envelope text-health"></span>
                                         </div>
                                     </div>
                                     @error('email')
@@ -32,8 +32,8 @@
                                 <div class="input-group mb-3">
                                     <input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                     <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            <span class="fas fa-lock"></span>
+                                        <div class="input-group-text bg-light">
+                                            <span class="fas fa-lock text-health"></span>
                                         </div>
                                     </div>
                                     @error('password')

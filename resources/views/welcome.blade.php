@@ -56,7 +56,7 @@
                     <div class="card">
                         <div class="card-body bg-health text-white text-center">
                             <span class="fab fa-facebook-messenger"></span>
-                            Consult A Doctor
+                            Chat With A Doctor
                         </div>
                     </div>
                 </div>
@@ -75,9 +75,7 @@
                 <div class="col-md-4">
                     <h1>Welcome To</h1>
                     <h1>E-HealthCare Center</h1>
-                    <p>24/7 Doctors Online Connects you to Medically
-                        Certified Doctors 24 hours a day 365 days a year using your phone, tablet,
-                        or computer</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam at deleniti distinctio eum facere illum, nulla quidem quisquam voluptates! Animi aspernatur doloremque hic illum minus non officia rem saepe!</p>
                 </div>
                  <div class="col-md-4">
                      <div class="row">
@@ -85,9 +83,8 @@
                              <p class="h1"><span class="fas fa-user-md text-health w-100 font-weight-bold" style="font-size: 80px"></span></p>
                          </div>
                          <div class="col-8">
-                             <h4 class="text-bold">Certified Doctors</h4>
-                             <p>Quality healthcare starts with quality and certified doctors.
-                                 Ours are amongst the best</p>
+                             <h4 class="text-bold">Trusted Doctors</h4>
+                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. doloremque hic illum minus non officia rem saepe!</p>
 
                          </div>
                      </div>
@@ -119,9 +116,7 @@
                         </div>
                         <div class="col-8">
                             <h4 class="text-bold">24/7 Services</h4>
-                            <p>No Waiting Rooms.
-                                No Long Queues.
-                                No Traffic. Less Stress. We serve you anytime and anyday</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. doloremque hic illum minus non officia rem saepe!</p>
 
                         </div>
                     </div>
@@ -132,7 +127,7 @@
         <div class="row"  id="about">
             <div class="col-12 mt-5 text-center text-bold"><h1 class="text-bold">About Us</h1></div>
         </div>
-        <div class="container-fliud bg-light shadow p-3 mb-3">
+        <div class="container-fluid bg-none p-3 mb-3">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12">
@@ -141,7 +136,7 @@
                                 <img src="{{asset('assets/about/about2.jpg')}}" alt="..." class="img-fluid">
                             </div>
                             <div class="col-md-6 col-sm-12">
-                                <p class="font-weight-light h3">E-HealthCare System is an application developed by Top-Notch
+                                <p class="font-weight-light h2">E-HealthCare System is an application developed by Top-Notch
                                             RoQue Technologies to help provide healthcare services to patients remotely. Top-Notch
                                             Technologies, TNT is known for its contribution to help tackle societal challenges by developing
                                             robust applications to solve problems technology-wise..</p>
@@ -151,47 +146,55 @@
                 </div>
             </div>
         </div>
+        <selected-doctors></selected-doctors>
         <div class="row">
-            <div class="col-12 mt-5 text-center text-bold"><h1 class="text-bold">Our Mission</h1></div>
-        </div>
-        <div class="container-fliud bg-light shadow p-3 mb-3">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12">
+            <div class="col-md-6">
+                <div class="row"><div class="col-12 mt-5 text-center text-bold"><h1 class="text-bold">Our Mission</h1></div></div>
+                <div class="container-fliud bg-none p-3 mb-3">
+                    <div class="container">
                         <div class="row justify-content-center">
-                            <div class="col-md-6 col-sm-12">
-                                <p class="font-weight-light h3">To inspire hope and contribute to health and well-being by
+                            <div class="col-12">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-12 col-sm-12">
+                                        <p class="font-weight-light h2">To inspire hope and contribute to health and well-being by
                                                                 providing the best care to
                                                                 every patient through remote clinical practice, education and research</p>
-                            </div>
-                            <div class="col-md-6 col-sm-12" >
-                                <img src="{{asset('assets/about/about1.jpg')}}" alt="..." class="img-fluid">
+                                    </div>
+                                   {{-- <div class="col-md-6 col-sm-12" >
+                                        <img src="{{asset('assets/about/about1.jpg')}}" alt="..." class="img-fluid">
+                                    </div>--}}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12 mt-5 text-center text-bold"><h1 class="text-bold">Our vision</h1></div>
-        </div>
-        <div class="container-fliud bg-light shadow p-3 mb-3">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-12 mt-5 text-center text-bold"><h1 class="text-bold">Our vision</h1></div>
+                </div>
+                <div class="container-fliud bg-none p-3 mb-3">
+                    <div class="container">
                         <div class="row justify-content-center">
-                            <div class="col-md-6 col-sm-12">
-                                <img src="{{asset('assets/about/about3.png')}}" alt="..." class="img-fluid">
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                                <p class="font-weight-light h3">E-HealthCare will provide an unparalleled
+                            <div class="col-12">
+                                <div class="row justify-content-center">
+                                    {{--<div class="col-md-6 col-sm-12">
+                                        <img src="{{asset('assets/about/about3.jpg')}}" alt="..." class="img-fluid">
+                                    </div>--}}
+                                    <div class="col-md-12 col-sm-12">
+                                        <p class="font-weight-light h2">E-HealthCare will provide an unparalleled
                                     experience as the most trusted partner for health care services remotely.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
+
+
 
         <div class="mt-5" id="contact">
             <contact-us class="mt-3"></contact-us>

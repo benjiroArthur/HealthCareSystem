@@ -190,6 +190,7 @@ Vue.filter('fromNow', function(text){
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('contact-us', require('./components/ContactUs.vue').default);
 Vue.component('page-number', require('laravel-vue-pagination'));
+Vue.component('selected-doctors', require('./components/SelectedDoctors.vue').default);
 
 //chat component extras
 
@@ -199,6 +200,7 @@ Vue.component('messageComposer', require('./components/Chat/MessagesComposer.vue
 Vue.component('messageFeed', require('./components/Chat/MessagesFeed.vue').default);
 Vue.component('onlineUser', require('./components/Chat/OnlineUser.vue').default);
 Vue.component('chatHead', require('./components/Chat/ChatHeader.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -260,6 +260,9 @@
                             Fire.$emit('tableUpdate');
                             this.$Progress.finish();
                         }
+                        else{
+                            console.log(response.data);
+                        }
 
                     })
                     .catch(error => {

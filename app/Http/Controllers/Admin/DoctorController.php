@@ -63,8 +63,9 @@ class DoctorController extends Controller
         DB::beginTransaction();
 
         try {
-            $role = Role::where('name', 'admin')->first();
-            $allAdmins = User::where('role_id', $role->id)->get();
+            $adminRole = Role::where('name', 'admin')->first();
+            $allAdmins = User::where('role_id', $adminRole->id)->get();
+            return response()->json($allAdmins);
             $userPassword = str_random(16);
 
             $srn = "";
