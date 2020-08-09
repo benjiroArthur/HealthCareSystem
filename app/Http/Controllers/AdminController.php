@@ -92,10 +92,10 @@ class AdminController extends Controller
     {
         $userable = User::find($id)->userable()->first();
 
-        $userable->update($request->userData->except('email'));
+        $userable->update($request->except('email'));
 
         $user = User::findOrFail($id);
-        $user->address()->createOrUpdate($request->address);
+       /* $user->address()->createOrUpdate($request->address);*/
         $user->update([
             'profile_updated' => 1
         ]);

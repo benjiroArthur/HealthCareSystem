@@ -258,19 +258,38 @@
             },
             updateProfile(){
                 this.$Progress.start();
-                axios.put('/records/profile/'+ this.$parent.userId, {
-                    userData: this.form,
-                    address: this.addressForm
-                })
+                this.form.put('/records/profile/'+ this.$parent.userId)
                     .then((response) => {
                         if(response.data === 'success'){
-                            Fire.$emit('profileUpdate');
-                            console.log(response.data);
+                            this.addressForm.put('/records/address/'+ this.$parent.userId)
+                            .then((response)=>{
+                                if(response.data === 'success'){
+                                    Fire.$emit('profileUpdate');
+                                    console.log(response.data);
+                                    this.$Progress.finish();
+                                    Swal.fire(
+                                        'Update',
+                                        'User Profile Updated Successfully',
+                                        'success'
+                                    );
+                                }
+                                else{
+                                    this.$Progress.finish();
+                                    Swal.fire(
+                                        'Update',
+                                        'response.data',
+                                        'error'
+                                    );
+                                }
+                            })
+
+                        }
+                        else{
                             this.$Progress.finish();
                             Swal.fire(
                                 'Update',
-                                'User Profile Updated Successfully',
-                                'success'
+                                'response.data',
+                                'error'
                             );
                         }
                     })
