@@ -106,7 +106,7 @@ class DailyTipController extends Controller
     }
 
     public function getRandomDoctors(){
-        //return Doctor::whereHas('specialization')->inRandomOrder()->limit(3)->get();
-        return Doctor::inRandomOrder()->limit(3)->get();
+        return Doctor::whereHas('specialization')->inRandomOrder()->limit(3)->get();
+        //return Doctor::inRandomOrder()->limit(3)->get();
     }
 }

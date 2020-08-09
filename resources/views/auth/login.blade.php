@@ -11,7 +11,7 @@
                     <!-- /.login-logo -->
                     <div>
                         <div class="card-body login-card-body by-bg-transparent">
-                            <h6 class="login-box-msg text-dark text-bold h6">Sign in to start your session</h6>
+                            <h6 class="text-center text-dark text-bold h6">Sign in to start your session</h6>
 
                             <form action="{{route('login')}}" method="post" class="main-login-form">
                                 @csrf

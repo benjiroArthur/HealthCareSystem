@@ -26,10 +26,14 @@
                     </div>
                 </div>
                 <div class="col-md-3 text-center">
-                    <p>Phone Number: 098867678</p>
-                    <p>Address: 098867678</p>
-                    <p>Address: 098867678</p>
-                    <p>Address: 098867678</p>
+                    <div class="card">
+                        <div class="cad-body m-3">
+                            <p>Phone Number: 098867678</p>
+                            <p>Address: 098867678</p>
+                            <p>Address: 098867678</p>
+                            <p>Address: 098867678</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row justify-content-center">
