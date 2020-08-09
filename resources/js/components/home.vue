@@ -164,44 +164,6 @@
         </div>
         <!--Doctor and Pharmacy image starts here-->
 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="row"><div class="col-12 mt-5 text-center text-bold"><h1 class="text-bold">Our Mission</h1></div></div>
-                <div class="container-fliud bg-none p-3 mb-3">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-md-12 col-sm-12">
-                                <p class="font-weight-light h3">To inspire hope and contribute to health and well-being by
-                                    providing the best care to
-                                    every patient through remote clinical practice, education and research</p>
-                            </div>
-                            <!--<div class="col-md-6 col-sm-12" >
-                                <img :src="`${this.$parent.resourcePath}/about/about1.jpg`" alt="..." class="img-fluid">
-                            </div>-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-12 mt-5 text-center text-bold"><h1 class="text-bold">Our vision</h1></div>
-                </div>
-                <div class="container-fliud bg-none p-3 mb-3">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <!--<div class="col-md-6 col-sm-12">
-                                <img :src="`${this.$parent.resourcePath}/about/about3.png`" alt="..." class="img-fluid">
-                            </div>-->
-                            <div class="col-md-12 col-sm-12">
-                                <p class="font-weight-light h3">E-HealthCare will provide an unparalleled
-                                    experience as the most trusted partner for health care services remotely.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
 
         <div class="mt-5" id="contact">
             <contact-us class="mt-3"></contact-us>
