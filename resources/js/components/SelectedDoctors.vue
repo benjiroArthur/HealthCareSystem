@@ -1,5 +1,8 @@
 <template>
     <div class="container">
+        <div class="row justify-content-center text-center">
+            <h1 class="text-center">Meet Some of Our Doctors</h1>
+        </div>
     <div v-if="this.doctors.length > 0" class="row">
         <div v-for="(doctor, i) in doctors" :key="i" class="col-md-4 justify-content-center">
             <div class="card" style="width: 18rem;">
