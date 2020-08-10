@@ -146,7 +146,7 @@
                     <img :src="`${this.$parent.resourcePath}/about/about2.jpg`" class="card-img" alt="...">
                     <div class="card-img-overlay text-center" style="margin-top: 50%">
                         <router-link to="/user/doctors">
-                            <h3 class="text-dark">Doctors</h3>
+                            <h3 class="text-dark">Reliable Doctors</h3>
                         </router-link>
                     </div>
                 </div>
@@ -156,7 +156,7 @@
                     <img :src="`${this.$parent.resourcePath}/about/about2.jpg`" class="card-img" alt="...">
                     <div class="card-img-overlay text-center" style="margin-top: 50%">
                         <router-link to="/user/pharmacy">
-                            <h3 class="text-dark">Pharmacies</h3>
+                            <h3 class="text-dark">Online Pharmacies</h3>
                         </router-link>
                     </div>
                 </div>
