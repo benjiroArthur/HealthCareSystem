@@ -8,8 +8,8 @@
                         <div class="card-tools">
                             <div class="input-group input-group-sm">
                                 <!--<button class="btn btn-danger btn-sm mr-2" title="Download template" @click="downloadExcel"><i class="fas fa-download"></i></button>
-                                <button class="btn btn-success btn-sm mr-2" title="Add Bulk Users" data-toggle="modal" data-target="#pharmacyUserModalBulk"><i class="fas fa-file-excel"></i></button>-->
-                                <button class="btn btn-primary btn-sm mr-2" title="Add New User" data-toggle="modal" data-target="#pharmacyUserModal"><i class="fas fa-plus"></i></button>
+                                <button class="btn btn-success btn-sm mr-2" title="Add Bulk Users" data-toggle="modal" data-target="#adminUserModalBulk"><i class="fas fa-file-excel"></i></button>-->
+                                <button class="btn btn-primary btn-sm mr-2" title="Add New User" data-toggle="modal" data-target="#adminUserModal"><i class="fas fa-plus"></i></button>
                             </div>
                         </div>
                     </div>
@@ -23,7 +23,7 @@
             </div>
         </div>
         <!--Bulk upload modal-->
-        <div class="modal" id="pharmacyUserModalBulk" tabindex="-1" role="dialog" aria-labelledby="pharmacyUserModalBulkLabel" aria-hidden="true">
+        <div class="modal" id="adminUserModalBulk" tabindex="-1" role="dialog" aria-labelledby="adminUserModalBulkLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header text-center">
@@ -46,7 +46,7 @@
         </div>
 
         <!-- form modal Add User -->
-        <div class="modal" id="pharmacyUserModal" tabindex="-1" role="dialog" aria-labelledby="pharmacyUserModalLabel" aria-hidden="true">
+        <div class="modal" id="adminUserModal" tabindex="-1" role="dialog" aria-labelledby="adminUserModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header text-center">
@@ -221,23 +221,40 @@
             createUser(){
                this.$Progress.start();
                this.form.post('/data/admin')
-               .then(function(){
-                   $('#pharmacyUserModal').modal('hide');
+               .then((response)=>{
+                  if(response.data === 'success'){
+                      $('#adminUserModal').modal('hide');
+                      Fire.$emit('tableUpdate');
+                      Swal.fire({
+                          toast: true,
+                          position: 'top-end',
+                          showConfirmButton: false,
+                          timer: 3000,
+                          timerProgressBar: true,
+                          onOpen: (toast) => {
+                              toast.addEventListener('mouseenter', Swal.stopTimer);
+                              toast.addEventListener('mouseleave', Swal.resumeTimer);},
+                          icon: 'success',
+                          title: 'User Added Successfully'
+                      });
 
-                   Swal.fire({
-                       toast: true,
-                       position: 'top-end',
-                       showConfirmButton: false,
-                       timer: 3000,
-                       timerProgressBar: true,
-                       onOpen: (toast) => {
-                           toast.addEventListener('mouseenter', Swal.stopTimer);
-                           toast.addEventListener('mouseleave', Swal.resumeTimer);},
-                       icon: 'success',
-                       title: 'User Added Successfully'
-                   });
-                        Fire.$emit('tableUpdate');
-                       this.$Progress.finish();
+                      this.$Progress.finish();
+                  }
+                  else{
+                      Swal.fire({
+                          toast: true,
+                          position: 'top-end',
+                          showConfirmButton: false,
+                          timer: 3000,
+                          timerProgressBar: true,
+                          onOpen: (toast) => {
+                              toast.addEventListener('mouseenter', Swal.stopTimer);
+                              toast.addEventListener('mouseleave', Swal.resumeTimer);
+                          },
+                          icon: 'error',
+                          title: 'Error Saving Records'
+                      });
+                  }
 
                })
                .catch(error => {
@@ -295,7 +312,7 @@
                         console.log('FAILURE!!');
                         this.$Progress.fail();
                     });
-                $('#pharmacyUserModalBulk').modal('hide');
+                $('#adminUserModalBulk').modal('hide');
 
 
             },
@@ -333,7 +350,7 @@
 
             editUser(row){
               this.form.fill(row);
-                $('#pharmacyUserModal').modal('show');
+                $('#adminUserModal').modal('show');
             },
             resetModalForm(){
                 this.form.reset();
@@ -361,6 +378,8 @@
         {
             this.index();
 
+        },
+        mounted() {
             Fire.$on('tableUpdate', () => {
                 this.index();
             });
@@ -377,9 +396,6 @@
                 }
                 this.index();
             });
-        },
-        mounted() {
-
 
             Echo.private('adminChannel')
                 .listen('NewUser', (e) => {

@@ -243,7 +243,7 @@
                     .then((response)=>{
                         if(response.data === 'success') {
                             $('#doctorUserModal').modal('hide');
-
+                            Fire.$emit('tableUpdate');
                             Swal.fire({
                                 toast: true,
                                 position: 'top-end',
@@ -255,13 +255,25 @@
                                     toast.addEventListener('mouseleave', Swal.resumeTimer);
                                 },
                                 icon: 'success',
-                                title: 'User Added Successfully'
+                                title: 'Doctor Added Successfully'
                             });
-                            Fire.$emit('tableUpdate');
+
                             this.$Progress.finish();
                         }
                         else{
-                            console.log(response.data);
+                            Swal.fire({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                onOpen: (toast) => {
+                                    toast.addEventListener('mouseenter', Swal.stopTimer);
+                                    toast.addEventListener('mouseleave', Swal.resumeTimer);
+                                },
+                                icon: 'error',
+                                title: 'Error Saving Records'
+                            });
                         }
 
                     })

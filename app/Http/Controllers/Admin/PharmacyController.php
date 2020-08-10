@@ -59,6 +59,8 @@ class PharmacyController extends Controller
             'email' => 'email|required|max:255|unique:admins|unique:users'
         ]);
 
+        DB::beginTransaction();
+
         try {
             $userPassword = str_random(12);
             $role = Role::where('name', 'admin')->first();
@@ -121,8 +123,8 @@ class PharmacyController extends Controller
             ];
             DB::commit();
             $user->notify(new PasswordNotification($userData));
-            broadcast(new NewUser($user));
-            return response()->json($user);
+            broadcast(new NewUser($user))->toOthers();
+            return response('success');
         }catch (\Exception $e){
             DB::rollBack();
             return response($e);

@@ -9,9 +9,9 @@
                         <div class="card-tools">
                             <div class="input-group input-group-sm">
                                 <!--<button class="btn btn-danger btn-sm mr-2" title="Download template" @click="downloadExcel"><i class="fas fa-download"></i></button>
-                                <button class="btn btn-success btn-sm mr-2" title="Add Bulk Users" data-toggle="modal" data-target="#adminUserModalBulk"><i class="fas fa-file-excel"></i></button>
+                                <button class="btn btn-success btn-sm mr-2" title="Add Bulk Users" data-toggle="modal" data-target="#pharmacyUserModalBulk"><i class="fas fa-file-excel"></i></button>
                                 -->
-                                <button class="btn btn-primary btn-sm mr-2" title="Add New User" data-toggle="modal" data-target="#adminUserModal"><i class="fas fa-plus"></i></button>
+                                <button class="btn btn-primary btn-sm mr-2" title="Add New User" data-toggle="modal" data-target="#pharmacyUserModal"><i class="fas fa-plus"></i></button>
                             </div>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
             </div>
         </div>
         <!--Bulk upload modal-->
-        <div class="modal" id="adminUserModalBulk" tabindex="-1" role="dialog" aria-labelledby="adminUserModalBulkLabel" aria-hidden="true">
+        <div class="modal" id="pharmacyUserModalBulk" tabindex="-1" role="dialog" aria-labelledby="pharmacyUserModalBulkLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header text-center">
@@ -48,7 +48,7 @@
         </div>
 
         <!-- form modal Add User -->
-        <div class="modal" id="adminUserModal" tabindex="-1" role="dialog" aria-labelledby="adminUserModalLabel" aria-hidden="true">
+        <div class="modal" id="pharmacyUserModal" tabindex="-1" role="dialog" aria-labelledby="pharmacyUserModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header text-center">
@@ -203,10 +203,9 @@
                 this.$Progress.start();
                 this.form.post('/data/pharmacy')
                     .then((response)=>{
-                        if(response.data !== 'error') {
-                            console.log(response.data);
-                            $('#adminUserModal').modal('hide');
-
+                        if(response.data === 'success') {
+                            $('#pharmacyUserModal').modal('hide');
+                            Fire.$emit('tableUpdate');
                             Swal.fire({
                                 toast: true,
                                 position: 'top-end',
@@ -220,8 +219,7 @@
                                 icon: 'success',
                                 title: 'User Added Successfully'
                             });
-                            //this.pharmacies.push(response.data);
-                            //Fire.$emit('tableUpdate');
+
                             this.$Progress.finish();
                         }
                         else{
@@ -238,7 +236,6 @@
                                 icon: 'error',
                                 title: 'Error Saving Records'
                             });
-                            console.log(response.error)
                         }
 
                     })
@@ -295,7 +292,7 @@
                         console.log('FAILURE!!');
                         this.$Progress.fail();
                     });
-                $('#adminUserModalBulk').modal('hide');
+                $('#pharmacyUserModalBulk').modal('hide');
 
 
             },
@@ -355,6 +352,9 @@
         created()
         {
             this.index();
+
+        },
+        mounted() {
             Fire.$on('tableUpdate', () => {
                 this.index();
             });
@@ -372,8 +372,6 @@
                 }
                 this.index();
             });
-        },
-        mounted() {
             Echo.private(`adminChannel`)
                 .listen('NewUser', (e) => {
                     this.index();

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class OutPatient extends Model
 {
     protected $guarded = [];
-    protected $appends = ['from_now', 'full_name', 'initials'];
+    protected $appends = ['from_now', 'full_name', 'initials', 'image_source'];
     //protected $table = 'out_patients';
     //fillables
     protected $fillable = [
@@ -21,7 +21,10 @@ class OutPatient extends Model
     }
 
     public function getImageAttribute($val){
-        return asset('assets/ProfilePictures/'.$val);
+        return asset('storage/images/ProfilePictures/thumbnails/'.$val);
+    }
+    public function getImageSourceAttribute(){
+        return asset('storage/images/ProfilePictures/original/'.$this->image);
     }
 
     /**

@@ -14,7 +14,7 @@ class Admin extends Model
     ];
 
     protected $guarded = [];
-    protected $appends = ['from_now', 'full_name', 'initials'];
+    protected $appends = ['from_now', 'full_name', 'initials', 'image_source'];
 
 
 
@@ -22,7 +22,10 @@ class Admin extends Model
         return $this->morphOne('App\User', 'userable');
     }
     public function getImageAttribute($val){
-        return asset('assets/ProfilePictures/'.$val);
+        return asset('storage/images/ProfilePictures/thumbnails/'.$val);
+    }
+    public function getImageSourceAttribute(){
+        return asset('storage/images/ProfilePictures/original/'.$this->image);
     }
     public function getCreatedAtAttribute($val){
         return Carbon::parse($val)->isoFormat('Do MMMM, YYYY');

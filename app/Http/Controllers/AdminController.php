@@ -95,7 +95,7 @@ class AdminController extends Controller
         $userable->update($request->except('email'));
 
         $user = User::findOrFail($id);
-       /* $user->address()->createOrUpdate($request->address);*/
+
         $user->update([
             'profile_updated' => 1
         ]);

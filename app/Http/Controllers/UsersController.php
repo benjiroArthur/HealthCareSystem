@@ -47,7 +47,7 @@ class UsersController extends Controller
            return response('User Records Created Successfully', 200);
        }
        else{
-           return response('No file available to upload', 404);
+           return response('No file available to upload');
        }
     }
 
@@ -172,7 +172,7 @@ class UsersController extends Controller
 
         $oldImage = $user->image;
         $oldSplit = explode('/', $oldImage);
-        $oldSplit = $oldSplit[sizeof($oldSplit) -1];
+        $oldSplit = $oldSplit[count($oldSplit) -1];
 
 
         if($request->hasfile('image')){
@@ -198,13 +198,29 @@ class UsersController extends Controller
 
 //      $path = $image_file->storeAs('public/assets/ProfilePictures/', $imageNameToStore);
 //
-            $image_path = public_path().'/assets/ProfilePictures/'.$imageNameToStore;
+            /*$image_path = public_path().'/assets/ProfilePictures/'.$imageNameToStore;
             //resize image
-            Image::make($image_file->getRealPath())->resize(140,128)->save($image_path);
+            Image::make($image_file->getRealPath())->resize(140,128)->save($image_path);*/
 
-            if(File::exists(public_path('/assets/ProfilePictures/'.$oldSplit)) && $oldSplit !== 'noimage.jpg'){
+            //resize image
+            $thumbImg = \Image::make($image_file->getRealPath())->resize(400,null,
+                static function ($constraint){
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                })->encode();
+            $mainImg = \Image::make($image_file->getRealPath())->resize(800,null,
+                static function ($constraint){
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                })->encode();
+            \Storage::disk('profile-picture')->put('thumbnails/'.$imageNameToStore, $thumbImg);
+            \Storage::disk('profile-picture')->put('original/'.$imageNameToStore, $mainImg);
 
-                File::delete(public_path('/assets/ProfilePictures/'.$oldSplit));
+            if(\Storage::disk('profile-picture')->exists('/thumbnails/'.$oldSplit)){
+                \Storage::disk('profile-picture')->delete('/thumbnails/'.$oldSplit);
+            }
+            if(\Storage::disk('profile-picture')->exists('/original/'.$oldSplit)){
+                \Storage::disk('profile-picture')->delete('/original/'.$oldSplit);
             }
 
             $user->image = $imageNameToStore;
@@ -212,10 +228,8 @@ class UsersController extends Controller
 
             return response('Success');
         }
-        else
-        {
-            return response('No file selected');
-        }
+
+        return response('No file selected');
     }
 
     public function passwordUpdate(Request $request, $id){

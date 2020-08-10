@@ -94,7 +94,7 @@ class AdminController extends Controller
 
             $user->notify(new PasswordNotification($userData));
             broadcast(new NewUser($user))->toOthers();
-            return response(['message' => 'User Created Successfully']);
+            return response('success');
         }catch (\Exception $e){
             DB::rollBack();
             return response($e);

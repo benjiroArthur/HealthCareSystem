@@ -13,14 +13,17 @@ class Pharmacy extends Model
     ];
 
     protected $guarded = [];
-    protected $appends = ['from_now', 'full_name', 'first_name'];
+    protected $appends = ['from_now', 'full_name', 'first_name', 'image_source'];
 
     public function user(){
         return $this->morphOne('App\User', 'userable');
     }
 
     public function getImageAttribute($val){
-        return asset('assets/ProfilePictures/'.$val);
+        return asset('storage/images/ProfilePictures/thumbnails/'.$val);
+    }
+    public function getImageSourceAttribute(){
+        return asset('storage/images/ProfilePictures/original/'.$this->image);
     }
     public function getCreatedAtAttribute($val){
         return Carbon::parse($val)->isoFormat('Do MMMM, YYYY');

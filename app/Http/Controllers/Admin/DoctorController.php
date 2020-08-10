@@ -48,9 +48,10 @@ class DoctorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      * @throws \Illuminate\Validation\ValidationException
+     * @throws \Exception
      */
     public function store(Request $request)
     {
@@ -65,7 +66,7 @@ class DoctorController extends Controller
         try {
             $adminRole = Role::where('name', 'admin')->first();
             $allAdmins = User::where('role_id', $adminRole->id)->get();
-            return response()->json($allAdmins);
+
             $userPassword = str_random(16);
 
             $srn = "";

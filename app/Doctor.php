@@ -17,14 +17,20 @@ class Doctor extends Model
     protected $with = ['specialization'];
 
     protected $guarded = [];
-    protected $appends = ['from_now', 'full_name', 'initials'];
+    protected $appends = ['from_now', 'full_name', 'initials', 'image_source'];
 
     public function user(){
         return $this->morphOne('App\User', 'userable');
     }
 
     public function getImageAttribute($val){
-        return asset('assets/ProfilePictures/'.$val);
+        return asset('storage/images/ProfilePictures/thumbnails/'.$val);
+    }
+    public function getImageSourceAttribute(){
+        $oldImage = $this->image;
+        $oldSplit = explode('/', $oldImage);
+        $image = $oldSplit[count($oldSplit) -1];
+        return asset('storage/images/ProfilePictures/original/'.$image);
     }
 
     public function medical_records(){

@@ -13,8 +13,6 @@ class ProfileController extends Controller
 
         $userable->update($request->except('email'));
 
-        $user = User::findOrFail($id);
-
 
         return response('success');
     }
@@ -22,7 +20,12 @@ class ProfileController extends Controller
 
     public function address(Request $request, $id){
         $user = User::findOrFail($id);
-         $user->address()->createOrUpdate($request);
+        if($user->address === null){
+            return $user->address()->create($request->all());
+        }
+        else{
+            $user->address()->update($request->all());
+        }
 
         $user->update([
             'profile_updated' => 1

@@ -14,7 +14,7 @@
                                     <span class="fas fa-camera" data-toggle="modal" data-target="#profileModal" tooltip="Edit Profile Picture"
                                           style="position: absolute; transform: translate(-70%, 200%); -ms-transform: translate(-70%, 200%); width:20px;"></span>
                                 </div>
-                                <div class="row">
+                                <div class="row mt-5">
                                     <div class="col-sm-12 col-md-6 col-lg-6">
                                         <div class="form-group">
                                             <label>Last Name</label>
@@ -259,7 +259,7 @@
                                         this.$Progress.finish();
                                         Swal.fire(
                                             'Update',
-                                            'response.data',
+                                            response.data,
                                             'error'
                                         );
                                     }
