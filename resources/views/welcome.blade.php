@@ -41,12 +41,12 @@
     </div>
     </div>
 
-        <h1 class="text-center text-dark text-bold">What You Can Do</h1>
+        <h1 class="text-center text-bold">What You Can Do</h1>
         <div class="container">
             <div class="row" style="font-size: 24px">
                 <div class="col-md-4">
                     <div class="card">
-                        <div class="card-body bg-health text-white text-center">
+                        <div class="card-body bg-gradient-red text-white text-center">
                             <span class="fas fa-search"></span>
                             Find A Doctor
                         </div>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card">
-                        <div class="card-body bg-health text-white text-center">
+                        <div class="card-body bg-gradient-red text-white text-center">
                             <span class="fab fa-facebook-messenger"></span>
                             Chat With A Doctor
                         </div>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card">
-                        <div class="card-body bg-health text-white text-center">
+                        <div class="card-body bg-gradient-red text-white text-center">
                             <span class="fas fa-search"></span>
                             Find A Pharmacy
                         </div>
@@ -75,7 +75,8 @@
                 <div class="col-md-4">
                     <h1>Welcome To</h1>
                     <h1>E-HealthCare Center</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam at deleniti distinctio eum facere illum, nulla quidem quisquam voluptates! Animi aspernatur doloremque hic illum minus non officia rem saepe!</p>
+                    <p>Sick at home and cannot get the hospital immediately? Looking for a pharmacy around you? Worry no more.
+                        Register now and get connected to a doctor and locate a pharmacy around you.</p>
                 </div>
                  <div class="col-md-4">
                      <div class="row">
@@ -83,8 +84,9 @@
                              <p class="h1"><span class="fas fa-user-md text-health w-100 font-weight-bold" style="font-size: 80px"></span></p>
                          </div>
                          <div class="col-8">
-                             <h4 class="text-bold">Trusted Doctors</h4>
-                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. doloremque hic illum minus non officia rem saepe!</p>
+                             <h4 class="text-bold">Certified Doctors</h4>
+                             <p>Quality healthcare starts with quality and certified doctors.
+                                 Ours are amongst the best!</p>
 
                          </div>
                      </div>
@@ -94,7 +96,7 @@
                          </div>
                          <div class="col-8">
                              <h4 class="text-bold">Secured Chat Platform</h4>
-                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. doloremque hic illum minus non officia rem saepe!</p>
+                             <p>Our chat platforms are safe and secured. Protected against third-party invasion.</p>
 
                          </div>
                      </div>
@@ -106,7 +108,7 @@
                         </div>
                         <div class="col-8">
                             <h4 class="text-bold">Trusted Pharmacies</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. doloremque hic illum minus non officia rem saepe!</p>
+                            <p>Available pharmacies are licensed and trusthworthy.Safe drug delivery at an affotdable price</p>
 
                         </div>
                     </div>
@@ -116,7 +118,9 @@
                         </div>
                         <div class="col-8">
                             <h4 class="text-bold">24/7 Services</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. doloremque hic illum minus non officia rem saepe!</p>
+                            <p>No Waiting Rooms.
+                                No Long Queues.
+                                No Traffic. Less Stress. We serve you anytime and anyday.</p>
 
                         </div>
                     </div>
@@ -133,13 +137,14 @@
                     <div class="col-12">
                         <div class="row justify-content-center">
                             <div class="col-md-6 col-sm-12 bg-transparent">
-                                <img src="{{asset('assets/about/about2.jpg')}}" alt="..." class="img-fluid">
+                                <img src="{{asset('assets/about/about1.jpg')}}" alt="..." class="img-fluid">
                             </div>
                             <div class="col-md-6 col-sm-12">
-                                <p class="font-weight-light h2">E-HealthCare System is an application developed by Top-Notch
-                                            RoQue Technologies to help provide healthcare services to patients remotely. Top-Notch
-                                            Technologies, TNT is known for its contribution to help tackle societal challenges by developing
-                                            robust applications to solve problems technology-wise..</p>
+                                <div class="text-center">
+                                <p class="font-weight-light h2 text-center">E-Health Care connects you to Medically
+                                    Certified Doctors 24 hours a day 365 days a year using your phone, tablet,
+                                    or computer. The system also ensures that pharmacies around you are easily accessible.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -149,6 +154,7 @@
         <selected-doctors></selected-doctors>
         <div class="row">
             <div class="col-md-6">
+                <div class="card-body bg-gradient-red text-white text-center">
                 <div class="row"><div class="col-12 mt-5 text-center text-bold"><h1 class="text-bold">Our Mission</h1></div></div>
                 <div class="container-fliud bg-none p-3 mb-3">
                     <div class="container">
@@ -157,8 +163,9 @@
                                 <div class="row justify-content-center">
                                     <div class="col-md-12 col-sm-12">
                                         <p class="font-weight-light h2">To inspire hope and contribute to health and well-being by
-                                                                providing the best care to
-                                                                every patient through remote clinical practice, education and research</p>
+                                                                providing the best health care to
+                                                                every patient remotely</p>
+                                    </div>
                                     </div>
                                    {{-- <div class="col-md-6 col-sm-12" >
                                         <img src="{{asset('assets/about/about1.jpg')}}" alt="..." class="img-fluid">
@@ -170,6 +177,7 @@
                 </div>
             </div>
             <div class="col-md-6">
+                <div class="card-body bg-gradient-green text-white text-center">
                 <div class="row">
                     <div class="col-12 mt-5 text-center text-bold"><h1 class="text-bold">Our vision</h1></div>
                 </div>
@@ -182,9 +190,11 @@
                                         <img src="{{asset('assets/about/about3.jpg')}}" alt="..." class="img-fluid">
                                     </div>--}}
                                     <div class="col-md-12 col-sm-12">
+
                                         <p class="font-weight-light h2">E-HealthCare will provide an unparalleled
                                     experience as the most trusted partner for health care services remotely.</p>
                                     </div>
+                                </div>
                                 </div>
                             </div>
                         </div>
