@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" v-if="this.doctors.length > 0">
         <div class="row justify-content-center text-center">
             <h1 class="text-center">Meet Some of Our Doctors</h1>
         </div>
@@ -15,6 +15,7 @@
         </div>
     </div>
     </div>
+    <div v-else></div>
 </template>
 
 <script>

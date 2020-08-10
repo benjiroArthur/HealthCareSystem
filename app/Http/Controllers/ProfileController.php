@@ -11,15 +11,18 @@ class ProfileController extends Controller
 
         $userable = User::find($id)->userable()->first();
 
-        $userable->update($request->userData);
+        $userable->update($request->except('email'));
 
         $user = User::findOrFail($id);
-        if($user->address === null){
-            $user->address()->create($request->address);
-        }
-        else{
-            $user->address()->update($request->address);
-        }
+
+
+        return response('success');
+    }
+
+
+    public function address(Request $request, $id){
+        $user = User::findOrFail($id);
+         $user->address()->createOrUpdate($request);
 
         $user->update([
             'profile_updated' => 1
