@@ -41,7 +41,7 @@
     </div>
     </div>
 
-        <h1 class="text-center text-health text-bold">What You Can Do</h1>
+        <h1 class="text-center text-bold">What You Can Do</h1>
         <div class="container">
             <div class="row" style="font-size: 24px">
                 <div class="col-md-4">
@@ -140,9 +140,11 @@
                                 <img src="{{asset('assets/about/about1.jpg')}}" alt="..." class="img-fluid">
                             </div>
                             <div class="col-md-6 col-sm-12">
-                                <p class="font-weight-light h2">24/7 Doctors Online Connects you to Medically
+                                <div class="text-center">
+                                <p class="font-weight-light h2">E-Health Care connects you to Medically
                                     Certified Doctors 24 hours a day 365 days a year using your phone, tablet,
-                                    or computer.</p>
+                                    or computer. The system also ensures that pharmacies around you are easily accessible.</p>
+                                </div>
                             </div>
                         </div>
                     </div>

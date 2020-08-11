@@ -26,7 +26,7 @@
                 <div class="col-md-4">
                         <router-link to="/user/doctors" class="nav-link">
                             <div class="card make-link">
-                                <div class="card-body bg-health text-white text-center">
+                                <div class="card-body bg-gradient-red text-white text-center">
                                     <span class="fas fa-search"></span>
                                     Find A Doctor
                                 </div>
@@ -36,7 +36,7 @@
                 <div class="col-md-4">
                     <router-link to="/chat" class="nav-link">
                         <div class="card make-link">
-                            <div class="card-body bg-health text-white text-center">
+                            <div class="card-body bg-gradient-red text-white text-center">
                                 <span class="fab fa-facebook-messenger"></span>
                                 Chat A Doctor
                             </div>
@@ -46,7 +46,7 @@
                 <div class="col-md-4">
                    <router-link to="/user/pharmacy" class="nav-link">
                        <div class="card make-link">
-                           <div class="card-body bg-health text-white text-center">
+                           <div class="card-body bg-gradient-red text-white text-center">
                                <span class="fas fa-search"></span>
                                Find A Pharmacy
                            </div>
@@ -144,9 +144,9 @@
                     <img :src="`${this.$parent.resourcePath}/about/about2.jpg`" class="card-img" alt="...">
                     <div class="card-img-overlay text-center" style="margin-top: 50%">
                         <router-link to="/user/doctors">
-                            <h3 class="text-dark">Reliable Doctors</h3>
+                            <h2 color-red >Reliable Doctors</h2>
                         </router-link>
-                    </div>
+                </div>
                 </div>
             </div>
             <div class="col-md-6">

@@ -28,10 +28,10 @@
                 <div class="col-md-3 text-center">
                     <div class="card">
                         <div class="cad-body m-3">
-                            <p>Phone Number: 098867678</p>
-                            <p>Address: 098867678</p>
-                            <p>Address: 098867678</p>
-                            <p>Address: 098867678</p>
+                            <p>Phone Number: 0273557298</p>
+                            <p>Email: robertdiquaye3@gmail.com</p>
+                            <p>Location: JamesTown,Accra-High Street </p>
+                            <p>Address: D339/2</p>
                         </div>
                     </div>
                 </div>
