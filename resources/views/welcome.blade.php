@@ -141,7 +141,7 @@
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <div class="text-center">
-                                <p class="font-weight-light h2">E-Health Care connects you to Medically
+                                <p class="font-weight-light h2 text-center">E-Health Care connects you to Medically
                                     Certified Doctors 24 hours a day 365 days a year using your phone, tablet,
                                     or computer. The system also ensures that pharmacies around you are easily accessible.</p>
                                 </div>
