@@ -205,14 +205,22 @@
                 this.$Progress.start();
                 this.form.put('/records/admin/'+this.$parent.userId)
                     .then((response) => {
-                        Fire.$emit('profileUpdate');
-                        console.log(response.data);
-                        this.$Progress.finish();
-                        Swal.fire(
-                            'Update',
-                            'User Profile Updated Successfully',
-                            'success'
-                        );
+                       if(response.data === 'success'){
+                           Fire.$emit('profileUpdate');
+                           this.$Progress.finish();
+                           Swal.fire(
+                               'Update',
+                               'User Profile Updated Successfully',
+                               'success'
+                           );
+                       }else{
+                           this.$Progress.fail();
+                           Swal.fire(
+                               'Error',
+                               response.data,
+                               'error'
+                           );
+                       }
                     })
                     .catch((error) => {
                         console.log(error.message);
