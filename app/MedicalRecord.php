@@ -17,7 +17,7 @@ class MedicalRecord extends Model
         return $this->belongsTo('App\Doctor');
     }
     public function out_patient(){
-       return $this->belongsTo('App\OutPatient');
+       return $this->belongsTo(OutPatient::class, 'out_patient_id');
     }
 
 

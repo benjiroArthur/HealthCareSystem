@@ -127,7 +127,7 @@ class MedicalRecordsController extends Controller
         $srn = strtoupper($srn);
         $patient = OutPatient::where('srn', $srn)->first();
         if(!empty($patient)){
-            $records = $patient->medicalRecords()->get();
+            $records = $patient->medical_records()->get();
             return response()->json($records);
         }
         else{
